@@ -15,6 +15,7 @@ try:
 
     if password == true_password:
         placeholder.empty()
+        st.session_state.login = {"name": name, "password": password}
         pass
         
     else:
@@ -24,7 +25,7 @@ try:
 except:
     st.stop()
 
-status = df_references[df_references['username']==name].reset_index(drop=True)['type'].loc[0]
+status = df_references[df_references['username']==st.session_state.login['name']].reset_index(drop=True)['type'].loc[0]
 
 
 page_1 = st.Page("page/page_1.py", title="page 1", )
