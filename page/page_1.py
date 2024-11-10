@@ -1,11 +1,9 @@
 import streamlit as st
-
-st.write('page 1')
-
-import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
+
+st.write(f'WLKON {name}')
 
 if "data" not in st.session_state:
     st.session_state.data = pd.DataFrame(
