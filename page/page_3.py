@@ -3,43 +3,44 @@ import streamlit as st
 st.write('page 3')
 
 import streamlit as st
-import pydeck
 import pandas as pd
+import numpy as np
+import pydeck as pdk
 
-capitals = pd.read_csv(
-    "capitals.csv",
-    header=0,
-    names=[
-        "Capital",
-        "State",
-        "Abbreviation",
-        "Latitude",
-        "Longitude",
-        "Population",
-    ],
-)
-capitals["size"] = capitals.Population / 10
-
-point_layer = pydeck.Layer(
-    "ScatterplotLayer",
-    data=capitals,
-    id="capital-cities",
-    get_position=["Longitude", "Latitude"],
-    get_color="[255, 75, 75]",
-    pickable=True,
-    auto_highlight=True,
-    get_radius="size",
+chart_data = pd.DataFrame(
+    np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
+    columns=["lat", "lon"],
 )
 
-view_state = pydeck.ViewState(
-    latitude=40, longitude=-117, controller=True, zoom=2.4, pitch=30
-)
 
-chart = pydeck.Deck(
-    point_layer,
-    initial_view_state=view_state,
-    tooltip={"text": "{Capital}, {Abbreviation}\nPopulation: {Population}"},
-)
+chart=pdk.Deck(
+        map_style=None,
+        initial_view_state=pdk.ViewState(
+            latitude=37.76,
+            longitude=-122.4,
+            zoom=11,
+            pitch=50,
+        ),
+        layers=[
+            pdk.Layer(
+                "HexagonLayer",
+                data=chart_data,
+                get_position="[lon, lat]",
+                radius=200,
+                elevation_scale=4,
+                elevation_range=[0, 1000],
+                pickable=True,
+                extruded=True,
+            ),
+            pdk.Layer(
+                "ScatterplotLayer",
+                data=chart_data,
+                get_position="[lon, lat]",
+                get_color="[200, 30, 0, 160]",
+                get_radius=200,
+            ),
+        ],
+    )
 
 event = st.pydeck_chart(chart, on_select="rerun", selection_mode="multi-object")
 
