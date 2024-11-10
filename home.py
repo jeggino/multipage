@@ -17,8 +17,9 @@ try:
     if password == true_password:
         placeholder_1.empty()
         placeholder_2.empty()
-        status = df_references[df_references['username']==name].reset_index(drop=True)['type'].loc[0]
-        # st.session_state.login = {"name": name, "password": password}
+        st.session_state.login = {"name": name, "password": password}
+        status = df_references[df_references['username']==st.session_state.login["name"]].reset_index(drop=True)['type'].loc[0]
+        
         pass
         
     else:
