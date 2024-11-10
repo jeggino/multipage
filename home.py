@@ -6,8 +6,19 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 df_references = conn.read(ttl=0,worksheet="multipage_users")
 
 
-option = st.selectbox("Who are you?",("Luigi", "Daan", "Tommaso"),)
-status = df_references[df_references['name']==option].reset_index(drop=True)['type'].loc[0]
+name = st.text_input("Name")
+password = st.text_input("Password",type='password')
+
+index = df_references[df_references['username']==name].index[0]
+true_password = df_references.loc[index,"password"]
+
+if password == true_password:
+    continue
+    
+else:
+    st.stop()
+
+status = df_references[df_references['name']==name].reset_index(drop=True)['type'].loc[0]
 
 
 page_1 = st.Page("page_1.py", title="page 1", )
