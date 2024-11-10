@@ -33,32 +33,32 @@ def logIn(df_references):
         else:
             st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
 
-def project(df_references):
-    st.subheader(f"Welkom {st.session_state.login['name'].split()[0]}!!",divider='grey')
-    index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
-    project_list = df_references.loc[index_project,"project"].split(',')
-    project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
-    opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
-    try:
-        geometry_file = f"geometries/{project}.geojson" 
-        gdf_areas = gpd.read_file(geometry_file)
-        area = st.selectbox("Aan welke gebied ga je werken?",gdf_areas['Wijk'].unique(),label_visibility="visible")
-        gdf_areas = gdf_areas[gdf_areas['Wijk']==area]
-    except:
-        area = None
-        gdf_areas = None
-    on = st.toggle("💻")
-    if st.button(":rainbow[**Begin**]"):
-         st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'area':area, 'gdf':gdf_areas}
-         st.rerun()
+# def project(df_references):
+#     st.subheader(f"Welkom {st.session_state.login['name'].split()[0]}!!",divider='grey')
+#     index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
+#     project_list = df_references.loc[index_project,"project"].split(',')
+#     project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
+#     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
+#     try:
+#         geometry_file = f"geometries/{project}.geojson" 
+#         gdf_areas = gpd.read_file(geometry_file)
+#         area = st.selectbox("Aan welke gebied ga je werken?",gdf_areas['Wijk'].unique(),label_visibility="visible")
+#         gdf_areas = gdf_areas[gdf_areas['Wijk']==area]
+#     except:
+#         area = None
+#         gdf_areas = None
+#     on = st.toggle("💻")
+#     if st.button(":rainbow[**Begin**]"):
+#          st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'area':area, 'gdf':gdf_areas}
+#          st.rerun()
         
 def logOut():
     if st.button("logOut",use_container_width=True):
         del st.session_state.login
-        del st.session_state.project     
+        # del st.session_state.project     
         st.rerun()
 
-def logOut_project():
-    if st.button("Opdracht wijzigen",use_container_width=True):
-        del st.session_state.project
-        st.rerun()
+# def logOut_project():
+#     if st.button("Opdracht wijzigen",use_container_width=True):
+#         del st.session_state.project
+#         st.rerun()
