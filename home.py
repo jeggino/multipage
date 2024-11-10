@@ -38,19 +38,15 @@ except:
 
 
 page_1 = st.Page("page/page_1.py", title="page 1", )
-page_2 = st.Page("page/page_2.py", title="page 2")
 page_3 = st.Page("page/page_3.py", title="page 3")
 
-if status == 'admin':
+if status == 'user':
     pg = st.navigation(
         {
-            "Account": [page_1],
-            "Reports": [page_2],
-            "Tools": [page_3],
+            "Home": [page_1],
+            "Reports": [page_3],
         }
     )
-elif status == 'user':
-    pg = st.navigation([page_1,page_3])
 
 elif status == 'visitor':
     pg = st.navigation([page_3])
