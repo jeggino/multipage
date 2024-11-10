@@ -13,7 +13,7 @@ index = df_references[df_references['username']==name].index[0]
 true_password = df_references.loc[index,"password"]
 
 if password == true_password:
-    continue
+    pass
     
 else:
     st.stop()
