@@ -14,7 +14,7 @@ try:
 
     if password == true_password:
         # placeholder.empty()
-        # st.session_state.login = {"name": name, "password": password}
+        st.session_state.login = {"name": name, "password": password}
         pass
         
     else:
