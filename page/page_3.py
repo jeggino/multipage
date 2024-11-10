@@ -24,6 +24,7 @@ chart=pdk.Deck(
             zoom=11,
             pitch=50,
         ),
+    tooltip={"text": "{capital-cities}"},
         layers=[
             pdk.Layer(
                 "ScatterplotLayer",
