@@ -6,7 +6,7 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 df_references = conn.read(ttl=0,worksheet="multipage_users")
 
 placeholder = st.empty()
-name = placeholder.text_input("Name")
+name = placeholder.text_input("Name",value=None)
 password = placeholder.text_input("Password",type='password')
 
 try:
