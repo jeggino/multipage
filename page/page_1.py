@@ -30,3 +30,5 @@ chart = (
 event = st.altair_chart(chart, key="alt_chart", on_select="rerun")
 
 event
+
+st.sidebar.write('Scatter')
