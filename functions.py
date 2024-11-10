@@ -12,7 +12,7 @@ import ast
 
 def logIn(df_references):
     name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
-    password = st.text_input("Vul uw wachtwoord in, alstublieft")
+    password = st.text_input("Vul uw wachtwoord in, alstublieft",type="password",)
     try:
         if name == None:
             st.stop()
