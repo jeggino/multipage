@@ -28,6 +28,7 @@ chart=pdk.Deck(
             pdk.Layer(
                 "ScatterplotLayer",
                 data=chart_data,
+                pickable=True,
                 get_position="[lon, lat]",
                 get_color="[200, 30, 0, 160]",
                 get_radius=100,
