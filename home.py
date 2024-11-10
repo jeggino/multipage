@@ -1,39 +1,13 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
+form functions import *
 
 
 conn = st.connection("gsheets", type=GSheetsConnection)
-df_references = conn.read(ttl=0,worksheet="multipage_users")
+df_references = conn.read(ttl=0,worksheet="df_users")
 
 
-#---LOGIN---
-placeholder_1 = st.empty()
-placeholder_2 = st.empty()
 
-try: 
-    name = st.session_state.login["name"]
-    password = st.session_state.login["password"]
-except:
-    name = placeholder_1.text_input("Name")
-    password = placeholder_2.text_input("Password",type='password')
-
-try:
-    index = df_references[df_references['username']==name].index[0]
-    true_password = df_references.loc[index,"password"]
-
-    if password == true_password:
-        placeholder_1.empty()
-        placeholder_2.empty()
-        st.session_state.login = {"name": name, "password": password}
-        status = df_references[df_references['username']==st.session_state.login["name"]].reset_index(drop=True)['type'].loc[0]
-        pass
-        
-    else:
-        st.error('Wrong password!!')
-        st.stop()
-
-except:
-    st.stop()
 
 
 
@@ -41,7 +15,21 @@ except:
 page_1 = st.Page("page/page_1.py", title="Scatter",icon="🔥" )
 page_3 = st.Page("page/page_3.py", title="Map",icon="🔥")
 
-if status == 'user':
+if "login" not in st.session_state:
+    logIn()
+    st.stop()
+
+
+if 'project' not in st.session_state:  
+    project()
+    st.stop()
+
+with st.sidebar:
+    logOut_project()
+    logOut()
+    st.divider()
+
+if st.session_state.login['type'] == 'user':
     pg = st.navigation(
         {
             "Home": [page_1],
@@ -49,7 +37,7 @@ if status == 'user':
         }
     )
 
-elif status == 'visitor':
+elif st.session_state.login['type'] == 'visitor':
     pg = st.navigation([page_3])
   
 
