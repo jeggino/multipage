@@ -20,12 +20,12 @@ if "login" not in st.session_state:
     st.stop()
 
 
-if 'project' not in st.session_state:  
-    project()
-    st.stop()
+# if 'project' not in st.session_state:  
+#     project()
+#     st.stop()
 
 with st.sidebar:
-    logOut_project()
+    # logOut_project()
     logOut()
     st.divider()
 
