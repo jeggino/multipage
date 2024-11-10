@@ -12,6 +12,7 @@ chart_data = pd.DataFrame(
     columns=["lat", "lon"],
 )
 
+chart_data["capital-cities"] = 'Roma'
 
 chart=pdk.Deck(
         map_style=None,
@@ -28,6 +29,7 @@ chart=pdk.Deck(
                 get_position="[lon, lat]",
                 get_color="[200, 30, 0, 160]",
                 get_radius=200,
+                id="capital-cities",
             ),
         ],
     )
