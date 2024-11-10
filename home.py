@@ -1,6 +1,6 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
-form functions import *
+from functions import *
 
 
 conn = st.connection("gsheets", type=GSheetsConnection)
