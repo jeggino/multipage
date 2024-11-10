@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import pydeck as pdk
 
-st.write(f'WLKON {name}')
+st.write(f'WLKON {st.session_state.login["name"]}')
 
 chart_data = pd.DataFrame(
     np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
