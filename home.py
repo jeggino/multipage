@@ -23,7 +23,7 @@ try:
 except:
     st.stop()
 
-status = df_references[df_references['name']==name].reset_index(drop=True)['type'].loc[0]
+status = df_references[df_references['username']==name].reset_index(drop=True)['type'].loc[0]
 
 
 page_1 = st.Page("page_1.py", title="page 1", )
