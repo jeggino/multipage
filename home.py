@@ -14,7 +14,7 @@ try:
     true_password = df_references.loc[index,"password"]
 
     if password == true_password:
-        placeholder.empty()
+        # placeholder.empty()
         st.session_state.login = {"name": name, "password": password}
         pass
         
