@@ -38,6 +38,6 @@ chart=pdk.Deck(
         ],
     )
 
-event = st.pydeck_chart(chart, on_select="rerun", selection_mode="multi-object")
+event = st.pydeck_chart(chart, on_select="rerun", selection_mode="single-object")
 
 event.selection
