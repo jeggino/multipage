@@ -5,16 +5,18 @@ from streamlit_gsheets import GSheetsConnection
 conn = st.connection("gsheets", type=GSheetsConnection)
 df_references = conn.read(ttl=0,worksheet="multipage_users")
 
-placeholder = st.empty()
-name = placeholder.text_input("Name",value=None)
-password = placeholder.text_input("Password",type='password')
+placeholder_1 = st.empty()
+placeholder_2 = st.empty()
+name = placeholder_1.text_input("Name")
+password = placeholder_2.text_input("Password",type='password')
 
 try:
     index = df_references[df_references['username']==name].index[0]
     true_password = df_references.loc[index,"password"]
 
     if password == true_password:
-        placeholder.empty()
+        placeholder_1.empty()
+        placeholder_2.empty()
         status = df_references[df_references['username']==name].reset_index(drop=True)['type'].loc[0]
         # st.session_state.login = {"name": name, "password": password}
         pass
