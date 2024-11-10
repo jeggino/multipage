@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import altair as alt
 
-st.write(f'WLKON {name}')
+st.write(f'WLKON {st.session_state.login["name"]}')
 
 if "data" not in st.session_state:
     st.session_state.data = pd.DataFrame(
