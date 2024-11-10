@@ -7,8 +7,13 @@ df_references = conn.read(ttl=0,worksheet="multipage_users")
 
 placeholder_1 = st.empty()
 placeholder_2 = st.empty()
-name = placeholder_1.text_input("Name")
-password = placeholder_2.text_input("Password",type='password')
+
+try: 
+    name = st.session_state.login["name"]
+    password = st.session_state.login["password"]
+except:
+    name = placeholder_1.text_input("Name")
+    password = placeholder_2.text_input("Password",type='password')
 
 try:
     index = df_references[df_references['username']==name].index[0]
