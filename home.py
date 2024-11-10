@@ -16,7 +16,7 @@ page_1 = st.Page("page/page_1.py", title="Scatter",icon="🔥" )
 page_3 = st.Page("page/page_3.py", title="Map",icon="🔥")
 
 if "login" not in st.session_state:
-    logIn()
+    logIn(df_references)
     st.stop()
 
 
