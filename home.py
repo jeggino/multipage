@@ -9,8 +9,11 @@ df_references = conn.read(ttl=0,worksheet="multipage_users")
 name = st.text_input("Name")
 password = st.text_input("Password",type='password')
 
-index = df_references[df_references['username']==name].index[0]
-true_password = df_references.loc[index,"password"]
+try:
+    index = df_references[df_references['username']==name].index[0]
+    true_password = df_references.loc[index,"password"]
+except:
+    st.stop()
 
 if password == true_password:
     pass
