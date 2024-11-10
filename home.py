@@ -15,7 +15,7 @@ option = st.selectbox("Who are you?",("Luigi", "Daan", "Tommaso"),)
 
 status = df_references[df_references['name']==option].reset_index(drop=True)['type'].loc[0]
 st.write(status)
-if option == 'admin':
+# if option == 'admin':
 #     pg = st.navigation(
 #         {
 #             "Account": [page_1],
