@@ -12,14 +12,15 @@ password = st.text_input("Password",type='password')
 try:
     index = df_references[df_references['username']==name].index[0]
     true_password = df_references.loc[index,"password"]
-except:
-    st.stop()
 
-if password == true_password:
-    pass
-    
-else:
-    st.error('Wrong password!!')
+    if password == true_password:
+        pass
+        
+    else:
+        st.error('Wrong password!!')
+        st.stop()
+
+except:
     st.stop()
 
 status = df_references[df_references['name']==name].reset_index(drop=True)['type'].loc[0]
