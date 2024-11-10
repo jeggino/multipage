@@ -7,7 +7,6 @@ import random
 
 import ast
 
-from credentials import *
 
 
 
