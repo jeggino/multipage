@@ -5,6 +5,7 @@ from streamlit_gsheets import GSheetsConnection
 conn = st.connection("gsheets", type=GSheetsConnection)
 df_references = conn.read(ttl=0,worksheet="multipage_users")
 
+placeholder = st.empty()
 name = placeholder.text_input("Name")
 password = placeholder.text_input("Password",type='password')
 
