@@ -19,6 +19,7 @@ if password == true_password:
     pass
     
 else:
+     st.error('Wrong password!!')
     st.stop()
 
 status = df_references[df_references['name']==name].reset_index(drop=True)['type'].loc[0]
