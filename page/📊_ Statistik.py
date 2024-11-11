@@ -52,7 +52,7 @@ df_dagverslag = conn.read(ttl=ttl,worksheet="df_ekomaps_dagverslagen")
 # --- APP ---
 IMAGE = "image/logo.png"
 IMAGE_2 ="image/menu.jpg"
-st.logo(IMAGE,  link=None, icon_image=IMAGE_2)
+st.logo(IMAGE_2,  link=None, icon_image=IMAGE_2)
 
 try:
     project = st.session_state["project"]['project_name']
