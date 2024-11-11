@@ -29,6 +29,7 @@ def logIn():
         
         index = df_references[df_references['username']==name].index[0]
         true_password = df_references.loc[index,"password"]
+        type = df_references.loc[index,"type"]
 
     except:
         st.warning("De gebruikersnaam is niet correct.")
@@ -36,7 +37,7 @@ def logIn():
                              
     if st.button("logIn"):
         if password == true_password:
-            st.session_state.login = {"name": name, "password": password}
+            st.session_state.login = {"name": name, "password": password, 'type':type}
             st.rerun()
 
         else:
@@ -56,7 +57,10 @@ def project():
     except:
         area = None
         gdf_areas = None
-    on = st.toggle("💻")
+    if st.session_state.login['type'] == 'user':
+        on = st.toggle("💻")
+    else:
+        on = None
     if st.button(":rainbow[**Begin**]"):
          st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'area':area, 'gdf':gdf_areas}
          st.rerun()
