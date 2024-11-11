@@ -55,6 +55,8 @@ def project():
         if st.session_state.login['type'] == 'user':
             area = st.selectbox("Aan welke gebied ga je werken?",gdf_areas['Wijk'].unique(),label_visibility="visible")
             gdf_areas = gdf_areas[gdf_areas['Wijk']==area]
+        else:
+            area = None
     except:
         area = None
         gdf_areas = None
