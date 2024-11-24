@@ -533,8 +533,7 @@ try:
             else:
                 st.stop()
             st.write('ciao')
-            st.rerun()
-            st.switch_page("home.py")
+            # st.switch_page("home.py")
             st.write('ciao')            
                 
 except:
