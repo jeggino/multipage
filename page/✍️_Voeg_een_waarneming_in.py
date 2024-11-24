@@ -73,6 +73,7 @@ def map(auto_start):
             position="topright",).add_to(m)
         
     Fullscreen(position="topright").add_to(m)
+    folium.LayerControl().add_to(m)
 
     if auto_start==True:
         auto_start_2 = False
