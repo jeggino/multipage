@@ -533,7 +533,9 @@ try:
             else:
                 st.stop()
             st.write('ciao')
-            st.switch_page("_Home.py")
+            st.rerun()
+            st.switch_page("page/🧭_navigatie.py")
+            st.write('ciao')
 
             
                 
