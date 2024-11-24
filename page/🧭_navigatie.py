@@ -510,34 +510,27 @@ folium.LayerControl().add_to(map)
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                      feature_group_to_add=list(functie_dictionary.values()))
     
-# try:
 try:
-    id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
-    name = f"{id}"
-except:
-    id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
-    name = f"{id}"
-
-with st.sidebar:
-    if st.button("Waarneming bijwerken",use_container_width=True):
-        update_item()
-    with st.form("entry_form", clear_on_submit=True,border=False):
-        submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
-        if submitted:
+    try:
+        id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
+        name = f"{id}"
+    except:
+        id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
+        name = f"{id}"
+    
+    with st.sidebar:
+        if st.button("Waarneming bijwerken",use_container_width=True):
+            update_item()
+        if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
             df = conn.read(ttl=0,worksheet="df_observations")
             df_filter = df[df["key"]==id]
             df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
             conn.update(worksheet='df_observations',data=df_drop)
-            st.success('Waarneming verwijderd', icon="✅") 
-            
-        else:
-            st.stop()
-        st.write('ciao')
-        st.switch_page("home.py")
-        st.write('ciao')            
-                
-# except:
-#     st.stop()
+            st.success('Waarneming verwijderd', icon="✅")                
+            st.switch_page("page/🧭_navigatie.py")
+                   
+except:
+    st.stop()
 
 # except:
 #     st.image("https://media.istockphoto.com/photos/open-empty-cardboard-box-on-a-white-background-picture-id172167710?k=6&m=172167710&s=612x612&w=0&h=Z4fueCweh9q-X_VBRAPCYSalyaAnXG3ioErb8oJSVek=")
