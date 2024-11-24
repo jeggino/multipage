@@ -530,7 +530,7 @@ try:
         else:
             st.stop()
             # st.success('Waarneming verwijderd', icon="✅")                
-    st.switch_page(page_1)
+    st.switch_page('page/🧭_navigatie.py')
                    
 except:
     st.stop()
