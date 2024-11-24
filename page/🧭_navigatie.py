@@ -524,8 +524,8 @@ try:
             update_item()
         if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
             df = conn.read(ttl=0,worksheet="df_observations")
-            df_filter = df_points[df_points["key"]==id]
-            df_drop = df_points[~df_points.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
+            df_filter = df_point[df_point["key"]==id]
+            df_drop = df_point[~df_point.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
             conn.update(worksheet='df_observations',data=df_drop)
             st.success('Waarneming verwijderd', icon="✅")
             st.page_link('page/🧭_navigatie.py', label="Opnieuw opstarten", icon="♻️",use_container_width=True)
