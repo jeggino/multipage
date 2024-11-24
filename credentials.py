@@ -24,6 +24,8 @@ BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst',
        'schoorsteen', 'gevelbetimmering', 'nokpan', 'dakpan',
        'vleermuiskast', 'openingen in dak', 'dakkapel', 'schors','..ander']
 
+GEBIED_OPTIONS = ['Foerageergebied','Baltsterritorium']
+
 #---
 BIRD_NAMES = ['Gierzwaluw','Huiszwaluw','Huismus']
 
