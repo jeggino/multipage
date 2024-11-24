@@ -534,10 +534,8 @@ try:
                 st.stop()
             st.write('ciao')
             st.rerun()
-            st.switch_page("page/🧭_navigatie.py")
-            st.write('ciao')
-
-            
+            st.switch_page("home.py")
+            st.write('ciao')            
                 
 except:
     st.stop()
