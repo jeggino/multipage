@@ -532,7 +532,7 @@ try:
                 
             else:
                 st.stop()
-
+            st.write('ciao')
             st.switch_page("_Home.py")
 
             
