@@ -526,7 +526,7 @@ try:
             df_filter = df[df["key"]==id]
             df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
             conn.update(worksheet='df_observations',data=df_drop)
-            st.success('Waarneming verwijderd', icon="✅")                
+            # st.success('Waarneming verwijderd', icon="✅")                
             st.switch_page("page/🧭_navigatie.py")
                    
 except:
