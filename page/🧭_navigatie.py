@@ -527,10 +527,8 @@ try:
             df_filter = df_points[df_points["key"]==id]
             df_drop = df_points[~df_points.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
             conn.update(worksheet='df_observations',data=df_drop)
-        else:
-            st.stop()
-        st.success('Waarneming verwijderd', icon="✅")
-        st.page_link('page/🧭_navigatie.py', label="Opnieuw opstarten", icon="♻️",use_container_width=True)
+            st.success('Waarneming verwijderd', icon="✅")
+            st.page_link('page/🧭_navigatie.py', label="Opnieuw opstarten", icon="♻️",use_container_width=True)
                                        
 except:
     st.stop()
