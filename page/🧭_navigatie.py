@@ -75,7 +75,7 @@ ICON_SIZE_RUIGE = (70,35)
 ICON_SIZE_BIRD = (70,50)
 ICON_SIZE_Huiszwaluw = (80,45)
 
-
+page_1 = st.Page("page/🧭_navigatie.py", title="Navigatie",icon="🧭" )
 # --- FUNCTIONS ---
 def popup_polygons(row):
     
@@ -527,7 +527,7 @@ try:
             df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
             conn.update(worksheet='df_observations',data=df_drop)
             # st.success('Waarneming verwijderd', icon="✅")                
-            st.switch_page("page/📝_Dagverlag_formulier.py")
+            st.switch_page(page_1)
                    
 except:
     st.stop()
