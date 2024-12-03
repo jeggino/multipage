@@ -254,8 +254,8 @@ try:
             st.stop()      
             
     except:
-        # st.stop()
-        st.write('error')
+        st.stop()
+        # st.write('error')
     
 except:
     st.switch_page("page/🧭_navigatie.py")
