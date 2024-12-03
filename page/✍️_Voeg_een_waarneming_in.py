@@ -64,6 +64,7 @@ def map():
     m = folium.Map()
     folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01qz9wet0mv9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbHdscmRkZHAxMTl1MmlyeTJpb3Z2eHdzIn0.N9TRN7xxTikk235dVs1YeQ',
                  attr='XXX Mapbox Attribution',overlay=False,show=False,name="Satellietkaart").add_to(m)
+    
     if st.session_state.project['opdracht'] == 'Vleermuizen':
         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': True},
             position="topright",).add_to(m)
@@ -91,6 +92,7 @@ def map():
                 "weight": 1,
             },
         ).add_to(m)
+        
     except:
         pass
 
@@ -124,16 +126,10 @@ def input_data(output,df_old,auto_start):
     if soortgroup == 'Vleermuizen':
     
         sp = st.selectbox("Soort", BAT_NAMES)
-         
         
         if geometry_type == 'Polygon':
             gedrag = None
             functie = st.selectbox("Functie", GEBIED_OPTIONS)
-            verblijf = None
-
-        elif geometry_type == 'LineString':
-            gedrag = None
-            functie = st.selectbox("Functie", ["linea della minchia","linea de lo strafogo"])
             verblijf = None
 
         else:
@@ -219,7 +215,7 @@ try:
     
     try:
         if len(output_map["features"]) >= 1:
-            input_data(output_map,df_old,st.session_state.project['auto_start'])
+            input_data(output_map,df_old)
             
         else:
             st.stop()      
