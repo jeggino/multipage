@@ -104,7 +104,7 @@ def map():
 
         
 @st.dialog(" ")
-def input_data(output,df_old,auto_start):
+def input_data(output,df_old):
 
     waarnemer = st.session_state.login['name']
     project = st.session_state.project['project_name']
@@ -168,7 +168,7 @@ def input_data(output,df_old,auto_start):
     if submitted:           
         coordinates = output["features"][0]["geometry"]["coordinates"] 
         
-        if geometry_type in ["LineString",'Polygon']:
+        if geometry_type in ['Polygon']:
 
             lng = coordinates[0][0][0]
             lat = coordinates[0][0][1]
@@ -190,10 +190,7 @@ def input_data(output,df_old,auto_start):
             placeholder.success('Gegevens opgeslagen!', icon="✅",)
             insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,gebied,df_old)
         
-        if auto_start == False:
-            st.switch_page("page/🧭_navigatie.py")
-        else:
-            st.rerun()
+        st.switch_page("page/🧭_navigatie.py")
                      
 
 
@@ -209,16 +206,7 @@ try:
     conn = st.connection("gsheets", type=GSheetsConnection)
     df_old = conn.read(ttl='10m',worksheet="df_observations")
     
-    output_map = map()
-    m = folium.Map()
-    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False},
-    position="topright",).add_to(m)
-        
-    Fullscreen(position="topright").add_to(m)
-    folium.LayerControl().add_to(m)
-    output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
-    st.write('ciao')
-    
+    output_map = map()    
     
     try:
         if len(output_map["features"]) >= 1:
@@ -228,7 +216,8 @@ try:
             st.stop()      
             
     except:
-        st.stop()
+        # st.stop()
+        st.write('error')
     
 except:
     st.switch_page("page/🧭_navigatie.py")
