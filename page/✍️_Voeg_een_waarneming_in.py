@@ -211,6 +211,11 @@ try:
     
     output_map = map()
     m = folium.Map()
+    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False},
+    position="topright",).add_to(m)
+        
+    Fullscreen(position="topright").add_to(m)
+    folium.LayerControl().add_to(m)
     output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
     st.write('ciao')
     
