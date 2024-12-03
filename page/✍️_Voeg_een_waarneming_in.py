@@ -210,6 +210,8 @@ try:
     df_old = conn.read(ttl='10m',worksheet="df_observations")
     
     output_map = map()
+    m = folium.Map()
+    output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
     st.write('ciao')
     
     
