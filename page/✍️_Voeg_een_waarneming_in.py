@@ -214,6 +214,7 @@ try:
     df_old = conn.read(ttl='10m',worksheet="df_observations")
     
     output_map = map(st.session_state.project['auto_start'])
+    st.write('ciao')
     
     
     try:
