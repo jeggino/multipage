@@ -58,7 +58,7 @@ def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,ver
     df_updated = pd.concat([df_old,df_new],ignore_index=True)
     
     return conn.update(worksheet="df_observations",data=df_updated)
-  
+
 def map():
     
     m = folium.Map()
@@ -74,15 +74,10 @@ def map():
             position="topright",).add_to(m)
         
     Fullscreen(position="topright").add_to(m)
-    folium.LayerControl().add_to(m)
-
-    # if auto_start==True:
-    #     auto_start_2 = False
-    # else:
-    #     auto_start_2 = True
-        
     LocateControl(auto_start=True,position="topright").add_to(m)
-    
+
+    folium.LayerControl().add_to(m)    
+
     try:
         folium.GeoJson(
             st.session_state.project['gdf'],
@@ -95,12 +90,55 @@ def map():
         
     except:
         pass
-
-    
+        
     output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
     output["features"] = output.pop("all_drawings")
     
     return  output
+
+
+# def map():
+    
+#     m = folium.Map()
+#     folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01qz9wet0mv9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbHdscmRkZHAxMTl1MmlyeTJpb3Z2eHdzIn0.N9TRN7xxTikk235dVs1YeQ',
+#                  attr='XXX Mapbox Attribution',overlay=False,show=False,name="Satellietkaart").add_to(m)
+    
+#     if st.session_state.project['opdracht'] == 'Vleermuizen':
+#         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': True},
+#             position="topright",).add_to(m)
+
+#     else:
+#         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False},
+#             position="topright",).add_to(m)
+        
+#     Fullscreen(position="topright").add_to(m)
+#     folium.LayerControl().add_to(m)
+
+#     # if auto_start==True:
+#     #     auto_start_2 = False
+#     # else:
+#     #     auto_start_2 = True
+        
+#     LocateControl(auto_start=True,position="topright").add_to(m)
+    
+#     try:
+#         folium.GeoJson(
+#             st.session_state.project['gdf'],
+#             name=f"Gebied: {st.session_state.project['area']}",
+#             style_function=lambda feature: {
+#                 "color": "black",
+#                 "weight": 1,
+#             },
+#         ).add_to(m)
+        
+#     except:
+#         pass
+
+    
+#     output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
+#     output["features"] = output.pop("all_drawings")
+    
+#     return  output
 
         
 @st.dialog(" ")
