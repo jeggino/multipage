@@ -59,7 +59,7 @@ def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,ver
     
     return conn.update(worksheet="df_observations",data=df_updated)
   
-def map(auto_start):
+def map():
     
     m = folium.Map()
     folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01qz9wet0mv9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbHdscmRkZHAxMTl1MmlyeTJpb3Z2eHdzIn0.N9TRN7xxTikk235dVs1YeQ',
@@ -75,12 +75,12 @@ def map(auto_start):
     Fullscreen(position="topright").add_to(m)
     folium.LayerControl().add_to(m)
 
-    if auto_start==True:
-        auto_start_2 = False
-    else:
-        auto_start_2 = True
+    # if auto_start==True:
+    #     auto_start_2 = False
+    # else:
+    #     auto_start_2 = True
         
-    LocateControl(auto_start=auto_start_2,position="topright").add_to(m)
+    LocateControl(auto_start=True,position="topright").add_to(m)
     
     try:
         folium.GeoJson(
