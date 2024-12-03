@@ -395,9 +395,12 @@ except:
 
 
 if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels",'Vogels-Overig']:
-    species_filter_option = df_2["sp"].unique()
-    species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
-    df_2 = df_2[df_2['sp'].isin(species_filter)]
+    try:
+        species_filter_option = df_2["sp"].unique()
+        species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
+        df_2 = df_2[df_2['sp'].isin(species_filter)]
+    except:
+        pass
 
 st.sidebar.divider()
 
