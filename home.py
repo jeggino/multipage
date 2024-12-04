@@ -83,7 +83,7 @@ def project():
         geometry_file = f"geometries/{project}.geojson" 
         gdf_areas = gpd.read_file(geometry_file)
         if st.session_state.login['type'] == 'user':
-            area = st.selectbox("Aan welke gebied ga je werken?",gdf_areas['Wijk'].unique(),label_visibility="visible")
+            area = st.selectbox("Aan welke gebied ga je werken?",sorted(gdf_areas['Wijk'].unique()),label_visibility="visible")
             gdf_areas = gdf_areas[gdf_areas['Wijk']==area]
         else:
             area = None
