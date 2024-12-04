@@ -15,15 +15,6 @@ from credentials import *
 
 
 
-# # ---LAYOUT---
-# st.set_page_config(
-#     page_title="🦇🪶 SMPs",
-#     initial_sidebar_state="collapsed",
-#     page_icon="🦇🪶",
-#     layout="wide",
-    
-# )
-
 
 st.markdown("""
     <style>
@@ -72,8 +63,9 @@ def map():
     folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01qz9wet0mv9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbHdscmRkZHAxMTl1MmlyeTJpb3Z2eHdzIn0.N9TRN7xxTikk235dVs1YeQ',
                  attr='XXX Mapbox Attribution',overlay=False,show=False,name="Satellietkaart").add_to(m)
 
-    Fullscreen(position="topleft").add_to(m)
     LocateControl(auto_start=False,position="topleft").add_to(m)
+    Fullscreen(position="topleft").add_to(m)
+    
     
     if st.session_state.project['opdracht'] == 'Vleermuizen':
         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': True},
