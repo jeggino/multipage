@@ -383,25 +383,25 @@ else:
 
 
 
-
-try:
-    df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
-    st.sidebar.subheader("Filter op",divider=False)
-    d = st.sidebar.slider("Datum", min_value=df_2.datum.min(),max_value=df_2.datum.max(),value=(df_2.datum.min(), df_2.datum.max()),format="DD-MM-YYYY")
-    
-    df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
-except:
-    pass
-
-
-
-if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels",'Vogels-Overig']:
+if len(df_2)>0:
     try:
-        species_filter_option = df_2["sp"].unique()
-        species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
-        df_2 = df_2[df_2['sp'].isin(species_filter)]
+        df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
+        st.sidebar.subheader("Filter op",divider=False)
+        d = st.sidebar.slider("Datum", min_value=df_2.datum.min(),max_value=df_2.datum.max(),value=(df_2.datum.min(), df_2.datum.max()),format="DD-MM-YYYY")
+        
+        df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
     except:
         pass
+    
+    
+    
+    if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels",'Vogels-Overig']:
+        try:
+            species_filter_option = df_2["sp"].unique()
+            species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
+            df_2 = df_2[df_2['sp'].isin(species_filter)]
+        except:
+            pass
 
 st.sidebar.divider()
 
