@@ -77,7 +77,7 @@ def map():
     LocateControl(auto_start=True,position="topright").add_to(m)
 
     folium.LayerControl().add_to(m)    
-
+    st.session_state.project['gdf']
     # try:
     #     folium.GeoJson(
     #         st.session_state.project['gdf'],
