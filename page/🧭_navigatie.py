@@ -414,9 +414,15 @@ try:
     df_2 = df_2.reset_index(drop=True)
 except:
     pass
- 
-map = folium.Map(tiles=None)
 
+try:
+    lat = st.session_state.project['gdf'].centroid.x.mean()
+    lng = st.session_state.project['gdf'].centroid.y.mean()
+    
+    map = folium.Map(tiles=None,location=[lat, lng])
+except:
+     map = folium.Map(tiles=None)
+    
 if st.session_state.project['auto_start']==True:
     auto_start = False
 else:
