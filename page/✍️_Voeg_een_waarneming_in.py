@@ -75,9 +75,8 @@ def map():
         
     Fullscreen(position="topright").add_to(m)
     LocateControl(auto_start=True,position="topright").add_to(m)
-
-    folium.LayerControl().add_to(m)    
-    st.session_state.project['gdf']
+    folium.LayerControl().add_to(m)     
+    
     # try:
     #     folium.GeoJson(
     #         st.session_state.project['gdf'],
@@ -137,19 +136,12 @@ def input_data(output,df_old):
         functie = st.selectbox("Functie", BIRD_FUNCTIE) 
         verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
 
-    elif soortgroup == 'Vogels-Overig':
+    # elif soortgroup == 'Vogels-Overig':
     
-        sp = st.selectbox("Soort", BIRD_NAMES_ANDER)
-        gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-        functie = st.selectbox("Functie", BIRD_FUNCTIE) 
-        verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
-    
-    elif soortgroup == 'Vleermuiskast':
-        functie = st.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
-        bat_names = ["onbekend"] + BAT_NAMES
-        sp = st.selectbox("Soort", bat_names) 
-        gedrag = None
-        verblijf = None     
+    #     sp = st.selectbox("Soort", BIRD_NAMES_ANDER)
+    #     gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+    #     functie = st.selectbox("Functie", BIRD_FUNCTIE) 
+    #     verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF)    
 
     aantal = st.number_input("Aantal", min_value=1)
     opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
