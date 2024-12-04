@@ -197,7 +197,7 @@ try:
     
     conn = st.connection("gsheets", type=GSheetsConnection)
     df_old = conn.read(ttl='10m',worksheet="df_observations")
-    
+    st.session_state.project['gdf']
     output_map = map()    
     
     try:
