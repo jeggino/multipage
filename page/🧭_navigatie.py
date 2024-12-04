@@ -419,7 +419,7 @@ try:
     lat = st.session_state.project['gdf'].centroid.y.mean()
     lng = st.session_state.project['gdf'].centroid.x.mean()
     
-    map = folium.Map(tiles=None,location=[lat, lng]zoom_start=10)
+    map = folium.Map(tiles=None,location=[lat, lng],zoom_start=10)
 except:
      map = folium.Map(tiles=None)
     
