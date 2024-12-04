@@ -136,12 +136,12 @@ def input_data(output,df_old):
         functie = st.selectbox("Functie", BIRD_FUNCTIE) 
         verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
 
-    # elif soortgroup == 'Vogels-Overig':
+    elif soortgroup == 'Vogels-Overig':
     
-    #     sp = st.selectbox("Soort", BIRD_NAMES_ANDER)
-    #     gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-    #     functie = st.selectbox("Functie", BIRD_FUNCTIE) 
-    #     verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF)    
+        sp = st.selectbox("Soort", BIRD_NAMES_ANDER)
+        gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+        functie = st.selectbox("Functie", BIRD_FUNCTIE) 
+        verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF)    
 
     aantal = st.number_input("Aantal", min_value=1)
     opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
