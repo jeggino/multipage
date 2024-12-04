@@ -416,8 +416,8 @@ except:
     pass
 
 try:
-    lat = st.session_state.project['gdf'].centroid.x.mean()
-    lng = st.session_state.project['gdf'].centroid.y.mean()
+    lat = st.session_state.project['gdf'].centroid.y.mean()
+    lng = st.session_state.project['gdf'].centroid.x.mean()
     
     map = folium.Map(tiles=None,location=[lat, lng])
 except:
