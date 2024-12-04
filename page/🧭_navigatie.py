@@ -416,10 +416,13 @@ except:
     pass
 
 try:
-    lat = st.session_state.project['gdf'].centroid.y.mean()
-    lng = st.session_state.project['gdf'].centroid.x.mean()
-    
-    map = folium.Map(tiles=None,location=[lat, lng],zoom_start=10)
+    lat = st.session_state.project['gdf'].centroid.y
+    lng = st.session_state.project['gdf'].centroid.x
+    sw = [lat.min(), lng.min()]
+    ne = [lat.max(), lng.max()]
+ 
+    map = folium.Map(tiles=None,location=[lat.mean(), lng.mean()],zoom_start=10)
+    mam.fit_bounds([sw, ne])
 except:
      map = folium.Map(tiles=None)
     
