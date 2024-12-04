@@ -15,6 +15,12 @@ import ast
 
 from credentials import *
 
+st.set_page_config(
+    initial_sidebar_state="collapsed",
+    layout="wide",
+    
+)
+
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 df_references = conn.read(ttl='10',worksheet="df_users")
