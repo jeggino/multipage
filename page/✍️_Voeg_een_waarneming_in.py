@@ -81,7 +81,7 @@ def map():
             position="topright",).add_to(m)
         
     Fullscreen(position="topright").add_to(m)
-    LocateControl(auto_start=True,position="topright").add_to(m)
+    LocateControl(auto_start=False,position="topright").add_to(m)
     folium.LayerControl().add_to(m)     
     
     # try:
