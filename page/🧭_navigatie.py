@@ -422,7 +422,7 @@ try:
     ne = [lat.max(), lng.max()]
  
     map = folium.Map(tiles=None,location=[lat.mean(), lng.mean()])
-    map.fit_bounds([sw, ne],padding=50)
+    map.fit_bounds([sw, ne],padding=500000)
 except:
      map = folium.Map(tiles=None)
     
