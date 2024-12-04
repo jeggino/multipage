@@ -450,7 +450,7 @@ try:
         name=f"*Gebied: {st.session_state.project['area']}",
         style_function=lambda feature: {
             "color": "black",
-            "weight": 1,
+            "weight": 3,
         },
     ).add_to(map)
 except:
