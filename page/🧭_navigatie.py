@@ -395,15 +395,13 @@ if len(df_2)>0:
     
     
     
-    if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels",'Vogels-Overig']:
-        try:
-            species_filter_option = df_2["sp"].unique()
-            species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
-            df_2 = df_2[df_2['sp'].isin(species_filter)]
-        except:
-            pass
 
-st.sidebar.divider()
+    species_filter_option = df_2["sp"].unique()
+    species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
+    df_2 = df_2[df_2['sp'].isin(species_filter)]
+
+
+    st.sidebar.divider()
 
 try:
     df_2["icon_data"] = df_2.apply(lambda x: None if x["geometry_type"] in ["LineString","Polygon"] 
