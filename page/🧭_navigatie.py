@@ -451,7 +451,7 @@ folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01
 try:
     folium.GeoJson(
         st.session_state.project['gdf'],
-        name=f"*Gebied: {st.session_state.project['area']}",
+        name=f"Gebiedsgrens",
         style_function=lambda feature: {
             "color": "black",
             "weight": 3,
