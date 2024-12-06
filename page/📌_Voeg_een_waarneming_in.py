@@ -40,11 +40,11 @@ OUTPUT_height = 550
 
     
 # --- FUNCTIONS ---
-def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,gebied,df_old):
+def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old):
     
     data = [{"key":key, "waarnemer":waarnemer,"datum":datum,"time":time,"soortgroup":soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
-                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"coordinates":coordinates,"project":project,'gebied':gebied}]
+                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"coordinates":coordinates,"project":project}]
     df_new = pd.DataFrame(data)
     df_updated = pd.concat([df_old,df_new],ignore_index=True)
     
@@ -78,17 +78,23 @@ def map():
 
     folium.LayerControl().add_to(m)     
     
-    # try:
-    #     folium.GeoJson(
-    #         st.session_state.project['gdf'],
-    #         name=f"*Gebied: {st.session_state.project['area']}",
-    #         style_function=lambda feature: {
-    #         "color": "black",
-    #         "weight": 3,
-    #         },
-    #     ).add_to(m)
-    # except:
-    #     pass
+    try:
+    
+        geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
+        gdf_areas = gpd.read_file(geometry_file)
+        folium.GeoJson(
+            gdf_areas,
+            tooltip=folium.GeoJsonTooltip(fields=['Wijk'],
+                                                 aliases=['Gebied'],
+                                         ),
+            name=f"Gebiedsgrens",
+            style_function=lambda feature: {
+                "color": "black",
+                "weight": 3,
+            },
+        ).add_to(map)
+    except:
+        pass
         
     output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
     output["features"] = output.pop("all_drawings")
@@ -103,10 +109,10 @@ def input_data(output,df_old):
     project = st.session_state.project['project_name']
     soortgroup = st.session_state.project['opdracht']
 
-    try:
-        gebied = st.session_state.project['area']
-    except:
-        gebied = None
+    # try:
+    #     gebied = st.session_state.project['area']
+    # except:
+    #     gebied = None
     
     datum = st.date_input("Datum","today")       
     nine_hours_from_now = datetime.now() + timedelta(hours=1)
@@ -174,7 +180,7 @@ def input_data(output,df_old):
 
         else:
             placeholder.success('Gegevens opgeslagen!', icon="✅",)
-            insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,gebied,df_old)
+            insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
         
         st.switch_page("page/🧭_navigatie.py")
                      
