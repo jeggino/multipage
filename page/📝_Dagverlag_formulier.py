@@ -98,13 +98,13 @@ with st.form("my_form", clear_on_submit=True,border=True):
     neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen","Zware regen","Sneeuw"))
     windkrcht = st.number_input("Windkracht",key='windkrcht', min_value=1)
     windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))
-    
-    if gebied_id == None:
-        st.markdown("Vergeet a.u.b. niet in de opmerking te schrijven welke soort je hebt gevonden, de dichtstbijzijnde locaties en het doel van het onderzoek.")
         
     opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
     
     if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
+        if len(gebied_id) == 0:
+            st.markdown("Selecteer een gebied, alstublieft")
+            st.stop()
         insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
     
         st.switch_page("page/🧭_navigatie.py")
