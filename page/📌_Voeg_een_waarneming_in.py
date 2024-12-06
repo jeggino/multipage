@@ -190,7 +190,7 @@ def input_data(output,df_old):
 try:
     IMAGE = "image/logo.png"
     IMAGE_2 ="image/menu.jpg"
-    st.logo(IMAGE_2,  link=None, icon_image=IMAGE_2)
+    st.logo(IMAGE,  link=None, icon_image=IMAGE)
     
     waarnemer = st.session_state.login['name']
     
