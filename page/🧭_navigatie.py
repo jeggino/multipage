@@ -453,8 +453,12 @@ try:
     
     geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
     gdf_areas = gpd.read_file(geometry_file)
+    gdf_areas
     folium.GeoJson(
         gdf_areas,
+        # tooltip=folium.GeoJsonTooltip(fields=['Wijk', 'date', 'soort', 'behaviour','functie', 'verblijf','opmerking'],
+        #                                      aliases=['Wijk', 'Datum', 'Soort', 'Gedracht','Functie', 'Verblijf','Opmerking'],
+        #                              ),
         name=f"Gebiedsgrens",
         style_function=lambda feature: {
             "color": "black",
