@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import pandas as pd
+import geopandas as gpd
 import datetime
 from datetime import datetime, timedelta, date
 
@@ -68,7 +69,7 @@ opdracht = st.session_state.project['opdracht']
 st.title(f'{project}')
 st.header(f'Opdracht: **{opdracht}**',divider=True)
 
-with st.form("my_form", clear_on_submit=True,border=False):
+with st.form("my_form", clear_on_submit=True,border=True):
     
     if opdracht == 'Vleermuizen':
         doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
