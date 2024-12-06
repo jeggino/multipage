@@ -74,13 +74,13 @@ try:
             doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
         elif opdracht == 'Vogels':
             doel = st.selectbox('Doel',BIRD_NAMES)
-        try: 
-            geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
-            gdf_areas = gpd.read_file(geometry_file)
-            gebied_id_list = gdf_areas['Wijk'].unique()
-            gebied_id = st.multiselect("Gebied",gebied_id_list)
-        except:
-            gebied_id = None
+        # try: 
+        geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
+        gdf_areas = gpd.read_file(geometry_file)
+        gebied_id_list = gdf_areas['Wijk'].unique()
+        gebied_id = st.multiselect("Gebied",gebied_id_list)
+        # except:
+        #     gebied_id = None
             
         datum = st.date_input("Datum","today")       
         two_hours_from_now = datetime.now() + timedelta(hours=1)
@@ -107,5 +107,6 @@ try:
             insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
         
             st.switch_page("page/🧭_navigatie.py")
+        "---"
 except:
     st.switch_page("page/🧭_navigatie.py")
