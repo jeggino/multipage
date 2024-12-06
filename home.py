@@ -86,25 +86,20 @@ def project():
     project_list = df_references.loc[index_project,"project"].split(',')
     project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
-    try:
-        geometry_file = f"geometries/{project}.geojson" 
-        gdf_areas = gpd.read_file(geometry_file)
-        if st.session_state.login['type'] == 'user':
-            area = st.selectbox("Aan welke gebied ga je werken?",sorted(gdf_areas['Wijk'].unique()),label_visibility="visible")
-            gdf_areas = gdf_areas[gdf_areas['Wijk']==area]
-        else:
-            area = None
-    except:
-        area = None
-        gdf_areas = None
-    if st.session_state.login['type'] == 'user':
-        on = st.toggle("💻")
-    else:
-        on = None
+    # try:
+    #     geometry_file = f"geometries/{project}.geojson" 
+    #     gdf_areas = gpd.read_file(geometry_file)
+    #     area = st.selectbox("Aan welke gebied ga je werken?",gdf_areas['Wijk'].unique(),label_visibility="visible")
+    #     gdf_areas = gdf_areas[gdf_areas['Wijk']==area]
+    # except:
+    #     area = None
+    #     gdf_areas = None
+    # on = st.toggle("💻")
     if st.button(":rainbow[**Begin**]"):
-         st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'area':area, 'gdf':gdf_areas}
-         st.rerun()
-        
+         st.session_state.project = {"project_name": project,"opdracht": opdracht,
+                                     # 'auto_start':on,'area':area, 'gdf':gdf_areas
+                                    }
+         st.rerun()  
 def logOut():
     if st.button("logOut",use_container_width=True):
         del st.session_state.login
