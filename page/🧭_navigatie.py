@@ -103,10 +103,6 @@ def popup_polygons(row):
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Project</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(project) + """
     </tr>
-    # <tr>
-    # <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Gebied</span></td>
-    # <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(gebied) + """
-    # </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(datum) + """
@@ -171,10 +167,6 @@ def popup_html(row):
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Project</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(project) + """
     </tr>
-    # <tr>
-    # <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Gebied</span></td>
-    # <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(gebied) + """
-    # </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(datum) + """
