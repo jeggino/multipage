@@ -219,7 +219,7 @@ def popup_html(row):
 
 
 @st.dialog(" ")
-def update_item():
+def update_item(id):
 
   datum = st.date_input("Datum","today")
   nine_hours_from_now = datetime.now() + timedelta(hours=2)
@@ -264,6 +264,7 @@ def update_item():
   opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
   if st.button("**Update**",use_container_width=True):
+    
     df = conn.read(ttl=0,worksheet="df_observations")
     df_filter = df[df["key"]==id].reset_index(drop=True)
       
@@ -529,7 +530,7 @@ try:
     
     with st.sidebar:
         if st.button("Waarneming bijwerken",use_container_width=True):
-            update_item()
+            update_item(id)
         if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
             df = conn.read(ttl=0,worksheet="df_observations")
             df_filter = df_point[df_point["key"]==id]
