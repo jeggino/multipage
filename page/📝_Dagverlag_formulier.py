@@ -62,16 +62,11 @@ try:
     waarnemer = st.session_state.login['name']
     project = st.session_state.project['project_name']
     opdracht = st.session_state.project['opdracht']
-    gebied_id = st.session_state.project['area']
+    
+    
     
     st.title(f'{project}')
     st.header(f'Opdracht: **{opdracht}**',divider=True)
-    
-    if gebied_id == None:
-        pass
-    else:
-        text = f'Gebied: **{gebied_id }**'
-        st.subheader(text,divider=True)
     
     with st.form("my_form", clear_on_submit=True,border=False):
         
@@ -79,6 +74,13 @@ try:
             doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
         elif opdracht == 'Vogels':
             doel = st.selectbox('Doel',BIRD_NAMES)
+        try: 
+            geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
+            gdf_areas = gpd.read_file(geometry_file)
+            gebied_id_list = gdf_areas['Wijk'].unique()
+            gebied_id = st.multiselect("Gebied",gebied_id_list)
+        except:
+            gebied_id = None
             
         datum = st.date_input("Datum","today")       
         two_hours_from_now = datetime.now() + timedelta(hours=1)
