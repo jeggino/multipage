@@ -450,8 +450,10 @@ folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01
                  attr='XXX Mapbox Attribution',overlay=False,show=False,name="Satellietkaart").add_to(map)
 
 try:
+    geometry_file = f"geometries/{project}.geojson" 
+    gdf_areas = gpd.read_file(geometry_file)
     folium.GeoJson(
-        st.session_state.project['gdf'],
+        gdf_areas,
         name=f"Gebiedsgrens",
         style_function=lambda feature: {
             "color": "black",
