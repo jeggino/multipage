@@ -124,9 +124,9 @@ page_3 = st.Page("page/📝_Dagverlag_formulier.py", title="Dagverlag formulier"
 page_4 = st.Page("page/📊_ Statistik.py", title="Statistik",icon="📊" )
 
 #---APP---
-# IMAGE = "image/logo.png"
+IMAGE = "image/logo.png"
 IMAGE_2 ="image/menu.jpg"
-st.logo(IMAGE_2,  link=None, icon_image=IMAGE_2)
+st.logo(IMAGE,  link=None, icon_image=IMAGE)
 
 if "login" not in st.session_state:
     logIn()
