@@ -322,17 +322,19 @@ def project():
     project_list = df_references.loc[index_project,"project"].split(',')
     project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
-    try:
-        geometry_file = f"geometries/{project}.geojson" 
-        gdf_areas = gpd.read_file(geometry_file)
-        area = st.selectbox("Aan welke gebied ga je werken?",gdf_areas['Wijk'].unique(),label_visibility="visible")
-        gdf_areas = gdf_areas[gdf_areas['Wijk']==area]
-    except:
-        area = None
-        gdf_areas = None
-    on = st.toggle("💻")
+    # try:
+    #     geometry_file = f"geometries/{project}.geojson" 
+    #     gdf_areas = gpd.read_file(geometry_file)
+    #     area = st.selectbox("Aan welke gebied ga je werken?",gdf_areas['Wijk'].unique(),label_visibility="visible")
+    #     gdf_areas = gdf_areas[gdf_areas['Wijk']==area]
+    # except:
+    #     area = None
+    #     gdf_areas = None
+    # on = st.toggle("💻")
     if st.button(":rainbow[**Begin**]"):
-         st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'area':area, 'gdf':gdf_areas}
+         st.session_state.project = {"project_name": project,"opdracht": opdracht,
+                                     # 'auto_start':on,'area':area, 'gdf':gdf_areas
+                                    }
          st.rerun()
         
 def logOut():
@@ -415,12 +417,12 @@ except:
     pass
 
 try:
-    lat = st.session_state.project['gdf'].centroid.y
-    lng = st.session_state.project['gdf'].centroid.x
+    # lat = st.session_state.project['gdf'].centroid.y
+    # lng = st.session_state.project['gdf'].centroid.x
     # ne = [lat.min(), lng.min()]
     # sw = [lat.max(), lng.max()]
  
-    map = folium.Map(tiles=None,location=[lat.mean(), lng.mean()],zoom_start=16)
+    map = folium.Map(tiles=None,location=[53.402492, 5.336910],zoom_start=12)
     # map.fit_bounds([sw, ne])
 except:
      map = folium.Map(tiles=None)
