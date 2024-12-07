@@ -24,7 +24,7 @@ st.set_page_config(
 
 
 conn = st.connection("gsheets", type=GSheetsConnection)
-df_references = conn.read(ttl='10',worksheet="df_users")
+df_references = conn.read(ttl=0,worksheet="df_users")
 
 st.markdown(
     """
