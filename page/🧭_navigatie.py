@@ -378,9 +378,6 @@ if len(df_2)>0:
     except:
         pass
     
-    
-    
-
     species_filter_option = df_2["sp"].unique()
     species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
     df_2 = df_2[df_2['sp'].isin(species_filter)]
@@ -399,10 +396,10 @@ except:
     pass
 
 try:
-    geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
-    gdf_areas = gpd.read_file(geometry_file)
-    lat = gdf_areas.centroid.y.mean()
-    lng =gdf_areas.centroid.x.mean() 
+    # geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
+    # gdf_areas = gpd.read_file(geometry_file)
+    # lat = gdf_areas.centroid.y.mean()
+    # lng =gdf_areas.centroid.x.mean() 
     map = folium.Map(tiles=None,[lat.mean(), lng.mean()],zoom_start=10)
 except:
     map = folium.Map(tiles=None)
