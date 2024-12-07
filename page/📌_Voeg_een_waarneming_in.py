@@ -53,10 +53,12 @@ def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,ver
 def map():
 
     try:
-        lat = st.session_state.project['gdf'].centroid.y.mean()
-        lng = st.session_state.project['gdf'].centroid.x.mean()
+        geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
+        gdf_areas = gpd.read_file(geometry_file)
+        lat = gdf_areas.centroid.y.mean()
+        lng =gdf_areas.centroid.x.mean()
         
-        m = folium.Map(location=[lat.mean(), lng.mean()],zoom_start=16)
+        m = folium.Map(location=[lat.mean(), lng.mean()],zoom_start=12)
     except:
         m = folium.Map()    
     
