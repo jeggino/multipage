@@ -443,17 +443,17 @@ folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01
                  attr='XXX Mapbox Attribution',overlay=False,show=False,name="Satellietkaart").add_to(map)
 
 try:
-    folium.GeoJson(
-        gdf_areas,
-        tooltip=folium.GeoJsonTooltip(fields=['Gebied'],
-                                             aliases=['Gebied'],
-                                     ),
-        name=f"Gebiedsgrens",
-        style_function=lambda feature: {
-            "color": "black",
-            "weight": 3,
-        },
-    ).add_to(map)
+    # folium.GeoJson(
+    # #     gdf_areas,
+    # #     tooltip=folium.GeoJsonTooltip(fields=['Gebied'],
+    # #                                          aliases=['Gebied'],
+    # #                                  ),
+    # #     name=f"Gebiedsgrens",
+    # #     style_function=lambda feature: {
+    # #         "color": "black",
+    # #         "weight": 3,
+    # #     },
+    # # ).add_to(map)
 except:
     pass
     
