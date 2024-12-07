@@ -16,16 +16,6 @@ import ast
 from credentials import *
 
 
-
-# # ---LAYOUT---
-# st.set_page_config(
-#     page_title="🦇🪶 SMPs",
-#     initial_sidebar_state="collapsed",
-#     page_icon="",
-#     layout="wide",
-    
-# )
-
 #---DATASET---
 ttl = 0
 ttl_references = 0
@@ -75,7 +65,6 @@ ICON_SIZE_RUIGE = (70,35)
 ICON_SIZE_BIRD = (70,50)
 ICON_SIZE_Huiszwaluw = (80,45)
 
-page_1 = st.Page("page/🧭_navigatie.py", title="Navigatie",icon="🧭" )
 # --- FUNCTIONS ---
 def popup_polygons(row):
     
