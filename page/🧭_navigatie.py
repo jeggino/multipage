@@ -345,15 +345,11 @@ if 'project' not in st.session_state:
     project()
     st.stop()
 
-
-
-
 with st.sidebar:
     logOut_project()
     logOut()
     st.divider()
 
-# try:
 
 if st.session_state.project['project_name'] not in ['Admin','Overig']:
     df_2 = df_point[df_point['project']==st.session_state.project['project_name']]
@@ -365,7 +361,6 @@ elif st.session_state.project['project_name'] == 'Overig':
 
 else:
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
-
 
 
 if len(df_2)>0:
@@ -392,6 +387,7 @@ try:
                                    axis=1)
     
     df_2 = df_2.reset_index(drop=True)
+
 except:
     pass
 
