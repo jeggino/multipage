@@ -438,42 +438,74 @@ try:
     ).add_to(map)
 except:
     pass
+
+# gdf_2['functie_shape'] = gdf_2['functie'].map({'paarverblijf':'heart',
+#                                            'geen / onbekend':'circle',
+#                                           'zommerverblijf':'star',
+#                                           'kraamverblijf':'baby',
+#                                           'winterverblijf':'snowflake'})
+
+# colors  =['red', 'blue', 'green', 'purple', 'orange', 'darkred',
+#          'lightred', 'beige', 'darkblue', 'darkgreen', 'cadetblue',
+#          'darkpurple', 'white', 'pink', 'lightblue', 'lightgreen',
+#          'gray', 'black', 'lightgray']
+
+# species_colors_dict=dict(zip(gdf_2['soort'].unique(),colors[:len(soort)]))
+
+# gdf_2['color'] = gdf_2['soort'].map(species_colors_dict)
     
 for i in range(len(df_2)):
 
     if df_2.iloc[i]['geometry_type'] == "Point":
 
-        if (df_2.iloc[i]['sp']=="Huismus"):
-            ICON_SIZE_2 = ICON_SIZE_huismus
+        if df_2.iloc[i]['soortgroup'] == "Vogels":
 
+            if (df_2.iloc[i]['sp']=="Huismus"):
+                ICON_SIZE_2 = ICON_SIZE_huismus
+    
+            elif (df_2.iloc[i]['sp'] == 'Huiszwaluw'):
+                ICON_SIZE_2 = ICON_SIZE_Huiszwaluw
+    
+            else:             
+                ICON_SIZE_2 = ICON_SIZE
+                
+    
+            html = popup_html(i)
+            popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+            fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
+    
+            folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+                          popup=popup,
+                          icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
+                         ).add_to(fouctie_loop)
 
-        elif (df_2.iloc[i]['sp'] in ['Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']):
-            ICON_SIZE_2 = ICON_SIZE_BAT_EXTRA
-
-        elif (df_2.iloc[i]['sp'] in ['Ruige dwergvleermuis']):
-            ICON_SIZE_2 = ICON_SIZE_RUIGE
-
-        elif (df_2.iloc[i]['sp']=="...Andere(n)") & (df_2.iloc[i]['soortgroup'] == 'Vogels-Overig'):
-            ICON_SIZE_2 = ICON_SIZE_BIRD
-
-        elif (df_2.iloc[i]['sp'] == '...Andere(n)') & (df_2.iloc[i]['soortgroup'] == 'Vleermuizen'):
-            ICON_SIZE_2 = ICON_SIZE
-
-        elif (df_2.iloc[i]['sp'] == 'Huiszwaluw'):
-            ICON_SIZE_2 = ICON_SIZE_Huiszwaluw
-
-        else:             
-            ICON_SIZE_2 = ICON_SIZE
+        elif df_2.iloc[i]['soortgroup'] == "Vleermuizen":
             
+            gdf_2['functie_shape'] = gdf_2['functie'].map({'paarverblijf':'heart',
+                                           'geen / onbekend':'circle',
+                                          'zommerverblijf':'star',
+                                          'kraamverblijf':'baby',
+                                          'winterverblijf':'snowflake'})
 
-        html = popup_html(i)
-        popup = folium.Popup(folium.Html(html, script=True), max_width=300)
-        fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
-
-        folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-                      popup=popup,
-                      icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
-                     ).add_to(fouctie_loop)
+            colors  =['red', 'blue', 'green', 'purple', 'orange', 'darkred',
+                     'lightred', 'beige', 'darkblue', 'darkgreen', 'cadetblue',
+                     'darkpurple', 'white', 'pink', 'lightblue', 'lightgreen',
+                     'gray', 'black', 'lightgray']
+            
+            species_colors_dict=dict(zip(gdf_2['soort'].unique(),colors[:len(soort)]))
+            
+            gdf_2['color'] = gdf_2['soort'].map(species_colors_dict)
+            html = popup_html(i)
+            popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+            fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
+            
+            folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+              popup=popup,
+              icon=folium.Icon(icon=df_2.iloc[i]['functie_shape'],
+                              prefix='fa',
+                              icon_color='black',
+                              color=df_2.iloc[i]['color'],)
+              ).add_to(fouctie_loop)
 
     elif df_2.iloc[i]['geometry_type'] == "Polygon":
         html = popup_polygons(i)
