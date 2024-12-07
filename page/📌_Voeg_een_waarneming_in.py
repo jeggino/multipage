@@ -81,9 +81,6 @@ def map():
     folium.LayerControl().add_to(m)     
     
     try:
-    
-        geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
-        gdf_areas = gpd.read_file(geometry_file)
         folium.GeoJson(
             gdf_areas
             name=f"Gebiedsgrens",
