@@ -27,8 +27,8 @@ from credentials import *
 # )
 
 #---DATASET---
-ttl = '30m'
-ttl_references = '30m'
+ttl = 0
+ttl_references = 0
 conn = st.connection("gsheets", type=GSheetsConnection)
 df_point = conn.read(ttl=ttl,worksheet="df_observations")
 df_references = conn.read(ttl=ttl_references,worksheet="df_users")
