@@ -79,17 +79,20 @@ def map():
 
     folium.LayerControl().add_to(m)     
     
-    # try:
-    #     folium.GeoJson(
-    #         gdf_areas
-    #         name=f"Gebiedsgrens",
-    #         style_function=lambda feature: {
-    #         "color": "black",
-    #         "weight": 3,
-    #         },
-    #         ).add_to(m)
-    # except:
-    #     pass
+    try:
+        folium.GeoJson(
+            gdf_areas,
+            tooltip=folium.GeoJsonTooltip(fields=['Gebied'],
+                                                 aliases=['Gebied'],
+                                         ),
+            name=f"Gebiedsgrens",
+            style_function=lambda feature: {
+                "color": "black",
+                "weight": 3,
+            },
+        ).add_to(map)
+    except:
+        pass
         
     output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
     output["features"] = output.pop("all_drawings")
