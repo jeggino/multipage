@@ -58,7 +58,7 @@ def map():
         lat = gdf_areas.centroid.y.mean()
         lng =gdf_areas.centroid.x.mean()
         
-        m = folium.Map(location=[lat.mean(), lng.mean()],zoom_start=10)
+        m = folium.Map(location=[lat, lng],zoom_start=10)
     except:
         m = folium.Map()    
     
