@@ -312,10 +312,10 @@ def project():
     # except:
     #     area = None
     #     gdf_areas = None
-    # on = st.toggle("💻")
+    on = st.toggle("🚲")
     if st.button(":rainbow[**Begin**]"):
-         st.session_state.project = {"project_name": project,"opdracht": opdracht,
-                                     # 'auto_start':on,'area':area, 'gdf':gdf_areas
+         st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,
+                                     # 'area':area, 'gdf':gdf_areas
                                     }
          st.rerun()
         
@@ -391,6 +391,7 @@ try:
 except:
     pass
 
+
 try:
     geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
     gdf_areas = gpd.read_file(geometry_file)
@@ -401,7 +402,7 @@ except:
     map = folium.Map(tiles=None)
     
 
-LocateControl(auto_start=False,position="topleft").add_to(map)
+LocateControl(auto_start=st.session_state.project['auto_start'],position="topleft").add_to(map)
 Fullscreen(position="topleft").add_to(map)
 
 functie_dictionary = {}
