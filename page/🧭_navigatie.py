@@ -428,20 +428,20 @@ folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False,name="Witte k
 folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01qz9wet0mv9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbHdscmRkZHAxMTl1MmlyeTJpb3Z2eHdzIn0.N9TRN7xxTikk235dVs1YeQ',
                  attr='XXX Mapbox Attribution',overlay=False,show=False,name="Satellietkaart").add_to(map)
 
-try:
-    folium.GeoJson(
-        gdf_areas,
-        tooltip=folium.GeoJsonTooltip(fields=['Gebied'],
-                                             aliases=['Gebied'],
-                                     ),
-        name=f"Gebiedsgrens",
-        style_function=lambda feature: {
-            "color": "black",
-            "weight": 3,
-        },
-    ).add_to(map)
-except:
-    pass
+# try:
+#     folium.GeoJson(
+#         gdf_areas,
+#         tooltip=folium.GeoJsonTooltip(fields=['Gebied'],
+#                                              aliases=['Gebied'],
+#                                      ),
+#         name=f"Gebiedsgrens",
+#         style_function=lambda feature: {
+#             "color": "black",
+#             "weight": 3,
+#         },
+#     ).add_to(map)
+# except:
+#     pass
     
 for i in range(len(df_2)):
 
@@ -502,27 +502,27 @@ folium.LayerControl().add_to(map)
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                      feature_group_to_add=list(functie_dictionary.values()))
     
-try:
-    try:
-        id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
-        name = f"{id}"
-    except:
-        id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
-        name = f"{id}"
+# try:
+#     try:
+#         id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
+#         name = f"{id}"
+#     except:
+#         id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
+#         name = f"{id}"
     
-    with st.sidebar:
-        if st.button("Waarneming bijwerken",use_container_width=True):
-            update_item(id)
-        if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
-            df = conn.read(ttl=0,worksheet="df_observations")
-            df_filter = df_point[df_point["key"]==id]
-            df_drop = df_point[~df_point.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
-            conn.update(worksheet='df_observations',data=df_drop)
-            st.success('Waarneming verwijderd', icon="✅")
-            st.page_link('page/🧭_navigatie.py', label="Opnieuw opstarten", icon="♻️",use_container_width=True)
+#     with st.sidebar:
+#         if st.button("Waarneming bijwerken",use_container_width=True):
+#             update_item(id)
+#         if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
+#             df = conn.read(ttl=0,worksheet="df_observations")
+#             df_filter = df_point[df_point["key"]==id]
+#             df_drop = df_point[~df_point.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
+#             conn.update(worksheet='df_observations',data=df_drop)
+#             st.success('Waarneming verwijderd', icon="✅")
+#             st.page_link('page/🧭_navigatie.py', label="Opnieuw opstarten", icon="♻️",use_container_width=True)
                                        
-except:
-    st.stop()
+# except:
+#     st.stop()
 
 # except:
 #     st.image("https://media.istockphoto.com/photos/open-empty-cardboard-box-on-a-white-background-picture-id172167710?k=6&m=172167710&s=612x612&w=0&h=Z4fueCweh9q-X_VBRAPCYSalyaAnXG3ioErb8oJSVek=")
