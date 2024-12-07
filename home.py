@@ -94,12 +94,13 @@ def project():
     # except:
     #     area = None
     #     gdf_areas = None
-    # on = st.toggle("💻")
+    on = st.toggle("🚲")
     if st.button(":rainbow[**Begin**]"):
-         st.session_state.project = {"project_name": project,"opdracht": opdracht,
-                                     # 'auto_start':on,'area':area, 'gdf':gdf_areas
+         st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,
+                                     # 'area':area, 'gdf':gdf_areas
                                     }
-         st.rerun()  
+         st.rerun()
+        
 def logOut():
     if st.button("logOut",use_container_width=True):
         del st.session_state.login
