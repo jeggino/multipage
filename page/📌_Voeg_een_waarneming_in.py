@@ -75,8 +75,9 @@ def map():
     else:
         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False},
             position="topleft",).add_to(m)
-        
 
+    functie_dictionary = {}
+    functie_dictionary['geometry'] = folium.FeatureGroup(name='Geometries')
     folium.LayerControl().add_to(m)     
     
     try:
@@ -94,7 +95,7 @@ def map():
     except:
         pass
         
-    output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
+    output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height,feature_group_to_add=list(functie_dictionary.values()))
     output["features"] = output.pop("all_drawings")
     
     return  output
