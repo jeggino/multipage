@@ -410,13 +410,11 @@ except:
     pass
 
 try:
-    # lat = st.session_state.project['gdf'].centroid.y
-    # lng = st.session_state.project['gdf'].centroid.x
-    # ne = [lat.min(), lng.min()]
-    # sw = [lat.max(), lng.max()]
- 
-    map = folium.Map(tiles=None,location=[53.402492, 5.336910],zoom_start=12)
-    # map.fit_bounds([sw, ne])
+    geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
+    gdf_areas = gpd.read_file(geometry_file)
+    lat = gdf_areas.centroid.y.mean()
+    lng =gdf_areas.centroid.x.mean() 
+    map = folium.Map(tiles=None,[lat.mean(), lng.mean()],zoom_start=10)
 except:
      map = folium.Map(tiles=None)
     
@@ -445,9 +443,6 @@ folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01
                  attr='XXX Mapbox Attribution',overlay=False,show=False,name="Satellietkaart").add_to(map)
 
 try:
-    
-    geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
-    gdf_areas = gpd.read_file(geometry_file)
     folium.GeoJson(
         gdf_areas,
         tooltip=folium.GeoJsonTooltip(fields=['Gebied'],
