@@ -78,7 +78,7 @@ def map():
 
     functie_dictionary = {}
     functie_dictionary['geometry'] = folium.FeatureGroup(name='Geometries')
-    folium.LayerControl().add_to(m)     
+         
     
     try:
         folium.GeoJson(
@@ -94,7 +94,8 @@ def map():
         ).add_to(m)
     except:
         pass
-        
+
+    folium.LayerControl().add_to(m)
     output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height,feature_group_to_add=list(functie_dictionary.values()))
     output["features"] = output.pop("all_drawings")
     
