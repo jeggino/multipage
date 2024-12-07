@@ -439,20 +439,20 @@ try:
 except:
     pass
 
-# gdf_2['functie_shape'] = gdf_2['functie'].map({'paarverblijf':'heart',
-#                                            'geen / onbekend':'circle',
-#                                           'zommerverblijf':'star',
-#                                           'kraamverblijf':'baby',
-#                                           'winterverblijf':'snowflake'})
+df_2['functie_shape'] = df_2['functie'].map({'paarverblijfplaats':'heart',
+                               'vleermuis waarneming':'circle',
+                              'zomerverblijfplaats':'star',
+                              'kraamverblijfplaats':'baby',
+                              'winterverblijfplaats':'snowflake'})
 
-# colors  =['red', 'blue', 'green', 'purple', 'orange', 'darkred',
-#          'lightred', 'beige', 'darkblue', 'darkgreen', 'cadetblue',
-#          'darkpurple', 'white', 'pink', 'lightblue', 'lightgreen',
-#          'gray', 'black', 'lightgray']
+colors  =['red', 'blue', 'green', 'purple', 'orange', 'darkred',
+         'lightred', 'beige', 'darkblue', 'darkgreen', 'cadetblue',
+         'darkpurple', 'white', 'pink', 'lightblue', 'lightgreen',
+         'gray', 'black', 'lightgray']
 
-# species_colors_dict=dict(zip(gdf_2['soort'].unique(),colors[:len(soort)]))
+species_colors_dict=dict(zip(df_2['sp'].unique(),colors[:len(df_2['sp'].unique())]))
 
-# gdf_2['color'] = gdf_2['soort'].map(species_colors_dict)
+df_2['color'] = df_2['df_2'].map(species_colors_dict)
     
 for i in range(len(df_2)):
 
@@ -481,20 +481,7 @@ for i in range(len(df_2)):
 
         elif df_2.iloc[i]['soortgroup'] == "Vleermuizen":
             
-            gdf_2['functie_shape'] = gdf_2['functie'].map({'paarverblijf':'heart',
-                                           'geen / onbekend':'circle',
-                                          'zommerverblijf':'star',
-                                          'kraamverblijf':'baby',
-                                          'winterverblijf':'snowflake'})
 
-            colors  =['red', 'blue', 'green', 'purple', 'orange', 'darkred',
-                     'lightred', 'beige', 'darkblue', 'darkgreen', 'cadetblue',
-                     'darkpurple', 'white', 'pink', 'lightblue', 'lightgreen',
-                     'gray', 'black', 'lightgray']
-            
-            species_colors_dict=dict(zip(gdf_2['soort'].unique(),colors[:len(soort)]))
-            
-            gdf_2['color'] = gdf_2['soort'].map(species_colors_dict)
             html = popup_html(i)
             popup = folium.Popup(folium.Html(html, script=True), max_width=300)
             fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
