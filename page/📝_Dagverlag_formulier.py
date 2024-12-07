@@ -9,14 +9,6 @@ from credentials import *
 
 
 
-# # ---LAYOUT---
-# st.set_page_config(
-#     page_title="🦇🪶 SMPs",
-#     initial_sidebar_state="collapsed",
-#     page_icon="🦇🪶",
-#     layout="centered",
-# )
-
 
 st.markdown("""
     <style>
@@ -59,55 +51,55 @@ IMAGE = "image/logo.png"
 IMAGE_2 ="image/menu.jpg"
 st.logo(IMAGE,  link=None, icon_image=IMAGE)
 
-# try:
-waarnemer = st.session_state.login['name']
-project = st.session_state.project['project_name']
-opdracht = st.session_state.project['opdracht']
-
-
-
-st.title(f'{project}')
-st.header(f'Opdracht: **{opdracht}**',divider=True)
-
-with st.form("my_form", clear_on_submit=True,border=True):
+try:
+    waarnemer = st.session_state.login['name']
+    project = st.session_state.project['project_name']
+    opdracht = st.session_state.project['opdracht']
     
-    if opdracht == 'Vleermuizen':
-        doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
-    elif opdracht == 'Vogels':
-        doel = st.selectbox('Doel',BIRD_NAMES)
-    # try: 
-    geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
-    gdf_areas = gpd.read_file(geometry_file)
-    gebied_id_list = gdf_areas['Wijk'].unique()
-    gebied_id = st.multiselect("Gebied",gebied_id_list)
-    # except:
-    #     gebied_id = None
+    
+    
+    st.title(f'{project}')
+    st.header(f'Opdracht: **{opdracht}**',divider=True)
+    
+    with st.form("my_form", clear_on_submit=True,border=True):
         
-    datum = st.date_input("Datum","today")       
-    two_hours_from_now = datetime.now() + timedelta(hours=1)
-    four_hours_from_now = datetime.now() + timedelta(hours=3)
-    start_time = st.time_input("Start tijd", two_hours_from_now)
-    eind_time = st.time_input("Eind tijd", four_hours_from_now)
-    
-    extra_velfwerker_list = df_projects.set_index('project').loc[project,"user"].split(',')
-    extra_velfwerker_list.remove(waarnemer)
-    extra_velfwerker = st.multiselect("Extra veldwerker",extra_velfwerker_list)
-    
-    temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0)
-    bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
-    neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen","Zware regen","Sneeuw"))
-    windkrcht = st.number_input("Windkracht",key='windkrcht', min_value=1)
-    windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))
+        if opdracht == 'Vleermuizen':
+            doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
+        elif opdracht == 'Vogels':
+            doel = st.selectbox('Doel',BIRD_NAMES)
+        try: 
+            geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
+            gdf_areas = gpd.read_file(geometry_file)
+            gebied_id_list = gdf_areas['Wijk'].unique()
+            gebied_id = st.multiselect("Gebied",gebied_id_list)
+        except:
+            gebied_id = None
+            
+        datum = st.date_input("Datum","today")       
+        two_hours_from_now = datetime.now() + timedelta(hours=1)
+        four_hours_from_now = datetime.now() + timedelta(hours=3)
+        start_time = st.time_input("Start tijd", two_hours_from_now)
+        eind_time = st.time_input("Eind tijd", four_hours_from_now)
         
-    opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
-    
-    if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
-        if len(gebied_id) == 0:
-            st.markdown("Selecteer een gebied, alstublieft")
-            st.stop()
-        insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
-    
-        st.switch_page("page/🧭_navigatie.py")
-    "---"
-# except:
-#     st.switch_page("page/🧭_navigatie.py")
+        extra_velfwerker_list = df_projects.set_index('project').loc[project,"user"].split(',')
+        extra_velfwerker_list.remove(waarnemer)
+        extra_velfwerker = st.multiselect("Extra veldwerker",extra_velfwerker_list)
+        
+        temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0)
+        bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
+        neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen","Zware regen","Sneeuw"))
+        windkrcht = st.number_input("Windkracht",key='windkrcht', min_value=1)
+        windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))
+            
+        opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
+        
+        if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
+            if len(gebied_id) == 0:
+                st.markdown("Selecteer een gebied, alstublieft")
+                st.stop()
+            insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
+        
+            # st.switch_page("page/🧭_navigatie.py")
+        "---"
+except:
+    st.switch_page("page/🧭_navigatie.py")
