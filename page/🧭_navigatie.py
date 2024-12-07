@@ -391,32 +391,32 @@ try:
 except:
     pass
 
-# try:
-geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
-gdf_areas = gpd.read_file(geometry_file)
-gdf_areas
-lat = gdf_areas.centroid.y.mean()
-lng = gdf_areas.centroid.x.mean()
-map = folium.Map(location=[lng, lat], zoom_start=10,zoom_control=False,tiles=None)
-# except:
-#     map = folium.Map(tiles=None)
+try:
+    geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
+    gdf_areas = gpd.read_file(geometry_file)
+    gdf_areas
+    lat = gdf_areas.centroid.y.mean()
+    lng = gdf_areas.centroid.x.mean()
+    map = folium.Map(location=[lng, lat], zoom_start=10,zoom_control=False,tiles=None)
+except:
+    map = folium.Map(tiles=None)
     
 
-# LocateControl(auto_start=False,position="topleft").add_to(map)
-# Fullscreen(position="topleft").add_to(map)
+LocateControl(auto_start=False,position="topleft").add_to(map)
+Fullscreen(position="topleft").add_to(map)
 
-# functie_dictionary = {}
+functie_dictionary = {}
 
-# try:
-#     functie_len = df_2['functie'].unique()
+try:
+    functie_len = df_2['functie'].unique()
     
-#     for functie in functie_len:
-#         functie_dictionary[functie] = folium.FeatureGroup(name=functie)    
+    for functie in functie_len:
+        functie_dictionary[functie] = folium.FeatureGroup(name=functie)    
     
-#     for feature_group in functie_dictionary.keys():
-#         map.add_child(functie_dictionary[feature_group])
-# except:
-#     pass
+    for feature_group in functie_dictionary.keys():
+        map.add_child(functie_dictionary[feature_group])
+except:
+    pass
 
 # functie_dictionary['geometry'] = folium.FeatureGroup(name='Geometries')
 
