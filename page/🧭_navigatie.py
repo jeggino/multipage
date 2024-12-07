@@ -442,7 +442,7 @@ except:
 df_2['functie_shape'] = df_2['functie'].map({'paarverblijfplaats':'heart',
                                'vleermuis waarneming':'circle',
                               'zomerverblijfplaats':'star',
-                              'kraamverblijfplaats':'bat',
+                              'kraamverblijfplaats':'certificate',
                               'winterverblijfplaats':'snowflake'})
 
 colors  =['red', 'blue', 'green', 'purple', 'orange', 'darkred',
