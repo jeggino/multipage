@@ -391,135 +391,135 @@ try:
 except:
     pass
 
-try:
-    # geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
-    # gdf_areas = gpd.read_file(geometry_file)
-    # lat = gdf_areas.centroid.y.mean()
-    # lng =gdf_areas.centroid.x.mean() 
-    map = folium.Map(tiles=None,[lat.mean(), lng.mean()],zoom_start=10)
-except:
-    map = folium.Map(tiles=None)
+# try:
+#     # geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
+#     # gdf_areas = gpd.read_file(geometry_file)
+#     # lat = gdf_areas.centroid.y.mean()
+#     # lng =gdf_areas.centroid.x.mean() 
+#     map = folium.Map(tiles=None,[lat.mean(), lng.mean()],zoom_start=10)
+# except:
+#     map = folium.Map(tiles=None)
     
 
-LocateControl(auto_start=False,position="topleft").add_to(map)
-Fullscreen(position="topleft").add_to(map)
+# LocateControl(auto_start=False,position="topleft").add_to(map)
+# Fullscreen(position="topleft").add_to(map)
 
-functie_dictionary = {}
-
-try:
-    functie_len = df_2['functie'].unique()
-    
-    for functie in functie_len:
-        functie_dictionary[functie] = folium.FeatureGroup(name=functie)    
-    
-    for feature_group in functie_dictionary.keys():
-        map.add_child(functie_dictionary[feature_group])
-except:
-    pass
-
-functie_dictionary['geometry'] = folium.FeatureGroup(name='Geometries')
-
-folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="Stratenkaart").add_to(map)
-folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False,name="Witte kaart").add_to(map)
-folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01qz9wet0mv9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbHdscmRkZHAxMTl1MmlyeTJpb3Z2eHdzIn0.N9TRN7xxTikk235dVs1YeQ',
-                 attr='XXX Mapbox Attribution',overlay=False,show=False,name="Satellietkaart").add_to(map)
+# functie_dictionary = {}
 
 # try:
-#     folium.GeoJson(
-#         gdf_areas,
-#         tooltip=folium.GeoJsonTooltip(fields=['Gebied'],
-#                                              aliases=['Gebied'],
-#                                      ),
-#         name=f"Gebiedsgrens",
-#         style_function=lambda feature: {
-#             "color": "black",
-#             "weight": 3,
-#         },
-#     ).add_to(map)
+#     functie_len = df_2['functie'].unique()
+    
+#     for functie in functie_len:
+#         functie_dictionary[functie] = folium.FeatureGroup(name=functie)    
+    
+#     for feature_group in functie_dictionary.keys():
+#         map.add_child(functie_dictionary[feature_group])
 # except:
 #     pass
+
+# functie_dictionary['geometry'] = folium.FeatureGroup(name='Geometries')
+
+# folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="Stratenkaart").add_to(map)
+# folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False,name="Witte kaart").add_to(map)
+# folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01qz9wet0mv9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbHdscmRkZHAxMTl1MmlyeTJpb3Z2eHdzIn0.N9TRN7xxTikk235dVs1YeQ',
+#                  attr='XXX Mapbox Attribution',overlay=False,show=False,name="Satellietkaart").add_to(map)
+
+# # try:
+# #     folium.GeoJson(
+# #         gdf_areas,
+# #         tooltip=folium.GeoJsonTooltip(fields=['Gebied'],
+# #                                              aliases=['Gebied'],
+# #                                      ),
+# #         name=f"Gebiedsgrens",
+# #         style_function=lambda feature: {
+# #             "color": "black",
+# #             "weight": 3,
+# #         },
+# #     ).add_to(map)
+# # except:
+# #     pass
     
-for i in range(len(df_2)):
+# for i in range(len(df_2)):
 
-    if df_2.iloc[i]['geometry_type'] == "Point":
+#     if df_2.iloc[i]['geometry_type'] == "Point":
 
-        if (df_2.iloc[i]['sp']=="Huismus"):
-            ICON_SIZE_2 = ICON_SIZE_huismus
+#         if (df_2.iloc[i]['sp']=="Huismus"):
+#             ICON_SIZE_2 = ICON_SIZE_huismus
 
 
-        elif (df_2.iloc[i]['sp'] in ['Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']):
-            ICON_SIZE_2 = ICON_SIZE_BAT_EXTRA
+#         elif (df_2.iloc[i]['sp'] in ['Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']):
+#             ICON_SIZE_2 = ICON_SIZE_BAT_EXTRA
 
-        elif (df_2.iloc[i]['sp'] in ['Ruige dwergvleermuis']):
-            ICON_SIZE_2 = ICON_SIZE_RUIGE
+#         elif (df_2.iloc[i]['sp'] in ['Ruige dwergvleermuis']):
+#             ICON_SIZE_2 = ICON_SIZE_RUIGE
 
-        elif (df_2.iloc[i]['sp']=="...Andere(n)") & (df_2.iloc[i]['soortgroup'] == 'Vogels-Overig'):
-            ICON_SIZE_2 = ICON_SIZE_BIRD
+#         elif (df_2.iloc[i]['sp']=="...Andere(n)") & (df_2.iloc[i]['soortgroup'] == 'Vogels-Overig'):
+#             ICON_SIZE_2 = ICON_SIZE_BIRD
 
-        elif (df_2.iloc[i]['sp'] == '...Andere(n)') & (df_2.iloc[i]['soortgroup'] == 'Vleermuizen'):
-            ICON_SIZE_2 = ICON_SIZE
+#         elif (df_2.iloc[i]['sp'] == '...Andere(n)') & (df_2.iloc[i]['soortgroup'] == 'Vleermuizen'):
+#             ICON_SIZE_2 = ICON_SIZE
 
-        elif (df_2.iloc[i]['sp'] == 'Huiszwaluw'):
-            ICON_SIZE_2 = ICON_SIZE_Huiszwaluw
+#         elif (df_2.iloc[i]['sp'] == 'Huiszwaluw'):
+#             ICON_SIZE_2 = ICON_SIZE_Huiszwaluw
 
-        else:             
-            ICON_SIZE_2 = ICON_SIZE
+#         else:             
+#             ICON_SIZE_2 = ICON_SIZE
             
 
-        html = popup_html(i)
-        popup = folium.Popup(folium.Html(html, script=True), max_width=300)
-        fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
+#         html = popup_html(i)
+#         popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+#         fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
 
-        folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-                      popup=popup,
-                      icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
-                     ).add_to(fouctie_loop)
+#         folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+#                       popup=popup,
+#                       icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
+#                      ).add_to(fouctie_loop)
 
-    elif df_2.iloc[i]['geometry_type'] == "Polygon":
-        html = popup_polygons(i)
-        popup = folium.Popup(folium.Html(html, script=True), max_width=300)
-        fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
-        location = df_2.iloc[i]['coordinates']
-        location = ast.literal_eval(location)
-        location = [i[::-1] for i in location[0]]
+#     elif df_2.iloc[i]['geometry_type'] == "Polygon":
+#         html = popup_polygons(i)
+#         popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+#         fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
+#         location = df_2.iloc[i]['coordinates']
+#         location = ast.literal_eval(location)
+#         location = [i[::-1] for i in location[0]]
                     
-        if df_2.iloc[i]['functie']=="Baltsterritorium":
-            fill_color="red"
+#         if df_2.iloc[i]['functie']=="Baltsterritorium":
+#             fill_color="red"
 
-        else:
-            fill_color="green"
+#         else:
+#             fill_color="green"
             
-        folium.Polygon(location,fill_color=fill_color,weight=0,fill_opacity=0.5,
-                      popup=popup
-                      ).add_to(fouctie_loop)
+#         folium.Polygon(location,fill_color=fill_color,weight=0,fill_opacity=0.5,
+#                       popup=popup
+#                       ).add_to(fouctie_loop)
 
-folium.LayerControl().add_to(map)
+# folium.LayerControl().add_to(map)
 
-output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
-                     feature_group_to_add=list(functie_dictionary.values()))
+# output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
+#                      feature_group_to_add=list(functie_dictionary.values()))
     
-# try:
-#     try:
-#         id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
-#         name = f"{id}"
-#     except:
-#         id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
-#         name = f"{id}"
+# # try:
+# #     try:
+# #         id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
+# #         name = f"{id}"
+# #     except:
+# #         id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
+# #         name = f"{id}"
     
-#     with st.sidebar:
-#         if st.button("Waarneming bijwerken",use_container_width=True):
-#             update_item(id)
-#         if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
-#             df = conn.read(ttl=0,worksheet="df_observations")
-#             df_filter = df_point[df_point["key"]==id]
-#             df_drop = df_point[~df_point.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
-#             conn.update(worksheet='df_observations',data=df_drop)
-#             st.success('Waarneming verwijderd', icon="✅")
-#             st.page_link('page/🧭_navigatie.py', label="Opnieuw opstarten", icon="♻️",use_container_width=True)
+# #     with st.sidebar:
+# #         if st.button("Waarneming bijwerken",use_container_width=True):
+# #             update_item(id)
+# #         if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
+# #             df = conn.read(ttl=0,worksheet="df_observations")
+# #             df_filter = df_point[df_point["key"]==id]
+# #             df_drop = df_point[~df_point.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
+# #             conn.update(worksheet='df_observations',data=df_drop)
+# #             st.success('Waarneming verwijderd', icon="✅")
+# #             st.page_link('page/🧭_navigatie.py', label="Opnieuw opstarten", icon="♻️",use_container_width=True)
                                        
-# except:
-#     st.stop()
+# # except:
+# #     st.stop()
 
-# except:
-#     st.image("https://media.istockphoto.com/photos/open-empty-cardboard-box-on-a-white-background-picture-id172167710?k=6&m=172167710&s=612x612&w=0&h=Z4fueCweh9q-X_VBRAPCYSalyaAnXG3ioErb8oJSVek=")
-#     st.stop()
+# # except:
+# #     st.image("https://media.istockphoto.com/photos/open-empty-cardboard-box-on-a-white-background-picture-id172167710?k=6&m=172167710&s=612x612&w=0&h=Z4fueCweh9q-X_VBRAPCYSalyaAnXG3ioErb8oJSVek=")
+# #     st.stop()
