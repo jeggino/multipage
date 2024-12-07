@@ -394,9 +394,9 @@ except:
 # try:
 geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
 gdf_areas = gpd.read_file(geometry_file)
-lat = gdf_areas.centroid.y.mean()
-lng =gdf_areas.centroid.x.mean() 
-map = folium.Map(tiles=None,[lat.mean(), lng.mean()],zoom_start=10)
+# lat = gdf_areas.centroid.y.mean()
+# lng =gdf_areas.centroid.x.mean() 
+# map = folium.Map(tiles=None,[lat.mean(), lng.mean()],zoom_start=10)
 # except:
 #     map = folium.Map(tiles=None)
     
