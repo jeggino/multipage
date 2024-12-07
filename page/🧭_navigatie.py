@@ -450,7 +450,7 @@ try:
     gdf_areas = gpd.read_file(geometry_file)
     folium.GeoJson(
         gdf_areas,
-        tooltip=folium.GeoJsonTooltip(fields=['Wijk'],
+        tooltip=folium.GeoJsonTooltip(fields=['Gebied'],
                                              aliases=['Gebied'],
                                      ),
         name=f"Gebiedsgrens",
