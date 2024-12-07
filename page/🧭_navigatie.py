@@ -397,7 +397,7 @@ gdf_areas = gpd.read_file(geometry_file)
 gdf_areas
 lat = gdf_areas.centroid.y.mean()
 lng = gdf_areas.centroid.x.mean()
-map = folium.Map(tiles=None,[lat, lng],zoom_start=10)
+map = folium.Map(tiles=None,[lat, lng])
 # except:
 #     map = folium.Map(tiles=None)
     
