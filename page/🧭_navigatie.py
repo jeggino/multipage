@@ -416,7 +416,7 @@ try:
     lng =gdf_areas.centroid.x.mean() 
     map = folium.Map(tiles=None,[lat.mean(), lng.mean()],zoom_start=10)
 except:
-     map = folium.Map(tiles=None)
+    map = folium.Map(tiles=None)
     
 
 LocateControl(auto_start=False,position="topleft").add_to(map)
