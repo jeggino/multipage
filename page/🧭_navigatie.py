@@ -431,9 +431,9 @@ folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01
 try:
     folium.GeoJson(
         gdf_areas,
-        tooltip=folium.GeoJsonTooltip(fields=['Gebied'],
-                                             aliases=['Gebied'],
-                                     ),
+        # tooltip=folium.GeoJsonTooltip(fields=['Gebied'],
+        #                                      aliases=['Gebied'],
+        #                              ),
         name="Gebiedsgrens",
         style_function=lambda feature: {
             "color": "black",
