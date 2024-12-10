@@ -49,7 +49,7 @@ df_projects = conn.read(ttl=ttl_references,worksheet="df_ekomaps_projects")
 # --- APP ---
 IMAGE = "image/logo.png"
 IMAGE_2 ="image/menu.jpg"
-st.logo(IMAGE,  link=None, icon_image=IMAGE)
+st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
 try:
     waarnemer = st.session_state.login['name']
