@@ -402,9 +402,9 @@ try:
     st.write('b')
     lat = gdf_areas.centroid.y.mean()
     lng = gdf_areas.centroid.x.mean()
-    map = folium.Map(location=[lat, lng], zoom_start=10,zoom_control=False,tiles=None)
+    map = folium.Map(location=[lat, lng], zoom_start=15,zoom_control=False,tiles=None)
 except:
-    map = folium.Map(tiles=None)
+    map = folium.Map(tiles=None, zoom_start=1,zoom_control=False)
     
 
 LocateControl(auto_start=st.session_state.project['auto_start'],position="topleft").add_to(map)
