@@ -444,14 +444,14 @@ try:
 
     for row,columns in gdf_names.iterrows():
     
-    folium.Marker([columns['lat'],columns['lng']],
-                      icon=DivIcon(
-                    icon_size=(.0, .0),
-                    icon_anchor=(5, 5),
-                    html=f'<b style="font-size: 8pt; color : blue; background-color:white;border:2px solid Tomato;">{columns['Gebied']}</b>'
-                    ,
-                )
-                     ).add_to(names)
+        folium.Marker([columns['lat'],columns['lng']],
+                          icon=DivIcon(
+                        icon_size=(.0, .0),
+                        icon_anchor=(5, 5),
+                        html=f'<b style="font-size: 8pt; color : blue; background-color:white;border:2px solid Tomato;">{columns['Gebied']}</b>'
+                        ,
+                    )
+                         ).add_to(names)
 except:
     pass
 
