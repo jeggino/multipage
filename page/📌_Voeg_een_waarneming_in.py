@@ -2,6 +2,7 @@ import streamlit as st
 
 import folium
 from folium.plugins import Draw, Fullscreen, LocateControl
+from folium.features import DivIcon
 from streamlit_folium import st_folium
 
 import pandas as pd
@@ -55,6 +56,8 @@ def map():
     try:
         geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
         gdf_areas = gpd.read_file(geometry_file)
+        geometry_names_file = f"geometries/{st.session_state.project["project_name"]}_names.geojson" 
+        gdf_names = gpd.read_file(geometry_names_file)
         lat = gdf_areas.centroid.y.mean()
         lng = gdf_areas.centroid.x.mean()
         m = folium.Map(location=[lat, lng], zoom_start=10,zoom_control=False)
@@ -77,21 +80,31 @@ def map():
             position="topleft",).add_to(m)
 
     functie_dictionary = {}
-    functie_dictionary['geometry'] = folium.FeatureGroup(name='Geometries')
          
     
     try:
+        names = folium.FeatureGroup(name="Gebiedsnamen").add_to(map)
+        
         folium.GeoJson(
             gdf_areas,
-            tooltip=folium.GeoJsonTooltip(fields=['Gebied'],
-                                                 aliases=['Gebied'],
-                                         ),
             name=f"Gebiedsgrens",
             style_function=lambda feature: {
                 "color": "black",
                 "weight": 3,
             },
         ).add_to(m)
+
+        for row,columns in gdf_names.iterrows():
+    
+            folium.Marker([columns['lat'],columns['lng']],
+                              icon=DivIcon(
+                            icon_size=(.0, .0),
+                            icon_anchor=(5, 5),
+                            html=f'<b style="font-size: 8pt; color : blue; background-color:white;border:2px solid Tomato;">{columns['Gebied']}</b>'
+                            ,
+                        )
+                             ).add_to(names)
+        
     except:
         pass
 
