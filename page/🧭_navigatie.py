@@ -398,7 +398,7 @@ try:
     gdf_areas = gpd.read_file(geometry_file)
     geometry_names_file = f"geometries/{st.session_state.project["project_name"]}_names.geojson" 
     gdf_names = gpd.read_file(geometry_names_file)
-    
+    gdf_names 
     lat = gdf_areas.centroid.y.mean()
     lng = gdf_areas.centroid.x.mean()
     map = folium.Map(location=[lat, lng], zoom_start=10,zoom_control=False,tiles=None)
