@@ -402,9 +402,8 @@ try:
     lng = gdf_areas.centroid.x.mean()
     map = folium.Map(location=[lat, lng], zoom_start=15,zoom_control=False,tiles=None)
 except:
-    map = folium.Map(tiles=None, zoom_start=1,zoom_control=False)
+    map = folium.Map(tiles=None, zoom_start=8,zoom_control=False)
     
-gdf_names
 LocateControl(auto_start=st.session_state.project['auto_start'],position="topleft").add_to(map)
 Fullscreen(position="topleft").add_to(map)
 
@@ -426,7 +425,7 @@ folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False,name="Witte k
 folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01qz9wet0mv9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbHdscmRkZHAxMTl1MmlyeTJpb3Z2eHdzIn0.N9TRN7xxTikk235dVs1YeQ',
                  attr='XXX Mapbox Attribution',overlay=False,show=False,name="Satellietkaart").add_to(map)
 
-names = folium.FeatureGroup(name="Gebiedsnamen")
+names = folium.FeatureGroup(name="Gebiedsnamen").add_to(map)
 
 try:
     folium.GeoJson(
