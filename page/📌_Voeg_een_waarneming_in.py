@@ -83,7 +83,7 @@ def map():
          
     
     try:
-        names = folium.FeatureGroup(name="Gebiedsnamen").add_to(map)
+        names = folium.FeatureGroup(name="Gebiedsnamen").add_to(m)
         
         folium.GeoJson(
             gdf_areas,
