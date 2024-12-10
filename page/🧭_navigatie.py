@@ -335,7 +335,7 @@ def logOut_project():
 #---APP---
 IMAGE = "image/logo.png"
 IMAGE_2 ="image/menu.jpg"
-st.logo(IMAGE,  link=None, icon_image=IMAGE)
+st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
 if "login" not in st.session_state:
     logIn()
