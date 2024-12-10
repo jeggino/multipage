@@ -426,14 +426,11 @@ folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False,name="Witte k
 folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01qz9wet0mv9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbHdscmRkZHAxMTl1MmlyeTJpb3Z2eHdzIn0.N9TRN7xxTikk235dVs1YeQ',
                  attr='XXX Mapbox Attribution',overlay=False,show=False,name="Satellietkaart").add_to(map)
 
-# names = folium.FeatureGroup(name="Gebiedsnamen")
+names = folium.FeatureGroup(name="Gebiedsnamen")
 
 try:
     folium.GeoJson(
         gdf_areas,
-        # tooltip=folium.GeoJsonTooltip(fields=['Gebied'],
-        #                                      aliases=['Gebied'],
-        #                              ),
         name="Gebiedsgrens",
         style_function=lambda feature: {
             "color": "black",
@@ -441,23 +438,19 @@ try:
         },
     ).add_to(map)
 
-    folium.GeoJson(
-        gdf_names,
-        name="Gebiedsnamen",
-    ).add_to(map)
-    # for row,columns in gdf_names.iterrows():
+    for row,columns in gdf_names.iterrows():
     
-    #     folium.Marker([columns['lat'],columns['lng']],
-    #                       icon=DivIcon(
-    #                     icon_size=(.0, .0),
-    #                     icon_anchor=(5, 5),
-    #                     html=f'<b style="font-size: 8pt; color : blue; background-color:white;border:2px solid Tomato;">{columns['Gebied']}</b>'
-    #                     ,
-    #                 )
-    #                      ).add_to(names)
+        folium.Marker([columns['lat'],columns['lng']],
+                          icon=DivIcon(
+                        icon_size=(.0, .0),
+                        icon_anchor=(5, 5),
+                        html=f'<b style="font-size: 8pt; color : blue; background-color:white;border:2px solid Tomato;">{columns['Gebied']}</b>'
+                        ,
+                    )
+                         ).add_to(names)
 except:
     pass
-gdf_names
+    
 df_2['functie_shape'] = df_2['functie'].map({'paarverblijfplaats':'heart',
                                'vleermuis waarneming':'',
                               'zomerverblijfplaats':'star',
