@@ -404,7 +404,7 @@ try:
 except:
     map = folium.Map(tiles=None, zoom_start=1,zoom_control=False)
     
-gdf_areas
+gdf_names
 LocateControl(auto_start=st.session_state.project['auto_start'],position="topleft").add_to(map)
 Fullscreen(position="topleft").add_to(map)
 
