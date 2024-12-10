@@ -398,7 +398,6 @@ try:
     gdf_areas = gpd.read_file(geometry_file)
     geometry_names_file = f"geometries/{st.session_state.project["project_name"]}_names.geojson" 
     gdf_names = gpd.read_file(geometry_names_file)
-    gdf_names 
     lat = gdf_areas.centroid.y.mean()
     lng = gdf_areas.centroid.x.mean()
     map = folium.Map(location=[lat, lng], zoom_start=10,zoom_control=False,tiles=None)
@@ -435,23 +434,30 @@ try:
         tooltip=folium.GeoJsonTooltip(fields=['Gebied'],
                                              aliases=['Gebied'],
                                      ),
-        name=f"Gebiedsgrens",
+        name="Gebiedsgrens",
         style_function=lambda feature: {
             "color": "black",
             "weight": 3,
         },
     ).add_to(map)
 
-    for row,columns in gdf_names.iterrows():
+    folium.GeoJson(
+        gdf_names,
+        tooltip=folium.GeoJsonTooltip(fields=['Gebied'],
+                                             aliases=['Gebied'],
+                                     ),
+        name="Gebiedsnamen",
+    ).add_to(map)
+    # for row,columns in gdf_names.iterrows():
     
-        folium.Marker([columns['lat'],columns['lng']],
-                          icon=DivIcon(
-                        icon_size=(.0, .0),
-                        icon_anchor=(5, 5),
-                        html=f'<b style="font-size: 8pt; color : blue; background-color:white;border:2px solid Tomato;">{columns['Gebied']}</b>'
-                        ,
-                    )
-                         ).add_to(names)
+    #     folium.Marker([columns['lat'],columns['lng']],
+    #                       icon=DivIcon(
+    #                     icon_size=(.0, .0),
+    #                     icon_anchor=(5, 5),
+    #                     html=f'<b style="font-size: 8pt; color : blue; background-color:white;border:2px solid Tomato;">{columns['Gebied']}</b>'
+    #                     ,
+    #                 )
+    #                      ).add_to(names)
 except:
     pass
 
