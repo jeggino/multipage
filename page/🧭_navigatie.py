@@ -428,8 +428,7 @@ folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01
 
 
 try:
-    names = folium.FeatureGroup(name="Gebiedsnamen").add_to(map)
-    
+       
     folium.GeoJson(
         gdf_areas,
         name="Gebiedsgrens",
@@ -438,7 +437,8 @@ try:
             "weight": 3,
         },
     ).add_to(map)
-
+    
+    names = folium.FeatureGroup(name="Gebiedsnamen").add_to(map)
     for row,columns in gdf_names.iterrows():
     
         folium.Marker([columns['lat'],columns['lng']],
