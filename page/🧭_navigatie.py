@@ -6,6 +6,7 @@ import random
 
 import folium
 from folium.plugins import Draw, Fullscreen, LocateControl, GroupedLayerControl
+from folium.features import DivIcon
 from streamlit_folium import st_folium
 import datetime
 from datetime import datetime, timedelta, date
