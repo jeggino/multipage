@@ -459,7 +459,7 @@ try:
     #                      ).add_to(names)
 except:
     pass
-
+gdf_names
 df_2['functie_shape'] = df_2['functie'].map({'paarverblijfplaats':'heart',
                                'vleermuis waarneming':'',
                               'zomerverblijfplaats':'star',
