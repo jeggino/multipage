@@ -90,8 +90,7 @@ def legend(species_colors_dict,dragable=True):
          border-radius: 8px; padding: 10px; font-size: 11px; left: 10px; bottom: 35px; '>     
     <div class='legend-scale'>
       <ul class='legend-labels'>
-          <img src="https://www.elskenecologie.nl/wp-content/themes/elsken/assets/img/logo-mobile.png" style="background:green; width:30px;height:23px;">
-          <li>------------</li>
+
         <li><strong>Sorten</strong></li>
     
         {legend_temp}
