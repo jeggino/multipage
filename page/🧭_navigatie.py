@@ -73,7 +73,7 @@ ICON_SIZE_Huiszwaluw = (80,45)
 
 def legend(species_colors_dict,dragable=True):
 
-    
+
     legend_temp=''
     
     
@@ -93,9 +93,9 @@ def legend(species_colors_dict,dragable=True):
           <img src="https://www.elskenecologie.nl/wp-content/themes/elsken/assets/img/logo-mobile.png" style="background:green; width:30px;height:23px;">
           <li>------------</li>
         <li><strong>Sorten</strong></li>
-
+    
         {legend_temp}
-
+    
         <li><strong>Functie</strong></li>
         <li><span class="fa fa-map-marker" style="color:grey" opacity: 0.75;'></span>Waarneming</li>
         <li><span class="fa fa-object-ungroup" style="color:grey" opacity: 0.75;'></span>Gebied</li>
@@ -143,12 +143,12 @@ def legend(species_colors_dict,dragable=True):
         """
     
     legend_normal = "{% macro html(this, kwargs) %}"
-
+    
     if dragable == True:
         legend = legend_dragable + legend_body + legend_style
     else:
         legend = legend_normal + legend_body + legend_style
-
+    
     return legend
     
 def popup_polygons(row):
