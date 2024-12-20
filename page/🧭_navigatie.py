@@ -109,8 +109,7 @@ def legend(species_colors_dict,dragable=True):
     </body>
     </html>
     """
-    
-    
+       
     legend_style = """<style type='text/css'>
       .maplegend .legend-scale ul {margin: 0; padding: 0; color: #0f0f0f;}
       .maplegend .legend-scale ul li {list-style: none; line-height: 18px; margin-bottom: 1.5px;}
@@ -614,7 +613,7 @@ for i in range(len(df_2)):
                       ).add_to(fouctie_loop)
 
 folium.LayerControl().add_to(map)
-legend_template = legend(species_colors_dict,True)
+legend_template = legend(species_colors_dict,False)
 macro = MacroElement()
 macro._template = Template(legend_template)
 map.get_root().add_child(macro)
