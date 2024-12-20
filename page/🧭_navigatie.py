@@ -99,7 +99,7 @@ def legend(species_colors_dict,dragable=True):
         <li><strong>Functie</strong></li>
         <li><span class="fa fa-circle" style="color:grey" opacity: 0.75;'></span>Geen / Ombekend</li>
         <li><span class="fa fa-star" style="color:grey" opacity: 0.75;'></span>Zommerverblijf</li>
-        <li><span class="fa fa-certificate" style="color:grey" opacity: 0.75;'></span>Kraamverblif</li>
+        <li><span class="fa fa-burst" style="color:grey" opacity: 0.75;'></span>Kraamverblif</li>
         <li><span class="fa fa-snowflake" style="color:grey" opacity: 0.75;'></span>Winterverblijf</li>
         <li><span class="fa fa-heart" style="color:grey" opacity: 0.75;'></span>Paarverblijf</li>
         <li><strong>Functiegebied</strong></li>
@@ -543,7 +543,7 @@ except:
 df_2['functie_shape'] = df_2['functie'].map({'paarverblijfplaats':'heart',
                                'vleermuis waarneming':'circle',
                               'zomerverblijfplaats':'star',
-                              'kraamverblijfplaats':'certificate',
+                              'kraamverblijfplaats':'burst',
                               'winterverblijfplaats':'snowflake'})
 
 colors  =['red', 'blue', 'green', 'purple', 'orange', 'darkred',
