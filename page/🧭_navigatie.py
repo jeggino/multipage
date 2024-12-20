@@ -453,7 +453,7 @@ except:
     pass
     
 df_2['functie_shape'] = df_2['functie'].map({'paarverblijfplaats':'heart',
-                               'vleermuis waarneming':'',
+                               'vleermuis waarneming':'circle',
                               'zomerverblijfplaats':'star',
                               'kraamverblijfplaats':'certificate',
                               'winterverblijfplaats':'snowflake'})
