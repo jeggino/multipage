@@ -612,7 +612,7 @@ folium.LayerControl().add_to(map)
 legend_template = legend(species_colors_dict,True)
 macro = MacroElement()
 macro._template = Template(legend_template)
-map.add_child(macro)
+ map.get_root().add_child(macro)
 
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                      feature_group_to_add=list(functie_dictionary.values()))
