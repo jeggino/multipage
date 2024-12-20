@@ -95,10 +95,16 @@ def legend(species_colors_dict,dragable=True):
         <li><strong>Sorten</strong></li>
     
         {legend_temp}
-    
+
         <li><strong>Functie</strong></li>
-        <li><span class="fa fa-map-marker" style="color:grey" opacity: 0.75;'></span>Waarneming</li>
-        <li><span class="fa fa-object-ungroup" style="color:grey" opacity: 0.75;'></span>Gebied</li>
+        <li><span class="fa fa-circle" style="color:grey" opacity: 0.75;'></span>Geen / Ombekend</li>
+        <li><span class="fa fa-star" style="color:grey" opacity: 0.75;'></span>Zommerverblijf</li>
+        <li><span class="fa fa-certificate" style="color:grey" opacity: 0.75;'></span>Kraamverblif</li>
+        <li><span class="fa fa-snowflake" style="color:grey" opacity: 0.75;'></span>Winterverblijf</li>
+        <li><span class="fa fa-heart" style="color:grey" opacity: 0.75;'></span>Paarverblijf</li>
+        <li><strong>Functiegebied</strong></li>
+        <li><span class="fa fa-object-ungroup" style="color:green" opacity: 0.75;'></span>Foerageergebied</li>
+        <li><span class="fa fa-object-ungroup" style="color:red" opacity: 0.75;'></span>Baltsterritorium</li>
       </ul> 
     </body>
     </html>
@@ -547,8 +553,6 @@ colors  =['red', 'blue', 'green', 'purple', 'orange', 'darkred',
          'gray', 'black', 'lightgray']
 
 species_colors_dict=dict(zip(df_2['sp'].unique(),colors[:len(df_2['sp'].unique())]))
-species_colors_dict
-
 df_2['color'] = df_2['sp'].map(species_colors_dict)
     
 for i in range(len(df_2)):
