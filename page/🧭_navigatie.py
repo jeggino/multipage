@@ -613,11 +613,11 @@ for i in range(len(df_2)):
                       ).add_to(fouctie_loop)
 
 folium.LayerControl().add_to(map)
-if st.session_state.project['opdracht'] = 'Vleermuizen':
-    legend_template = legend(species_colors_dict,False)
-    macro = MacroElement()
-    macro._template = Template(legend_template)
-    map.get_root().add_child(macro)
+# if st.session_state.project['opdracht'] = 'Vleermuizen':
+#     legend_template = legend(species_colors_dict,False)
+#     macro = MacroElement()
+#     macro._template = Template(legend_template)
+#     map.get_root().add_child(macro)
 
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                      feature_group_to_add=list(functie_dictionary.values()))
