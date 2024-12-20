@@ -547,6 +547,7 @@ colors  =['red', 'blue', 'green', 'purple', 'orange', 'darkred',
          'gray', 'black', 'lightgray']
 
 species_colors_dict=dict(zip(df_2['sp'].unique(),colors[:len(df_2['sp'].unique())]))
+species_colors_dict
 
 df_2['color'] = df_2['sp'].map(species_colors_dict)
     
