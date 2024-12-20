@@ -87,7 +87,7 @@ def legend(species_colors_dict,dragable=True):
     <body>
     <div id='maplegend' class='maplegend' 
         style='position: absolute; z-index: 9999; background-color: rgba(255, 255, 255, 0.7);
-         border-radius: 8px; padding: 10px; font-size: 11px; right: 10px; bottom: 35px; '>     
+         border-radius: 8px; padding: 10px; font-size: 11px; left: 10px; bottom: 35px; '>     
     <div class='legend-scale'>
       <ul class='legend-labels'>
           <img src="https://www.elskenecologie.nl/wp-content/themes/elsken/assets/img/logo-mobile.png" style="background:green; width:30px;height:23px;">
