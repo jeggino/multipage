@@ -73,7 +73,7 @@ with st.form("my_form", clear_on_submit=True,border=True):
         if project != "Overig":
             doel = st.selectbox('Doel',BIRD_NAMES)
         else:
-            doel = st.selectbox('Doel','Overig' + BIRD_NAMES)
+            doel = st.selectbox('Doel',['Overig'] + BIRD_NAMES)
             
     try: 
         geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
