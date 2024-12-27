@@ -137,8 +137,11 @@ if 'project' not in st.session_state:
     st.stop()
 
 if st.session_state.login['type'] == 'user':
-    pg = st.navigation([page_1,page_2,page_3])
-
+    if st.session_state.project['opdracht'] != 'Overig':
+        pg = st.navigation([page_1,page_2,page_3])
+    else:
+        pg = st.navigation([page_1,page_2)
+    
 else:
     pg = st.navigation([page_1])
   
