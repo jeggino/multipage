@@ -313,9 +313,9 @@ def update_item(id):
   id_aantal = df_filter['aantal'][0]
   id_opmerking = df_filter['opmerking'][0]
   
-  datum = st.date_input("Datum",id_date)
+  datum = st.date_input("Datum",'2024-01-01')
   # nine_hours_from_now = datetime.now() + timedelta(hours=2)
-  time = st.time_input("Tijd", '2024-01-01')
+  time = st.time_input("Tijd",id_time )
   
   if st.session_state.project['opdracht'] == 'Vleermuizen':
 
