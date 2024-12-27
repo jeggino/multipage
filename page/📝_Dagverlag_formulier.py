@@ -73,7 +73,7 @@ with st.form("my_form", clear_on_submit=True,border=True):
         gebied_id_list = gdf_areas['Gebied'].unique()
         gebied_id = st.selectbox("Gebied",gebied_id_list,index=None)
     except:
-        gebied_id = None
+        gebied_id = "---"
         
     datum = st.date_input("Datum","today")       
     two_hours_from_now = datetime.now() + timedelta(hours=1)
@@ -87,7 +87,7 @@ with st.form("my_form", clear_on_submit=True,border=True):
         extra_velfwerker = st.multiselect("Extra veldwerker",extra_velfwerker_list)
 
     else:
-        extra_velfwerker = None
+        extra_velfwerker = "---"
     
     temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0)
     bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
@@ -98,7 +98,7 @@ with st.form("my_form", clear_on_submit=True,border=True):
     opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
     
     if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
-        if len(gebied_id) == 0:
+        if gebied_id == "---":
             st.markdown("Selecteer een gebied, alstublieft")
             st.stop()
         insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
