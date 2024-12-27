@@ -632,7 +632,9 @@ if st.session_state.login['type'] == 'user':
             name = f"{id}"
         
         with st.sidebar:
+            st.write(id)
             if st.button("Waarneming bijwerken",use_container_width=True):
+                
                 update_item(id)
             if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
                 df = conn.read(ttl=0,worksheet="df_observations")
