@@ -140,7 +140,7 @@ if st.session_state.login['type'] == 'user':
     if st.session_state.project['opdracht'] != 'Overig':
         pg = st.navigation([page_1,page_2,page_3])
     else:
-        pg = st.navigation([page_1,page_2)
+        pg = st.navigation([page_1,page_2])
     
 else:
     pg = st.navigation([page_1])
