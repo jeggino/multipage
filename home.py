@@ -94,7 +94,10 @@ def project():
     # except:
     #     area = None
     #     gdf_areas = None
-    on = st.toggle("🚲")
+    if st.session_state.login['type'] == 'user':
+        on = st.toggle("🚲")
+    else:
+        on = False
     if st.button(":rainbow[**Begin**]"):
          st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,
                                      # 'area':area, 'gdf':gdf_areas
