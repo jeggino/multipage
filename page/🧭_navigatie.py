@@ -313,7 +313,7 @@ def update_item(id):
   id_aantal = df_filter['aantal'][0]
   id_opmerking = df_filter['opmerking'][0]
   
-  datum = st.date_input("Datum",'2024-01-01')
+  datum = st.date_input("Datum",id_date)
   # nine_hours_from_now = datetime.now() + timedelta(hours=2)
   time = st.time_input("Tijd",id_time )
   
@@ -461,7 +461,7 @@ if len(df_2)>0:
     try:
         df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
         st.sidebar.subheader("Filter op",divider=False)
-        d = st.sidebar.slider("Datum", min_value=df_2.datum.min(),max_value=df_2.datum.max(),value=(df_2.datum.min(), df_2.datum.max()),format="DD-MM-YYYY")
+        d = st.sidebar.slider("Datum", min_value=df_2.datum.min(),max_value=df_2.datum.max(),value=(df_2.datum.min(), df_2.datum.max()),format="YYYY-MM-DD")
         
         df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
     except:
