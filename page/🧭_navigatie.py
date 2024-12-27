@@ -340,9 +340,6 @@ def update_item(id):
   opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
   if st.button("**Update**",use_container_width=True):
-    
-    df = conn.read(ttl=0,worksheet="df_observations")
-    df_filter = df[df["key"]==id].reset_index(drop=True)
       
     id_lat = df_filter['lat'][0]
     id_lng = df_filter['lng'][0]
@@ -361,7 +358,7 @@ def update_item(id):
                    "geometry_type":id_geometry_type,"lat":id_lat,"lng":id_lng,"opmerking":opmerking,"coordinates":id_coordinates,"project":id_project}]
       
     df_new = pd.DataFrame(data)
-    df_updated = pd.concat([df,df_new],ignore_index=True)
+    df_updated = pd.concat([df_old,df_new],ignore_index=True)
     conn.update(worksheet='df_observations',data=df_updated)
 
     st.rerun()
