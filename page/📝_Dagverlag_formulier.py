@@ -98,7 +98,7 @@ with st.form("my_form", clear_on_submit=True,border=True):
     opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
     
     if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
-        if gebied_id == "---":
+        if gebied_id == None:
             st.markdown("Selecteer een gebied, alstublieft")
             st.stop()
         insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
