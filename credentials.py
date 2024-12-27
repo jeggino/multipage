@@ -103,10 +103,7 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'vogel waarneming': 'icons/swift.pn
                                                      'mogelijke nestlocatie': 'icons/mogelijk_nest.png'}}
                   }
 
-DICTIONARY_PROJECTS = {"Overig":["Vogels","Vleermuizen","Vogels-Overig"],
-                      "Admin":["Vogels","Vleermuizen","Vogels-Overig"],
-                       "Bats-balkans":["Vleermuizen"],
-                       "SMPs-Amsterdam (Niewe West)":["Vleermuizen"],
-                       "SMPs-Amsterdam (Noord)":["Vleermuizen"],
+DICTIONARY_PROJECTS = {"Overig":["Vogels","Vleermuizen"],
+                      "Admin":["Vogels","Vleermuizen"],
                        'SMPs-Terschelling':["Vleermuizen","Vogels"]
                       }
