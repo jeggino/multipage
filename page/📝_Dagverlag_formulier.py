@@ -71,7 +71,7 @@ with st.form("my_form", clear_on_submit=True,border=True):
         geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
         gdf_areas = gpd.read_file(geometry_file)
         gebied_id_list = gdf_areas['Gebied'].unique()
-        gebied_id = st.selectbox("Gebied",gebied_id_list)
+        gebied_id = st.selectbox("Gebied",gebied_id_list,index=None)
     except:
         gebied_id = None
         
