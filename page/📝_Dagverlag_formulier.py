@@ -64,9 +64,17 @@ st.header(f'Opdracht: **{opdracht}**',divider=True)
 with st.form("my_form", clear_on_submit=True,border=True):
     
     if opdracht == 'Vleermuizen':
-        doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
+        if project != "Overig":
+            doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
+        else:
+            doel = st.selectbox('Doel',('Overig','Kraamverblijf','Winterverblijf','Paarverblijf'))
+            
     elif opdracht == 'Vogels':
-        doel = st.selectbox('Doel',BIRD_NAMES)
+        if project != "Overig":
+            doel = st.selectbox('Doel',BIRD_NAMES)
+        else:
+            doel = st.selectbox('Doel','Overig' + BIRD_NAMES)
+            
     try: 
         geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
         gdf_areas = gpd.read_file(geometry_file)
