@@ -291,7 +291,12 @@ def popup_html(row):
 
 @st.dialog(" ")
 def update_item(id):
+  df = conn.read(ttl=0,worksheet="df_observations")
+  df_filter = df[df["key"]==id].reset_index(drop=True)
+  df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
 
+  df_drop
+  
   datum = st.date_input("Datum","today")
   nine_hours_from_now = datetime.now() + timedelta(hours=2)
   time = st.time_input("Tijd", nine_hours_from_now)
@@ -348,7 +353,6 @@ def update_item(id):
     id_coordinates = df_filter['coordinates'][0]
     id_project = df_filter['project'][0]
       
-    df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
     conn.update(worksheet='df_observations',data=df_drop)
     df_old = conn.read(ttl=0,worksheet="df_observations")
       
