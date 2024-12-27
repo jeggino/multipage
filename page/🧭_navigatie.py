@@ -315,7 +315,7 @@ def update_item(id):
   
   datum = st.date_input("Datum",id_date)
   # nine_hours_from_now = datetime.now() + timedelta(hours=2)
-  time = st.time_input("Tijd", id_time)
+  time = st.time_input("Tijd", '2024-01-01')
   
   if st.session_state.project['opdracht'] == 'Vleermuizen':
 
