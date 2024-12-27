@@ -325,7 +325,7 @@ def update_item(id):
         verblijf = None
     else:
         gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS,index=BAT_BEHAVIOURS.index(id_gedrag)) 
-        functie = st.selectbox("Functie", BAT_FUNCTIE,index=GEBIED_OPTIONS.index(id_functie))
+        functie = st.selectbox("Functie", BAT_FUNCTIE,index=BAT_FUNCTIE.index(id_functie))
         verblijf = st.selectbox("Verblijf", BAT_VERBLIJF,index=BAT_VERBLIJF.index(id_verblijf)) 
 
   elif st.session_state.project['opdracht'] == 'Vogels':
