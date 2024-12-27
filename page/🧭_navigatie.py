@@ -295,7 +295,7 @@ def update_item(id):
   df_filter = df[df["key"]==id].reset_index(drop=True)
   df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
 
-  id_datum = df_filter['id_bunker'][0]
+  
   id_lat = df_filter['lat'][0]
   id_lng = df_filter['lng'][0]
   id_waarnemer = df_filter['waarnemer'][0]
