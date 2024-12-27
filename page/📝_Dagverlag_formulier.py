@@ -70,7 +70,7 @@ with st.form("my_form", clear_on_submit=True,border=True):
     try: 
         geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
         gdf_areas = gpd.read_file(geometry_file)
-        gebied_id_list = gdf_areas['Wijk'].unique()
+        gebied_id_list = gdf_areas['Gebied'].unique()
         gebied_id = st.multiselect("Gebied",gebied_id_list)
     except:
         gebied_id = None
