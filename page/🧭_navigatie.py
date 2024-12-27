@@ -295,7 +295,21 @@ def update_item(id):
   df_filter = df[df["key"]==id].reset_index(drop=True)
   df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
 
-  df_drop
+  id_datum = df_filter['id_bunker'][0]
+  id_lat = df_filter['lat'][0]
+  id_lng = df_filter['lng'][0]
+  id_waarnemer = df_filter['waarnemer'][0]
+  id_key = df_filter['key'][0]
+  id_soortgroup = df_filter['soortgroup'][0]
+  id_geometry_type = df_filter['geometry_type'][0]
+  id_coordinates = df_filter['coordinates'][0]
+  id_project = df_filter['project'][0]
+  id_functie = df_filter['functie'][0]
+  id_gedrag = df_filter['gedrag'][0]
+  id_verblijf = df_filter['verblijf'][0]
+  id_sp = df_filter['sp'][0]
+  id_aantal = df_filter['aantal'][0]
+  id_opmerking = df_filter['opmerking'][0]
   
   datum = st.date_input("Datum","today")
   nine_hours_from_now = datetime.now() + timedelta(hours=2)
@@ -303,43 +317,31 @@ def update_item(id):
   
   if st.session_state.project['opdracht'] == 'Vleermuizen':
 
-    sp = st.selectbox("Soort", BAT_NAMES)
+    sp = st.selectbox("Soort", BAT_NAMES,index=BAT_NAMES.index(id_sp))
  
     if output["last_active_drawing"]["geometry"]["type"] == 'Polygon':
         gedrag = None
-        functie = st.selectbox("Functie", GEBIED_OPTIONS)
+        functie = st.selectbox("Functie", GEBIED_OPTIONS,index=GEBIED_OPTIONS.index(id_functie))
         verblijf = None
     else:
-        gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-        functie = st.selectbox("Functie", BAT_FUNCTIE)
-        verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+        gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS,index=BAT_BEHAVIOURS.index(id_gedrag)) 
+        functie = st.selectbox("Functie", BAT_FUNCTIE,index=GEBIED_OPTIONS.index(id_functie))
+        verblijf = st.selectbox("Verblijf", BAT_VERBLIJF,index=BAT_VERBLIJF.index(id_verblijf)) 
 
   elif st.session_state.project['opdracht'] == 'Vogels':
   
-    sp = st.selectbox("Soort", BIRD_NAMES)
-    gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-    functie = st.selectbox("Functie", BIRD_FUNCTIE) 
-    verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
+    sp = st.selectbox("Soort", BIRD_NAMES,index=BIRD_NAMES.index(id_sp))
+    gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS,index=BIRD_BEHAVIOURS.index(id_gedrag)) 
+    functie = st.selectbox("Functie", BIRD_FUNCTIE,index=BIRD_FUNCTIE.index(id_functie)) 
+    verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF,index=BIRD_VERBLIJF.index(id_verblijf)) 
 
-  elif st.session_state.project['opdracht'] == 'Vogels-Overig':
-  
-    sp = st.selectbox("Soort", BIRD_NAMES_ANDER)
-    gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-    functie = st.selectbox("Functie", BIRD_FUNCTIE) 
-    verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
-  
-  elif st.session_state.project['opdracht'] == 'Vleermuiskast':
     
-    functie = st.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
-    bat_names = ["onbekend"] + BAT_NAMES
-    sp = st.selectbox("Soort", bat_names) 
-    gedrag = None
-    verblijf = None
-    
-  aantal = st.number_input("Aantal", min_value=0)    
-  opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
+  aantal = st.number_input("Aantal", min_value=1,value=int(id_aantal))    
+  opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...",value=id_opmerking)
 
   if st.button("**Update**",use_container_width=True):
+    
+      
       
     id_lat = df_filter['lat'][0]
     id_lng = df_filter['lng'][0]
@@ -633,9 +635,7 @@ if st.session_state.login['type'] == 'user':
             name = f"{id}"
         
         with st.sidebar:
-            st.write(id)
-            if st.button("Waarneming bijwerken",use_container_width=True):
-                
+            if st.button("Waarneming bijwerken",use_container_width=True): 
                 update_item(id)
             if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
                 df = conn.read(ttl=0,worksheet="df_observations")
