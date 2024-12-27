@@ -295,7 +295,9 @@ def update_item(id):
   df_filter = df[df["key"]==id].reset_index(drop=True)
   df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
 
-  
+
+  id_date = df_filter['datum'][0]
+  id_time = df_filter['time'][0]
   id_lat = df_filter['lat'][0]
   id_lng = df_filter['lng'][0]
   id_waarnemer = df_filter['waarnemer'][0]
@@ -311,9 +313,9 @@ def update_item(id):
   id_aantal = df_filter['aantal'][0]
   id_opmerking = df_filter['opmerking'][0]
   
-  datum = st.date_input("Datum","today")
-  nine_hours_from_now = datetime.now() + timedelta(hours=2)
-  time = st.time_input("Tijd", nine_hours_from_now)
+  datum = st.date_input("Datum",id_date)
+  # nine_hours_from_now = datetime.now() + timedelta(hours=2)
+  time = st.time_input("Tijd", id_time)
   
   if st.session_state.project['opdracht'] == 'Vleermuizen':
 
