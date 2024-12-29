@@ -535,6 +535,7 @@ folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01
 
 
 try:
+    oude_waarnemingen = folium.FeatureGroup(name="Oude waarnemingen",show=False).add_to(map)
        
     folium.GeoJson(
         gdf_areas,
@@ -581,7 +582,7 @@ try:
                                   'winterverblijfplaats':'snowflake'})
 
     df_overig['color'] = df_overig['sp'].map(species_colors_dict)
-    oude_waarnemingen = folium.FeatureGroup(name="Oude waarnemingen",show=False).add_to(map)
+    
     
     for i in range(len(df_overig)):
     
