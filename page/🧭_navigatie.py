@@ -645,8 +645,7 @@ colors  =['red', 'blue', 'green', 'purple', 'orange', 'darkred',
          'darkpurple', 'white', 'pink', 'lightblue', 'lightgreen',
          'gray', 'black', 'lightgray']
 
-
-df_2['functie_shape'] = df_2['functie'].map({'paarverblijfplaats':'heart',
+map_fuction = {'paarverblijfplaats':'heart',
                                'vleermuis waarneming':'binoculars',
                               'zomerverblijfplaats':'star',
                               'kraamverblijfplaats':'venus-double',
@@ -654,21 +653,15 @@ df_2['functie_shape'] = df_2['functie'].map({'paarverblijfplaats':'heart',
                                             'vogel waarneming':'binoculars',
                                              'mogelijke nestlocatie':'question',
                                              'nestlocatie':'egg'
-                                            })
+                                            }
+
 species_colors_dict=dict(zip(df_dict['sp'].unique(),colors[:len(df_dict['sp'].unique())]))
+
+df_2['functie_shape'] = df_2['functie'].map(map_fuction)
 df_2['color'] = df_2['sp'].map(species_colors_dict)
 
 try:
-    df_overig['functie_shape'] = df_overig['functie'].map({'paarverblijfplaats':'heart',
-                               'vleermuis waarneming':'binoculars',
-                              'zomerverblijfplaats':'star',
-                              'kraamverblijfplaats':'venus-double',
-                              'winterverblijfplaats':'snowflake',
-                                            'vogel waarneming':'binoculars',
-                                             'mogelijke nestlocatie':'question',
-                                             'nestlocatie':'egg'
-                                            })
-
+    df_overig['functie_shape'] = df_overig['functie'].map(map_fuction)
     df_overig['color'] = df_overig['sp'].map(species_colors_dict)
     
     
@@ -677,17 +670,7 @@ try:
         if df_overig.iloc[i]['geometry_type'] == "Point":
     
             if df_overig.iloc[i]['soortgroup'] == "Vogels":
-    
-                if (df_overig.iloc[i]['sp']=="Huismus"):
-                    ICON_SIZE_2 = ICON_SIZE_huismus
-        
-                elif (df_overig.iloc[i]['sp'] == 'Huiszwaluw'):
-                    ICON_SIZE_2 = ICON_SIZE_Huiszwaluw
-        
-                else:             
-                    ICON_SIZE_2 = ICON_SIZE
-                    
-        
+                            
                 html = popup_html(i,df_overig)
                 popup = folium.Popup(folium.Html(html, script=True), max_width=300)
     
@@ -701,7 +684,6 @@ try:
     
             elif df_overig.iloc[i]['soortgroup'] == "Vleermuizen":
                 
-    
                 html = popup_html(i,df_overig)
                 popup = folium.Popup(folium.Html(html, script=True), max_width=300)
                 
@@ -720,15 +702,6 @@ for i in range(len(df_2)):
     if df_2.iloc[i]['geometry_type'] == "Point":
 
         if df_2.iloc[i]['soortgroup'] == "Vogels":
-
-            if (df_2.iloc[i]['sp']=="Huismus"):
-                ICON_SIZE_2 = ICON_SIZE_huismus
-    
-            elif (df_2.iloc[i]['sp'] == 'Huiszwaluw'):
-                ICON_SIZE_2 = ICON_SIZE_Huiszwaluw
-    
-            else:             
-                ICON_SIZE_2 = ICON_SIZE
                 
     
             html = popup_html(i,df_2)
@@ -780,15 +753,13 @@ folium.LayerControl().add_to(map)
 
 if st.session_state.project['opdracht'] == 'Vleermuizen':
     legend_template = legend(species_colors_dict,False)
-    macro = MacroElement()
-    macro._template = Template(legend_template)
-    map.get_root().add_child(macro)
 
 elif st.session_state.project['opdracht'] == 'Vogels':
     legend_template = legend_birds(species_colors_dict,dragable=True)
-    macro = MacroElement()
-    macro._template = Template(legend_template)
-    map.get_root().add_child(macro)
+    
+macro = MacroElement()
+macro._template = Template(legend_template)
+map.get_root().add_child(macro)
 
 
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
@@ -816,7 +787,3 @@ if st.session_state.login['type'] == 'user':
                                            
     except:
         st.stop()
-
-# except:
-#     st.image("https://media.istockphoto.com/photos/open-empty-cardboard-box-on-a-white-background-picture-id172167710?k=6&m=172167710&s=612x612&w=0&h=Z4fueCweh9q-X_VBRAPCYSalyaAnXG3ioErb8oJSVek=")
-#     st.stop()
