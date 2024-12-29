@@ -482,7 +482,6 @@ try:
                                    else (icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen',"Vogels-Overig"] 
                                          else icon_dictionary[x["soortgroup"]][x["functie"]]), 
                                    axis=1)
-    st.error('!!!!!!!!')
     df_2 = df_2.reset_index(drop=True)
     
 
@@ -490,8 +489,9 @@ try:
                                    else (icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen',"Vogels-Overig"] 
                                          else icon_dictionary[x["soortgroup"]][x["functie"]]), 
                                    axis=1)
-    
     df_overig = df_overig.reset_index(drop=True)
+    st.error('!!!!!!!!')
+
  
 except:
     pass
