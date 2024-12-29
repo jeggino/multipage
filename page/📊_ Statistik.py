@@ -35,7 +35,7 @@ try:
         col2.write(media_dict[st.session_state.project['opdracht']][key])
         "---"
 except:
-    st.markdown('https://flic.kr/p/2ot2oFC',
+    st.image('https://flic.kr/p/2ot2oFC',
                 unsafe_allow_html=True)
    
 
