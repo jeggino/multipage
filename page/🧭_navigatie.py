@@ -570,7 +570,7 @@ df_2['functie_shape'] = df_2['functie'].map({'paarverblijfplaats':'heart',
                               'zomerverblijfplaats':'star',
                               'kraamverblijfplaats':'burst',
                               'winterverblijfplaats':'snowflake'})
-species_colors_dict=dict(zip(df_point['sp'].unique(),colors[:len(df_point['sp'].unique())]))
+species_colors_dict=dict(zip(df_dict['sp'].unique(),colors[:len(df_dict['sp'].unique())]))
 df_2['color'] = df_2['sp'].map(species_colors_dict)
 
 try:
