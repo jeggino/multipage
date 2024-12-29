@@ -456,6 +456,7 @@ elif st.session_state.project['project_name'] == 'Overig':
 
 else:
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
+    
      
 
 
@@ -575,48 +576,50 @@ df_overig['functie_shape'] = df_overig['functie'].map({'paarverblijfplaats':'hea
                               'kraamverblijfplaats':'burst',
                               'winterverblijfplaats':'snowflake'})
 
-species_colors_dict_df_overig=dict(zip(df_overig['sp'].unique(),colors[:len(df_overig['sp'].unique())]))
-df_overig['color'] = df_overig['sp'].map(species_colors_dict_df_overig)
-oude_waarnemingen = folium.FeatureGroup(name="Oude waarnemingen",show=False).add_to(map)
-
-for i in range(len(df_overig)):
-
-    if df_overig.iloc[i]['geometry_type'] == "Point":
-
-        if df_overig.iloc[i]['soortgroup'] == "Vogels":
-
-            if (df_overig.iloc[i]['sp']=="Huismus"):
-                ICON_SIZE_2 = ICON_SIZE_huismus
+try:
+    species_colors_dict_df_overig=dict(zip(df_overig['sp'].unique(),colors[:len(df_overig['sp'].unique())]))
+    df_overig['color'] = df_overig['sp'].map(species_colors_dict_df_overig)
+    oude_waarnemingen = folium.FeatureGroup(name="Oude waarnemingen",show=False).add_to(map)
     
-            elif (df_overig.iloc[i]['sp'] == 'Huiszwaluw'):
-                ICON_SIZE_2 = ICON_SIZE_Huiszwaluw
+    for i in range(len(df_overig)):
     
-            else:             
-                ICON_SIZE_2 = ICON_SIZE
+        if df_overig.iloc[i]['geometry_type'] == "Point":
+    
+            if df_overig.iloc[i]['soortgroup'] == "Vogels":
+    
+                if (df_overig.iloc[i]['sp']=="Huismus"):
+                    ICON_SIZE_2 = ICON_SIZE_huismus
+        
+                elif (df_overig.iloc[i]['sp'] == 'Huiszwaluw'):
+                    ICON_SIZE_2 = ICON_SIZE_Huiszwaluw
+        
+                else:             
+                    ICON_SIZE_2 = ICON_SIZE
+                    
+        
+                html = popup_html(i,df_overig)
+                popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+    
+                folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
+                              popup=popup,
+                              icon=folium.features.CustomIcon(df_overig.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
+                             ).add_to(oude_waarnemingen)
+    
+            elif df_overig.iloc[i]['soortgroup'] == "Vleermuizen":
                 
     
-            html = popup_html(i,df_overig)
-            popup = folium.Popup(folium.Html(html, script=True), max_width=300)
-
-            folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
-                          popup=popup,
-                          icon=folium.features.CustomIcon(df_overig.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
-                         ).add_to(oude_waarnemingen)
-
-        elif df_overig.iloc[i]['soortgroup'] == "Vleermuizen":
-            
-
-            html = popup_html(i,df_overig)
-            popup = folium.Popup(folium.Html(html, script=True), max_width=300)
-            
-            folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
-              popup=popup,
-              icon=folium.Icon(icon=df_overig.iloc[i]['functie_shape'],
-                              prefix='fa',
-                              icon_color='black',
-                              color=df_overig.iloc[i]['color'],)
-              ).add_to(oude_waarnemingen)
-
+                html = popup_html(i,df_overig)
+                popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+                
+                folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
+                  popup=popup,
+                  icon=folium.Icon(icon=df_overig.iloc[i]['functie_shape'],
+                                  prefix='fa',
+                                  icon_color='black',
+                                  color=df_overig.iloc[i]['color'],)
+                  ).add_to(oude_waarnemingen)
+except:
+    pass
     
 for i in range(len(df_2)):
 
