@@ -35,6 +35,7 @@ try:
         col2.write(media_dict['Vleermuizen'][key])
         "---"
 except:
+    st.write('Not yet')
     # st.image('https://www.flickr.com/photos/67492897@N07/52814358250/in/dateposted/')
     st.write('Not yet')
    
