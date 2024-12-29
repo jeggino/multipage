@@ -96,7 +96,7 @@ def legend(species_colors_dict,dragable=True):
         {legend_temp}
 
         <li><strong>Functie</strong></li>
-        <li><span class="fa fa-binoculars" style="color:grey" opacity: 0.75;'></span>Geen / Ombekend</li>
+        <li><span class="fa fa-binoculars" style="color:grey" opacity: 0.75;'></span>Vleermuis waarneming</li>
         <li><span class="fa fa-star" style="color:grey" opacity: 0.75;'></span>Zommerverblijf</li>
         <li><span class="fa fa-venus" style="color:grey" opacity: 0.75;'></span>Kraamverblif</li>
         <li><span class="fa fa-snowflake" style="color:grey" opacity: 0.75;'></span>Winterverblijf</li>
