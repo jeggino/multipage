@@ -490,11 +490,11 @@ try:
                                    axis=1)
     
     df_overig = df_overig.reset_index(drop=True)
-df_overig 
+ 
 except:
     pass
 
-
+df_overig
 try:
     geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
     gdf_areas = gpd.read_file(geometry_file)
