@@ -582,8 +582,7 @@ for i in range(len(df_overig)):
     
             html = popup_html(i,df_overig)
             popup = folium.Popup(folium.Html(html, script=True), max_width=300)
-            fouctie_loop = functie_dictionary[df_overig.iloc[i]['functie']]
-    
+
             folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
                           popup=popup,
                           icon=folium.features.CustomIcon(df_overig.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
@@ -594,7 +593,6 @@ for i in range(len(df_overig)):
 
             html = popup_html(i,df_overig)
             popup = folium.Popup(folium.Html(html, script=True), max_width=300)
-            fouctie_loop = functie_dictionary[df_overig.iloc[i]['functie']]
             
             folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
               popup=popup,
