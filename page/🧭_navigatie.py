@@ -449,14 +449,17 @@ with st.sidebar:
 if st.session_state.project['project_name'] == 'Overig':
     df_2 = df_point[df_point['project']!='Admin']
     df_2 = df_2[df_2['soortgroup']==st.session_state.project['opdracht']]
+    df_dict = df_2.copy()
 
 elif st.session_state.project['project_name'] == 'Admin':
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
+    df_dict = df_2.copy()
 
 else:
-    df_dict = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
     df_2 = df_point[(df_point['project']==st.session_state.project['project_name'])&(df_point['soortgroup']==st.session_state.project['opdracht'])]
     df_overig = df_point[(df_point['project']!=st.session_state.project['project_name']) & (df_point['soortgroup']==st.session_state.project['opdracht'])]
+    df_dict = df_overig.copy()
+
     
     
      
