@@ -98,7 +98,7 @@ def legend(species_colors_dict,dragable=True):
         <li><strong>Functie</strong></li>
         <li><span class="fa fa-binoculars" style="color:grey" opacity: 0.75;'></span>Geen / Ombekend</li>
         <li><span class="fa fa-star" style="color:grey" opacity: 0.75;'></span>Zommerverblijf</li>
-        <li><span class="fa fa-burst" style="color:grey" opacity: 0.75;'></span>Kraamverblif</li>
+        <li><span class="fa fa-venus" style="color:grey" opacity: 0.75;'></span>Kraamverblif</li>
         <li><span class="fa fa-snowflake" style="color:grey" opacity: 0.75;'></span>Winterverblijf</li>
         <li><span class="fa fa-heart" style="color:grey" opacity: 0.75;'></span>Paarverblijf</li>
         <li><strong>Functiegebied</strong></li>
@@ -568,7 +568,7 @@ colors  =['red', 'blue', 'green', 'purple', 'orange', 'darkred',
 df_2['functie_shape'] = df_2['functie'].map({'paarverblijfplaats':'heart',
                                'vleermuis waarneming':'binoculars',
                               'zomerverblijfplaats':'star',
-                              'kraamverblijfplaats':'burst',
+                              'kraamverblijfplaats':'venus',
                               'winterverblijfplaats':'snowflake'})
 species_colors_dict=dict(zip(df_dict['sp'].unique(),colors[:len(df_dict['sp'].unique())]))
 df_2['color'] = df_2['sp'].map(species_colors_dict)
@@ -577,7 +577,7 @@ try:
     df_overig['functie_shape'] = df_overig['functie'].map({'paarverblijfplaats':'heart',
                                    'vleermuis waarneming':'binoculars',
                                   'zomerverblijfplaats':'star',
-                                  'kraamverblijfplaats':'burst',
+                                  'kraamverblijfplaats':'venus',
                                   'winterverblijfplaats':'snowflake'})
 
     df_overig['color'] = df_overig['sp'].map(species_colors_dict)
