@@ -25,9 +25,11 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 # --- APP ---
 IMAGE = "image/logo.png"
-IMAGE_2 ="image/menu.jpg"
-st.logo(IMAGE_2,  link=None, icon_image=IMAGE_2)
+st.logo(IMAGE,  link=None, icon_image=IMAGE)
 
+col1,col2 = st.columns([2,1])
 
 VIDEO_URL = "https://www.youtube.com/watch?v=6qO1mpw8Xow"
-st.video(VIDEO_URL)
+col1.video(VIDEO_URL)
+text = "Laatvliegers foerageren boven fietspad te Lies, Terschelling. Lantaarnpaal trekt waarschijnlijk prooien aan en de laatvliegers maken daar gretig gebruik van."
+col2.write(text)
