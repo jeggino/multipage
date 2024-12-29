@@ -458,7 +458,7 @@ elif st.session_state.project['project_name'] == 'Admin':
 else:
     df_2 = df_point[(df_point['project']==st.session_state.project['project_name'])&(df_point['soortgroup']==st.session_state.project['opdracht'])]
     df_overig = df_point[(df_point['project']!=st.session_state.project['project_name']) & (df_point['soortgroup']==st.session_state.project['opdracht'])]
-    df_dict = df_overig.copy()
+    df_dict = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
 
     
     
