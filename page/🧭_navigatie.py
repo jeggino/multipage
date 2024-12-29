@@ -665,7 +665,7 @@ for i in range(len(df_2)):
               ).add_to(fouctie_loop)
 
     elif df_2.iloc[i]['geometry_type'] == "Polygon":
-        html = popup_polygons(i)
+        html = popup_polygons(i,df_2)
         popup = folium.Popup(folium.Html(html, script=True), max_width=300)
         fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
         location = df_2.iloc[i]['coordinates']
