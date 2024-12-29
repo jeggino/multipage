@@ -29,5 +29,5 @@ IMAGE_2 ="image/menu.jpg"
 st.logo(IMAGE_2,  link=None, icon_image=IMAGE_2)
 
 
-VIDEO_URL = "https://example.com/not-youtube.mp4"
+VIDEO_URL = "https://www.youtube.com/watch?v=6qO1mpw8Xow"
 st.video(VIDEO_URL)
