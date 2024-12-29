@@ -29,7 +29,7 @@ IMAGE = "image/logo.png"
 st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
 
 try:
-    for key in media_dict[st.session_state.project['opdracht']:
+    for key in media_dict[st.session_state.project['opdracht']]:
         col1,col2 = st.columns([2,1],gap="large", vertical_alignment="top", border=True)
         col1.video(key)
         col2.write(media_dict['Vleermuizen'][key])
