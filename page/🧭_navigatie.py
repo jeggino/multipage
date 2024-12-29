@@ -181,7 +181,7 @@ def legend_birds(species_colors_dict,dragable=True):
 
         <li><strong>Functie</strong></li>
         <li><span class="fa fa-binoculars" style="color:grey" opacity: 0.75;'></span>Vogel waarneming</li>
-        <li><span class="fa fa-question" style="color:grey" opacity: 0.75;'></span>Mogelijke nestlocatie</li>
+        <li><span class="fa fa-circle-question" style="color:grey" opacity: 0.75;'></span>Mogelijke nestlocatie</li>
         <li><span class="fa fa-egg" style="color:grey" opacity: 0.75;'></span>Nestlocatie</li>
 
       </ul> 
@@ -651,7 +651,7 @@ map_fuction = {'paarverblijfplaats':'heart',
                               'kraamverblijfplaats':'venus-double',
                               'winterverblijfplaats':'snowflake',
                                             'vogel waarneming':'binoculars',
-                                             'mogelijke nestlocatie':'question',
+                                             'mogelijke nestlocatie':'circle-question',
                                              'nestlocatie':'egg'
                                             }
 
