@@ -35,5 +35,6 @@ try:
         col2.write(media_dict[st.session_state.project['opdracht']][key])
         "---"
 except:
+    st.write('not yet')
     st.markdown('<a data-flickr-embed="true" href="https://www.flickr.com/photos/67492897@N07/52814358250/in/dateposted/" title="IMG_4627_edited"><img src="https://live.staticflickr.com/65535/52814358250_a4a230bd10_c.jpg" width="798" height="800" alt="IMG_4627_edited"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>')
    
