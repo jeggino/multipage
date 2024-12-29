@@ -496,7 +496,7 @@ try:
 except:
     pass
 
-df_overig
+
 try:
     geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
     gdf_areas = gpd.read_file(geometry_file)
