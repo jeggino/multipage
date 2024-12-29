@@ -25,7 +25,7 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 # --- APP ---
 IMAGE = "image/logo.png"
-st.logo(IMAGE,  link=None, icon_image=IMAGE)
+st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
 
 col1,col2 = st.columns([2,1])
 
