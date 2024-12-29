@@ -1,4 +1,5 @@
 import streamlit as st
+from media_credentials import *
 
 
 
@@ -27,9 +28,13 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 IMAGE = "image/logo.png"
 st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
 
-col1,col2 = st.columns([2,1])
-
-VIDEO_URL = "https://www.youtube.com/watch?v=6qO1mpw8Xow"
-col1.video(VIDEO_URL)
-text = "Laatvliegers foerageren boven fietspad te Lies, Terschelling. Lantaarnpaal trekt waarschijnlijk prooien aan en de laatvliegers maken daar gretig gebruik van."
-col2.write(text)
+try:
+    col1,col2 = st.columns([2,1])
+    
+    for key in media_dict['Vleermuizen']:
+        col1.video(key)
+        col2.write(media_dict['Vleermuizen'][key])
+except:
+    st.image('https://www.flickr.com/photos/67492897@N07/52814358250/in/dateposted/')
+    st.write('Not yet')
+   
