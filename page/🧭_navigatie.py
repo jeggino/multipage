@@ -483,15 +483,15 @@ try:
                                          else icon_dictionary[x["soortgroup"]][x["functie"]]), 
                                    axis=1)
     df_2 = df_2.reset_index(drop=True)
+except:
+    pass
     
-
+try:
     df_overig["icon_data"] = df_overig.apply(lambda x: None if x["geometry_type"] in ["LineString","Polygon"] 
                                    else (icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen',"Vogels-Overig"] 
                                          else icon_dictionary[x["soortgroup"]][x["functie"]]), 
                                    axis=1)
-    df_overig = df_overig.reset_index(drop=True)
-
- 
+    df_overig = df_overig.reset_index(drop=True) 
 except:
     pass
 
