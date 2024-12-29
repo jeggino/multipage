@@ -155,7 +155,7 @@ def legend(species_colors_dict,dragable=True):
     
     return legend
     
-def popup_polygons(row):
+def popup_polygons(row,df_2):
     
     i = row
 
@@ -216,7 +216,7 @@ def popup_polygons(row):
     return html
 
 
-def popup_html(row):
+def popup_html(row,df_2):
     
     i = row
 
@@ -580,7 +580,7 @@ for i in range(len(df_overig)):
                 ICON_SIZE_2 = ICON_SIZE
                 
     
-            html = popup_html(i)
+            html = popup_html(i,df_overig)
             popup = folium.Popup(folium.Html(html, script=True), max_width=300)
             fouctie_loop = functie_dictionary[df_overig.iloc[i]['functie']]
     
@@ -592,7 +592,7 @@ for i in range(len(df_overig)):
         elif df_overig.iloc[i]['soortgroup'] == "Vleermuizen":
             
 
-            html = popup_html(i)
+            html = popup_html(i,df_overig)
             popup = folium.Popup(folium.Html(html, script=True), max_width=300)
             fouctie_loop = functie_dictionary[df_overig.iloc[i]['functie']]
             
@@ -621,7 +621,7 @@ for i in range(len(df_2)):
                 ICON_SIZE_2 = ICON_SIZE
                 
     
-            html = popup_html(i)
+            html = popup_html(i,df_2)
             popup = folium.Popup(folium.Html(html, script=True), max_width=300)
             fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
     
@@ -633,7 +633,7 @@ for i in range(len(df_2)):
         elif df_2.iloc[i]['soortgroup'] == "Vleermuizen":
             
 
-            html = popup_html(i)
+            html = popup_html(i,df_2)
             popup = folium.Popup(folium.Html(html, script=True), max_width=300)
             fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
             
