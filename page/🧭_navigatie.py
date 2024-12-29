@@ -652,7 +652,7 @@ df_2['functie_shape'] = df_2['functie'].map({'paarverblijfplaats':'heart',
                               'kraamverblijfplaats':'venus-double',
                               'winterverblijfplaats':'snowflake',
                                             'vogel waarneming':'binoculars',
-                                             'mogelijke nestlocatie':'quiestion',
+                                             'mogelijke nestlocatie':'question',
                                              'nestlocatie':'egg'
                                             })
 species_colors_dict=dict(zip(df_dict['sp'].unique(),colors[:len(df_dict['sp'].unique())]))
@@ -665,7 +665,7 @@ try:
                               'kraamverblijfplaats':'venus-double',
                               'winterverblijfplaats':'snowflake',
                                             'vogel waarneming':'binoculars',
-                                             'mogelijke nestlocatie':'quiestion',
+                                             'mogelijke nestlocatie':'question',
                                              'nestlocatie':'egg'
                                             })
 
