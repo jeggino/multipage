@@ -1,4 +1,4 @@
 media_dict = {'Vleermuizen':{"https://www.youtube.com/watch?v=OKEaI1mFAhc":"",
                             'https://www.youtube.com/watch?v=6qO1mpw8Xow':'Laatvliegers foerageren boven fietspad te Lies, Terschelling. Lantaarnpaal trekt waarschijnlijk prooien aan en de laatvliegers maken daar gretig gebruik van.'},
-             'Vogels':{'https://youtube.com/shorts/uXhK7BwJz7A?si=p4VFmPyUB4buosNs':'ljkghlsd'}
+             'Vogels':{'https://www.youtube.com/watch?v=Ai9BpYST3gA':'ljkghlsd'}
              }
