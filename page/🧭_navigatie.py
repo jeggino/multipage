@@ -562,7 +562,7 @@ df_2['color'] = df_2['sp'].map(species_colors_dict)
 
 species_colors_dict_df_overig=dict(zip(df_overig['sp'].unique(),colors[:len(df_overig['sp'].unique())]))
 df_overig['color'] = df_overig['sp'].map(species_colors_dict_df_overig)
-oude_waarnemingen = folium.FeatureGroup(name="Oude waarnemingen").add_to(map)
+oude_waarnemingen = folium.FeatureGroup(name="Oude waarnemingen",show=False).add_to(map)
 
 for i in range(len(df_overig)):
 
