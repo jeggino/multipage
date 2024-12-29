@@ -490,7 +490,6 @@ try:
                                          else icon_dictionary[x["soortgroup"]][x["functie"]]), 
                                    axis=1)
     df_overig = df_overig.reset_index(drop=True)
-    st.error('!!!!!!!!')
 
  
 except:
