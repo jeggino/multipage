@@ -297,7 +297,7 @@ def update_item(id):
 
 
   id_date = df_filter['datum'][0]
-  id_time = df_filter['time'][0]
+  # id_time = df_filter['time'][0]
   id_lat = df_filter['lat'][0]
   id_lng = df_filter['lng'][0]
   id_waarnemer = df_filter['waarnemer'][0]
@@ -315,7 +315,7 @@ def update_item(id):
   
   datum = st.date_input("Datum",id_date)
   # nine_hours_from_now = datetime.now() + timedelta(hours=2)
-  time = st.time_input("Tijd",id_time )
+  time = st.time_input("Tijd" )
   
   if st.session_state.project['opdracht'] == 'Vleermuizen':
 
@@ -427,7 +427,7 @@ def logOut_project():
 
 #---APP---
 IMAGE = "image/logo.png"
-IMAGE_2 ="image/menu.jpg"
+# IMAGE_2 ="image/menu.jpg"
 st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
 if "login" not in st.session_state:
@@ -448,6 +448,7 @@ with st.sidebar:
 if st.session_state.project['project_name'] not in ['Admin','Overig']:
     df_2 = df_point[df_point['project']==st.session_state.project['project_name']]
     df_2 = df_2[df_2['soortgroup']==st.session_state.project['opdracht']]
+    df_overig = df_point[(df_point['project']=='Overig') & (df_point['soortgroup']==st.session_state.project['opdracht'])]
 
 elif st.session_state.project['project_name'] == 'Overig':
     df_2 = df_point[df_point['project']!='Admin']
@@ -455,6 +456,7 @@ elif st.session_state.project['project_name'] == 'Overig':
 
 else:
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
+     
 
 
 if len(df_2)>0:
@@ -557,6 +559,51 @@ colors  =['red', 'blue', 'green', 'purple', 'orange', 'darkred',
 
 species_colors_dict=dict(zip(df_2['sp'].unique(),colors[:len(df_2['sp'].unique())]))
 df_2['color'] = df_2['sp'].map(species_colors_dict)
+
+species_colors_dict_df_overig=dict(zip(df_overig['sp'].unique(),colors[:len(df_overig['sp'].unique())]))
+df_overig['color'] = df_overig['sp'].map(species_colors_dict_df_overig)
+oude_waarnemingen = folium.FeatureGroup(name="Oude waarnemingen").add_to(map)
+
+for i in range(len(df_overig)):
+
+    if df_overig.iloc[i]['geometry_type'] == "Point":
+
+        if df_overig.iloc[i]['soortgroup'] == "Vogels":
+
+            if (df_overig.iloc[i]['sp']=="Huismus"):
+                ICON_SIZE_2 = ICON_SIZE_huismus
+    
+            elif (df_overig.iloc[i]['sp'] == 'Huiszwaluw'):
+                ICON_SIZE_2 = ICON_SIZE_Huiszwaluw
+    
+            else:             
+                ICON_SIZE_2 = ICON_SIZE
+                
+    
+            html = popup_html(i)
+            popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+            fouctie_loop = functie_dictionary[df_overig.iloc[i]['functie']]
+    
+            folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
+                          popup=popup,
+                          icon=folium.features.CustomIcon(df_overig.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
+                         ).add_to(oude_waarnemingen)
+
+        elif df_2.iloc[i]['soortgroup'] == "Vleermuizen":
+            
+
+            html = popup_html(i)
+            popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+            fouctie_loop = functie_dictionary[df_overig.iloc[i]['functie']]
+            
+            folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
+              popup=popup,
+              icon=folium.Icon(icon=df_overig.iloc[i]['functie_shape'],
+                              prefix='fa',
+                              icon_color='black',
+                              color=df_overig.iloc[i]['color'],)
+              ).add_to(oude_waarnemingen)
+
     
 for i in range(len(df_2)):
 
