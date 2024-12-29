@@ -589,7 +589,7 @@ for i in range(len(df_overig)):
                           icon=folium.features.CustomIcon(df_overig.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
                          ).add_to(oude_waarnemingen)
 
-        elif df_2.iloc[i]['soortgroup'] == "Vleermuizen":
+        elif df_overig.iloc[i]['soortgroup'] == "Vleermuizen":
             
 
             html = popup_html(i)
