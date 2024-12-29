@@ -710,10 +710,10 @@ for i in range(len(df_2)):
     
             folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
                           popup=popup,
-                          icon=folium.Icon(icon=df_overig.iloc[i]['functie_shape'],
+                          icon=folium.Icon(icon=df_2.iloc[i]['functie_shape'],
                                   prefix='fa',
                                   icon_color='black',
-                                  color=df_overig.iloc[i]['color'],)
+                                  color=df_2.iloc[i]['color'],)
                          ).add_to(fouctie_loop)
 
         elif df_2.iloc[i]['soortgroup'] == "Vleermuizen":
