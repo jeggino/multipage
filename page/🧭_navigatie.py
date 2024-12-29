@@ -693,7 +693,10 @@ try:
     
                 folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
                               popup=popup,
-                              icon=folium.features.CustomIcon(df_overig.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
+                              icon=folium.Icon(icon=df_overig.iloc[i]['functie_shape'],
+                                  prefix='fa',
+                                  icon_color='black',
+                                  color=df_overig.iloc[i]['color'],)
                              ).add_to(oude_waarnemingen)
     
             elif df_overig.iloc[i]['soortgroup'] == "Vleermuizen":
@@ -734,7 +737,10 @@ for i in range(len(df_2)):
     
             folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
                           popup=popup,
-                          icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
+                          icon=folium.Icon(icon=df_overig.iloc[i]['functie_shape'],
+                                  prefix='fa',
+                                  icon_color='black',
+                                  color=df_overig.iloc[i]['color'],)
                          ).add_to(fouctie_loop)
 
         elif df_2.iloc[i]['soortgroup'] == "Vleermuizen":
