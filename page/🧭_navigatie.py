@@ -565,7 +565,7 @@ df_2['functie_shape'] = df_2['functie'].map({'paarverblijfplaats':'heart',
                               'zomerverblijfplaats':'star',
                               'kraamverblijfplaats':'burst',
                               'winterverblijfplaats':'snowflake'})
-species_colors_dict=dict(zip(df_2['sp'].unique(),colors[:len(df_2['sp'].unique())]))
+species_colors_dict=dict(zip(df_point['sp'].unique(),colors[:len(df_point['sp'].unique())]))
 df_2['color'] = df_2['sp'].map(species_colors_dict)
 
 try:
@@ -575,8 +575,7 @@ try:
                                   'kraamverblijfplaats':'burst',
                                   'winterverblijfplaats':'snowflake'})
 
-    species_colors_dict_df_overig=dict(zip(df_overig['sp'].unique(),colors[:len(df_overig['sp'].unique())]))
-    df_overig['color'] = df_overig['sp'].map(species_colors_dict_df_overig)
+    df_overig['color'] = df_overig['sp'].map(species_colors_dict)
     oude_waarnemingen = folium.FeatureGroup(name="Oude waarnemingen",show=False).add_to(map)
     
     for i in range(len(df_overig)):
