@@ -94,9 +94,8 @@ def legend(species_colors_dict,dragable=True):
         <li><strong>Sorten</strong></li>
     
         {legend_temp}
-
         <li><strong>Functie</strong></li>
-        <li><span class="fa fa-binoculars" style="color:grey" opacity: 0.75;'></span>Vleermuis waarneming</li>
+        <li><span class="fa fa-walkie-talkie" style="color:grey" opacity: 0.75;'></span>Vleermuis waarneming</li>
         <li><span class="fa fa-star" style="color:grey" opacity: 0.75;'></span>Zommerverblijf</li>
         <li><span class="fa fa-venus-double" style="color:grey" opacity: 0.75;'></span>Kraamverblif</li>
         <li><span class="fa fa-snowflake" style="color:grey" opacity: 0.75;'></span>Winterverblijf</li>
@@ -646,7 +645,7 @@ colors  =['red', 'blue', 'green', 'purple', 'orange', 'darkred',
          'gray', 'black', 'lightgray']
 
 map_fuction = {'paarverblijfplaats':'heart',
-                               'vleermuis waarneming':'binoculars',
+                               'vleermuis waarneming':'walkie-talkie',
                               'zomerverblijfplaats':'star',
                               'kraamverblijfplaats':'venus-double',
                               'winterverblijfplaats':'snowflake',
