@@ -125,11 +125,6 @@ def input_data(output,df_old):
     waarnemer = st.session_state.login['name']
     project = st.session_state.project['project_name']
     soortgroup = st.session_state.project['opdracht']
-
-    # try:
-    #     gebied = st.session_state.project['area']
-    # except:
-    #     gebied = None
     
     datum = st.date_input("Datum","today")       
     nine_hours_from_now = datetime.now() + timedelta(hours=1)
@@ -225,7 +220,6 @@ try:
             
     except:
         st.stop()
-        # st.write('error')
-    
+
 except:
     st.switch_page("page/🧭_navigatie.py")
