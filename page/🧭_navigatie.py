@@ -588,6 +588,7 @@ try:
     lat = gdf_areas.centroid.y.mean()
     lng = gdf_areas.centroid.x.mean()
     map = folium.Map(location=[lat, lng], zoom_start=10,zoom_control=False,tiles=None)
+    oude_waarnemingen = folium.FeatureGroup(name="Oude waarnemingen",show=False).add_to(map)
 except:
     map = folium.Map(tiles=None, zoom_start=8,zoom_control=False)
     
@@ -614,7 +615,6 @@ folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01
 
 
 try:
-    oude_waarnemingen = folium.FeatureGroup(name="Oude waarnemingen",show=False).add_to(map)
        
     folium.GeoJson(
         gdf_areas,
