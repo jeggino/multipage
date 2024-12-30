@@ -60,12 +60,15 @@ def map():
         gdf_names = gpd.read_file(geometry_names_file)
         lat = gdf_areas.centroid.y.mean()
         lng = gdf_areas.centroid.x.mean()
-        m = folium.Map(location=[lat, lng], zoom_start=10,zoom_control=False)
+        m = folium.Map(location=[lat, lng], zoom_start=10,zoom_control=False,tiles=None)
     except:
-        m = folium.Map(zoom_control=False)  
+        m = folium.Map(zoom_control=False,tiles=None)  
     
+    folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="Stratenkaart").add_to(m)
+    folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vz6g7a00gj01pa7if7bbiv/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbHdscmRkZHAxMTl1MmlyeTJpb3Z2eHdzIn0.N9TRN7xxTikk235dVs1YeQ',
+                     attr='XXX Mapbox Attribution',overlay=False,show=False,name="Witte kaart").add_to(m)
     folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01qz9wet0mv9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbHdscmRkZHAxMTl1MmlyeTJpb3Z2eHdzIn0.N9TRN7xxTikk235dVs1YeQ',
-                 attr='XXX Mapbox Attribution',overlay=False,show=False,name="Satellietkaart").add_to(m)
+                     attr='XXX Mapbox Attribution',overlay=False,show=False,name="Satellietkaart").add_to(m)
 
     LocateControl(auto_start=st.session_state.project['auto_start'],position="topleft").add_to(m)
     # Fullscreen(position="topleft").add_to(m)
