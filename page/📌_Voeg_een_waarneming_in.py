@@ -77,11 +77,11 @@ def map():
     
     if st.session_state.project['opdracht'] == 'Vleermuizen':
         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': True},
-            position="topleft",).add_to(m)
+            position='bottomleft',).add_to(m)
 
     else:
         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False},
-            position="topleft",).add_to(m)
+            position='bottomleft',).add_to(m)
 
     functie_dictionary = {}
          
