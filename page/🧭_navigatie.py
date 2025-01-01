@@ -101,8 +101,8 @@ def legend(species_colors_dict,dragable=True):
         <li><span class="fa fa-snowflake" style="color:grey" opacity: 0.75;'></span>Winterverblijf</li>
         <li><span class="fa fa-heart" style="color:grey" opacity: 0.75;'></span>Paarverblijf</li>
         <li><strong>Functiegebied</strong></li>
-        <li><span class="fa-regular fa-object-ungroup" style="color:green" opacity: 0.75;'></span>Foerageergebied</li>
-        <li><span class="fa-regular fa-object-ungroup" style="color:red" opacity: 0.75;'></span>Baltsterritorium</li>
+        <li><span class="fa-regular fa-object-clone" style="color:grey" opacity: 0.75;'></span>Foerageergebied</li>
+        <li><span class="fa-solid fa-object-clone" style="color:grey" opacity: 0.75;'></span>Baltsterritorium</li>
       </ul> 
     </body>
     </html>
@@ -641,9 +641,9 @@ try:
 except:
     pass
 
-colors  =[ 'blue',  'purple', 'orange', 'darkred',
+colors  =[ 'red','blue', 'green', 'purple', 'orange', 'darkred',
          'lightred', 'beige', 'darkblue', 'darkgreen', 'cadetblue',
-         'darkpurple', 'pink', 'black', 'lightblue', 'lightgreen',
+         'darkpurple', 'pink',  'lightblue', 'lightgreen',
          'gray', 'lightgray']
 
 map_fuction = {'paarverblijfplaats':'heart',
@@ -741,15 +741,15 @@ for i in range(len(df_2)):
         location = [i[::-1] for i in location[0]]
                     
         if df_2.iloc[i]['functie']=="Baltsterritorium":
-            color='red'
+            weight=5
 
         else:
-            color='green'
+            weight=0
             
         folium.Polygon(location,
                        fill_color=df_2.iloc[i]['color'],
-                       weight=5,
-                       color=color,
+                       weight=weight,
+                       color='black',
                        fill_opacity=0.5,
                       popup=popup
                       ).add_to(fouctie_loop)
