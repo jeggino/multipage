@@ -744,11 +744,12 @@ for i in range(len(df_2)):
             weight=0
 
         else:
-            weight=1
+            weight=10
             
         folium.Polygon(location,
                        fill_color=df_2.iloc[i]['color'],
                        weight=weight,
+                       color='black',
                        fill_opacity=0.5,
                       popup=popup
                       ).add_to(fouctie_loop)
