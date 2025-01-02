@@ -24,7 +24,7 @@ st.set_page_config(
 
 
 conn = st.connection("gsheets", type=GSheetsConnection)
-df_references = conn.read(ttl=0,worksheet="df_users")
+df_references = conn.read(ttl=30,worksheet="df_users")
 
 st.markdown(
     """
@@ -81,19 +81,12 @@ def logIn():
             st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
 
 def project():
-    st.subheader(f"Welkom {st.session_state.login['name'].split()[0]}!!",divider='grey')
+    # st.subheader(f"Welkom {st.session_state.login['name'].split()[0]}!!",divider='grey')
     index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
     project_list = df_references.loc[index_project,"project"].split(',')
     project = st.selectbox("Kies een project, alstublieft",project_list,label_visibility="visible")
     opdracht = st.selectbox("Kies een opdracht, alstublief?",DICTIONARY_PROJECTS[project],label_visibility="visible")
-    # try:
-    #     geometry_file = f"geometries/{project}.geojson" 
-    #     gdf_areas = gpd.read_file(geometry_file)
-    #     area = st.selectbox("Aan welke gebied ga je werken?",gdf_areas['Wijk'].unique(),label_visibility="visible")
-    #     gdf_areas = gdf_areas[gdf_areas['Wijk']==area]
-    # except:
-    #     area = None
-    #     gdf_areas = None
+
     if st.session_state.login['type'] == 'user':
         on = st.toggle("🚲")
     else:
