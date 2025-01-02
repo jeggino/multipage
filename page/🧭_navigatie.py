@@ -741,15 +741,15 @@ for i in range(len(df_2)):
         location = [i[::-1] for i in location[0]]
                     
         if df_2.iloc[i]['functie']=="Baltsterritorium":
-            weight=5
+            fill_opacity=0
 
         else:
-            weight=0
+            fill_opacity=0.3
             
         folium.Polygon(location,
                        fill_color=df_2.iloc[i]['color'],
-                       weight=weight,
-                       color='black',
+                       weight=5,
+                       color=df_2.iloc[i]['color'],
                        fill_opacity=0.5,
                       popup=popup
                       ).add_to(fouctie_loop)
