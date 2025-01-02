@@ -742,13 +742,15 @@ for i in range(len(df_2)):
                     
         if df_2.iloc[i]['functie']=="Baltsterritorium":
             fill_opacity=0
+            weight=0
 
         else:
             fill_opacity=0.3
+            weight=3
             
         folium.Polygon(location,
                        fill_color=df_2.iloc[i]['color'],
-                       weight=5,
+                       weight=weight,
                        color=df_2.iloc[i]['color'],
                        fill_opacity=fill_opacity,
                       popup=popup
