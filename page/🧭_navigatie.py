@@ -602,7 +602,7 @@ try:
     functie_len = df_2['functie'].unique()
     
     for functie in functie_len:
-        functie_dictionary[functie] = folium.FeatureGroup(name=functie)    
+        functie_dictionary[functie] = folium.FeatureGroup(name=functie.capitalize())    
     
     for feature_group in functie_dictionary.keys():
         map.add_child(functie_dictionary[feature_group])
