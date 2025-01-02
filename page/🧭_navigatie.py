@@ -642,7 +642,7 @@ except:
     pass
 
 colors  =[ 'red','blue', 'green', 'purple', 'orange', 'darkred',
-         'lightred', 'beige', 'darkblue', 'darkgreen', 'cadetblue',
+          'beige', 'darkblue', 'darkgreen', 'cadetblue',
          'darkpurple', 'pink',  'lightblue', 'lightgreen',
          'gray', 'lightgray']
 
