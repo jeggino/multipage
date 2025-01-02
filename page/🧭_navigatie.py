@@ -750,7 +750,7 @@ for i in range(len(df_2)):
                        fill_color=df_2.iloc[i]['color'],
                        weight=5,
                        color=df_2.iloc[i]['color'],
-                       fill_opacity=0.5,
+                       fill_opacity=fill_opacity,
                       popup=popup
                       ).add_to(fouctie_loop)
 
