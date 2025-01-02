@@ -31,7 +31,7 @@ st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
 try:
     for key in media_dict[st.session_state.project['opdracht']]:
         col1,col2 = st.columns([2,1],gap="large", vertical_alignment="top", border=True)
-        col1.video(key)
+        col1.video(key,loop=True, autoplay=False, muted=True)
         col2.write(media_dict[st.session_state.project['opdracht']][key])
         "---"
 except:
