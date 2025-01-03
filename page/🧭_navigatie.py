@@ -418,7 +418,7 @@ def update_item(id):
 
     
   aantal = st.number_input("Aantal", min_value=1,value=int(id_aantal))    
-  opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...",value=id_opmerking)
+  opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...",value=id_opmerking)
 
   if st.button("**Update**",use_container_width=True):
     
