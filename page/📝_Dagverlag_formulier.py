@@ -103,7 +103,7 @@ try:
         windkrcht = st.number_input("Windkracht",key='windkrcht', min_value=1)
         windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))
             
-        opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
+        opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...")
         
         if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
             if gebied_id == None:
