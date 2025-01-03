@@ -163,7 +163,7 @@ def input_data(output,df_old):
         verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF)    
 
     aantal = st.number_input("Aantal", min_value=1)
-    opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
+    opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...")
     
     st.divider()
 
