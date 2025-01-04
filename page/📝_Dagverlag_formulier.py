@@ -125,11 +125,18 @@ elif selected == 'Databank':
     gebied_id_list = gdf_areas['Gebied'].unique()
     gebied_id = st.sidebar.selectbox("Gebied",gebied_id_list,index=None)
     doel = st.sidebar.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'),index=None)
+    if doel:
+        df_filter = df_old[(df_old['doel']==doel)&(df_old['gebied_id']==gebied_id)]
+        date_options = df_filter.['datum'].unique()
+        date_input = st.sidebar.selectbox('Datum',date_options,index=None)
     # try:
-    df_filter = df_old[(df_old['doel']==doel)&(df_old['gebied_id']==gebied_id)][['datum','waarnemer','start_time','eind_time','temperatuur','bewolking','neerslag','windkrcht','windrichting','opmerking',]]
-    df_filter = df_filter.set_index("datum").T
+        df_filter_2 = df_filter[(df_filter['datum']==date_input)]
+        df_filter_2
+        # st.write()
+    # [['datum','waarnemer','start_time','eind_time','temperatuur','bewolking','neerslag','windkrcht','windrichting','opmerking',]]
+    # df_filter = df_filter.set_index("datum").T
 
-    st.dataframe(df_filter,column_config=None,use_container_width=True)
+    # st.dataframe(df_filter,column_config=None,use_container_width=True)
     # except:
     #     st.stop()
 
