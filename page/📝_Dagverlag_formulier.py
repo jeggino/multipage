@@ -131,6 +131,15 @@ elif selected == 'Databank':
         date_input = st.sidebar.selectbox('Datum',date_options,index=None)
     # # try:
         df_filter_2 = df_filter[(df_filter['datum']==date_input)]
+        st.write(df_filter_2.loc[0,'waarnemer'])
+        st.write(df_filter_2.loc[0,'start_time'])
+        st.write(df_filter_2.loc[0,'eind_time'])
+        st.write(df_filter_2.loc[0,'temperatuur'])
+        st.write(df_filter_2.loc[0,'bewolking'])
+        st.write(df_filter_2.loc[0,'neerslag'])
+        st.write(df_filter_2.loc[0,'windkrcht'])
+        st.write(df_filter_2.loc[0,'windrichting'])
+        st.write(df_filter_2.loc[0,'opmerking'])
         df_filter_2
     else:
         st.stop()
