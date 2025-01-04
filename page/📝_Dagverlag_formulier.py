@@ -63,7 +63,7 @@ opdracht = st.session_state.project['opdracht']
 st.title(f'{project}')
 st.header(f'Opdracht: **{opdracht}**',divider=True)
 
-selected = option_menu(None,["Formulier", 'Databank'], icons=['house', 'gear'])
+selected = option_menu(None,["Formulier", 'Databank'], icons=['house', 'Tasks'],orientation="horizontal",)
 
 if selected == "Formulier":
     with st.form("my_form", clear_on_submit=True,border=True):
@@ -124,7 +124,12 @@ elif selected == 'Databank':
     gdf_areas = gpd.read_file(geometry_file)
     gebied_id_list = gdf_areas['Gebied'].unique()
     gebied_id = st.sidebar.selectbox("Gebied",gebied_id_list,index=None)
-    doel = st.sidebar.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
+    doel = st.sidebar.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'),index=None)
+
+    df_old
+
+    
+    
         
 # except:
 #     st.switch_page("page/🧭_navigatie.py")
