@@ -127,7 +127,7 @@ elif selected == 'Databank':
     doel = st.sidebar.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'),index=None)
     # try:
     df_filter = df_old[(df_old['doel']==doel)&(df_old['gebied_id']==gebied_id)][['datum','waarnemer','start_time','eind_time','temperatuur','bewolking','neerslag','windkrcht','windrichting','opmerking',]]
-    df_filter = df_filter.set_index("datum").T
+    # df_filter = df_filter.set_index("datum").T
     st.dataframe(df_filter,column_config=None,use_container_width=True)
     # except:
     #     st.stop()
