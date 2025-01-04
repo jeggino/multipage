@@ -7,6 +7,8 @@ from datetime import datetime, timedelta, date
 
 from credentials import *
 
+from streamlit_option_menu import option_menu
+
 
 
 
@@ -60,58 +62,69 @@ try:
     
     st.title(f'{project}')
     st.header(f'Opdracht: **{opdracht}**',divider=True)
-    
-    with st.form("my_form", clear_on_submit=True,border=True):
-        
-        if opdracht == 'Vleermuizen':
-            if project != "Overig":
-                doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
-            else:
-                doel = st.selectbox('Doel',('Overig','Kraamverblijf','Winterverblijf','Paarverblijf'))
-                
-        elif opdracht == 'Vogels':
-            if project != "Overig":
-                doel = st.selectbox('Doel',BIRD_NAMES)
-            else:
-                doel = st.selectbox('Doel',['Overig'] + BIRD_NAMES)
-                
-        try: 
-            geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
-            gdf_areas = gpd.read_file(geometry_file)
-            gebied_id_list = gdf_areas['Gebied'].unique()
-            gebied_id = st.selectbox("Gebied",gebied_id_list,index=None)
-        except:
-            gebied_id = "---"
+
+    selected = option_menu(["Formulier", 'Databank'], icons=['house', 'gear'])
+
+    if selected == "Formulier":
+        with st.form("my_form", clear_on_submit=True,border=True):
             
-        datum = st.date_input("Datum","today")       
-        two_hours_from_now = datetime.now() + timedelta(hours=1)
-        four_hours_from_now = datetime.now() + timedelta(hours=3)
-        start_time = st.time_input("Start tijd", two_hours_from_now)
-        eind_time = st.time_input("Eind tijd", four_hours_from_now)
-        
-        extra_velfwerker_list = df_projects.set_index('project').loc[project,"user"].split(',')
-        if project != "Overig":
-            extra_velfwerker_list.remove(waarnemer)
-            extra_velfwerker = st.multiselect("Extra veldwerker",extra_velfwerker_list)
-    
-        else:
-            extra_velfwerker = "---"
-        
-        temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0)
-        bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
-        neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen","Zware regen","Sneeuw"))
-        windkrcht = st.number_input("Windkracht",key='windkrcht', min_value=1)
-        windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))
+            if opdracht == 'Vleermuizen':
+                if project != "Overig":
+                    doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
+                else:
+                    doel = st.selectbox('Doel',('Overig','Kraamverblijf','Winterverblijf','Paarverblijf'))
+                    
+            elif opdracht == 'Vogels':
+                if project != "Overig":
+                    doel = st.selectbox('Doel',BIRD_NAMES)
+                else:
+                    doel = st.selectbox('Doel',['Overig'] + BIRD_NAMES)
+                    
+            try: 
+                geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
+                gdf_areas = gpd.read_file(geometry_file)
+                gebied_id_list = gdf_areas['Gebied'].unique()
+                gebied_id = st.selectbox("Gebied",gebied_id_list,index=None)
+            except:
+                gebied_id = "---"
+                
+            datum = st.date_input("Datum","today")       
+            two_hours_from_now = datetime.now() + timedelta(hours=1)
+            four_hours_from_now = datetime.now() + timedelta(hours=3)
+            start_time = st.time_input("Start tijd", two_hours_from_now)
+            eind_time = st.time_input("Eind tijd", four_hours_from_now)
             
-        opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...")
+            extra_velfwerker_list = df_projects.set_index('project').loc[project,"user"].split(',')
+            if project != "Overig":
+                extra_velfwerker_list.remove(waarnemer)
+                extra_velfwerker = st.multiselect("Extra veldwerker",extra_velfwerker_list)
         
-        if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
-            if gebied_id == None:
-                st.error("Selecteer een gebied, alstublieft",icon="⚠️")
-                st.stop()
-            insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
+            else:
+                extra_velfwerker = "---"
+            
+            temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0)
+            bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
+            neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen","Zware regen","Sneeuw"))
+            windkrcht = st.number_input("Windkracht",key='windkrcht', min_value=1)
+            windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))
+                
+            opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...")
+            
+            if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
+                if gebied_id == None:
+                    st.error("Selecteer een gebied, alstublieft",icon="⚠️")
+                    st.stop()
+                insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
+            
+                # st.switch_page("page/🧭_navigatie.py")
+            "---"
+
+    elif selected == 'Databank':
+        geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
+        gdf_areas = gpd.read_file(geometry_file)
+        gebied_id_list = gdf_areas['Gebied'].unique()
+        gebied_id = st.sidebar.selectbox("Gebied",gebied_id_list,index=None)
+        doel = st.sidebar.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
         
-            st.switch_page("page/🧭_navigatie.py")
-        "---"
 except:
     st.switch_page("page/🧭_navigatie.py")
