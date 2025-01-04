@@ -132,6 +132,8 @@ elif selected == 'Databank':
     # try:
         df_filter_2 = df_filter[(df_filter['datum']==date_input)]
         df_filter_2
+    else:
+        st.stop()
         # st.write()
     # [['datum','waarnemer','start_time','eind_time','temperatuur','bewolking','neerslag','windkrcht','windrichting','opmerking',]]
     # df_filter = df_filter.set_index("datum").T
