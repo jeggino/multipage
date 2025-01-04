@@ -130,7 +130,7 @@ elif selected == 'Databank':
         date_options = df_filter['datum'].unique()
         date_input = st.sidebar.selectbox('Datum',date_options,index=None)
     # # try:
-        df_filter_2 = df_filter[(df_filter['datum']==date_input)]
+        df_filter_2 = df_filter[(df_filter['datum']==date_input)].reset_index(drop=True)
         st.write(df_filter_2.loc[0,'waarnemer'])
         st.write(df_filter_2.loc[0,'start_time'])
         st.write(df_filter_2.loc[0,'eind_time'])
