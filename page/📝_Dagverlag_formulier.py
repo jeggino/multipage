@@ -125,8 +125,11 @@ elif selected == 'Databank':
     gebied_id_list = gdf_areas['Gebied'].unique()
     gebied_id = st.sidebar.selectbox("Gebied",gebied_id_list,index=None)
     doel = st.sidebar.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'),index=None)
-
-    df_old
+    try:
+        df_filter = df_old[(df_old['doel']==doel)&(df_old['Gebied']==gebied_id)]
+        df_filter
+    except:
+        st.stop()
 
     
     
