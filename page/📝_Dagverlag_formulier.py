@@ -129,7 +129,7 @@ elif selected == 'Databank':
         df_filter = df_old[(df_old['doel']==doel)&(df_old['gebied_id']==gebied_id)]
         date_options = df_filter['datum'].unique()
         date_input = st.sidebar.selectbox('Datum',date_options,index=None)
-    # # try:
+    try:
         df_filter_2 = df_filter[(df_filter['datum']==date_input)].reset_index(drop=True)
         st.write(df_filter_2.loc[0,'waarnemer'])
         st.write(df_filter_2.loc[0,'start_time'])
@@ -140,16 +140,8 @@ elif selected == 'Databank':
         st.write(df_filter_2.loc[0,'windkrcht'])
         st.write(df_filter_2.loc[0,'windrichting'])
         st.write(df_filter_2.loc[0,'opmerking'])
-        df_filter_2
-    else:
+    except:
         st.stop()
-        # st.write()
-    # [['datum','waarnemer','start_time','eind_time','temperatuur','bewolking','neerslag','windkrcht','windrichting','opmerking',]]
-    # df_filter = df_filter.set_index("datum").T
-
-    # st.dataframe(df_filter,column_config=None,use_container_width=True)
-    # except:
-    #     st.stop()
 
     
     
