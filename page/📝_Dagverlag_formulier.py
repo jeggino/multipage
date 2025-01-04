@@ -134,12 +134,12 @@ elif selected == 'Databank':
         st.write('Waarnemer: 'df_filter_2.loc[0,'waarnemer'])
         st.write('Start time: 'df_filter_2.loc[0,'start_time'])
         st.write('Eind time: ' df_filter_2.loc[0,'eind_time'])
-        st.write(df_filter_2.loc[0,'temperatuur'])
-        st.write(df_filter_2.loc[0,'bewolking'])
-        st.write(df_filter_2.loc[0,'neerslag'])
-        st.write(df_filter_2.loc[0,'windkrcht'])
-        st.write(df_filter_2.loc[0,'windrichting'])
-        st.write(df_filter_2.loc[0,'opmerking'])
+        st.write('temperatuur: 'df_filter_2.loc[0,'temperatuur'])
+        st.write('bewolking: 'df_filter_2.loc[0,'bewolking'])
+        st.write('neerslag: 'df_filter_2.loc[0,'neerslag'])
+        st.write('windkrcht: 'df_filter_2.loc[0,'windkrcht'])
+        st.write('windrichting: 'df_filter_2.loc[0,'windrichting'])
+        st.write('opmerking: 'df_filter_2.loc[0,'opmerking'])
     except:
         st.stop()
 
