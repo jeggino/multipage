@@ -30,8 +30,8 @@ def init_connection():
     return create_client(url, key)
 
 supabase = init_connection()
-rows_users = supabase.table("df_observations").select("*").execute()
-df_references = pd.DataFrame(rows.data)
+rows_users = supabase.table("df_users").select("*").execute()
+df_references = pd.DataFrame(rows_users.data)
 
 
 st.markdown(
