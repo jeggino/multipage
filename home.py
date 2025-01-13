@@ -13,6 +13,8 @@ import random
 
 import ast
 
+from supabase import create_client, Client
+
 from credentials import *
 
 st.set_page_config(
@@ -22,9 +24,15 @@ st.set_page_config(
     
 )
 
+def init_connection():
+    url = st.secrets["SUPABASE_URL"]
+    key = st.secrets["SUPABASE_KEY"]
+    return create_client(url, key)
 
-conn = st.connection("gsheets", type=GSheetsConnection)
-df_references = conn.read(ttl=30,worksheet="df_users")
+supabase = init_connection()
+rows_users = supabase.table("df_observations").select("*").execute()
+df_references = pd.DataFrame(rows.data)
+
 
 st.markdown(
     """
