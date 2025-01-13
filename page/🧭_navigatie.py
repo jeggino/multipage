@@ -18,14 +18,22 @@ import ast
 
 from credentials import *
 
+from supabase import create_client, Client
 
 #---DATASET---
-ttl = 10
-ttl_references = 30
-conn = st.connection("gsheets", type=GSheetsConnection)
-df_point = conn.read(ttl=ttl,worksheet="df_observations")
-df_references = conn.read(ttl=ttl_references,worksheet="df_users")
+# ttl = 10
+# ttl_references = 30
+# conn = st.connection("gsheets", type=GSheetsConnection)
+# df_point = conn.read(ttl=ttl,worksheet="df_observations")
+# df_references = conn.read(ttl=ttl_references,worksheet="df_users")
+def init_connection():
+    url = st.secrets["SUPABASE_URL"]
+    key = st.secrets["SUPABASE_KEY"]
+    return create_client(url, key)
 
+supabase = init_connection()
+rows_points = supabase.table("df_observations").select("*").execute()
+df_point = pd.DataFrame(rows_points.data)
 
 st.markdown(
     """
