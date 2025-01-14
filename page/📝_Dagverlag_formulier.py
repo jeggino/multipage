@@ -9,7 +9,7 @@ from credentials import *
 
 from streamlit_option_menu import option_menu
 
-
+from supabase import create_client, Client
 
 
 st.markdown("""
@@ -31,21 +31,20 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 # --- FUNCTIONS ---
 def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,
-                      temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old):
+                      temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking):
     
-    data = [{"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
+    data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
              "start_time":start_time,"eind_time":eind_time, "extra_velfwerker":extra_velfwerker, "temperatuur":temperatuur, "bewolking":bewolking,
-             "neerslag":neerslag,"windkrcht":windkrcht,"windrichting":windrichting,"opmerking":opmerking}]
-    df_new = pd.DataFrame(data)
-    df_updated = pd.concat([df_old,df_new],ignore_index=True)
-    
-    return conn.update(worksheet="df_dagverslagen",data=df_updated)
+             "neerslag":neerslag,"windkrcht":windkrcht,"windrichting":windrichting,"opmerking":opmerking}
+                          
+    response = (
+            supabase.table("df_dagverslagen")
+            .insert(data)
+            .execute()
+        )
 
 #---DATASET---
-ttl = '10m'
-ttl_references = '10m'
-conn = st.connection("gsheets", type=GSheetsConnection)
-df_old = conn.read(ttl=ttl,worksheet="df_dagverslagen")
+
 df_projects = conn.read(ttl=ttl_references,worksheet="df_ekomaps_projects")
 
 # --- APP ---
@@ -114,7 +113,7 @@ if selected == "Formulier":
             if gebied_id == None:
                 st.error("Selecteer een gebied, alstublieft",icon="⚠️")
                 st.stop()
-            insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
+            insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking)
         
             # st.switch_page("page/🧭_navigatie.py")
         "---"
