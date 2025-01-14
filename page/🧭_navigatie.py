@@ -466,6 +466,17 @@ def logIn():
 
         else:
             st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
+            
+@st.dialog(" ")
+def delete_item(id):
+    if st.button("Weet je zeker dat je deze waarneming wilt verwijderen?"):
+        response = (
+            supabase.table("df_observations")
+            .delete()
+            .eq("key", id)
+            .execute()
+            )
+        st.rerun()
 
 def project():
     # st.subheader(f"Welkom {st.session_state.login['name'].split()[0]}!!",divider='grey')
@@ -772,19 +783,8 @@ if st.session_state.login['type'] == 'user':
             if st.button("Waarneming bijwerken",use_container_width=True): 
                 update_item(id,df_point)
             if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
-                # df = conn.read(ttl=0,worksheet="df_observations")
-                # df_filter = df_point[df_point["key"]==id]
-                # df_drop = df_point[~df_point.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
-                # conn.update(worksheet='df_observations',data=df_drop)
-                # st.success('Waarneming verwijderd', icon="✅")
-                # st.page_link('page/🧭_navigatie.py', label="Opnieuw opstarten", icon="♻️",use_container_width=True)
-                response = (
-                    supabase.table("df_observations")
-                    .delete()
-                    .eq("key", id)
-                    .execute()
-                )
-                st.rerun()
+                delete_item(id)
+
                                            
     except:
         st.stop()
