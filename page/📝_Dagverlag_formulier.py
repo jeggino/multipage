@@ -9,6 +9,8 @@ from credentials import *
 
 from supabase import create_client, Client
 
+from streamlit_option_menu import option_menu
+
 
 st.markdown("""
     <style>
