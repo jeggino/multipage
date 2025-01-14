@@ -772,12 +772,19 @@ if st.session_state.login['type'] == 'user':
             if st.button("Waarneming bijwerken",use_container_width=True): 
                 update_item(id,df_point)
             if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
-                df = conn.read(ttl=0,worksheet="df_observations")
-                df_filter = df_point[df_point["key"]==id]
-                df_drop = df_point[~df_point.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
-                conn.update(worksheet='df_observations',data=df_drop)
-                st.success('Waarneming verwijderd', icon="✅")
-                st.page_link('page/🧭_navigatie.py', label="Opnieuw opstarten", icon="♻️",use_container_width=True)
+                # df = conn.read(ttl=0,worksheet="df_observations")
+                # df_filter = df_point[df_point["key"]==id]
+                # df_drop = df_point[~df_point.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
+                # conn.update(worksheet='df_observations',data=df_drop)
+                # st.success('Waarneming verwijderd', icon="✅")
+                # st.page_link('page/🧭_navigatie.py', label="Opnieuw opstarten", icon="♻️",use_container_width=True)
+                response = (
+                    supabase.table("df_observations")
+                    .delete()
+                    .eq("key", id)
+                    .execute()
+                )
+                st.rerun()
                                            
     except:
         st.stop()
