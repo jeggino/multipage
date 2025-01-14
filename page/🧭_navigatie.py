@@ -469,7 +469,7 @@ def logIn():
             
 @st.dialog(" ")
 def delete_item(id):
-    if st.button("Weet je zeker dat je deze waarneming wilt verwijderen?"):
+    if st.button("Weet je zeker dat je deze waarneming wilt verwijderen?",icon="🚨",use_container_width=True):
         response = (
             supabase.table("df_observations")
             .delete()
