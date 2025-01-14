@@ -35,15 +35,14 @@ def init_connection():
     return create_client(url, key)
 
 supabase = init_connection()
-rows_project = supabase.table("df_projects").select("*").execute()
-df_projects = pd.DataFrame(rows_project.data)
+
 
 # --- FUNCTIONS ---
-def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,
+def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,
                       temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking):
     
     data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
-             "start_time":start_time,"eind_time":eind_time, "extra_velfwerker":extra_velfwerker, "temperatuur":temperatuur, "bewolking":bewolking,
+             "start_time":start_time,"eind_time":eind_time,"temperatuur":temperatuur, "bewolking":bewolking,
              "neerslag":neerslag,"windkrcht":windkrcht,"windrichting":windrichting,"opmerking":opmerking}
                           
     response = (
@@ -99,31 +98,19 @@ if selected == "Formulier":
         two_hours_from_now = datetime.now() + timedelta(hours=1)
         four_hours_from_now = datetime.now() + timedelta(hours=3)
         start_time = st.time_input("Start tijd", two_hours_from_now)
-        eind_time = st.time_input("Eind tijd", four_hours_from_now)
-        
-        extra_velfwerker_list = df_projects.set_index('project').loc[project,"user"].split(',')
-        
-        if project != "Overig":
-            extra_velfwerker_list.remove(waarnemer)
-            extra_velfwerker = st.multiselect("Extra veldwerker",extra_velfwerker_list)
-            # extra_velfwerker_list =st.text_area("", placeholder="Vul hier extra velfwerker in ...")
-    
-        else:
-            extra_velfwerker = "---"
-        
+        eind_time = st.time_input("Eind tijd", four_hours_from_now)               
         temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0)
         bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
         neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen","Zware regen","Sneeuw"))
         windkrcht = st.number_input("Windkracht",key='windkrcht', min_value=1)
-        windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))
-            
+        windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))     
         opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...")
         
         if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
             if gebied_id == None:
                 st.error("Selecteer een gebied, alstublieft",icon="⚠️")
                 st.stop()
-            insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking)
+            insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking)
         
             # st.switch_page("page/🧭_navigatie.py")
         "---"
