@@ -29,6 +29,13 @@ reduce_header_height_style = """
 
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
+def init_connection():
+    url = st.secrets["SUPABASE_URL"]
+    key = st.secrets["SUPABASE_KEY"]
+    return create_client(url, key)
+
+supabase = init_connection()
+
 # --- FUNCTIONS ---
 def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,
                       temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking):
