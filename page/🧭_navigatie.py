@@ -380,7 +380,6 @@ def popup_html(row,df_2):
 def update_item(id,df):
     
   df_filter = df[df["key"]==id].reset_index(drop=True)
-  df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
 
 
   id_date = df_filter['datum'][0]
@@ -430,9 +429,9 @@ def update_item(id,df):
 
   if st.button("**Update**",use_container_width=True):
       
-    data = {"key":id_key,"waarnemer":id_waarnemer,"datum":str(datum),"time":time,"soortgroup":id_soortgroup, "aantal":aantal,
+    data = [{"key":id_key,"waarnemer":id_waarnemer,"datum":str(datum),"time":time,"soortgroup":id_soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
-                   "geometry_type":id_geometry_type,"lat":id_lat,"lng":id_lng,"opmerking":opmerking,"coordinates":id_coordinates,"project":id_project}
+                   "geometry_type":id_geometry_type,"lat":id_lat,"lng":id_lng,"opmerking":opmerking,"coordinates":id_coordinates,"project":id_project}]
       
     response = (
         supabase.table("df_observations")
