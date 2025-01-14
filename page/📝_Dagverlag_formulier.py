@@ -11,6 +11,8 @@ from supabase import create_client, Client
 
 from streamlit_option_menu import option_menu
 
+import random
+
 
 st.markdown("""
     <style>
@@ -38,10 +40,10 @@ supabase = init_connection()
 
 
 # --- FUNCTIONS ---
-def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,
+def insert_dagverslag(key,waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,
                       temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking):
     
-    data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
+    data = {"key":key,"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
              "start_time":start_time,"eind_time":eind_time,"temperatuur":temperatuur, "bewolking":bewolking,
              "neerslag":neerslag,"windkrcht":windkrcht,"windrichting":windrichting,"opmerking":opmerking}
                           
@@ -93,7 +95,7 @@ if selected == "Formulier":
             gebied_id = st.selectbox("Gebied",gebied_id_list,index=None)
         except:
             gebied_id = "---"
-            
+        key = random.randint(1,100000000000)    
         datum = st.date_input("Datum","today")       
         two_hours_from_now = datetime.now() + timedelta(hours=1)
         four_hours_from_now = datetime.now() + timedelta(hours=3)
@@ -110,7 +112,7 @@ if selected == "Formulier":
             if gebied_id == None:
                 st.error("Selecteer een gebied, alstublieft",icon="⚠️")
                 st.stop()
-            insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,str(datum),str(start_time),str(eind_time),temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking)
+            insert_dagverslag(key,waarnemer,project,opdracht,gebied_id,doel,str(datum),str(start_time),str(eind_time),temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking)
         
             # st.switch_page("page/🧭_navigatie.py")
         "---"
