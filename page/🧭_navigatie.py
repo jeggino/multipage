@@ -377,8 +377,8 @@ def popup_html(row,df_2):
 
 
 @st.dialog(" ")
-def update_item(id):
-  df = conn.read(ttl=0,worksheet="df_observations")
+def update_item(id,df):
+    
   df_filter = df[df["key"]==id].reset_index(drop=True)
   df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
 
@@ -429,78 +429,67 @@ def update_item(id):
   opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...",value=id_opmerking)
 
   if st.button("**Update**",use_container_width=True):
-    
       
-      
-    id_lat = df_filter['lat'][0]
-    id_lng = df_filter['lng'][0]
-    id_waarnemer = df_filter['waarnemer'][0]
-    id_key = df_filter['key'][0]
-    id_soortgroup = df_filter['soortgroup'][0]
-    id_geometry_type = df_filter['geometry_type'][0]
-    id_coordinates = df_filter['coordinates'][0]
-    id_project = df_filter['project'][0]
-      
-    conn.update(worksheet='df_observations',data=df_drop)
-    df_old = conn.read(ttl=0,worksheet="df_observations")
-      
-    data = [{"key":id_key,"waarnemer":id_waarnemer,"datum":str(datum),"time":time,"soortgroup":id_soortgroup, "aantal":aantal,
+    data = {"key":id_key,"waarnemer":id_waarnemer,"datum":str(datum),"time":time,"soortgroup":id_soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
-                   "geometry_type":id_geometry_type,"lat":id_lat,"lng":id_lng,"opmerking":opmerking,"coordinates":id_coordinates,"project":id_project}]
+                   "geometry_type":id_geometry_type,"lat":id_lat,"lng":id_lng,"opmerking":opmerking,"coordinates":id_coordinates,"project":id_project}
       
-    df_new = pd.DataFrame(data)
-    df_updated = pd.concat([df_old,df_new],ignore_index=True)
-    conn.update(worksheet='df_observations',data=df_updated)
+    response = (
+        supabase.table("df_observations")
+        .update(data)
+        .eq("key", id)
+        .execute()
+    )
 
     st.rerun()
 
 
 
 
-def logIn():
-    name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
-    password = st.text_input("Vul uw wachtwoord in, alstublieft")
-    try:
-        if name == None:
-            st.stop()
+# def logIn():
+#     name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
+#     password = st.text_input("Vul uw wachtwoord in, alstublieft")
+#     try:
+#         if name == None:
+#             st.stop()
         
-        index = df_references[df_references['username']==name].index[0]
-        true_password = df_references.loc[index,"password"]
+#         index = df_references[df_references['username']==name].index[0]
+#         true_password = df_references.loc[index,"password"]
 
-    except:
-        st.warning("De gebruikersnaam is niet correct.")
-        st.stop()
+#     except:
+#         st.warning("De gebruikersnaam is niet correct.")
+#         st.stop()
                              
-    if st.button("logIn"):
-        if password == true_password:
-            st.session_state.login = {"name": name, "password": password}
-            st.rerun()
+#     if st.button("logIn"):
+#         if password == true_password:
+#             st.session_state.login = {"name": name, "password": password}
+#             st.rerun()
 
-        else:
-            st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
+#         else:
+#             st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
 
-def project():
-    # st.subheader(f"Welkom {st.session_state.login['name'].split()[0]}!!",divider='grey')
-    index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
-    project_list = df_references.loc[index_project,"project"].split(',')
-    project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
-    opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
-    on = st.toggle("🚲")
-    if st.button(":rainbow[**Begin**]"):
-         st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,
-                                    }
-         st.rerun()
+# def project():
+#     # st.subheader(f"Welkom {st.session_state.login['name'].split()[0]}!!",divider='grey')
+#     index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
+#     project_list = df_references.loc[index_project,"project"].split(',')
+#     project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
+#     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
+#     on = st.toggle("🚲")
+#     if st.button(":rainbow[**Begin**]"):
+#          st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,
+#                                     }
+#          st.rerun()
         
-def logOut():
-    if st.button("logOut",use_container_width=True):
-        del st.session_state.login
-        del st.session_state.project     
-        st.rerun()
+# def logOut():
+#     if st.button("logOut",use_container_width=True):
+#         del st.session_state.login
+#         del st.session_state.project     
+#         st.rerun()
 
-def logOut_project():
-    if st.button("Opdracht wijzigen",use_container_width=True):
-        del st.session_state.project
-        st.rerun()
+# def logOut_project():
+#     if st.button("Opdracht wijzigen",use_container_width=True):
+#         del st.session_state.project
+#         st.rerun()
         
 
 #---APP---
