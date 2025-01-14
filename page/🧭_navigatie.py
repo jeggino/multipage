@@ -771,7 +771,7 @@ if st.session_state.login['type'] == 'user':
         
         with st.sidebar:
             if st.button("Waarneming bijwerken",use_container_width=True): 
-                update_item(id)
+                update_item(id,df_points)
             if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
                 df = conn.read(ttl=0,worksheet="df_observations")
                 df_filter = df_point[df_point["key"]==id]
