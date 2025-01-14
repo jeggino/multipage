@@ -129,7 +129,7 @@ def map():
 
         
 @st.dialog(" ")
-def input_data(output,df_old):
+def input_data(output):
 
     waarnemer = st.session_state.login['name']
     project = st.session_state.project['project_name']
