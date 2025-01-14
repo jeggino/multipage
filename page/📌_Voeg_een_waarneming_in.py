@@ -14,6 +14,7 @@ from datetime import datetime, timedelta, date
 
 from credentials import *
 
+from supabase import create_client, Client
 
 
 
@@ -38,18 +39,26 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 OUTPUT_width = '95%'
 OUTPUT_height = 550
 
+def init_connection():
+    url = st.secrets["SUPABASE_URL"]
+    key = st.secrets["SUPABASE_KEY"]
+    return create_client(url, key)
 
+supabase = init_connection()
     
 # --- FUNCTIONS ---
-def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old):
+def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project):
     
-    data = [{"key":key, "waarnemer":waarnemer,"datum":datum,"time":time,"soortgroup":soortgroup, "aantal":aantal,
+    data = {"key":key, "waarnemer":waarnemer,"datum":datum,"time":time,"soortgroup":soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
-                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"coordinates":coordinates,"project":project}]
-    df_new = pd.DataFrame(data)
-    df_updated = pd.concat([df_old,df_new],ignore_index=True)
-    
-    return conn.update(worksheet="df_observations",data=df_updated)
+                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"coordinates":coordinates,"project":project}
+
+    response = (
+        supabase.table("df_observations")
+        .insert(data)
+        .execute()
+    )
+
 
 def map():
 
@@ -192,7 +201,7 @@ def input_data(output,df_old):
 
         else:
             placeholder.success('Gegevens opgeslagen!', icon="✅",)
-            insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
+            insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
         
         st.switch_page("page/🧭_navigatie.py")
                      
@@ -207,13 +216,11 @@ try:
     waarnemer = st.session_state.login['name']
     
     
-    conn = st.connection("gsheets", type=GSheetsConnection)
-    df_old = conn.read(ttl=0,worksheet="df_observations")
     output_map = map()    
     
     try:
         if len(output_map["features"]) >= 1:
-            input_data(output_map,df_old)
+            input_data(output_map)
             
         else:
             st.stop()      
