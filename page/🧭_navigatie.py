@@ -429,7 +429,7 @@ def update_item(id,df):
 
   if st.button("**Update**",use_container_width=True):
       
-    data = {"key":id_key,"waarnemer":id_waarnemer,"datum":datum,"time":time,"soortgroup":id_soortgroup, "aantal":aantal,
+    data = {"key":id_key,"waarnemer":id_waarnemer,"datum":str(datum),"time":str(time),"soortgroup":id_soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
                    "geometry_type":id_geometry_type,"lat":id_lat,"lng":id_lng,"opmerking":opmerking,"coordinates":id_coordinates,"project":id_project}
       
