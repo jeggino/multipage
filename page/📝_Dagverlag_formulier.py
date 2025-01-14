@@ -35,6 +35,8 @@ def init_connection():
     return create_client(url, key)
 
 supabase = init_connection()
+rows_project = supabase.table("df_projects").select("*").execute()
+df_projects = pd.DataFrame(rows_project.data)
 
 # --- FUNCTIONS ---
 def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,
@@ -99,12 +101,12 @@ if selected == "Formulier":
         start_time = st.time_input("Start tijd", two_hours_from_now)
         eind_time = st.time_input("Eind tijd", four_hours_from_now)
         
-        # extra_velfwerker_list = df_projects.set_index('project').loc[project,"user"].split(',')
+        extra_velfwerker_list = df_projects.set_index('project').loc[project,"user"].split(',')
         
         if project != "Overig":
-            # extra_velfwerker_list.remove(waarnemer)
-            # extra_velfwerker = st.multiselect("Extra veldwerker",extra_velfwerker_list)
-            extra_velfwerker_list =st.text_area("", placeholder="Vul hier extra velfwerker in ...")
+            extra_velfwerker_list.remove(waarnemer)
+            extra_velfwerker = st.multiselect("Extra veldwerker",extra_velfwerker_list)
+            # extra_velfwerker_list =st.text_area("", placeholder="Vul hier extra velfwerker in ...")
     
         else:
             extra_velfwerker = "---"
