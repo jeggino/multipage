@@ -129,7 +129,7 @@ elif selected == 'Data':
 
         rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
         df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)
-        df_download_dagverslagen = df_dagverslagen[df_dagverslagen['project']==project].to_csv().encode("utf-8")
+        df_download_dagverslagen = df_dagverslagen[df_dagverslagen['project']==project].to_csv().encode("utf-8").drop('key',axis=1)
         
         st.download_button(label="Download waarnemingen",data=df_download_points,file_name="waarnemingen.csv",mime="text/csv", use_container_width=True) 
         st.download_button(label="Download dagverslagen",data=df_download_dagverslagen,file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
