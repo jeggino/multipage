@@ -69,7 +69,7 @@ opdracht = st.session_state.project['opdracht']
 st.title(f'{project}')
 st.header(f'Opdracht: **{opdracht}**',divider=True)
 
-selected = option_menu(None,["", ''], icons=['bi-pen-fill', 'bi-database'],orientation="horizontal",)
+selected = option_menu(None,["Formulier", 'Data'], icons=['bi-pen-fill', 'bi-database'],orientation="horizontal",)
 
 if selected == "Formulier":
     with st.form("my_form", clear_on_submit=True,border=True):
@@ -115,7 +115,7 @@ if selected == "Formulier":
             # st.switch_page("page/🧭_navigatie.py")
         "---"
 
-elif selected == 'Databank':
+elif selected == 'Data':
     st.image('https://th.bing.com/th/id/R.9b05c7a5db7a093407c47efc77073a34?rik=IElQBmbi8QoEpA&riu=http%3a%2f%2fkinderscientific.com%2fwp-content%2fuploads%2f2018%2f06%2fWork-in-Progress.jpg&ehk=Udc6o7K7mopYeuVxHWM7qb%2f%2f6udgrt%2fp%2bYwVywZTQCc%3d&risl=&pid=ImgRaw&r=0')
     # geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
     # gdf_areas = gpd.read_file(geometry_file)
