@@ -63,10 +63,10 @@ opdracht = st.session_state.project['opdracht']
 
 
 
-# st.title(f'{project}')
-# st.header(f'Opdracht: **{opdracht}**',divider=True)
+st.title(f'{project}')
+st.header(f'Opdracht: **{opdracht}**',divider=True)
 
-# selected = option_menu(None,["Formulier", 'Databank'], icons=['house', 'Tasks'],orientation="horizontal",)
+selected = option_menu(None,["Formulier", 'Databank'], icons=['house', 'Tasks'],orientation="horizontal",)
 
 # if selected == "Formulier":
 #     with st.form("my_form", clear_on_submit=True,border=True):
