@@ -52,7 +52,6 @@ def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time
 
 #---DATASET---
 
-df_projects = conn.read(ttl=ttl_references,worksheet="df_ekomaps_projects")
 
 # --- APP ---
 IMAGE = "image/logo.png"
