@@ -116,31 +116,22 @@ if selected == "Formulier":
         "---"
 
 elif selected == 'Data':
-    st.image('https://th.bing.com/th/id/R.9b05c7a5db7a093407c47efc77073a34?rik=IElQBmbi8QoEpA&riu=http%3a%2f%2fkinderscientific.com%2fwp-content%2fuploads%2f2018%2f06%2fWork-in-Progress.jpg&ehk=Udc6o7K7mopYeuVxHWM7qb%2f%2f6udgrt%2fp%2bYwVywZTQCc%3d&risl=&pid=ImgRaw&r=0')
-    # geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
-    # gdf_areas = gpd.read_file(geometry_file)
-    # gebied_id_list = gdf_areas['Gebied'].unique()
-    # gebied_id = st.sidebar.selectbox("Gebied",gebied_id_list,index=None)
-    # doel = st.sidebar.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'),index=None)
-    # if doel:
-    #     df_filter = df_old[(df_old['doel']==doel)&(df_old['gebied_id']==gebied_id)]
-    #     date_options = df_filter['datum'].unique()
-    #     date_input = st.sidebar.selectbox('Datum',date_options,index=None)
-    # try:
-    #     df_filter_2 = df_filter[(df_filter['datum']==date_input)].reset_index(drop=True)
-    #     st.write('Waarnemer: 'df_filter_2.loc[0,'waarnemer'])
-    #     st.write('Start time: 'df_filter_2.loc[0,'start_time'])
-    #     st.write('Eind time: ' df_filter_2.loc[0,'eind_time'])
-    #     st.write('temperatuur: 'df_filter_2.loc[0,'temperatuur'])
-    #     st.write('bewolking: 'df_filter_2.loc[0,'bewolking'])
-    #     st.write('neerslag: 'df_filter_2.loc[0,'neerslag'])
-    #     st.write('windkrcht: 'df_filter_2.loc[0,'windkrcht'])
-    #     st.write('windrichting: 'df_filter_2.loc[0,'windrichting'])
-    #     st.write('opmerking: 'df_filter_2.loc[0,'opmerking'])
-    # except:
-    #     st.stop()
 
-    
+    col1,col2 = st.columns()
+    col1.image('https://th.bing.com/th/id/R.9b05c7a5db7a093407c47efc77073a34?rik=IElQBmbi8QoEpA&riu=http%3a%2f%2fkinderscientific.com%2fwp-content%2fuploads%2f2018%2f06%2fWork-in-Progress.jpg&ehk=Udc6o7K7mopYeuVxHWM7qb%2f%2f6udgrt%2fp%2bYwVywZTQCc%3d&risl=&pid=ImgRaw&r=0')
+    with col2:
+        st.write("In deze sectie kunt u de onderzoeks- en dagrapportgegevens downloaden in CSV-formaat.")
+        rows_points = supabase.table("df_observations").select("*").execute()
+        df_point = pd.DataFrame(rows_points.data)
+        df_download_points = df_point[df_point['project']==project].to_csv().encode("utf-8")
+
+        rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
+        df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)
+        df_download_dagverslagen = df_dagverslagen[df_dagverslagen['project']==project].to_csv().encode("utf-8")
+        
+        st.download_button(label="Download waarnemingen",data=df_download_points,file_name="waarnemingen.csv",mime="text/csv") 
+        st.download_button(label="Download dagverslagen",data=df_download_dagverslagen,file_name="dagverslagen.csv",mime="text/csv")
+
     
         
 # # except:
