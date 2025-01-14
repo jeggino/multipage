@@ -110,7 +110,7 @@ if selected == "Formulier":
             if gebied_id == None:
                 st.error("Selecteer een gebied, alstublieft",icon="⚠️")
                 st.stop()
-            insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking)
+            insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,str(datum),str(start_time),str(eind_time),temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking)
         
             # st.switch_page("page/🧭_navigatie.py")
         "---"
