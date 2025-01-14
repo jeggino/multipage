@@ -127,12 +127,16 @@ elif selected == 'Data':
         df_point = pd.DataFrame(rows_points.data)
         df_download_points = df_point[df_point['project']==project].to_csv().encode("utf-8")
 
-        rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
-        df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)
-        df_download_dagverslagen = df_dagverslagen[df_dagverslagen['project']==project].drop('key',axis=1).to_csv().encode("utf-8")
-        
         st.download_button(label="Download waarnemingen",data=df_download_points,file_name="waarnemingen.csv",mime="text/csv", use_container_width=True) 
-        st.download_button(label="Download dagverslagen",data=df_download_dagverslagen,file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
+
+        try:
+            rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
+            df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)
+            df_download_dagverslagen = df_dagverslagen[df_dagverslagen['project']==project].drop('key',axis=1).to_csv().encode("utf-8")
+            
+            st.download_button(label="Download dagverslagen",data=df_download_dagverslagen,file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
+        except:
+            pass
 
     
         
