@@ -40,7 +40,7 @@ supabase = init_connection()
 
 
 # --- FUNCTIONS ---
-def insert_dagverslag(key,waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,
+def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,
                       temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking):
     
     data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
