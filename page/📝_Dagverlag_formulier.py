@@ -103,7 +103,7 @@ if selected == "Formulier":
         eind_time = st.time_input("Eind tijd", four_hours_from_now)               
         temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0)
         bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
-        neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen","Zware regen","Sneeuw"))
+        neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen"))
         windkrcht = st.number_input("Windkracht",key='windkrcht', min_value=1)
         windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))     
         opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...")
