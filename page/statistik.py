@@ -73,7 +73,7 @@ elif selected == "Data":
             df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & (df_dagverslagen['opdracht']==opdracht)]
             option_areas_filter = st.sidebar.selectbox(
                 "How would you like to be contacted?",
-                df_download_dagverslagen['gebied'].unique(),
+                df_download_dagverslagen['gebied_id'].unique(),
                 index=None,
                 placeholder="Select contact method...",
             )
