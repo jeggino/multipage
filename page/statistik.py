@@ -93,7 +93,7 @@ elif selected == "Data":
                 )
 
                 with col2:
-                    st.write(f"**:blue[Waarnemer:]** {df_filter.loc[event.selection['rows'][0],'waarnemer']}")
+                    st.write(f"**:blue[Samensteller:]** {df_filter.loc[event.selection['rows'][0],'waarnemer']}")
                     st.write(f"**:blue[Begin tijd:]** {df_filter.loc[event.selection['rows'][0],'start_time']}")
                     st.write(f"**:blue[Eind tijd:]** {df_filter.loc[event.selection['rows'][0],'eind_time']}")
                     st.write(f"**:blue[Temperatuur:]** {df_filter.loc[event.selection['rows'][0],'temperatuur']}")
