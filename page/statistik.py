@@ -67,45 +67,46 @@ elif selected == "Data":
             st.download_button(label="Download waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
                                file_name="waarnemingen.csv",mime="text/csv", use_container_width=True) 
     elif selection=="Dagverlagen":
-        try:
-            rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
-            df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)                
-            df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & (df_dagverslagen['opdracht']==opdracht)]
-            option_areas_filter = st.sidebar.selectbox(
-                "How would you like to be contacted?",
-                df_download_dagverslagen['gebied_id'].unique(),
-                index=None,
-                placeholder="Select contact method...",
-            )
+        with st.container(border=True):
             try:
-                df_filter = df_download_dagverslagen[df_download_dagverslagen['gebied_id']==option_areas_filter].sort_values('datum').reset_index(drop=True)
-                col1,col2 = st.columns([2,4])
-                event = col1.dataframe(
-                    df_filter,
-                    column_config={
-                        "datum": "Datum",
-                        "doel": "Doel",
-                    },
-                    hide_index=True,
-                    column_order=('datum','doel'),
-                    on_select="rerun",
-                    selection_mode=["single-row"],
+                rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
+                df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)                
+                df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & (df_dagverslagen['opdracht']==opdracht)]
+                option_areas_filter = st.sidebar.selectbox(
+                    "How would you like to be contacted?",
+                    df_download_dagverslagen['gebied_id'].unique(),
+                    index=None,
+                    placeholder="Select contact method...",
                 )
-
-                with col2:
-                    st.write(f"**:blue[Samensteller:]** {df_filter.loc[event.selection['rows'][0],'waarnemer']}")
-                    st.write(f"**:blue[Begin tijd:]** {df_filter.loc[event.selection['rows'][0],'start_time']}")
-                    st.write(f"**:blue[Eind tijd:]** {df_filter.loc[event.selection['rows'][0],'eind_time']}")
-                    st.write(f"**:blue[Temperatuur:]** {df_filter.loc[event.selection['rows'][0],'temperatuur']}")
-                    st.write(f"**:blue[Bewolking:]** {df_filter.loc[event.selection['rows'][0],'bewolking']}")
-                    st.write(f"**:blue[Neerslag:]** {df_filter.loc[event.selection['rows'][0],'neerslag']}")
-                    st.write(f"**:blue[Windkrcht:]** {df_filter.loc[event.selection['rows'][0],'windkrcht']}")
-                    st.write(f"**:blue[Windrichting:]** {df_filter.loc[event.selection['rows'][0],'windrichting']}")
-                    st.write(f"{df_filter.loc[event.selection['rows'][0],'opmerking']}")
-
+                try:
+                    df_filter = df_download_dagverslagen[df_download_dagverslagen['gebied_id']==option_areas_filter].sort_values('datum').reset_index(drop=True)
+                    col1,col2 = st.columns([2,4])
+                    event = col1.dataframe(
+                        df_filter,
+                        column_config={
+                            "datum": "Datum",
+                            "doel": "Doel",
+                        },
+                        hide_index=True,
+                        column_order=('datum','doel'),
+                        on_select="rerun",
+                        selection_mode=["single-row"],
+                    )
+    
+                    with col2:
+                        st.write(f"**:blue[Samensteller:]** {df_filter.loc[event.selection['rows'][0],'waarnemer']}")
+                        st.write(f"**:blue[Begin tijd:]** {df_filter.loc[event.selection['rows'][0],'start_time']}")
+                        st.write(f"**:blue[Eind tijd:]** {df_filter.loc[event.selection['rows'][0],'eind_time']}")
+                        st.write(f"**:blue[Temperatuur:]** {df_filter.loc[event.selection['rows'][0],'temperatuur']}")
+                        st.write(f"**:blue[Bewolking:]** {df_filter.loc[event.selection['rows'][0],'bewolking']}")
+                        st.write(f"**:blue[Neerslag:]** {df_filter.loc[event.selection['rows'][0],'neerslag']}")
+                        st.write(f"**:blue[Windkrcht:]** {df_filter.loc[event.selection['rows'][0],'windkrcht']}")
+                        st.write(f"**:blue[Windrichting:]** {df_filter.loc[event.selection['rows'][0],'windrichting']}")
+                        st.write(f"{df_filter.loc[event.selection['rows'][0],'opmerking']}")
+    
+                except:
+                    pass
+                st.download_button(label="downloaden voor alle gebieden",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
             except:
-                pass
-            st.download_button(label="downloaden voor alle gebieden",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
-        except:
-            st.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',
-                    width=450)
+                st.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',
+                        width=450)
