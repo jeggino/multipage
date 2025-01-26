@@ -85,7 +85,7 @@ elif selected == "Data":
             "datum": "Datum",
             "functie": "Functie",
                 "lat": "Lat",
-                "lon": "Lon",
+                "lng": "Lon",
                 "time": "Tijd",
                 "sp": "Soort",
                 "verblijf": "Verblijf",
@@ -94,13 +94,12 @@ elif selected == "Data":
                 "opmerking": "Opmerking",
             },
             hide_index=True,
-            column_order=('functie',"sp","gedrag","verblijf","aantal",'datum',"lat","lon","waarnemer","opmerking"),
+            column_order=('functie',"sp","gedrag","verblijf","aantal",'datum',"lat","lng","waarnemer","opmerking"),
             use_container_width=True
         )
         
-        st.download_button(label="Downloaden selected waarnemingen",data=df_filter_points.to_csv().encode("utf-8"),
-                   file_name=f"waarnemingen_{opdracht}.csv",mime="text/csv", use_container_width=False)
-        st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
+
+        st.download_button(label="Downloaden waarnemingen",data=df_filter_points.to_csv().encode("utf-8"),
                            file_name=f"waarnemingen_{opdracht}.csv",mime="text/csv", use_container_width=False)
 
 
