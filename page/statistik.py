@@ -87,7 +87,7 @@ elif selected == "Data":
                     if len(df_filter)==0:
                         col1.stop()
                     else:
-                        col1.info('Selecteer een rij om de dagelijkse rapportinformatie te krijgen')
+                        col1.info('Selecteer een rij om de Dagverlageninformatie te krijgen')
                         event = col1.dataframe(
                             df_filter,
                             column_config={
