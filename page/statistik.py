@@ -56,7 +56,7 @@ elif selected == "Data":
     selection = st.segmented_control(
         "Directions", options, selection_mode="single",default="Waarnemingen", label_visibility="collapsed"
     )
-    col1,col2 = st.columns([2,3])
+    col1,col2 = st.columns([2,2],gap='large',border=True)
     if selection=="Waarnemingen":
         rows_points = supabase.table("df_observations").select("*").execute()
         df_point = pd.DataFrame(rows_points.data)
