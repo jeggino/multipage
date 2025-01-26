@@ -83,10 +83,11 @@ elif selected == "Data":
                     df_filter,
                     column_config={
                         "datum": "Datum",
+                        "doel": "Doel",
                         "waarnemer": "Waarnemer",
                     },
                     hide_index=True,
-                    column_order=('datum','waarnemer'),
+                    column_order=('datum','doel','waarnemer'),
                     on_select="rerun",
                     selection_mode=["single-row"],
                 )
