@@ -94,6 +94,7 @@ elif selected == "Data":
                 event
 
                 with col2:
+                    event.selection['rows'][0]
                     df_filter.loc[event.selection['rows'][0]]
                     st.write(f"**:blue[Waarnemer:]** {df_filter.loc[event.selection['rows'][0],'waarnemer']}")
                     st.write(f"**:blue[Begin tijd:]** {df_filter.loc[event.selection['rows'][0],'start_time']}")
