@@ -113,7 +113,7 @@ elif selected == "Data":
                            .encode(x="datum", color="doel", tooltip=["datum", "doel"])
                         )
                         
-                        st.altair_chart(c, use_container_width=True)
+                        st.altair_chart(c, use_container_width=True,theme=None,)
 
                         
         
