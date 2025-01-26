@@ -69,18 +69,19 @@ elif selected == "Data":
     elif selection=="Dagverlagen":
         with st.container(border=True):
             try:
+                col1,col2 = st.columns([2,4])
                 rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
                 df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)                
                 df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & (df_dagverslagen['opdracht']==opdracht)]
-                option_areas_filter = st.sidebar.selectbox(
-                    "How would you like to be contacted?",
+                option_areas_filter = col1.sidebar.selectbox(
+                    "Selecteer een gebied",
                     df_download_dagverslagen['gebied_id'].unique(),
                     index=None,
-                    placeholder="Select contact method...",
+                    placeholder="Selecteer een gebied...",
+                    label_visibility="collapsed"
                 )
                 try:
                     df_filter = df_download_dagverslagen[df_download_dagverslagen['gebied_id']==option_areas_filter].sort_values('datum').reset_index(drop=True)
-                    col1,col2 = st.columns([2,4])
                     event = col1.dataframe(
                         df_filter,
                         column_config={
