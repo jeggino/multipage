@@ -79,15 +79,20 @@ elif selected == "Data":
             )
             try:
                 df_filter = df_download_dagverslagen [df_download_dagverslagen ['gebied_id']==option_areas_filter]
-                st.dataframe(
+                event = st.dataframe(
                     df_filter,
                     column_config={
                         "datum": "Datum",
                         "waarnemer": "Waarnemer",
                     },
                     hide_index=True,
-                    column_order=('datum','waarnemer')
+                    column_order=('datum','waarnemer'),
+                    on_select="rerun",
+                    selection_mode=["multi-row"],
                 )
+
+                
+                event.selection
             except:
                 pass
             st.download_button(label="downloaden voor alle gebieden",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
