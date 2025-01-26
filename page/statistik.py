@@ -103,7 +103,7 @@ elif selected == "Data":
                     st.write(f"**:blue[Windkrcht:]** {df_filter.loc[event.selection['rows'][0],'windkrcht']}")
                     st.write(f"**:blue[Windrichting:]** {df_filter.loc[event.selection['rows'][0],'windrichting']}")
                     st.write(f"{df_filter.loc[event.selection['rows'][0],'opmerking']}")
-                    df_filter.loc[event.selection['rows'][0],'opmerking']
+                    df_filter.loc[event.selection['rows'][0]]
             except:
                 pass
             st.download_button(label="downloaden voor alle gebieden",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
