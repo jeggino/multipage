@@ -88,7 +88,7 @@ elif selected == "Data":
                     hide_index=True,
                     column_order=('datum','waarnemer'),
                     on_select="rerun",
-                    selection_mode=["multi-row"],
+                    selection_mode=["single-row"],
                 )
 
                 
