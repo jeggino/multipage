@@ -52,7 +52,7 @@ elif selected == "Data":
 
     options = ["Waarnemingen", "Dagverlagen"]
     selection = st.segmented_control(
-        "Directions", options, selection_mode="single"
+        "Directions", options, selection_mode="single",default="Waarnemingen",
     )
 
     if selection=="Waarnemingen":
