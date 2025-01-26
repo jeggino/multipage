@@ -79,8 +79,22 @@ elif selected == "Data":
             )
             
         df_filter_points = df_download_points[(df_download_points['functie'].isin(option_funtion_filter)) & (df_download_points['sp'].isin(option_Species_filter))]  
-        df_filter_points
-        st.download_button(label="Downloaden selected waarnemingen",data=df_filter_points.to_csv().encode("utf-8"),
+        event = st.dataframe(
+            df_filter_points,
+            column_config={
+            "datum": "Datum",
+            "doel": "Doel",
+                "lat": "Lat",
+                "lon": "Lon",
+                "waarnemer": "Waarnemer",
+            },
+            hide_index=True,
+            column_order=('datum','doel',"waarnemer"),
+
+            use_container_width=False
+        )
+        
+        st.download_button(label="Downloaden selected waarnemingen",data=event.to_csv().encode("utf-8"),
                    file_name=f"waarnemingen_{opdracht}.csv",mime="text/csv", use_container_width=False)
         st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
                            file_name=f"waarnemingen_{opdracht}.csv",mime="text/csv", use_container_width=False)
