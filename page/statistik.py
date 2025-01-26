@@ -59,9 +59,12 @@ elif selected == "Data":
         rows_points = supabase.table("df_observations").select("*").execute()
         df_point = pd.DataFrame(rows_points.data)
         df_download_points = df_point[df_point['project']==project]
-        df_download_points
-        st.write(len(df_download_points))
-        st.download_button(label="Download waarnemingen",data=df_download_points.to_csv().encode("utf-8"),file_name="waarnemingen.csv",mime="text/csv", use_container_width=True) 
+        if len(df_download_points)==0:
+            st.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg')
+        else:
+            df_download_points
+            st.download_button(label="Download waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
+                               file_name="waarnemingen.csv",mime="text/csv", use_container_width=True) 
     elif selection=="Dagverlagen":
         try:
             rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
