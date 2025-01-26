@@ -53,7 +53,7 @@ elif selected == "Data":
     
     
 
-    options = ["Waarnemingen", "Dagverlagen"]
+    options = ["Waarnemingen", "Dagverslagen"]
     selection = st.segmented_control(
         "Directions", options, selection_mode="single",default="Waarnemingen", label_visibility="collapsed"
     )
@@ -104,7 +104,7 @@ elif selected == "Data":
 
 
 
-    elif selection=="Dagverlagen":
+    elif selection=="Dagverslagen":
         try:
             rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
             df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)                
