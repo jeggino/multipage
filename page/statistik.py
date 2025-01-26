@@ -78,7 +78,7 @@ elif selected == "Data":
                 placeholder="Select contact method...",
             )
             try:
-                df_filter = df_download_dagverslagen[df_download_dagverslagen['gebied_id']==option_areas_filter].sort_values('datum')
+                df_filter = df_download_dagverslagen[df_download_dagverslagen['gebied_id']==option_areas_filter].sort_values('datum').reset_index(drop=True)
                 col1,col2 = st.columns([2,4])
                 event = col1.dataframe(
                     df_filter,
