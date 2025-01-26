@@ -91,6 +91,7 @@ elif selected == "Data":
                     on_select="rerun",
                     selection_mode=["single-row"],
                 )
+                event
 
                 with col2:
                     st.write(f"**:blue[Waarnemer:]** {df_filter.loc[event.selection['rows'][0],'waarnemer']}")
