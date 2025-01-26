@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 import geopandas as gpd
+import altair as alt
 import datetime
 from datetime import datetime, timedelta, date
 
@@ -76,7 +77,8 @@ elif selected == "Data":
             df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & (df_dagverslagen['opdracht']==opdracht)]
             st.download_button(label="Downloaden alle dagverslagen",data=df_download_dagverslagen.to_csv().encode("utf-8"),
                                file_name="dagverslagen.csv",mime="text/csv", use_container_width=False)
-            col1,col2 = st.columns([2,4],gap='large',border=True)
+            col1,col2 = st.columns([3,4],gap='large',border=True)
+            
             with st.container(border=True):
                 option_areas_filter = col1.selectbox(
                     "Selecteer een gebied",
@@ -87,22 +89,33 @@ elif selected == "Data":
                 )
                 try:
                     df_filter = df_download_dagverslagen[df_download_dagverslagen['gebied_id']==option_areas_filter].sort_values('datum').reset_index(drop=True)
-                    if len(df_filter)==0:
-                        col1.stop()
-                    else:
-                        
-                        event = col1.dataframe(
-                            df_filter,
-                            column_config={
-                                "datum": "Datum",
-                                "doel": "Doel",
-                            },
-                            hide_index=True,
-                            column_order=('datum','doel'),
-                            on_select="rerun",
-                            selection_mode=["single-row"],
-                            use_container_width=True
+                    with col1:
+                        if len(df_filter)==0:
+                            st.stop()
+                        else:
+                            
+                            event = st.dataframe(
+                                df_filter,
+                                column_config={
+                                    "datum": "Datum",
+                                    "doel": "Doel",
+                                },
+                                hide_index=True,
+                                column_order=('datum','doel'),
+                                on_select="rerun",
+                                selection_mode=["single-row"],
+                                use_container_width=True
+                            )
+
+                        c = (
+                           alt.Chart(df_filter)
+                           .mark_circle()
+                           .encode(x="datum", color="doel", tooltip=["datum", "doel"])
                         )
+                        
+                        st.altair_chart(c, use_container_width=True)
+
+                        
         
                         with col2:
                             if len(event.selection['rows'])==0:
