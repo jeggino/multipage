@@ -61,6 +61,7 @@ elif selected == "Data":
         rows_points = supabase.table("df_observations").select("*").execute()
         df_point = pd.DataFrame(rows_points.data)
         df_download_points = df_point[df_point['project']==project]
+        col1,col2 = st.columns([2,4],gap='large',border=True)
         if len(df_download_points)==0:
             col1.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',
                         width=450)
