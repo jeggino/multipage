@@ -94,7 +94,7 @@ elif selected == "Data":
                 "opmerking": "Opmerking",
             },
             hide_index=True,
-            column_order=('functie',"sp","gedrag","verblijf","aantal",'datum',"lat","long","waarnemer","opmerking"),
+            column_order=('functie',"sp","gedrag","verblijf","aantal",'datum',"lat","lon","long","waarnemer","opmerking"),
             use_container_width=True
         )
         
