@@ -83,13 +83,13 @@ elif selected == "Data":
             df_filter_points,
             column_config={
             "datum": "Datum",
-            "doel": "Doel",
+            "functie": "Functie",
                 "lat": "Lat",
                 "lon": "Lon",
                 "waarnemer": "Waarnemer",
             },
             hide_index=True,
-            column_order=('datum','doel',"waarnemer"),
+            column_order=('datum','functie',"waarnemer"),
             use_container_width=False
         )
         
