@@ -64,9 +64,8 @@ elif selected == "Data":
         df_download_points = df_point[(df_point['project']==project) & (df_point['soortgroup']==opdracht)]
         st.download_button(label="Downloaden alle dagverslagen",data=df_download_points.to_csv().encode("utf-8"),
                            file_name=f"waarnemingen_{opdracht}.csv",mime="text/csv", use_container_width=False)
-        col1,col2 = st.columns([2,4],gap='large',border=True)
         if len(df_download_points)==0:
-            col1.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',
+            st.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',
                         width=450)
         else:
             df_download_points
