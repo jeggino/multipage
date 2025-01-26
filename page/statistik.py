@@ -93,7 +93,15 @@ elif selected == "Data":
                 )
 
                 with col2:
+                    st.write(f"Waarnemer: {df_filter.loc[event.selection['rows'][0],'waarnemer']}")
                     st.write(f"Begin tijd: {df_filter.loc[event.selection['rows'][0],'start_time']}")
+                    st.write(f"Eind tijd: {df_filter.loc[event.selection['rows'][0],'eind_time']}")
+                    st.write(f"Begin tijd: {df_filter.loc[event.selection['rows'][0],'temperatuur']}")
+                    st.write(f"Temperatuur: {df_filter.loc[event.selection['rows'][0],'bewolking']}")
+                    st.write(f"Neerslag: {df_filter.loc[event.selection['rows'][0],'neerslag']}")
+                    st.write(f"Windkrcht: {df_filter.loc[event.selection['rows'][0],'windkrcht']}")
+                    st.write(f"Windrichting: {df_filter.loc[event.selection['rows'][0],'windrichting']}")
+                    st.write(f"{df_filter.loc[event.selection['rows'][0],'opmerking']}")
             except:
                 pass
             st.download_button(label="downloaden voor alle gebieden",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
