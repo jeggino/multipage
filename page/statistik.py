@@ -99,6 +99,7 @@ elif selected == "Data":
                             column_order=('datum','doel'),
                             on_select="rerun",
                             selection_mode=["single-row"],
+                            use_container_width=True
                         )
         
                         with col2:
