@@ -66,7 +66,8 @@ elif selected == "Data":
         try:
             rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
             df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)
-            df_dagverslagen
+            if len(df_dagverslagen)!=0:
+                df_dagverslagen
             df_download_dagverslagen = df_dagverslagen[df_dagverslagen['project']==project].to_csv().encode("utf-8")
             
             st.download_button(label="Download dagverslagen",data=df_download_dagverslagen,file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
