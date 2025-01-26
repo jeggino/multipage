@@ -65,7 +65,7 @@ elif selected == "Data":
         if len(df_download_points)==0:
             st.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',
                         width=450)
-        with st.popover("Filters",use_container_width=True,icon='bi bi-funnel'):
+        with st.popover("Filters",use_container_width=True,icon=':material/filter_alt'):
             option_funtion_filter = st.multiselect(
                 "Functie",
                 df_download_points['functie'].unique(),
