@@ -64,7 +64,7 @@ elif selected == "Data":
         else:
             df_download_points
             st.download_button(label="Download waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
-                               file_name="waarnemingen.csv",mime="text/csv", use_container_width=True) 
+                               file_name="waarnemingen.csv",mime="text/csv", use_container_width=True,, label_visibility="hidden") 
     elif selection=="Dagverlagen":
         try:
             rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
