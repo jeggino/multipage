@@ -62,6 +62,8 @@ elif selected == "Data":
         rows_points = supabase.table("df_observations").select("*").execute()
         df_point = pd.DataFrame(rows_points.data)
         df_download_points = df_point[(df_point['project']==project) & (df_point['soortgroup']==opdracht)]
+        with st.popover("Filters"):
+            name = st.text_input("What's your name?")
         st.download_button(label="Downloaden alle dagverslagen",data=df_download_points.to_csv().encode("utf-8"),
                            file_name=f"waarnemingen_{opdracht}.csv",mime="text/csv", use_container_width=False)
         if len(df_download_points)==0:
