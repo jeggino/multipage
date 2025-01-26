@@ -78,7 +78,7 @@ elif selected == "Data":
                 placeholder="Select contact method...",
             )
             try:
-                df_filter = df_download_dagverslagen [df_download_dagverslagen ['gebied_id']==option_areas_filter].sort_values('datum')
+                df_filter = df_download_dagverslagen[df_download_dagverslagen['gebied_id']==option_areas_filter].sort_values('datum')
                 col1,col2 = st.columns([2,4])
                 event = col1.dataframe(
                     df_filter,
@@ -103,6 +103,7 @@ elif selected == "Data":
                     st.write(f"**:blue[Windkrcht:]** {df_filter.loc[event.selection['rows'][0],'windkrcht']}")
                     st.write(f"**:blue[Windrichting:]** {df_filter.loc[event.selection['rows'][0],'windrichting']}")
                     st.write(f"{df_filter.loc[event.selection['rows'][0],'opmerking']}")
+                    df_filter.loc[event.selection['rows'][0],'opmerking']
             except:
                 pass
             st.download_button(label="downloaden voor alle gebieden",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
