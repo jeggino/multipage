@@ -75,19 +75,19 @@ elif selected == "Data":
                 rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
                 df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)                
                 df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & (df_dagverslagen['opdracht']==opdracht)]
-                if len(df_download_points)==0:
-                    col1.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',
-                                width=450)
-                else:
-                    option_areas_filter = col1.selectbox(
-                        "Selecteer een gebied",
-                        df_download_dagverslagen['gebied_id'].unique(),
-                        index=None,
-                        placeholder="Selecteer een gebied...",
-                        label_visibility="collapsed"
-                    )
-                    try:
-                        df_filter = df_download_dagverslagen[df_download_dagverslagen['gebied_id']==option_areas_filter].sort_values('datum').reset_index(drop=True)
+
+                option_areas_filter = col1.selectbox(
+                    "Selecteer een gebied",
+                    df_download_dagverslagen['gebied_id'].unique(),
+                    index=None,
+                    placeholder="Selecteer een gebied...",
+                    label_visibility="collapsed"
+                )
+                try:
+                    df_filter = df_download_dagverslagen[df_download_dagverslagen['gebied_id']==option_areas_filter].sort_values('datum').reset_index(drop=True)
+                    if len(df_filter)==0:
+                        col1.info('select an area')
+                    else:
                         event = col1.dataframe(
                             df_filter,
                             column_config={
