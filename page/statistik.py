@@ -70,7 +70,7 @@ elif selected == "Data":
         try:
             rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
             df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)                
-            df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & df_dagverslagen['opdracht']==opdracht)&]
+            df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & df_dagverslagen['opdracht']==opdracht)]
             option_areas_filter = st.sidebar.selectbox(
                 "How would you like to be contacted?",
                 df_download_dagverslagen['gebied'].unique(),
