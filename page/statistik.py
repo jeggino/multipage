@@ -78,7 +78,7 @@ elif selected == "Data":
                 placeholder="Select contact method...",
             )
             try:
-                df_download_dagverslagen_filter[df_download_dagverslagen_filter['gebied']==option_areas_filter]
+                df_download_dagverslagen_filter[df_download_dagverslagen_filter['gebied_id']==option_areas_filter]
             except:
                 pass
             st.download_button(label="downloaden voor alle gebieden",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
