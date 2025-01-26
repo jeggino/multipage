@@ -79,21 +79,21 @@ elif selected == "Data":
             )
             try:
                 df_filter = df_download_dagverslagen [df_download_dagverslagen ['gebied_id']==option_areas_filter].sort_values('datum')
-                event = st.dataframe(
+                col1,col2 = st.columns([2,4])
+                event = col1.dataframe(
                     df_filter,
                     column_config={
                         "datum": "Datum",
                         "doel": "Doel",
-                        "waarnemer": "Waarnemer",
                     },
                     hide_index=True,
-                    column_order=('datum','doel','waarnemer'),
+                    column_order=('datum','doel'),
                     on_select="rerun",
                     selection_mode=["single-row"],
                 )
 
-                
-                df_filter.loc[event.selection['rows'][0],'start_time']
+                with col2:
+                    st.write(f"Begin tijd: {df_filter.loc[event.selection['rows'][0],'start_time']}")
             except:
                 pass
             st.download_button(label="downloaden voor alle gebieden",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
