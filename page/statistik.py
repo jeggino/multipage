@@ -92,7 +92,7 @@ elif selected == "Data":
                 )
 
                 
-                df_filter.loc[event.selection['rows'][0]]
+                df_filter.loc[event.selection['rows'][0],'start_time']
             except:
                 pass
             st.download_button(label="downloaden voor alle gebieden",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
