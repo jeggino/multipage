@@ -90,11 +90,10 @@ elif selected == "Data":
             },
             hide_index=True,
             column_order=('datum','doel',"waarnemer"),
-
             use_container_width=False
         )
         
-        st.download_button(label="Downloaden selected waarnemingen",data=event.to_csv().encode("utf-8"),
+        st.download_button(label="Downloaden selected waarnemingen",data=df_filter_points.to_csv().encode("utf-8"),
                    file_name=f"waarnemingen_{opdracht}.csv",mime="text/csv", use_container_width=False)
         st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
                            file_name=f"waarnemingen_{opdracht}.csv",mime="text/csv", use_container_width=False)
