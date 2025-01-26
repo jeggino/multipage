@@ -122,3 +122,5 @@ elif selected == "Data":
         except:
             st.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',
                     width=450)
+
+'---'
