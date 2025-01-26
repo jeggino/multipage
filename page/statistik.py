@@ -100,7 +100,7 @@ elif selected == "Data":
                     st.write(f"Temperatuur: {df_filter.loc[event.selection['rows'][0],'bewolking']}")
                     st.write(f"Neerslag: {df_filter.loc[event.selection['rows'][0],'neerslag']}")
                     st.write(f"Windkrcht: {df_filter.loc[event.selection['rows'][0],'windkrcht']}")
-                    st.markdown(f"**blue[Windrichting:]** {df_filter.loc[event.selection['rows'][0],'windrichting']}")
+                    st.markdown(f"**:blue[Windrichting:]** {df_filter.loc[event.selection['rows'][0],'windrichting']}")
                     st.write(f"{df_filter.loc[event.selection['rows'][0],'opmerking']}")
             except:
                 pass
