@@ -144,7 +144,7 @@ elif selected == "Data":
 
                         c = (
                            alt.Chart(df_filter)
-                           .mark_circle(size=30,)
+                           .mark_circle(size=55,)
                            .encode(x="datum", color="doel", tooltip=["datum", "doel"])
                         )
                         
