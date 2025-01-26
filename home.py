@@ -122,6 +122,8 @@ page_1 = st.Page("page/🧭_navigatie.py", title="Navigatie",icon="🧭" )
 page_2 = st.Page("page/📌_Voeg_een_waarneming_in.py", title="Voeg een waarneming in",icon="📌" )
 page_3 = st.Page("page/📝_Dagverlag_formulier.py", title="Dagverlag formulier",icon="📝" )
 page_4 = st.Page("page/📊_ Statistik.py", title="Videos/Fotos",icon="📹" )
+page_5 = st.Page("page/statistik.py", title="Statistik",icon="📊" )
+
 
 #---APP---
 IMAGE = "image/logo.png"
@@ -139,7 +141,7 @@ if 'project' not in st.session_state:
 
 if st.session_state.login['type'] == 'user':
     if st.session_state.project['project_name'] != 'Overig':
-        pg = st.navigation([page_1,page_2,page_3])
+        pg = st.navigation([page_1,page_2,page_3,page_5])
     else:
         pg = st.navigation([page_1,page_2])
     
