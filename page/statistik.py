@@ -70,9 +70,18 @@ elif selected == "Data":
         try:
             rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
             df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)                
-            df_download_dagverslagen = df_dagverslagen[df_dagverslagen['project']==project]
-            df_download_dagverslagen
-            st.download_button(label="Download dagverslagen",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
+            df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & df_dagverslagen['opdracht']==opdracht)&]
+            option_areas_filter = st.sidebar.selectbox(
+                "How would you like to be contacted?",
+                df_download_dagverslagen['gebied'].unique(),
+                index=None,
+                placeholder="Select contact method...",
+            )
+            try:
+                df_download_dagverslagen_filter[df_download_dagverslagen_filter['gebied']==option_areas_filter]
+            except:
+                pass
+            st.download_button(label="downloaden voor alle gebieden",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
         except:
             st.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',
                     width=450)
