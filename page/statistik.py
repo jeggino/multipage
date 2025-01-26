@@ -91,6 +91,7 @@ elif selected == "Data":
                 "verblijf": "Verblijf",
                 "gedrag": "Gedrag",
                 "aantal": "Aantal",
+                "waarnemer":"Waarnemer",
                 "opmerking": "Opmerking",
             },
             hide_index=True,
