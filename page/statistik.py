@@ -86,6 +86,7 @@ elif selected == "Data":
                         "waarnemer": "Waarnemer",
                     },
                     hide_index=True,
+                    column_order=('datum','waarnemer')
                 )
             except:
                 pass
