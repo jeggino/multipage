@@ -49,6 +49,8 @@ if selected == "Cijfers":
 
     
 elif selected == "Data":
+    
+    col1,col2 = st.columns([1,3])
 
     options = ["Waarnemingen", "Dagverlagen"]
     selection = st.segmented_control(
@@ -69,7 +71,7 @@ elif selected == "Data":
     elif selection=="Dagverlagen":
         with st.container(border=True):
             try:
-                col1,col2 = st.columns([2,4])
+                
                 rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
                 df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)                
                 df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & (df_dagverslagen['opdracht']==opdracht)]
@@ -107,7 +109,7 @@ elif selected == "Data":
     
                 except:
                     pass
-                st.download_button(label="downloaden voor alle gebieden",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
+                col1.download_button(label="downloaden voor alle gebieden",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
             except:
                 st.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',
                         width=450)
