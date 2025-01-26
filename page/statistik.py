@@ -110,7 +110,7 @@ elif selected == "Data":
                         c = (
                            alt.Chart(df_filter)
                            .mark_circle()
-                           .encode(x="datum", color="doel", tooltip=["datum", "doel"])
+                           .encode(x="datum", color="doel",size=5, tooltip=["datum", "doel"])
                         )
                         
                         st.altair_chart(c, use_container_width=True,theme=None,)
