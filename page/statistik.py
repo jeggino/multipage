@@ -56,7 +56,7 @@ elif selected == "Data":
     selection = st.segmented_control(
         "Directions", options, selection_mode="single",default="Waarnemingen", label_visibility="collapsed"
     )
-    col1,col2 = st.columns([2,4],gap='large',border=True)
+    
     if selection=="Waarnemingen":
         rows_points = supabase.table("df_observations").select("*").execute()
         df_point = pd.DataFrame(rows_points.data)
@@ -73,8 +73,9 @@ elif selected == "Data":
             rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
             df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)                
             df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & (df_dagverslagen['opdracht']==opdracht)]
-            st.download_button(label="downloaden voor alle gebieden",data=df_download_dagverslagen.to_csv().encode("utf-8"),
-                               file_name="dagverslagen.csv",mime="text/csv", use_container_width=True)
+            st.download_button(label="Downloaden alle dagverslagen",data=df_download_dagverslagen.to_csv().encode("utf-8"),
+                               file_name="dagverslagen.csv",mime="text/csv", use_container_width=False)
+            col1,col2 = st.columns([2,4],gap='large',border=True)
             with st.container(border=True):
                 option_areas_filter = col1.selectbox(
                     "Selecteer een gebied",
