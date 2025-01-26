@@ -86,11 +86,16 @@ elif selected == "Data":
             "functie": "Functie",
                 "lat": "Lat",
                 "lon": "Lon",
-                "waarnemer": "Waarnemer",
+                "time": "Tijd",
+                "sp": "Soort",
+                "verblijf": "Verblijf",
+                "gedrag": "Gedrag",
+                "aantal": "Aantal",
+                "opmerking": "Opmerking",
             },
             hide_index=True,
-            column_order=('datum','functie',"waarnemer"),
-            use_container_width=False
+            column_order=('functie',"sp","gedrag","verblijf","aantal",'datum',"lat","long","waarnemer","opmerking"),
+            use_container_width=True
         )
         
         st.download_button(label="Downloaden selected waarnemingen",data=df_filter_points.to_csv().encode("utf-8"),
