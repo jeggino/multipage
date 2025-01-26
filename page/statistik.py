@@ -85,7 +85,7 @@ elif selected == "Data":
                 try:
                     df_filter = df_download_dagverslagen[df_download_dagverslagen['gebied_id']==option_areas_filter].sort_values('datum').reset_index(drop=True)
                     if len(df_filter)==0:
-                        col1.info('Selecteer een gebied')
+                        col1.stop()
                     else:
                         col1.info('Selecteer een rij om de dagelijkse rapportinformatie te krijgen')
                         event = col1.dataframe(
