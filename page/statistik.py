@@ -42,9 +42,9 @@ project = st.session_state.project['project_name']
 opdracht = st.session_state.project['opdracht']
 
 
-selected = option_menu(None,["Numbers", 'Data'], icons=['bi-pen-fill', 'bi-database'],orientation="horizontal",)
+selected = option_menu(None,["Cijfers", 'Data'], icons=['chart-simple', 'bi-database'],orientation="horizontal",)
 
-if selected == "Numbers":
+if selected == "Cijfers":
     st.image('https://th.bing.com/th/id/R.9b05c7a5db7a093407c47efc77073a34?rik=IElQBmbi8QoEpA&riu=http%3a%2f%2fkinderscientific.com%2fwp-content%2fuploads%2f2018%2f06%2fWork-in-Progress.jpg&ehk=Udc6o7K7mopYeuVxHWM7qb%2f%2f6udgrt%2fp%2bYwVywZTQCc%3d&risl=&pid=ImgRaw&r=0')
 
     
