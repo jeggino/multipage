@@ -33,7 +33,7 @@ try:
     for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]:
         col1,col2 = st.columns([2,1],gap="large", vertical_alignment="top", border=True)
         col1.video(key,loop=True, autoplay=False, muted=True)
-        col2.write(media_dict[st.session_state.project['opdracht']][key])
+        col2.write(media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']][key])
         "---"
 except:
     st.image('https://cdn.pixabay.com/photo/2016/05/31/10/52/not-yet-1426593_960_720.png')
