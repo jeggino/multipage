@@ -105,5 +105,7 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'vogel waarneming': 'icons/swift.pn
 
 DICTIONARY_PROJECTS = {"Overig":["Vogels","Vleermuizen"],
                       "Admin":["Vogels","Vleermuizen"],
-                       'SMPs-Terschelling':["Vleermuizen","Vogels"]
+                       'SMPs-Terschelling':["Vleermuizen","Vogels"],
+                       'SMPs-EdamVolendam':["Vleermuizen","Vogels"]
+                       
                       }
