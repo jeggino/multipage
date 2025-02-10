@@ -28,6 +28,7 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 IMAGE = "image/logo.png"
 st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
 st.write(st.session_state.project['project_name'])
+media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]
 try:
     for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]:
         col1,col2 = st.columns([2,1],gap="large", vertical_alignment="top", border=True)
