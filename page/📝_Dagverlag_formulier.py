@@ -84,7 +84,7 @@ with st.form("my_form", clear_on_submit=True,border=True):
             
     elif opdracht == 'Vogels':
         if project != "Overig":
-            doel = st.selectbox('Doel',BIRD_NAMES)
+            doel = st.selectbox('Doel',['Gierzwaluw','Huismus'])
         else:
             doel = st.selectbox('Doel',['Overig'] + BIRD_NAMES)
             
