@@ -1,13 +1,4 @@
 # --- COSTANTS ---
-GROUP = ["🦇 Vleermuizen","🪶 Vogels",  "🏠 Vleermuiskast",
-         "📷 Camera", "🐀 Rat val", '𐂺 Vangkooi']
-
-GROUP_DICT = {"🪶 Vogels":"Vogels",
-              "🦇 Vleermuizen":"Vleermuizen", 
-              "🏠 Vleermuiskast":"Vleermuiskast",
-              "📷 Camera":"Camera",
-             "🐀 Rat val":"Rat val",
-              '𐂺 Vangkooi':'Vangkooi'}
 
 
 
@@ -27,11 +18,11 @@ BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst',
 GEBIED_OPTIONS = ['Foerageergebied','Baltsterritorium']
 
 #---
-BIRD_NAMES = ['Gierzwaluw','Huiszwaluw','Huismus','boerenzwaluw','Spreeuw']
+BIRD_NAMES = ['Gierzwaluw','Huiszwaluw','Boerenzwaluw','Huismus','Spreeuw']
 
 BIRD_NAMES_ANDER = ['...Andere(n)']
 
-BIRD_BEHAVIOURS = ['overvliegend',  'nest-indicerend gedrag', 'foeragerend', 'invliegend', 'uitvliegend',
+BIRD_BEHAVIOURS = ['overvliegend', 'nest-indicerend gedrag', 'foeragerend', 'invliegend', 'uitvliegend',
        'roepend vanuit gebouw', 'baltsend / zingend op gebouw',
        'baltsend / zingend in vegetatie, struik of boom', 'sporen',
         'copula']
