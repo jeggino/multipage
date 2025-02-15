@@ -137,6 +137,14 @@ elif selected == 'Data':
             )
             try:
                 df_filter = df_download_dagverslagen[df_download_dagverslagen['gebied_id']==option_areas_filter].sort_values('datum').reset_index(drop=True)
+                c = (
+                alt.Chart(df_filter)
+                .mark_circle(size=155,)
+                .encode(x="datum", color="doel", tooltip=["datum", "doel"])
+                )
+                
+                st.altair_chart(c, use_container_width=True,theme=None,)
+                
                 with col1:
                     if len(df_filter)==0:
                         st.stop()
@@ -155,13 +163,7 @@ elif selected == 'Data':
                             use_container_width=False
                         )
 
-                    # c = (
-                    #    alt.Chart(df_filter)
-                    #    .mark_circle(size=155,)
-                    #    .encode(x="datum", color="doel", tooltip=["datum", "doel"])
-                    # )
-                    
-                    # st.altair_chart(c, use_container_width=True,theme=None,)
+
 
                     
     
