@@ -142,7 +142,7 @@ elif selected == 'Data':
                 c = (
                 alt.Chart(df_filter).mark_circle(size=105).encode(x=alt.X('datum:T',axis=alt.Axis(grid=False,domain=True,ticks=False,),title=None,
                                                                           scale=alt.Scale(domain=['2025','2026'])),
-                                                                  color="doel", 
+                                                                  color=alt.Color('doel').title("Doel"), 
                                                                   tooltip=[alt.Tooltip("datum:T",title = "Datum"), alt.Tooltip("doel:N",title ="Doel")]
                                                                  ).properties(
                 width=450,
