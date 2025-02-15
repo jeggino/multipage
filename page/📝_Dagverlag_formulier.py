@@ -144,8 +144,9 @@ elif selected == 'Data':
                 .mark_circle(size=155,)
                 .encode(x="datum", color="doel", tooltip=["datum", "doel"])
                 )
-                
-                st.altair_chart(c, use_container_width=True,theme=None,)
+                 
+                with st.container(border=False):
+                    st.altair_chart(c, use_container_width=True,theme=None,)
 
                 col1,col2 = st.columns([2,4],gap='medium',border=True)
 
