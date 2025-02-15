@@ -4,6 +4,8 @@ import geopandas as gpd
 import datetime
 from datetime import datetime, timedelta, date
 
+import altair as alt
+
 from credentials import *
 
 from supabase import create_client, Client
