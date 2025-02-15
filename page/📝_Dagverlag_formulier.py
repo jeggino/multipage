@@ -146,7 +146,7 @@ elif selected == 'Data':
                 
                 st.altair_chart(c, use_container_width=True,theme=None,)
 
-                col1,col2 = st.columns([4,4],gap='medium',border=True)
+                col1,col2 = st.columns([2,4],gap='medium',border=True)
 
                 with col1:
                     if len(df_filter)==0:
