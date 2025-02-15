@@ -193,7 +193,7 @@ elif selected == 'Data':
                         st.write(f"**:blue[Windkracht:]** {df_filter.loc[event.selection['rows'][0],'windkracht']}")
                         st.write(f"**:blue[Windrichting:]** {df_filter.loc[event.selection['rows'][0],'windrichting']}")
                         st.write(f"{df_filter.loc[event.selection['rows'][0],'opmerking']}")
-                        df_filter.loc[event.selection['rows'][0]]
+                        df_filter.loc[event.selection['rows']]
 
             except:
                 pass
