@@ -153,13 +153,13 @@ elif selected == 'Data':
                             use_container_width=False
                         )
 
-                    c = (
-                       alt.Chart(df_filter)
-                       .mark_circle(size=155,)
-                       .encode(x="datum", color="doel", tooltip=["datum", "doel"])
-                    )
+                    # c = (
+                    #    alt.Chart(df_filter)
+                    #    .mark_circle(size=155,)
+                    #    .encode(x="datum", color="doel", tooltip=["datum", "doel"])
+                    # )
                     
-                    st.altair_chart(c, use_container_width=True,theme=None,)
+                    # st.altair_chart(c, use_container_width=True,theme=None,)
 
                     
     
