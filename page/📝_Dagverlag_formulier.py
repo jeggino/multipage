@@ -123,8 +123,7 @@ elif selected == 'Data':
         rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
         df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)                
         df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & (df_dagverslagen['opdracht']==opdracht)]
-        st.download_button(label="Downloaden alle dagverslagen",data=df_download_dagverslagen.to_csv().encode("utf-8"),
-                           file_name="dagverslagen.csv",mime="text/csv", use_container_width=False)
+
         
         with st.container(border=True):
             option_areas_filter = st.selectbox(
@@ -170,20 +169,23 @@ elif selected == 'Data':
 
                     
     
-                    with col2:
-                        if len(event.selection['rows'])==0:
-                            st.info('Selecteer een rij om de Dagverlageninformatie te krijgen')
-                        else:
-                            st.write(f"**:blue[Samensteller:]** {df_filter.loc[event.selection['rows'][0],'waarnemer']}")
-                            st.write(f"**:blue[Begin tijd:]** {df_filter.loc[event.selection['rows'][0],'start_time']}")
-                            st.write(f"**:blue[Eind tijd:]** {df_filter.loc[event.selection['rows'][0],'eind_time']}")
-                            st.write(f"**:blue[Temperatuur:]** {df_filter.loc[event.selection['rows'][0],'temperatuur']}")
-                            st.write(f"**:blue[Bewolking:]** {df_filter.loc[event.selection['rows'][0],'bewolking']}")
-                            st.write(f"**:blue[Neerslag:]** {df_filter.loc[event.selection['rows'][0],'neerslag']}")
-                            st.write(f"**:blue[Windkracht:]** {df_filter.loc[event.selection['rows'][0],'windkracht']}")
-                            st.write(f"**:blue[Windrichting:]** {df_filter.loc[event.selection['rows'][0],'windrichting']}")
-                            st.write(f"{df_filter.loc[event.selection['rows'][0],'opmerking']}")
-    
+                with col2:
+                    if len(event.selection['rows'])==0:
+                        st.info('Selecteer een rij om de Dagverlageninformatie te krijgen')
+                    else:
+                        st.write(f"**:blue[Samensteller:]** {df_filter.loc[event.selection['rows'][0],'waarnemer']}")
+                        st.write(f"**:blue[Begin tijd:]** {df_filter.loc[event.selection['rows'][0],'start_time']}")
+                        st.write(f"**:blue[Eind tijd:]** {df_filter.loc[event.selection['rows'][0],'eind_time']}")
+                        st.write(f"**:blue[Temperatuur:]** {df_filter.loc[event.selection['rows'][0],'temperatuur']}")
+                        st.write(f"**:blue[Bewolking:]** {df_filter.loc[event.selection['rows'][0],'bewolking']}")
+                        st.write(f"**:blue[Neerslag:]** {df_filter.loc[event.selection['rows'][0],'neerslag']}")
+                        st.write(f"**:blue[Windkracht:]** {df_filter.loc[event.selection['rows'][0],'windkracht']}")
+                        st.write(f"**:blue[Windrichting:]** {df_filter.loc[event.selection['rows'][0],'windrichting']}")
+                        st.write(f"{df_filter.loc[event.selection['rows'][0],'opmerking']}")
+
+                st.download_button(label="Downloaden alle dagverslagen",data=df_download_dagverslagen.to_csv().encode("utf-8"),
+                   file_name="dagverslagen.csv",mime="text/csv", use_container_width=False)
+
             except:
                 pass
     except:
