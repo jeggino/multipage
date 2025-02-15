@@ -164,10 +164,7 @@ elif selected == 'Data':
                             selection_mode=["single-row"],
                             use_container_width=False
                         )
-
-
-
-                    
+     
     
                 with col2:
                     if len(event.selection['rows'])==0:
@@ -183,11 +180,12 @@ elif selected == 'Data':
                         st.write(f"**:blue[Windrichting:]** {df_filter.loc[event.selection['rows'][0],'windrichting']}")
                         st.write(f"{df_filter.loc[event.selection['rows'][0],'opmerking']}")
 
-                st.download_button(label="Downloaden alle dagverslagen",data=df_download_dagverslagen.to_csv().encode("utf-8"),
-                   file_name="dagverslagen.csv",mime="text/csv", use_container_width=False)
-
             except:
                 pass
+
+    
+            st.download_button(label="Downloaden alle dagverslagen",data=df_download_dagverslagen.to_csv().encode("utf-8"),
+               file_name="dagverslagen.csv",mime="text/csv", use_container_width=False)
     except:
         st.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',
                 width=450)
