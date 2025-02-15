@@ -67,8 +67,8 @@ opdracht = st.session_state.project['opdracht']
 
 
 
-st.title(f'{project}')
-st.header(f'Opdracht: **{opdracht}**',divider=True)
+# st.title(f'{project}')
+# st.header(f'Opdracht: **{opdracht}**',divider=True)
 
 selected = option_menu(None,["Formulier", 'Data'], icons=['bi-pen-fill', 'bi-database'],orientation="horizontal",)
 
