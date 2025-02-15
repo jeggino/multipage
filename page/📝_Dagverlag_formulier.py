@@ -105,7 +105,7 @@ if selected == "Formulier":
         temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0)
         bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
         neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen"))
-        windkrcht = st.number_input("Windkracht (Bft)",key='windkrcht', min_value=1)
+        windkracht = st.number_input("Windkracht (Bft)",key='windkracht', min_value=1)
         windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))     
         opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...")
         
@@ -113,7 +113,7 @@ if selected == "Formulier":
             if gebied_id == None:
                 st.error("Selecteer een gebied, alstublieft",icon="⚠️")
                 st.stop()
-            insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,str(datum),str(start_time),str(eind_time),temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking)
+            insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,str(datum),str(start_time),str(eind_time),temperatuur,bewolking,neerslag,windkracht,windrichting,opmerking)
         
             # st.switch_page("page/🧭_navigatie.py")
         "---"
@@ -177,7 +177,7 @@ elif selected == 'Data':
                             st.write(f"**:blue[Temperatuur:]** {df_filter.loc[event.selection['rows'][0],'temperatuur']}")
                             st.write(f"**:blue[Bewolking:]** {df_filter.loc[event.selection['rows'][0],'bewolking']}")
                             st.write(f"**:blue[Neerslag:]** {df_filter.loc[event.selection['rows'][0],'neerslag']}")
-                            st.write(f"**:blue[Windkrcht:]** {df_filter.loc[event.selection['rows'][0],'windkrcht']}")
+                            st.write(f"**:blue[Windkracht:]** {df_filter.loc[event.selection['rows'][0],'windkracht']}")
                             st.write(f"**:blue[Windrichting:]** {df_filter.loc[event.selection['rows'][0],'windrichting']}")
                             st.write(f"{df_filter.loc[event.selection['rows'][0],'opmerking']}")
     
