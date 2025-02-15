@@ -125,7 +125,6 @@ elif selected == 'Data':
         df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & (df_dagverslagen['opdracht']==opdracht)]
         st.download_button(label="Downloaden alle dagverslagen",data=df_download_dagverslagen.to_csv().encode("utf-8"),
                            file_name="dagverslagen.csv",mime="text/csv", use_container_width=False)
-        col1,col2 = st.columns([4,4],gap='medium',border=True)
         
         with st.container(border=True):
             option_areas_filter = col1.selectbox(
@@ -144,7 +143,9 @@ elif selected == 'Data':
                 )
                 
                 st.altair_chart(c, use_container_width=True,theme=None,)
-                
+
+                col1,col2 = st.columns([4,4],gap='medium',border=True)
+
                 with col1:
                     if len(df_filter)==0:
                         st.stop()
