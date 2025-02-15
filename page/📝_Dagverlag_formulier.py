@@ -145,7 +145,7 @@ elif selected == 'Data':
                                                                   color=alt.Color('doel').title(None), 
                                                                   tooltip=[alt.Tooltip("datum:T",title = "Datum"), alt.Tooltip("doel:N",title ="Doel")]
                                                                  ).properties(
-                width=450,
+                # width=450,
                 height=80,
                 title=alt.Title(
                 text="",
