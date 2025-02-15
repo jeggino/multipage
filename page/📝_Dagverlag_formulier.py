@@ -54,6 +54,71 @@ def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time
             .execute()
         )
 
+# @st.dialog(" ")
+# def update_dagverslag(id,df):
+    
+#   df_filter = df[df["key"]==id].reset_index(drop=True)
+
+
+#   id_date = df_filter['datum'][0]
+#   # id_time = df_filter['time'][0]
+#   id_lat = df_filter['lat'][0]
+#   id_lng = df_filter['lng'][0]
+#   id_waarnemer = df_filter['waarnemer'][0]
+#   id_key = df_filter['key'][0]
+#   id_soortgroup = df_filter['soortgroup'][0]
+#   id_geometry_type = df_filter['geometry_type'][0]
+#   id_coordinates = df_filter['coordinates'][0]
+#   id_project = df_filter['project'][0]
+#   id_functie = df_filter['functie'][0]
+#   id_gedrag = df_filter['gedrag'][0]
+#   id_verblijf = df_filter['verblijf'][0]
+#   id_sp = df_filter['sp'][0]
+#   id_aantal = df_filter['aantal'][0]
+#   id_opmerking = df_filter['opmerking'][0]
+  
+#   datum = st.date_input("Datum",id_date)
+#   # nine_hours_from_now = datetime.now() + timedelta(hours=2)
+#   time = st.time_input("Tijd" )
+  
+#   if st.session_state.project['opdracht'] == 'Vleermuizen':
+
+#     sp = st.selectbox("Soort", BAT_NAMES,index=BAT_NAMES.index(id_sp))
+ 
+#     if output["last_active_drawing"]["geometry"]["type"] == 'Polygon':
+#         gedrag = None
+#         functie = st.selectbox("Functie", GEBIED_OPTIONS,index=GEBIED_OPTIONS.index(id_functie))
+#         verblijf = None
+#     else:
+#         gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS,index=BAT_BEHAVIOURS.index(id_gedrag)) 
+#         functie = st.selectbox("Functie", BAT_FUNCTIE,index=BAT_FUNCTIE.index(id_functie))
+#         verblijf = st.selectbox("Verblijf", BAT_VERBLIJF,index=BAT_VERBLIJF.index(id_verblijf)) 
+
+#   elif st.session_state.project['opdracht'] == 'Vogels':
+  
+#     sp = st.selectbox("Soort", BIRD_NAMES,index=BIRD_NAMES.index(id_sp))
+#     gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS,index=BIRD_BEHAVIOURS.index(id_gedrag)) 
+#     functie = st.selectbox("Functie", BIRD_FUNCTIE,index=BIRD_FUNCTIE.index(id_functie)) 
+#     verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF,index=BIRD_VERBLIJF.index(id_verblijf)) 
+
+    
+#   aantal = st.number_input("Aantal", min_value=1,value=int(id_aantal))    
+#   opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...",value=id_opmerking)
+
+#   if st.button("**Update**",use_container_width=True):
+      
+#     data = {"key":id_key,"waarnemer":id_waarnemer,"datum":str(datum),"time":str(time),"soortgroup":id_soortgroup, "aantal":aantal,
+#                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
+#                    "geometry_type":id_geometry_type,"lat":id_lat,"lng":id_lng,"opmerking":opmerking,"coordinates":id_coordinates,"project":id_project}
+      
+#     response = (
+#         supabase.table("df_observations")
+#         .update(data)
+#         .eq("key", id)
+#         .execute()
+#     )
+
+#     st.rerun()
 #---DATASET---
 
 
@@ -184,6 +249,7 @@ elif selected == 'Data':
                     if len(event.selection['rows'])==0:
                         st.info('Selecteer een rij om de Dagverlageninformatie te krijgen')
                     else:
+                        key = df_filter.loc[event.selection['rows'][0],'key']
                         st.write(f"**:blue[Samensteller:]** {df_filter.loc[event.selection['rows'][0],'waarnemer']}")
                         st.write(f"**:blue[Begin tijd:]** {df_filter.loc[event.selection['rows'][0],'start_time']}")
                         st.write(f"**:blue[Eind tijd:]** {df_filter.loc[event.selection['rows'][0],'eind_time']}")
