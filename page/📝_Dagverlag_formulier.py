@@ -127,7 +127,7 @@ elif selected == 'Data':
                            file_name="dagverslagen.csv",mime="text/csv", use_container_width=False)
         
         with st.container(border=True):
-            option_areas_filter = col1.selectbox(
+            option_areas_filter = st.selectbox(
                 "Selecteer een gebied",
                 df_download_dagverslagen['gebied_id'].unique(),
                 index=None,
@@ -136,6 +136,7 @@ elif selected == 'Data':
             )
             try:
                 df_filter = df_download_dagverslagen[df_download_dagverslagen['gebied_id']==option_areas_filter].sort_values('datum').reset_index(drop=True)
+                
                 c = (
                 alt.Chart(df_filter)
                 .mark_circle(size=155,)
