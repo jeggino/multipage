@@ -141,9 +141,43 @@ elif selected == 'Data':
                 
                 c = (
                 alt.Chart(df_filter)
-                .mark_circle(size=155,)
-                .encode(x="datum", color="doel", tooltip=["datum", "doel"])
+                .mark_point(size=155,)
+                .encode(x=alt.X('datum:T',axis=alt.Axis(grid=False,domain=True,ticks=False,), 
+                                color="doel", 
+                                tooltip=[alt.Tooltip("datum:T",title = "Datum"), alt.Tooltip("doel:N",title ="Doel")])
+                ).properties(
+                width=450,
+                height=300,
+                title=alt.Title(
+                text="",
+                subtitle="",
+                anchor='start'
                 )
+                ).configure_view(stroke=None)
+                )
+                
+                # c = alt.Chart(df).mark_point(size=60).encode(
+                # alt.X('datum:T',axis=alt.Axis(grid=False,domain=True,ticks=False,),title=None, 
+                # scale=alt.Scale(domain=['2024','2025'])),
+                # alt.Y('gebied:N',
+                # axis=alt.Axis(grid=False,domain=False,ticks=True,),
+                # sort=alt.EncodingSortField(field="gebied",  order='ascending'),
+                # title="Gebied"),
+                # stroke=alt.Color('doel'),
+                # fill=alt.Color('doel',legend=alt.Legend(orient="bottom",direction='vertical',titleAnchor='middle')).title("Doel"),
+                # tooltip=[alt.Tooltip("datum:T",title = "Datum"),
+                #  alt.Tooltip("gebied:N",title ="Gebied"),
+                #  alt.Tooltip("doel:N",title ="Doel"),
+                #  alt.Tooltip("waarnemer:N",title ="Waarnemer(s)")],
+                # ).properties(
+                # width=450,
+                # height=300,
+                # title=alt.Title(
+                # text="",
+                # subtitle="",
+                # anchor='start'
+                # )
+                # ).configure_view(stroke=None)
                  
                 with st.container(border=True):
                     st.altair_chart(c, use_container_width=True,theme=None,)
