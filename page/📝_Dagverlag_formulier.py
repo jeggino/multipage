@@ -132,7 +132,8 @@ elif selected == 'Data':
                 df_download_dagverslagen['gebied_id'].unique(),
                 index=None,
                 placeholder="Selecteer een gebied...",
-                label_visibility="collapsed"
+                label_visibility="collapsed",
+                use_container_width=False
             )
             try:
                 df_filter = df_download_dagverslagen[df_download_dagverslagen['gebied_id']==option_areas_filter].sort_values('datum').reset_index(drop=True)
