@@ -140,7 +140,8 @@ elif selected == 'Data':
                 df_filter = df_download_dagverslagen[df_download_dagverslagen['gebied_id']==option_areas_filter].sort_values('datum').reset_index(drop=True)
                 
                 c = (
-                alt.Chart(df_filter).mark_circle(size=105).encode(x=alt.X('datum:T',axis=alt.Axis(grid=False,domain=False,ticks=False,)),
+                alt.Chart(df_filter).mark_circle(size=105).encode(x=alt.X('datum:T',axis=alt.Axis(grid=False,domain=True,ticks=False,),title=None,
+                                                                          scale=alt.Scale(domain=['2024','2025'])),
                                                                   color="doel", 
                                                                   tooltip=[alt.Tooltip("datum:T",title = "Datum"), alt.Tooltip("doel:N",title ="Doel")]
                                                                  ).properties(
