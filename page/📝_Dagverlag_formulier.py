@@ -55,7 +55,7 @@ def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time
         )
 
 @st.dialog(" ")
-def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,temperatuur,opmerking):
+def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,temperatuur,datum_id,opmerking):
     
     if opdracht == 'Vleermuizen':
         doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
@@ -63,7 +63,7 @@ def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,temperatuur,opmer
     elif opdracht == 'Vogels':
         doel = st.selectbox('Doel',['Gierzwaluw','Huismus'])
             
-    datum = st.date_input("Datum","today")       
+    datum = st.date_input("Datum",value=datum_id)       
     two_hours_from_now = datetime.now() + timedelta(hours=1)
     four_hours_from_now = datetime.now() + timedelta(hours=3)
     start_time = st.time_input("Start tijd", two_hours_from_now)
@@ -225,6 +225,7 @@ elif selected == 'Data':
                         gebied_id = df_filter.loc[event.selection['rows'][0],'gebied_id']
                         temperatuur_id = df_filter.loc[event.selection['rows'][0],'temperatuur']
                         opmerking_id = df_filter.loc[event.selection['rows'][0],'opmerking']
+                        datum_id = df_filter.loc[event.selection['rows'][0],'datum']
                         
                         st.write(f"**:blue[Samensteller:]** {waarnemer_id}")
                         st.write(f"**:blue[Begin tijd:]** {df_filter.loc[event.selection['rows'][0],'start_time']}")
@@ -237,7 +238,7 @@ elif selected == 'Data':
                         st.write(f"{opmerking_id}")
                         
                         if st.button("Dagverslag bijwerken",use_container_width=True): 
-                            update_dagverslag(key_id,waarnemer_id,project_id,opdracht_id,gebied_id,temperatuur_id,opmerking_id)
+                            update_dagverslag(key_id,waarnemer_id,project_id,opdracht_id,gebied_id,temperatuur_id,datum_id,opmerking_id)
 
             except:
                 pass
