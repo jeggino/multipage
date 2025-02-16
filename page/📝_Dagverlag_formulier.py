@@ -79,12 +79,12 @@ def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,temperatuur,opmer
         data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
                  "start_time":start_time,"eind_time":eind_time,"temperatuur":temperatuur, "bewolking":bewolking,
                  "neerslag":neerslag,"windkracht":windkracht,"windrichting":windrichting,"opmerking":opmerking
-        response = (
-            supabase.table("df_dagverslagen")
-            .update(data)
-            .eq("key", key)
-            .execute()
-            )
+        # response = (
+        #     supabase.table("df_dagverslagen")
+        #     .update(data)
+        #     .eq("key", key)
+        #     .execute()
+        #     )
         
         st.rerun()
 
