@@ -88,7 +88,7 @@ def update_dagverslag(key,waarnemer,project,opdracht,temperatuur,opmerking):
     windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))     
     opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...",value=opmerking)
     
-    # if st.button("**Gegevens opslaan**",use_container_width=True):
+    if st.button("**Gegevens opslaan**",use_container_width=True,key="button1",):
         # if gebied_id == None:
         #     st.error("Selecteer een gebied, alstublieft",icon="⚠️")
         #     st.stop()
