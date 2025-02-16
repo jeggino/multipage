@@ -55,7 +55,7 @@ def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time
         )
 
 @st.dialog(" ")
-def update_dagverslag(key,waarnemer,project,opdracht,temperatuur,opmerking):
+def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,temperatuur,opmerking):
     
     if opdracht == 'Vleermuizen':
         if project != "Overig":
@@ -69,13 +69,6 @@ def update_dagverslag(key,waarnemer,project,opdracht,temperatuur,opmerking):
         else:
             doel = st.selectbox('Doel',['Overig'] + BIRD_NAMES)
             
-    try: 
-        geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
-        gdf_areas = gpd.read_file(geometry_file)
-        gebied_id_list = gdf_areas['Gebied'].unique()
-        gebied_id = st.selectbox("Gebied",gebied_id_list,index=None)
-    except:
-        gebied_id = "---"
     datum = st.date_input("Datum","today")       
     two_hours_from_now = datetime.now() + timedelta(hours=1)
     four_hours_from_now = datetime.now() + timedelta(hours=3)
@@ -89,22 +82,18 @@ def update_dagverslag(key,waarnemer,project,opdracht,temperatuur,opmerking):
     opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...",value=opmerking)
     if st.button("**Update**",use_container_width=True):
         st.write("Ciao")
-    # but = st.button("Reset")
-    # if but:
-    #     if gebied_id == None:
-    #         st.error("Selecteer een gebied, alstublieft",icon="⚠️")
-    #         st.stop()
-    #     data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
-    #              "start_time":start_time,"eind_time":eind_time,"temperatuur":temperatuur, "bewolking":bewolking,
-    #              "neerslag":neerslag,"windkracht":windkracht,"windrichting":windrichting,"opmerking":opmerking
-    #     response = (
-    #         supabase.table("df_dagverslagen")
-    #         .update(data)
-    #         .eq("key", key)
-    #         .execute()
-    #         )
+
+        data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
+                 "start_time":start_time,"eind_time":eind_time,"temperatuur":temperatuur, "bewolking":bewolking,
+                 "neerslag":neerslag,"windkracht":windkracht,"windrichting":windrichting,"opmerking":opmerking
+        response = (
+            supabase.table("df_dagverslagen")
+            .update(data)
+            .eq("key", key)
+            .execute()
+            )
         
-    #     st.rerun()
+        st.rerun()
 
     
 #---DATASET---
@@ -240,7 +229,8 @@ elif selected == 'Data':
                         key = df_filter.loc[event.selection['rows'][0],'key']
                         project_id = df_filter.loc[event.selection['rows'][0],'project']
                         opdracht_id = df_filter.loc[event.selection['rows'][0],'opdracht']
-                        waarnemer_id = df_filter.loc[event.selection['rows'][0],'waarnemer']
+                        opdracht_id = df_filter.loc[event.selection['rows'][0],'opdracht']
+                        gebied_id = df_filter.loc[event.selection['rows'][0],'gebied_id']
                         st.write(f"**:blue[Samensteller:]** {waarnemer_id}")
                         st.write(f"**:blue[Begin tijd:]** {df_filter.loc[event.selection['rows'][0],'start_time']}")
                         st.write(f"**:blue[Eind tijd:]** {df_filter.loc[event.selection['rows'][0],'eind_time']}")
@@ -253,7 +243,7 @@ elif selected == 'Data':
                         opmerking_id = df_filter.loc[event.selection['rows'][0],'opmerking']
                         st.write(f"{opmerking_id}")
                         if st.button("Dagverslag bijwerken",use_container_width=True): 
-                            update_dagverslag(key,waarnemer_id,project_id,opdracht_id,temperatuur_id,opmerking_id)
+                            update_dagverslag(key,waarnemer_id,project_id,opdracht_id,gebied_id,temperatuur_id,opmerking_id)
 
             except:
                 pass
