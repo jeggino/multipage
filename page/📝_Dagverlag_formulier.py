@@ -228,7 +228,7 @@ elif selected == 'Data':
                         project_id = df_filter.loc[event.selection['rows'][0],'project']
                         opdracht_id = df_filter.loc[event.selection['rows'][0],'opdracht']
                         opdracht_id = df_filter.loc[event.selection['rows'][0],'opdracht']
-                        gebied_id = df_filter.loc[event.selection['rows'][0],'gebied_id']
+                        # gebied_id = df_filter.loc[event.selection['rows'][0],'gebied_id']
                         st.write(f"**:blue[Samensteller:]** {waarnemer_id}")
                         st.write(f"**:blue[Begin tijd:]** {df_filter.loc[event.selection['rows'][0],'start_time']}")
                         st.write(f"**:blue[Eind tijd:]** {df_filter.loc[event.selection['rows'][0],'eind_time']}")
