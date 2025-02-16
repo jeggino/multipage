@@ -54,55 +54,55 @@ def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time
             .execute()
         )
 
-@st.dialog(" ")
-def update_dagverslag(key,waarnemer,project,opdracht,temperatuur,opmerking):
+# @st.dialog(" ")
+# def update_dagverslag(key,waarnemer,project,opdracht,temperatuur,opmerking):
     
-    if opdracht == 'Vleermuizen':
-        if project != "Overig":
-            doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
-        else:
-            doel = st.selectbox('Doel',('Overig','Kraamverblijf','Winterverblijf','Paarverblijf'))
+#     if opdracht == 'Vleermuizen':
+#         if project != "Overig":
+#             doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
+#         else:
+#             doel = st.selectbox('Doel',('Overig','Kraamverblijf','Winterverblijf','Paarverblijf'))
             
-    elif opdracht == 'Vogels':
-        if project != "Overig":
-            doel = st.selectbox('Doel',['Gierzwaluw','Huismus'])
-        else:
-            doel = st.selectbox('Doel',['Overig'] + BIRD_NAMES)
+#     elif opdracht == 'Vogels':
+#         if project != "Overig":
+#             doel = st.selectbox('Doel',['Gierzwaluw','Huismus'])
+#         else:
+#             doel = st.selectbox('Doel',['Overig'] + BIRD_NAMES)
             
-    try: 
-        geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
-        gdf_areas = gpd.read_file(geometry_file)
-        gebied_id_list = gdf_areas['Gebied'].unique()
-        gebied_id = st.selectbox("Gebied",gebied_id_list,index=None)
-    except:
-        gebied_id = "---"
-    datum = st.date_input("Datum","today")       
-    two_hours_from_now = datetime.now() + timedelta(hours=1)
-    four_hours_from_now = datetime.now() + timedelta(hours=3)
-    start_time = st.time_input("Start tijd", two_hours_from_now)
-    eind_time = st.time_input("Eind tijd", four_hours_from_now)               
-    temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0,value=temperatuur)
-    bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
-    neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen"))
-    windkracht = st.number_input("Windkracht (Bft)",key='windkracht', min_value=1)
-    windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))     
-    opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...",value=opmerking)
+#     try: 
+#         geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
+#         gdf_areas = gpd.read_file(geometry_file)
+#         gebied_id_list = gdf_areas['Gebied'].unique()
+#         gebied_id = st.selectbox("Gebied",gebied_id_list,index=None)
+#     except:
+#         gebied_id = "---"
+#     datum = st.date_input("Datum","today")       
+#     two_hours_from_now = datetime.now() + timedelta(hours=1)
+#     four_hours_from_now = datetime.now() + timedelta(hours=3)
+#     start_time = st.time_input("Start tijd", two_hours_from_now)
+#     eind_time = st.time_input("Eind tijd", four_hours_from_now)               
+#     temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0,value=temperatuur)
+#     bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
+#     neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen"))
+#     windkracht = st.number_input("Windkracht (Bft)",key='windkracht', min_value=1)
+#     windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))     
+#     opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...",value=opmerking)
     
-    if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
-        if gebied_id == None:
-            st.error("Selecteer een gebied, alstublieft",icon="⚠️")
-            st.stop()
-        data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
-                 "start_time":start_time,"eind_time":eind_time,"temperatuur":temperatuur, "bewolking":bewolking,
-                 "neerslag":neerslag,"windkracht":windkracht,"windrichting":windrichting,"opmerking":opmerking
-        response = (
-            supabase.table("df_dagverslagen")
-            .update(data)
-            .eq("key", key)
-            .execute()
-            )
+#     if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
+#         if gebied_id == None:
+#             st.error("Selecteer een gebied, alstublieft",icon="⚠️")
+#             st.stop()
+#         data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
+#                  "start_time":start_time,"eind_time":eind_time,"temperatuur":temperatuur, "bewolking":bewolking,
+#                  "neerslag":neerslag,"windkracht":windkracht,"windrichting":windrichting,"opmerking":opmerking
+#         response = (
+#             supabase.table("df_dagverslagen")
+#             .update(data)
+#             .eq("key", key)
+#             .execute()
+#             )
         
-        st.rerun()
+#         st.rerun()
 
     
 #---DATASET---
