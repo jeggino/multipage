@@ -76,17 +76,17 @@ def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,temperatuur,opmer
     opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...",value=opmerking)
     if st.button("**Update**",use_container_width=True):
     # if st.button("**Update**",use_container_width=True):
-        data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
-                 "start_time":start_time,"eind_time":eind_time,"temperatuur":temperatuur, "bewolking":bewolking,
-                 "neerslag":neerslag,"windkracht":windkracht,"windrichting":windrichting,"opmerking":opmerking
-        response = (
-            supabase.table("df_dagverslagen")
-            .update(data)
-            .eq("key", key)
-            .execute()
-            )
+        # data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
+        #          "start_time":start_time,"eind_time":eind_time,"temperatuur":temperatuur, "bewolking":bewolking,
+        #          "neerslag":neerslag,"windkracht":windkracht,"windrichting":windrichting,"opmerking":opmerking
+        # response = (
+        #     supabase.table("df_dagverslagen")
+        #     .update(data)
+        #     .eq("key", key)
+        #     .execute()
+        #     )
         
-        st.rerun()
+        # st.rerun()
 
     
 #---DATASET---
