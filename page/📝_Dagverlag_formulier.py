@@ -75,8 +75,8 @@ def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,temperatuur,opmer
     windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))     
     opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...",value=opmerking)
     if st.button("Reset", type="primary"):
-        data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
-                 "start_time":start_time,"eind_time":eind_time,"temperatuur":temperatuur, "bewolking":bewolking,
+        data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":str(datum),
+                 "start_time":str(start_time),"eind_time":str(eind_time),"temperatuur":temperatuur, "bewolking":bewolking,
                  "neerslag":neerslag,"windkracht":windkracht,"windrichting":windrichting,"opmerking":opmerking}
         response = (
             supabase.table("df_dagverslagen")
