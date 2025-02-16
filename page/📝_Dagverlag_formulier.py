@@ -81,7 +81,7 @@ def update_dagverslag(key,waarnemer,project,opdracht,temperatuur,opmerking):
     four_hours_from_now = datetime.now() + timedelta(hours=3)
     start_time = st.time_input("Start tijd", two_hours_from_now)
     eind_time = st.time_input("Eind tijd", four_hours_from_now)               
-    temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0,value=temperatuur)
+    temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0,value=int(temperatuur))
     bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
     neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen"))
     windkracht = st.number_input("Windkracht (Bft)",key='windkracht', min_value=1)
