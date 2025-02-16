@@ -87,21 +87,21 @@ def update_dagverslag(key,waarnemer,project,opdracht,temperatuur,opmerking):
     windkracht = st.number_input("Windkracht (Bft)",key='windkracht', min_value=1)
     windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))     
     opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...",value=opmerking)
-    st.button("Reset", type="primary")
-        # if gebied_id == None:
-        #     st.error("Selecteer een gebied, alstublieft",icon="⚠️")
-        #     st.stop()
-        # data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
-        #          "start_time":start_time,"eind_time":eind_time,"temperatuur":temperatuur, "bewolking":bewolking,
-        #          "neerslag":neerslag,"windkracht":windkracht,"windrichting":windrichting,"opmerking":opmerking
-        # response = (
-        #     supabase.table("df_dagverslagen")
-        #     .update(data)
-        #     .eq("key", key)
-        #     .execute()
-        #     )
+    if st.button("Reset")
+        if gebied_id == None:
+            st.error("Selecteer een gebied, alstublieft",icon="⚠️")
+            st.stop()
+        data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
+                 "start_time":start_time,"eind_time":eind_time,"temperatuur":temperatuur, "bewolking":bewolking,
+                 "neerslag":neerslag,"windkracht":windkracht,"windrichting":windrichting,"opmerking":opmerking
+        response = (
+            supabase.table("df_dagverslagen")
+            .update(data)
+            .eq("key", key)
+            .execute()
+            )
         
-        # st.rerun()
+        st.rerun()
 
     
 #---DATASET---
