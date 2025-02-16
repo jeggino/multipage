@@ -87,7 +87,7 @@ def update_dagverslag(key,waarnemer,project,opdracht,temperatuur,opmerking):
     windkracht = st.number_input("Windkracht (Bft)",key='windkracht', min_value=1)
     windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))     
     opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...",value=opmerking)
-    if st.button("Aloha", type="tertiary"):
+    if st.button("Say hello"):
         st.write("Ciao")
     # but = st.button("Reset")
     # if but:
