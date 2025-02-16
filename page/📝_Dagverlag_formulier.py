@@ -55,6 +55,17 @@ def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time
         )
 
 @st.dialog(" ")
+def delete_item(key):
+    if st.button("Let op! Klik hier als je de waarneming wilt verwijderen",icon="🚨",use_container_width=True):
+        response = (
+            supabase.table("df_observations")
+            .delete()
+            .eq("key", key)
+            .execute()
+            )
+        st.rerun()
+
+@st.dialog(" ")
 def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,temperatuur,datum_id,opmerking):
     
     if opdracht == 'Vleermuizen':
@@ -239,6 +250,9 @@ elif selected == 'Data':
                         
                         if st.button("Dagverslag bijwerken",use_container_width=True): 
                             update_dagverslag(key_id,waarnemer_id,project_id,opdracht_id,gebied_id,temperatuur_id,datum_id,opmerking_id)
+
+                        if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
+                            delete_item(key_id)
 
             except:
                 pass
