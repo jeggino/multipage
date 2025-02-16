@@ -224,7 +224,7 @@ elif selected == 'Data':
                     if len(event.selection['rows'])==0:
                         st.info('Selecteer een rij om de Dagverlageninformatie te krijgen')
                     else:
-                        key = df_filter.loc[event.selection['rows'][0],'key']
+                        # key = df_filter.loc[event.selection['rows'][0],'key']
                         project_id = df_filter.loc[event.selection['rows'][0],'project']
                         opdracht_id = df_filter.loc[event.selection['rows'][0],'opdracht']
                         opdracht_id = df_filter.loc[event.selection['rows'][0],'opdracht']
