@@ -74,7 +74,7 @@ def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,temperatuur,opmer
     windkracht = st.number_input("Windkracht (Bft)",key='windkracht', min_value=1)
     windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))     
     opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...",value=opmerking)
-    if st.button("Aloha", type="tertiary"):
+    st.button("Aloha", type="tertiary"):
     # if st.button("**Update**",use_container_width=True):
     # if st.button("**Update**",use_container_width=True):
         # data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
@@ -220,25 +220,26 @@ elif selected == 'Data':
                     if len(event.selection['rows'])==0:
                         st.info('Selecteer een rij om de Dagverlageninformatie te krijgen')
                     else:
-                        key = df_filter.loc[event.selection['rows'][0],'key']
+                        key_id = df_filter.loc[event.selection['rows'][0],'key']
+                        waarnemer_id = df_filter.loc[event.selection['rows'][0],'waarnemer']
                         project_id = df_filter.loc[event.selection['rows'][0],'project']
                         opdracht_id = df_filter.loc[event.selection['rows'][0],'opdracht']
-                        opdracht_id = df_filter.loc[event.selection['rows'][0],'opdracht']
                         gebied_id = df_filter.loc[event.selection['rows'][0],'gebied_id']
-                        waarnemer_id = df_filter.loc[event.selection['rows'][0],'waarnemer']
+                        temperatuur_id = df_filter.loc[event.selection['rows'][0],'temperatuur']
+                        opmerking_id = df_filter.loc[event.selection['rows'][0],'opmerking']
+                        
                         st.write(f"**:blue[Samensteller:]** {waarnemer_id}")
                         st.write(f"**:blue[Begin tijd:]** {df_filter.loc[event.selection['rows'][0],'start_time']}")
-                        st.write(f"**:blue[Eind tijd:]** {df_filter.loc[event.selection['rows'][0],'eind_time']}")
-                        temperatuur_id = df_filter.loc[event.selection['rows'][0],'temperatuur']
+                        st.write(f"**:blue[Eind tijd:]** {df_filter.loc[event.selection['rows'][0],'eind_time']}")                        
                         st.write(f"**:blue[Temperatuur:]** {temperatuur_id}")
                         st.write(f"**:blue[Bewolking:]** {df_filter.loc[event.selection['rows'][0],'bewolking']}")
                         st.write(f"**:blue[Neerslag:]** {df_filter.loc[event.selection['rows'][0],'neerslag']}")
                         st.write(f"**:blue[Windkracht:]** {df_filter.loc[event.selection['rows'][0],'windkracht']}")
-                        st.write(f"**:blue[Windrichting:]** {df_filter.loc[event.selection['rows'][0],'windrichting']}")
-                        opmerking_id = df_filter.loc[event.selection['rows'][0],'opmerking']
+                        st.write(f"**:blue[Windrichting:]** {df_filter.loc[event.selection['rows'][0],'windrichting']}")                       
                         st.write(f"{opmerking_id}")
+                        
                         if st.button("Dagverslag bijwerken",use_container_width=True): 
-                            update_dagverslag(key,waarnemer_id,project_id,opdracht_id,gebied_id,temperatuur_id,opmerking_id)
+                            update_dagverslag(key_id,waarnemer_id,project_id,opdracht_id,gebied_id,temperatuur_id,opmerking_id)
 
             except:
                 pass
