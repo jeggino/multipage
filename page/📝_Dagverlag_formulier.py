@@ -240,8 +240,8 @@ elif selected == 'Data':
                         st.write(f"**:blue[Windrichting:]** {df_filter.loc[event.selection['rows'][0],'windrichting']}")
                         opmerking_id = df_filter.loc[event.selection['rows'][0],'opmerking']
                         st.write(f"{opmerking_id}")
-                        if st.button("Dagverslag bijwerken",use_container_width=True): 
-                            update_dagverslag(key,waarnemer_id,project_id,opdracht_id,gebied_id,temperatuur_id,opmerking_id)
+                        # if st.button("Dagverslag bijwerken",use_container_width=True): 
+                        #     update_dagverslag(key,waarnemer_id,project_id,opdracht_id,gebied_id,temperatuur_id,opmerking_id)
 
             except:
                 pass
