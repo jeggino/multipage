@@ -74,7 +74,8 @@ windrichting_options = ("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwes
 ###
 
 @st.dialog(" ")
-def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,doel_id,temperatuur,bewolking_id,neerslag_id,windkracht_id,windrichting_id,datum_id,opmerking):
+def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,doel_id,temperatuur,bewolking_id,neerslag_id,windkracht_id,windrichting_id,
+                      datum_id,start_time_id,eind_time_id,opmerking):
     
     if opdracht == 'Vleermuizen':
         doel = st.selectbox('Doel',doel_bats_options,index=doel_bats_options.index(doel_id))
@@ -85,8 +86,8 @@ def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,doel_id,temperatu
     datum = st.date_input("Datum",value=datum_id)       
     two_hours_from_now = datetime.now() + timedelta(hours=1)
     four_hours_from_now = datetime.now() + timedelta(hours=3)
-    start_time = st.time_input("Start tijd", two_hours_from_now)
-    eind_time = st.time_input("Eind tijd", four_hours_from_now)               
+    start_time = st.time_input("Start tijd", two_hours_from_now,value=start_time_id)
+    eind_time = st.time_input("Eind tijd", four_hours_from_now,value=eind_time_id)               
     temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0,value=int(temperatuur))
     bewolking = st.selectbox("Bewolking",bewolking_options,index=bewolking_options.index(bewolking_id))
     neerslag = st.selectbox("Neerslag",neerslag_options,index=neerslag_options.index(neerslag_id))
@@ -246,6 +247,10 @@ elif selected == 'Data':
                         temperatuur_id = df_filter.loc[event.selection['rows'][0],'temperatuur']
                         opmerking_id = df_filter.loc[event.selection['rows'][0],'opmerking']
                         datum_id = df_filter.loc[event.selection['rows'][0],'datum']
+
+                        start_time_id = df_filter.loc[event.selection['rows'][0],'start_time']
+                        eind_time_id = df_filter.loc[event.selection['rows'][0],'eind_time']
+                        
                         bewolking_id = df_filter.loc[event.selection['rows'][0],'bewolking']
                         neerslag_id = df_filter.loc[event.selection['rows'][0],'neerslag']
                         windkracht_id = df_filter.loc[event.selection['rows'][0],'windkracht']
@@ -263,7 +268,7 @@ elif selected == 'Data':
                         
                         if st.button("Dagverslag bijwerken",use_container_width=True): 
                             update_dagverslag(key_id,waarnemer_id,project_id,opdracht_id,gebied_id,doel_id,temperatuur_id,bewolking_id,
-                                              neerslag_id,windkracht_id,windrichting_id,datum_id,opmerking_id)
+                                              neerslag_id,windkracht_id,windrichting_id,datum_id,start_time_id,eind_time_id,opmerking_id)
 
                         if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
                             delete_item(key_id)
