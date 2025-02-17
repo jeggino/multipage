@@ -30,9 +30,9 @@ st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
 
 try:
     for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]:
-        col1,col2 = st.columns([2,1],gap="large", vertical_alignment="top", border=True)
-        col1.video(key,loop=True, autoplay=False, muted=True)
-        col2.write(media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']][key])
+        with st.container(border=True):
+            st.video(key,loop=True, autoplay=False, muted=True)
+            st.caption(media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']][key])
         "---"
 except:
     st.image('https://cf.ltkcdn.net/travel/images/std/198833-425x283-Not-There-Yet.jpg')
