@@ -84,10 +84,8 @@ def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,doel_id,temperatu
         doel = st.selectbox('Doel',doel_birds_options,index=doel_birds_options.index(doel_id))
             
     datum = st.date_input("Datum",value=datum_id)       
-    two_hours_from_now = datetime.now() + timedelta(hours=1)
-    four_hours_from_now = datetime.now() + timedelta(hours=3)
-    start_time = st.time_input("Start tijd", two_hours_from_now,value=start_time_id)
-    eind_time = st.time_input("Eind tijd", four_hours_from_now,value=eind_time_id)               
+    start_time = st.time_input("Start tijd", value=start_time_id)
+    eind_time = st.time_input("Eind tijd", value=eind_time_id)               
     temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0,value=int(temperatuur))
     bewolking = st.selectbox("Bewolking",bewolking_options,index=bewolking_options.index(bewolking_id))
     neerslag = st.selectbox("Neerslag",neerslag_options,index=neerslag_options.index(neerslag_id))
