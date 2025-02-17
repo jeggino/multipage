@@ -56,7 +56,7 @@ def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time
 
 @st.dialog(" ")
 def delete_item(key):
-    if st.button("Let op! Klik hier als je de waarneming wilt verwijderen",icon="🚨",use_container_width=True):
+    if st.button("Let op! Klik hier als je de dagverslag wilt verwijderen",icon="🚨",type="primary",use_container_width=True):
         response = (
             supabase.table("df_dagverslagen")
             .delete()
