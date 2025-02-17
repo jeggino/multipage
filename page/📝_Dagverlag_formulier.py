@@ -66,7 +66,7 @@ def delete_item(key):
         st.rerun()
 
 ###
-doel_bats_options = ('Kraamverblijf','Winterverblijf','Paarverblijf')
+doel_bats_options = ('Laatvlieger','Kraamverblijf','Winterverblijf','Paarverblijf','Tweekleurige')
 doel_birds_options = ('Gierzwaluw','Huismus')
 bewolking_options = ("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)")
 neerslag_options = ("Droog", "Nevel/mist", "Motregen", "Regen")
