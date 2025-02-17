@@ -124,7 +124,7 @@ opdracht = st.session_state.project['opdracht']
 # st.title(f'{project}')
 # st.header(f'Opdracht: **{opdracht}**',divider=True)
 
-selected = option_menu(None,["Formulier", 'Data'], icons=[':material/edit_note:', 'bi-database'],orientation="horizontal",)
+selected = option_menu(None,["Formulier", 'Data'], icons=['bi-pen', 'bi-database'],orientation="horizontal",)
 
 if selected == "Formulier":
     with st.form("my_form", clear_on_submit=True,border=True):
