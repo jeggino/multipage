@@ -65,8 +65,14 @@ def delete_item(key):
             )
         st.rerun()
 
+###
+bewolking_options = ("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)")
+neerslag_options = ("Droog", "Nevel/mist", "Motregen", "Regen")
+windrichting_options = ("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest")
+###
+
 @st.dialog(" ")
-def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,temperatuur,datum_id,opmerking):
+def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,temperatuur,bewolking_id,neerslag_id,windkracht_id,windrichting_id,datum_id,opmerking):
     
     if opdracht == 'Vleermuizen':
         doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
@@ -80,10 +86,10 @@ def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,temperatuur,datum
     start_time = st.time_input("Start tijd", two_hours_from_now)
     eind_time = st.time_input("Eind tijd", four_hours_from_now)               
     temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0,value=int(temperatuur))
-    bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
-    neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen"))
-    windkracht = st.number_input("Windkracht (Bft)",key='windkracht', min_value=1)
-    windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))     
+    bewolking = st.selectbox("Bewolking",bewolking_options,index=bewolking_options.index(bewolking_id))
+    neerslag = st.selectbox("Neerslag",neerslag_options,index=bewolking_options.index(neerslag_id))
+    windkracht = st.number_input("Windkracht (Bft)",key='windkracht', min_value=1,value=windkracht_id)
+    windrichting = st.selectbox("Windrichting",windrichting_options,index=bewolking_options.index(windrichting_id))     
     opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...",value=opmerking)
     if st.button("**Update**", type="primary",use_container_width=True):
         data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":str(datum),
@@ -237,6 +243,10 @@ elif selected == 'Data':
                         temperatuur_id = df_filter.loc[event.selection['rows'][0],'temperatuur']
                         opmerking_id = df_filter.loc[event.selection['rows'][0],'opmerking']
                         datum_id = df_filter.loc[event.selection['rows'][0],'datum']
+                        bewolking_id = df_filter.loc[event.selection['rows'][0],'bewolking']
+                        neerslag_id = df_filter.loc[event.selection['rows'][0],'neerslag']
+                        windkracht_id = df_filter.loc[event.selection['rows'][0],'windkracht']
+                        windrichting_id = df_filter.loc[event.selection['rows'][0],'windrichting']
                         
                         st.write(f"**:blue[Samensteller:]** {waarnemer_id}")
                         st.write(f"**:blue[Begin tijd:]** {df_filter.loc[event.selection['rows'][0],'start_time']}")
@@ -249,7 +259,8 @@ elif selected == 'Data':
                         st.write(f"{opmerking_id}")
                         
                         if st.button("Dagverslag bijwerken",use_container_width=True): 
-                            update_dagverslag(key_id,waarnemer_id,project_id,opdracht_id,gebied_id,temperatuur_id,datum_id,opmerking_id)
+                            update_dagverslag(key_id,waarnemer_id,project_id,opdracht_id,gebied_id,temperatuur_id,bewolking_id,
+                                              neerslag_id,windkracht_id,windrichting_id,datum_id,opmerking_id)
 
                         if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
                             delete_item(key_id)
