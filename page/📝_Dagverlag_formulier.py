@@ -268,7 +268,7 @@ elif selected == 'Data':
                             update_dagverslag(key_id,waarnemer_id,project_id,opdracht_id,gebied_id,doel_id,temperatuur_id,bewolking_id,
                                               neerslag_id,windkracht_id,windrichting_id,datum_id,start_time_id,eind_time_id,opmerking_id)
 
-                        if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
+                        if st.button(":red[**Dagverslag verwijder**]",use_container_width=True):
                             delete_item(key_id)
 
             except:
