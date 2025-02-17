@@ -66,19 +66,21 @@ def delete_item(key):
         st.rerun()
 
 ###
+doel_bats_options = ('Kraamverblijf','Winterverblijf','Paarverblijf')
+doel_birds_options = ('Gierzwaluw','Huismus')
 bewolking_options = ("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)")
 neerslag_options = ("Droog", "Nevel/mist", "Motregen", "Regen")
 windrichting_options = ("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest")
 ###
 
 @st.dialog(" ")
-def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,temperatuur,bewolking_id,neerslag_id,windkracht_id,windrichting_id,datum_id,opmerking):
+def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,doel_id,temperatuur,bewolking_id,neerslag_id,windkracht_id,windrichting_id,datum_id,opmerking):
     
     if opdracht == 'Vleermuizen':
-        doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
+        doel = st.selectbox('Doel',doel_bats_options,index=doel_bats_options.index(doel_id))
       
     elif opdracht == 'Vogels':
-        doel = st.selectbox('Doel',['Gierzwaluw','Huismus'])
+        doel = st.selectbox('Doel',doel_birds_options,index=doel_birds_options.index(doel_id))
             
     datum = st.date_input("Datum",value=datum_id)       
     two_hours_from_now = datetime.now() + timedelta(hours=1)
@@ -240,6 +242,7 @@ elif selected == 'Data':
                         project_id = df_filter.loc[event.selection['rows'][0],'project']
                         opdracht_id = df_filter.loc[event.selection['rows'][0],'opdracht']
                         gebied_id = df_filter.loc[event.selection['rows'][0],'gebied_id']
+                        doel_id = df_filter.loc[event.selection['rows'][0],'doel']
                         temperatuur_id = df_filter.loc[event.selection['rows'][0],'temperatuur']
                         opmerking_id = df_filter.loc[event.selection['rows'][0],'opmerking']
                         datum_id = df_filter.loc[event.selection['rows'][0],'datum']
@@ -259,7 +262,7 @@ elif selected == 'Data':
                         st.write(f"{opmerking_id}")
                         
                         if st.button("Dagverslag bijwerken",use_container_width=True): 
-                            update_dagverslag(key_id,waarnemer_id,project_id,opdracht_id,gebied_id,temperatuur_id,bewolking_id,
+                            update_dagverslag(key_id,waarnemer_id,project_id,opdracht_id,gebied_id,doel_id,temperatuur_id,bewolking_id,
                                               neerslag_id,windkracht_id,windrichting_id,datum_id,opmerking_id)
 
                         if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
