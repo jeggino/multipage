@@ -89,9 +89,9 @@ def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,doel_id,temperatu
     eind_time = st.time_input("Eind tijd", four_hours_from_now)               
     temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0,value=int(temperatuur))
     bewolking = st.selectbox("Bewolking",bewolking_options,index=bewolking_options.index(bewolking_id))
-    neerslag = st.selectbox("Neerslag",neerslag_options,index=bewolking_options.index(neerslag_id))
+    neerslag = st.selectbox("Neerslag",neerslag_options,index=neerslag_options.index(neerslag_id))
     windkracht = st.number_input("Windkracht (Bft)",key='windkracht', min_value=1,value=windkracht_id)
-    windrichting = st.selectbox("Windrichting",windrichting_options,index=bewolking_options.index(windrichting_id))     
+    windrichting = st.selectbox("Windrichting",windrichting_options,index=windrichting_options.index(windrichting_id))     
     opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...",value=opmerking)
     if st.button("**Update**", type="primary",use_container_width=True):
         data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":str(datum),
