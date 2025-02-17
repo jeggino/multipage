@@ -131,7 +131,7 @@ if selected == "Formulier":
         
         if opdracht == 'Vleermuizen':
             if project != "Overig":
-                doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
+                doel = st.selectbox('Doel',doel_bats_options)
             else:
                 doel = st.selectbox('Doel',('Overig','Kraamverblijf','Winterverblijf','Paarverblijf'))
                 
