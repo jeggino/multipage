@@ -1,4 +1,6 @@
 import streamlit as st
+from streamlit_option_menu import option_menu
+
 from media_credentials import *
 
 
@@ -28,15 +30,24 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 IMAGE = "image/logo.png"
 st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
 
-try:
-    for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]:
-        with st.container(border=True):
-            try:
+selected = option_menu(None,["Fotos", 'Videos'], icons=['bi-camera', 'bi-camera-reels'],orientation="horizontal",)
+
+if selected == "Fotos":
+    try:
+        for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]:
+            with st.container(border=True):
+                st.image(key)
+                st.caption(media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']][key])
+    except:
+        st.image('https://cf.ltkcdn.net/travel/images/std/198833-425x283-Not-There-Yet.jpg')
+
+if selected == "Videos":
+    try:
+        for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]:
+            with st.container(border=True):
                 st.video(key,loop=True, autoplay=False, muted=True)
                 st.caption(media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']][key])
-            except:
-                st.image(key)
-except:
-    st.image('https://cf.ltkcdn.net/travel/images/std/198833-425x283-Not-There-Yet.jpg')
+    except:
+        st.image('https://cf.ltkcdn.net/travel/images/std/198833-425x283-Not-There-Yet.jpg')
    
 
