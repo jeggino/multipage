@@ -37,7 +37,6 @@ if selected == "Fotos":
         for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]['Photos']:
             with st.container(border=True):
                 st.markdown(key, unsafe_allow_html=True, help=None)
-                st.image(key)
                 st.caption(media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]['Photos'][key])
     except:
         st.image('https://cf.ltkcdn.net/travel/images/std/198833-425x283-Not-There-Yet.jpg')
