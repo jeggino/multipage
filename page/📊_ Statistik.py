@@ -45,6 +45,7 @@ elif selected == "Videos":
     # try:
     for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]['Videos']:
         with st.container(border=True):
+            st.write(key)
             st.video(key,loop=True, autoplay=False, muted=True)
             st.caption(media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']][key])
     # except:
