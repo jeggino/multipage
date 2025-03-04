@@ -97,6 +97,9 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'vogel waarneming': 'icons/swift.pn
 DICTIONARY_PROJECTS = {"Overig":["Vogels","Vleermuizen"],
                       "Admin":["Vogels","Vleermuizen"],
                        'SMPs-Terschelling':["Vleermuizen","Vogels"],
-                       'SMPs-EdamVolendam':["Vleermuizen","Vogels"]
+                       'SMPs-EdamVolendam':["Vleermuizen","Vogels"],
+                       'Beatrixlaan-1-31_Uithoorn':["Vleermuizen","Vogels"],
+                       'Middelweg-34_Starnmeer':["Vogels"],
+                       'Kerkebuurt-39_Marken':["Vogels"]
                        
                       }
