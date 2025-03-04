@@ -30,9 +30,9 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 IMAGE = "image/logo.png"
 st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
 
-selected = option_menu(None,["Fotos", 'Videos'], icons=['bi-camera', 'bi-camera-reels'],orientation="horizontal",)
+selected = option_menu(None,["Foto's", "Video's"], icons=['bi-camera', 'bi-camera-reels'],orientation="horizontal",)
 
-if selected == "Fotos":
+if selected == "Foto's":
     try:
         for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]['Photos']:
             with st.container(border=True):
@@ -41,7 +41,7 @@ if selected == "Fotos":
     except:
         st.image('https://cf.ltkcdn.net/travel/images/std/198833-425x283-Not-There-Yet.jpg')
 
-elif selected == "Videos":
+elif selected == "Video's":
     try:
         for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]['Videos']:
             with st.container(border=True):
