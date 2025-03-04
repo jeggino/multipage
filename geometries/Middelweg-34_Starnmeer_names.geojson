@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "Middelweg-34_Starnmeer_names",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "lat": 52.538099249981251, "lng": 4.8057821353100474, "Gebied": "Kerkebuurt-39" }, "geometry": { "type": "Point", "coordinates": [ 4.805783021817107, 52.538099599351796 ] } }
+]
+}
