@@ -120,7 +120,7 @@ def logOut_project():
 #---APP---
 page_1 = st.Page("page/🧭_navigatie.py", title="Navigatie",icon=":material/explore:" )
 page_2 = st.Page("page/📌_Voeg_een_waarneming_in.py", title="Voeg een waarneming in",icon=":material/pin_drop:" )
-page_3 = st.Page("page/📝_Dagverlag_formulier.py", title="Dagverlag formulier",icon=":material/edit_note:" )
+page_3 = st.Page("page/📝_Dagverlag_formulier.py", title="Dagverslag",icon=":material/edit_note:" )
 page_4 = st.Page("page/📊_ Statistik.py", title="Videos/Fotos",icon=":material/photo_camera:" )
 page_5 = st.Page("page/statistik.py", title="Statistieken",icon=":material/bar_chart:" )
 
