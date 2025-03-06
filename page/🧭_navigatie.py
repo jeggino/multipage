@@ -105,7 +105,7 @@ def legend(species_colors_dict,dragable=True):
         <li><strong>Functie</strong></li>
         <li><span class="fa fa-walkie-talkie" style="color:grey" opacity: 0.75;'></span>Vleermuis waarneming</li>
         <li><span class="fa fa-star" style="color:grey" opacity: 0.75;'></span>Zommerverblijf</li>
-        <li><span class="fa fa-venus-double" style="color:grey" opacity: 0.75;'></span>Kraamverblif</li>
+        <li><span class="fa fa-venus-double" style="color:grey" opacity: 0.75;'></span>Kraamverblijf</li>
         <li><span class="fa fa-snowflake" style="color:grey" opacity: 0.75;'></span>Winterverblijf</li>
         <li><span class="fa fa-heart" style="color:grey" opacity: 0.75;'></span>Paarverblijf</li>
         <li><strong>Functiegebied</strong></li>
