@@ -100,6 +100,7 @@ DICTIONARY_PROJECTS = {"Overig":["Vogels","Vleermuizen"],
                        'SMPs-EdamVolendam':["Vleermuizen","Vogels"],
                        'Beatrixlaan-1-31_Uithoorn':["Vleermuizen","Vogels"],
                        'Middelweg-34_Starnmeer':["Vogels"],
-                       'Kerkebuurt-39_Marken':["Vogels"]
+                       'Kerkebuurt-39_Marken':["Vogels"],
+                       'HollandsEnd-22_Ankeveen': ["Vleermuizen","Vogels"]
                        
                       }
