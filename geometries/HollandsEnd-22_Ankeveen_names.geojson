@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "HollandsEnd-22_Ankeveen_names",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "lat": 52.272252091973165, "lng": 5.1054769499057411, "Gebied": "Hollands End 22" }, "geometry": { "type": "Point", "coordinates": [ 5.105488793674113, 52.272248470632618 ] } }
+]
+}
