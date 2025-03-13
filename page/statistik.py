@@ -44,8 +44,8 @@ opdracht = st.session_state.project['opdracht']
 
 rows_points = supabase.table("df_observations").select("*").execute()
 df_point = pd.DataFrame(rows_points.data)
-df_download_points = df_point[(df_point['project']==project) & (df_point['soortgroup']==opdracht)]
-df_download_points.drop('key',axis=1)
+df_download_points = df_point[(df_point['project']==project) & (df_point['soortgroup']==opdracht)].drop('key',axis=1)
+df_download_points
 # selected = option_menu(None,["Cijfers", 'Data'], icons=['bi bi-clipboard2-data', 'bi-database'],orientation="horizontal",)
 
 # if selected == "Cijfers":
