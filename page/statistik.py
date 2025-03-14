@@ -48,6 +48,37 @@ if project == 'Overig':
     df_download_points = df_point[(df_point['soortgroup']==opdracht)].drop('key',axis=1)
 else:   
     df_download_points = df_point[(df_point['project']==project) & (df_point['soortgroup']==opdracht)].drop('key',axis=1)
+
+
+df = df_download_points[df_download_points['geometry_type']=='Point'].groupby(['datum','functie'],as_index=False).size()
+df = df.pivot(index='datum',columns='functie',values='size',).fillna(0).astype(int).reset_index()
+df['datum'] = pd.to_datetime(df['datum'])
+# applying the groupby function on df 
+df = df.groupby(pd.Grouper(key='datum', axis=0,freq='W')).sum().reset_index()
+df = df.melt(id_vars='datum')
+
+chart = alt.Chart(df).mark_bar().encode(
+    # x='week(datum):O',
+    x=alt.X('week(datum):T',axis=alt.Axis(grid=True,domain=True,ticks=True,),title=None,
+            # scale=alt.Scale(domain=['2025','2026'])
+           ),
+    y=alt.Y('sum(value):Q',axis=alt.Axis(grid=False,domain=True,ticks=True,),title=None,
+            # scale=alt.Scale(domain=['2025','2026'])
+           ),
+    color=alt.Color('functie').title('Functie'),
+    row=alt.Row('functie',title=None,),
+    tooltip=[ alt.Tooltip("value:N",title ="Aantal")]
+).properties(
+                width=450,
+                height=60,
+                title=alt.Title(
+                text="",
+                subtitle="",
+                anchor='start'
+                )
+                ).configure_view(stroke=None)
+
+st.altair_chart(chart, use_container_width=True,theme=None,)
     
 st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
                    file_name=f"{project}_{opdracht}_Waarnemingen.csv",mime="text/csv", use_container_width=False)
