@@ -59,7 +59,6 @@ else:
 df = df.pivot(index='datum',columns='functie',values='size',).fillna(0).astype(int).reset_index()
 df['datum'] = pd.to_datetime(df['datum'])
 # applying the groupby function on df 
-# df = df.groupby(pd.Grouper(key='datum', axis=0,freq='W')).sum().reset_index()
 df = df.melt(id_vars='datum')
 
 chart = alt.Chart(df).mark_bar().encode(
@@ -69,7 +68,7 @@ chart = alt.Chart(df).mark_bar().encode(
            ),
     color=alt.Color('functie').title('Functie'),
     row=alt.Row('functie',title=None,header=None),
-    tooltip=[ alt.Tooltip("functie:N",title ="Functie"), 
+    tooltip=[ alt.Tooltip("capitalize(functie):N",title ="Functie"), 
              alt.Tooltip('week(datum):T',title ="Week"),
              alt.Tooltip("value:N",title ="Aantal")]
 ).properties(
