@@ -71,8 +71,8 @@ chart = alt.Chart(df).mark_bar().encode(
     row=alt.Row('functie',title=None,header=None),
     tooltip=[ alt.Tooltip("value:N",title ="Aantal")]
 ).properties(
-            width=1050,
-            height=110,
+            # width=1050,
+            # height=110,
 
             title=alt.Title(
             text="",
@@ -83,7 +83,7 @@ chart = alt.Chart(df).mark_bar().encode(
 
 col1, col2 = st.columns([0.2,0.8],gap="large", vertical_alignment="top", border=False)
 
-col2.altair_chart(chart, use_container_width=False,theme="streamlit")
+col2.altair_chart(chart, use_container_width=True,theme="streamlit")
 col1.dataframe(df.groupby('functie')['value'].sum(),use_container_width=True)
     
 st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
