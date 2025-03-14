@@ -69,7 +69,7 @@ chart = alt.Chart(df).mark_bar().encode(
            ),
     color=alt.Color('functie').title('Functie'),
     row=alt.Row('functie',title=None,header=None),
-    tooltip=[ alt.Tooltip("value:N",title ="Aantal")]
+    tooltip=[ alt.Tooltip("functie:N",title ="Functie"), alt.Tooltip("value:N",title ="Aantal")]
 ).properties(
             width=1050,
             height=110,
