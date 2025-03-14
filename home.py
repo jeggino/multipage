@@ -140,7 +140,7 @@ if 'project' not in st.session_state:
     st.stop()
 
 if st.session_state.login['type'] == 'user':
-    if st.session_state.project['project_name'] != 'Overig':
+    if st.session_state.project['project_name'] != 'Admin':
         if st.session_state.project['auto_start'] == False:
             pg = st.navigation([page_1,page_2,page_3,page_5,page_4])
         if st.session_state.project['auto_start'] == True:
