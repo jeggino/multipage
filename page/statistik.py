@@ -76,7 +76,7 @@ chart = alt.Chart(df).mark_bar().encode(
                 anchor='start'
                 )
                 ).configure_view(stroke=None)
-col1, col2 = st.columns([4,1])
+col1, col2 = st.columns([0.7,0.3],gap="medium", vertical_alignment="top", border=True)
 col1.altair_chart(chart, use_container_width=True,theme=None,)
     
 col2.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
