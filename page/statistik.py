@@ -84,7 +84,7 @@ chart = alt.Chart(df).mark_bar().encode(
 col1, col2 = st.columns([0.7,0.3],gap="medium", vertical_alignment="top", border=True)
 col1.altair_chart(chart, use_container_width=True,theme=None,)
     
-col2.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
+st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
                    file_name=f"{project}_{opdracht}_Waarnemingen.csv",mime="text/csv", use_container_width=False)
 
 # selected = option_menu(None,["Cijfers", 'Data'], icons=['bi bi-clipboard2-data', 'bi-database'],orientation="horizontal",)
