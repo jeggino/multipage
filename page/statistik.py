@@ -84,7 +84,7 @@ chart = alt.Chart(df).mark_bar().encode(
 col1, col2 = st.columns([0.2,0.8],gap="large", vertical_alignment="top", border=False)
 
 col2.altair_chart(chart, use_container_width=False,theme=None,)
-col1.dataframe(df.groupby('functie')['value'].sum())
+col1.dataframe(df.groupby('functie')['value'].sum(),use_container_width=True)
     
 st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
                    file_name=f"{project}_{opdracht}_Waarnemingen.csv",mime="text/csv", use_container_width=False)
