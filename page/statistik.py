@@ -60,16 +60,14 @@ df = df.melt(id_vars='datum')
 chart = alt.Chart(df).mark_bar().encode(
     # x='week(datum):O',
     x=alt.X('week(datum):T',axis=alt.Axis(grid=True,domain=True,ticks=True,),title=None,
-            # scale=alt.Scale(domain=['2025','2026'])
            ),
     y=alt.Y('sum(value):Q',axis=alt.Axis(grid=False,domain=True,ticks=True,),title=None,
-            # scale=alt.Scale(domain=['2025','2026'])
            ),
     color=alt.Color('functie').title('Functie'),
     row=alt.Row('functie',title=None,),
     tooltip=[ alt.Tooltip("value:N",title ="Aantal")]
 ).properties(
-                # width=450,
+                width=450,
                 # height=80,
 
                 title=alt.Title(
