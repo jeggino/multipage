@@ -49,7 +49,7 @@ if project == 'Overig':
 else:   
     df_download_points = df_point[(df_point['project']==project) & (df_point['soortgroup']==opdracht)].drop('key',axis=1)
 
-option_species = st.selectbox("",options =df_download_points['sp'].unique(),label_visibility='collapsed')
+option_species = st.selectbox("",options = list(set(['Alle sorten']) | set(df_download_points['sp'].unique())),label_visibility='collapsed')
 if option_species == 'Alle sorten':
     df = df_download_points[df_download_points['geometry_type']=='Point'].groupby(['datum','functie'],as_index=False).size()
 
