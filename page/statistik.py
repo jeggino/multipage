@@ -83,6 +83,9 @@ chart = alt.Chart(df).mark_bar().encode(
                 ).configure_view(stroke=None)
 col1, col2 = st.columns([0.7,0.3],gap="medium", vertical_alignment="top", border=True)
 col1.altair_chart(chart, use_container_width=None,theme=None,)
+
+with col2:
+    st.metric(label="Kraamverblijven", value=df.groupby('functie')['value'].sum()['kraamverblijf'])
     
 st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
                    file_name=f"{project}_{opdracht}_Waarnemingen.csv",mime="text/csv", use_container_width=False)
