@@ -44,7 +44,11 @@ opdracht = st.session_state.project['opdracht']
 
 rows_points = supabase.table("df_observations").select("*").execute()
 df_point = pd.DataFrame(rows_points.data)
-df_download_points = df_point[(df_point['project']==project) & (df_point['soortgroup']==opdracht)].drop('key',axis=1)
+if project == 'Overig':
+    df_download_points = df_point[(df_point['soortgroup']==opdracht)].drop('key',axis=1)
+else:   
+    df_download_points = df_point[(df_point['project']==project) & (df_point['soortgroup']==opdracht)].drop('key',axis=1)
+    
 st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
                    file_name=f"{project}_{opdracht}_Waarnemingen.csv",mime="text/csv", use_container_width=False)
 
