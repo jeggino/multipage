@@ -68,7 +68,7 @@ chart = alt.Chart(df).mark_bar().encode(
            ),
     color=alt.Color('functie').title('Functie'),
     row=alt.Row('functie',title=None,header=None),
-    tooltip=[ alt.Tooltip("CAPITALIZE(functie):N",title ="Functie"), 
+    tooltip=[ alt.Tooltip("functie:N",title ="Functie"), 
              alt.Tooltip('week(datum):T',title ="Week"),
               alt.Tooltip("datum:T",title ="Datum"), 
              alt.Tooltip("value:N",title ="Aantal")]
