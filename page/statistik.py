@@ -73,7 +73,7 @@ chart = alt.Chart(df).mark_bar().encode(
               alt.Tooltip("datum:T",title ="Datum"), 
              alt.Tooltip("value:N",title ="Aantal")]
 ).properties(
-            width=1050,
+            # width=1050,
             height=110,
 
             title=alt.Title(
