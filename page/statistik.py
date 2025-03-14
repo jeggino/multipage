@@ -63,7 +63,6 @@ df = df.groupby(pd.Grouper(key='datum', axis=0,freq='W')).sum().reset_index()
 df = df.melt(id_vars='datum')
 
 chart = alt.Chart(df).mark_bar().encode(
-    # x='week(datum):O',
     x=alt.X('week(datum):T',axis=alt.Axis(grid=True,domain=True,ticks=True,),title=None,
            ),
     y=alt.Y('sum(value):Q',axis=alt.Axis(grid=False,domain=True,ticks=True,),title=None,
@@ -72,15 +71,16 @@ chart = alt.Chart(df).mark_bar().encode(
     row=alt.Row('functie',title=None,header=None),
     tooltip=[ alt.Tooltip("value:N",title ="Aantal")]
 ).properties(
-                width=650,
-                height=120,
+            width=750,
+            height=110,
 
-                title=alt.Title(
-                text="",
-                subtitle="",
-                anchor='start'
-                )
-                ).configure_view(stroke=None)
+            title=alt.Title(
+            text="",
+            subtitle="",
+            anchor='start'
+            )
+            ).configure_view(stroke=None)
+
 col1, col2 = st.columns([0.2,0.8],gap="medium", vertical_alignment="top", border=False)
 
 col2.altair_chart(chart, use_container_width=False,theme=None,)
@@ -89,134 +89,3 @@ col1.dataframe(df.groupby('functie')['value'].sum())
 st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
                    file_name=f"{project}_{opdracht}_Waarnemingen.csv",mime="text/csv", use_container_width=False)
 
-# selected = option_menu(None,["Cijfers", 'Data'], icons=['bi bi-clipboard2-data', 'bi-database'],orientation="horizontal",)
-
-# if selected == "Cijfers":
-# st.image('https://th.bing.com/th/id/R.9b05c7a5db7a093407c47efc77073a34?rik=IElQBmbi8QoEpA&riu=http%3a%2f%2fkinderscientific.com%2fwp-content%2fuploads%2f2018%2f06%2fWork-in-Progress.jpg&ehk=Udc6o7K7mopYeuVxHWM7qb%2f%2f6udgrt%2fp%2bYwVywZTQCc%3d&risl=&pid=ImgRaw&r=0',
-#         width=450)
-
-    
-# elif selected == "Data":
-    
-    
-
-#     options = ["Waarnemingen", "Dagverslagen"]
-#     selection = st.segmented_control(
-#         "Directions", options, selection_mode="single",default="Waarnemingen", label_visibility="collapsed"
-#     )
-    
-#     if selection=="Waarnemingen":
-#         rows_points = supabase.table("df_observations").select("*").execute()
-#         df_point = pd.DataFrame(rows_points.data)
-#         df_download_points = df_point[(df_point['project']==project) & (df_point['soortgroup']==opdracht)]
-#         if len(df_download_points)==0:
-#             st.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',
-#                         width=450)
-#         with st.popover("Filters",use_container_width=True,icon=':material/filter_alt:'):
-#             option_funtion_filter = st.multiselect(
-#                 "Functie",
-#                 df_download_points['functie'].unique(),
-#                 df_download_points['functie'].unique(),
-#             )
-
-#             option_Species_filter = st.multiselect(
-#                 "Soort",
-#                 df_download_points['sp'].unique(),
-#                 df_download_points['sp'].unique(),
-#             )
-            
-#         df_filter_points = df_download_points[(df_download_points['functie'].isin(option_funtion_filter)) & (df_download_points['sp'].isin(option_Species_filter))]  
-#         event = st.dataframe(
-#             df_filter_points,
-#             column_config={
-#             "datum": "Datum",
-#             "functie": "Functie",
-#                 "lat": "Lat",
-#                 "lng": "Lon",
-#                 "time": "Tijd",
-#                 "sp": "Soort",
-#                 "verblijf": "Verblijf",
-#                 "gedrag": "Gedrag",
-#                 "aantal": "Aantal",
-#                 "waarnemer":"Waarnemer",
-#                 "opmerking": "Opmerking",
-#             },
-#             hide_index=True,
-#             column_order=('functie',"sp","gedrag","verblijf","aantal",'datum',"lat","lng","waarnemer","opmerking"),
-#             use_container_width=True
-#         )
-        
-
-#         st.download_button(label="Downloaden waarnemingen",data=df_filter_points.to_csv().encode("utf-8"),
-#                            file_name=f"waarnemingen_{opdracht}.csv",mime="text/csv", use_container_width=False)
-
-
-
-#     elif selection=="Dagverslagen":
-#         try:
-#             rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
-#             df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)                
-#             df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & (df_dagverslagen['opdracht']==opdracht)]
-#             st.download_button(label="Downloaden alle dagverslagen",data=df_download_dagverslagen.to_csv().encode("utf-8"),
-#                                file_name="dagverslagen.csv",mime="text/csv", use_container_width=False)
-#             col1,col2 = st.columns([4,4],gap='medium',border=True)
-            
-#             with st.container(border=True):
-#                 option_areas_filter = col1.selectbox(
-#                     "Selecteer een gebied",
-#                     df_download_dagverslagen['gebied_id'].unique(),
-#                     index=None,
-#                     placeholder="Selecteer een gebied...",
-#                     label_visibility="collapsed"
-#                 )
-#                 try:
-#                     df_filter = df_download_dagverslagen[df_download_dagverslagen['gebied_id']==option_areas_filter].sort_values('datum').reset_index(drop=True)
-#                     with col1:
-#                         if len(df_filter)==0:
-#                             st.stop()
-#                         else:
-                            
-#                             event = st.dataframe(
-#                                 df_filter,
-#                                 column_config={
-#                                     "datum": "Datum",
-#                                     "doel": "Doel",
-#                                 },
-#                                 hide_index=True,
-#                                 column_order=('datum','doel'),
-#                                 on_select="rerun",
-#                                 selection_mode=["single-row"],
-#                                 use_container_width=False
-#                             )
-
-#                         c = (
-#                            alt.Chart(df_filter)
-#                            .mark_circle(size=155,)
-#                            .encode(x="datum", color="doel", tooltip=["datum", "doel"])
-#                         )
-                        
-#                         st.altair_chart(c, use_container_width=True,theme=None,)
-
-                        
-        
-#                         with col2:
-#                             if len(event.selection['rows'])==0:
-#                                 st.info('Selecteer een rij om de Dagverlageninformatie te krijgen')
-#                             else:
-#                                 st.write(f"**:blue[Samensteller:]** {df_filter.loc[event.selection['rows'][0],'waarnemer']}")
-#                                 st.write(f"**:blue[Begin tijd:]** {df_filter.loc[event.selection['rows'][0],'start_time']}")
-#                                 st.write(f"**:blue[Eind tijd:]** {df_filter.loc[event.selection['rows'][0],'eind_time']}")
-#                                 st.write(f"**:blue[Temperatuur:]** {df_filter.loc[event.selection['rows'][0],'temperatuur']}")
-#                                 st.write(f"**:blue[Bewolking:]** {df_filter.loc[event.selection['rows'][0],'bewolking']}")
-#                                 st.write(f"**:blue[Neerslag:]** {df_filter.loc[event.selection['rows'][0],'neerslag']}")
-#                                 st.write(f"**:blue[Windkrcht:]** {df_filter.loc[event.selection['rows'][0],'windkrcht']}")
-#                                 st.write(f"**:blue[Windrichting:]** {df_filter.loc[event.selection['rows'][0],'windrichting']}")
-#                                 st.write(f"{df_filter.loc[event.selection['rows'][0],'opmerking']}")
-        
-#                 except:
-#                     pass
-#         except:
-#             st.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',
-#                     width=450)
-
-# '---'
