@@ -49,8 +49,13 @@ if project == 'Overig':
 else:   
     df_download_points = df_point[(df_point['project']==project) & (df_point['soortgroup']==opdracht)].drop('key',axis=1)
 
+option_species = st.selectbox("How would you like to be contacted?",options ='Alle sorten' + df_download_points['sp'].unique(),)
+if option_species == 'Alle sorten':
+    df = df_download_points[df_download_points['geometry_type']=='Point'].groupby(['datum','functie'],as_index=False).size()
 
-df = df_download_points[df_download_points['geometry_type']=='Point'].groupby(['datum','functie'],as_index=False).size()
+else:
+    df = df_download_points[(df_download_points['geometry_type']=='Point')&(df_download_points['sp']==option_species)].groupby(['datum','functie'],as_index=False).size()
+    
 df = df.pivot(index='datum',columns='functie',values='size',).fillna(0).astype(int).reset_index()
 df['datum'] = pd.to_datetime(df['datum'])
 # applying the groupby function on df 
