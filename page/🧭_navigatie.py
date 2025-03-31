@@ -191,8 +191,8 @@ def legend_birds(species_colors_dict,dragable=True):
         <li><span class="fa-regular fa-circle-question" style="color:grey" opacity: 0.75;'></span>Mogelijke nestlocatie</li>
         <li><span class="fa fa-egg" style="color:grey" opacity: 0.75;'></span>Nestlocatie</li>
         <li><strong>Functiegebied</strong></li>
-        <li><span class="fa-solid fa-clone" style="color:grey" opacity: 0.75;'></span>Vermoedelijk kolonie gebied</li>
-        <li><span class="fa-regular fa-clone" style="color:grey" opacity: 0.75;'></span>Koloniegebied</li>
+        <li><span class="fa-solid fa-clone" style="color:grey" opacity: 0.75;'></span>Koloniegebied</li>
+        <li><span class="fa-regular fa-clone" style="color:grey" opacity: 0.75;'></span>Vermoedelijk kolonie gebied</li>
 
       </ul> 
     </body>
@@ -422,9 +422,14 @@ def update_item(id,df):
   elif st.session_state.project['opdracht'] == 'Vogels':
   
     sp = st.selectbox("Soort", BIRD_NAMES,index=BIRD_NAMES.index(id_sp))
-    gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS,index=BIRD_BEHAVIOURS.index(id_gedrag)) 
-    functie = st.selectbox("Functie", BIRD_FUNCTIE,index=BIRD_FUNCTIE.index(id_functie)) 
-    verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF,index=BIRD_VERBLIJF.index(id_verblijf)) 
+    if output["last_active_drawing"]["geometry"]["type"] == 'Polygon':
+        gedrag = None
+        functie = st.selectbox("Functie", ['Koloniegebied','Vermoedelijk kolonie gebied'],index=['Koloniegebied','Vermoedelijk kolonie gebied'].index(id_functie))
+        verblijf = None
+    else:
+        gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS,index=BIRD_BEHAVIOURS.index(id_gedrag)) 
+        functie = st.selectbox("Functie", BIRD_FUNCTIE,index=BIRD_FUNCTIE.index(id_functie)) 
+        verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF,index=BIRD_VERBLIJF.index(id_verblijf)) 
 
     
   aantal = st.number_input("Aantal", min_value=1,value=int(id_aantal))    
