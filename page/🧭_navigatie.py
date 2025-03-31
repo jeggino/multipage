@@ -746,7 +746,7 @@ for i in range(len(df_2)):
         location = ast.literal_eval(location)
         location = [i[::-1] for i in location[0]]
                     
-        if df_2.iloc[i]['functie']=="Baltsterritorium":
+        if df_2.iloc[i]['functie'] in ["Baltsterritorium","Vermoedelijk kolonie gebied"]:
             fill_opacity=0
             weight=3
 
