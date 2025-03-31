@@ -103,5 +103,6 @@ DICTIONARY_PROJECTS = {"Overig":["Vogels","Vleermuizen"],
                        'Kerkebuurt-39_Marken':["Vogels"],
                        'HollandsEnd-22_Ankeveen': ["Vleermuizen","Vogels"],
                        'SMPs-Hoorn':["Vleermuizen","Vogels"],
+                       'SMPs-ZuidOost':["Vogels"]
                        
                       }
