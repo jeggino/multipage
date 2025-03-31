@@ -1,0 +1,30 @@
+{
+"type": "FeatureCollection",
+"name": "SMPs-ZuidOost_names",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "lat": 52.32052422090797, "lng": 4.9659796809370285, "Gebied": 19 }, "geometry": null },
+{ "type": "Feature", "properties": { "lat": 52.324190627991463, "lng": 4.9641003054876043, "Gebied": 18 }, "geometry": null },
+{ "type": "Feature", "properties": { "lat": 52.299223691334653, "lng": 4.994015271760988, "Gebied": 7 }, "geometry": { "type": "Point", "coordinates": [ 4.966870138490489, 52.320797366917283 ] } },
+{ "type": "Feature", "properties": { "lat": 52.295100272765531, "lng": 4.9460245410092867, "Gebied": 12 }, "geometry": { "type": "Point", "coordinates": [ 4.964546168847243, 52.324157567487482 ] } },
+{ "type": "Feature", "properties": { "lat": 52.318783829011373, "lng": 4.9880484436986254, "Gebied": 5 }, "geometry": null },
+{ "type": "Feature", "properties": { "lat": 52.326059841190059, "lng": 4.981613019170787, "Gebied": 23 }, "geometry": null },
+{ "type": "Feature", "properties": { "lat": 52.305233495830308, "lng": 4.9377827616580197, "Gebied": 13 }, "geometry": null },
+{ "type": "Feature", "properties": { "lat": 52.292420884733154, "lng": 4.9701330935816204, "Gebied": 3 }, "geometry": null },
+{ "type": "Feature", "properties": { "lat": 52.290879555572005, "lng": 4.975904748542102, "Gebied": 2 }, "geometry": null },
+{ "type": "Feature", "properties": { "lat": 52.302051258271426, "lng": 4.9690663425318178, "Gebied": 9 }, "geometry": null },
+{ "type": "Feature", "properties": { "lat": 52.308145484988245, "lng": 4.9802291960212424, "Gebied": 11 }, "geometry": null },
+{ "type": "Feature", "properties": { "lat": 52.304204918799549, "lng": 4.9597566979423426, "Gebied": 10 }, "geometry": { "type": "Point", "coordinates": [ 4.99435920407699, 52.299210750576485 ] } },
+{ "type": "Feature", "properties": { "lat": 52.312536266479206, "lng": 4.9516297635601756, "Gebied": 14 }, "geometry": null },
+{ "type": "Feature", "properties": { "lat": 52.318821469044281, "lng": 4.9555586525602884, "Gebied": 17 }, "geometry": { "type": "Point", "coordinates": [ 4.94637934145767, 52.294931915892931 ] } },
+{ "type": "Feature", "properties": { "lat": 52.315812228694092, "lng": 4.9706410092950088, "Gebied": 20 }, "geometry": { "type": "Point", "coordinates": [ 4.98790594072695, 52.318703689239705 ] } },
+{ "type": "Feature", "properties": { "lat": 52.297319866618182, "lng": 4.9853293947268025, "Gebied": 5 }, "geometry": { "type": "Point", "coordinates": [ 4.981602894215805, 52.325705563380794 ] } },
+{ "type": "Feature", "properties": { "lat": 52.296327130960933, "lng": 4.9779421551937437, "Gebied": 4 }, "geometry": null },
+{ "type": "Feature", "properties": { "lat": 52.296950300904236, "lng": 4.9670114740322244, "Gebied": 8 }, "geometry": null },
+{ "type": "Feature", "properties": { "lat": 52.291893329490719, "lng": 4.9889981869118172, "Gebied": 1 }, "geometry": null },
+{ "type": "Feature", "properties": { "lat": 52.294802726129994, "lng": 4.9926471153604437, "Gebied": 6 }, "geometry": null },
+{ "type": "Feature", "properties": { "lat": 52.324569905364946, "lng": 4.9494200983222392, "Gebied": 16 }, "geometry": null },
+{ "type": "Feature", "properties": { "lat": 52.320026098561492, "lng": 4.9445513508905101, "Gebied": 15 }, "geometry": null },
+{ "type": "Feature", "properties": { "lat": 52.320911762942181, "lng": 4.9795033852825279, "Gebied": 21 }, "geometry": null }
+]
+}
