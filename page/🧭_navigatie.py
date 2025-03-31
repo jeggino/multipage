@@ -190,6 +190,9 @@ def legend_birds(species_colors_dict,dragable=True):
         <li><span class="fa fa-binoculars" style="color:grey" opacity: 0.75;'></span>Vogel waarneming</li>
         <li><span class="fa-regular fa-circle-question" style="color:grey" opacity: 0.75;'></span>Mogelijke nestlocatie</li>
         <li><span class="fa fa-egg" style="color:grey" opacity: 0.75;'></span>Nestlocatie</li>
+        <li><strong>Functiegebied</strong></li>
+        <li><span class="fa-solid fa-clone" style="color:grey" opacity: 0.75;'></span>Vermoedelijk kolonie gebied</li>
+        <li><span class="fa-regular fa-clone" style="color:grey" opacity: 0.75;'></span>Koloniegebied</li>
 
       </ul> 
     </body>
