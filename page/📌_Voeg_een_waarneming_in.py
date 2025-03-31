@@ -160,9 +160,16 @@ def input_data(output):
     elif soortgroup == 'Vogels':
     
         sp = st.selectbox("Soort", BIRD_NAMES)
-        gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-        functie = st.selectbox("Functie", BIRD_FUNCTIE) 
-        verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
+
+        if geometry_type == 'Polygon':
+            gedrag = None
+            functie = st.selectbox("Functie", ['Koloniegebied'])
+            verblijf = None
+
+        else:
+            gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+            functie = st.selectbox("Functie", BIRD_FUNCTIE) 
+            verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
 
     elif soortgroup == 'Vogels-Overig':
     
