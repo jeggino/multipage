@@ -153,7 +153,7 @@ if st.session_state.login['type'] == 'user':
                 pg = st.navigation([page_1,page_2,page_3])
             
     else:
-        pg = st.navigation([page_1,page_2])
+        pg = st.navigation([page_1,page_5,page_2])
     
 else:
     pg = st.navigation([page_1,page_4])
