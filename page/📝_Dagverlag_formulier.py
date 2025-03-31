@@ -1,4 +1,5 @@
 import streamlit as st
+import numpy as np
 import pandas as pd
 import geopandas as gpd
 import datetime
@@ -144,7 +145,7 @@ if selected == "Formulier":
         try: 
             geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
             gdf_areas = gpd.read_file(geometry_file)
-            gebied_id_list = gdf_areas['Gebied'].unique()
+            gebied_id_list = np.sort(gdf_areas['Gebied'].unique())
             gebied_id = st.selectbox("Gebied",gebied_id_list,index=None)
         except:
             gebied_id = "---"
