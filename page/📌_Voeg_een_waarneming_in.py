@@ -163,7 +163,7 @@ def input_data(output):
 
         if geometry_type == 'Polygon':
             gedrag = None
-            functie = st.selectbox("Functie", ['Koloniegebied'])
+            functie = st.selectbox("Functie", ['Koloniegebied','Vermoedelijk kolonie gebied'])
             verblijf = None
 
         else:
