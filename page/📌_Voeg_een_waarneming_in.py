@@ -89,7 +89,7 @@ def map():
             position='bottomleft',).add_to(m)
 
     else:
-        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False},
+        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': True},
             position='bottomleft',).add_to(m)
 
     functie_dictionary = {}
