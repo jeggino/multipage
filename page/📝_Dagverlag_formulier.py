@@ -146,13 +146,17 @@ if selected == "Formulier":
             geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
             gdf_areas = gpd.read_file(geometry_file)
             gebied_id_list = np.sort(gdf_areas['Gebied'].unique())
+            
+            if (project == "SMPs-Terschelling") & (opdracht == 'Vogels') :
+                gebied_id_list = [1,2,3,4]
+                
             gebied_id = st.selectbox("Gebied",gebied_id_list,index=None)
         except:
             gebied_id = "---"
         # key = random.randint(1,100000000000)    
         datum = st.date_input("Datum","today")       
         two_hours_from_now = datetime.now() + timedelta(hours=1)
-        four_hours_from_now = datetime.now() + timedelta(hours=3)
+        four_hours_from_now = datetime.now() + timedelta(hours=2)
         start_time = st.time_input("Start tijd", two_hours_from_now)
         eind_time = st.time_input("Eind tijd", four_hours_from_now)               
         temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0)
