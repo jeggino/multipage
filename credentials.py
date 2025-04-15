@@ -18,7 +18,7 @@ BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst','luchttoev
 GEBIED_OPTIONS = ['Foerageergebied','Baltsterritorium']
 
 #---
-BIRD_NAMES = ['Gierzwaluw','Huiszwaluw','Boerenzwaluw','Huismus','Spreeuw','Boomkruiper']
+BIRD_NAMES = ['Gierzwaluw','Huiszwaluw','Boerenzwaluw','Huismus','Spreeuw','Boomkruiper','Kauw']
 
 BIRD_NAMES_ANDER = ['...Andere(n)']
 
