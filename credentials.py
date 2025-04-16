@@ -3,7 +3,7 @@
 
 
 #---
-BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis',
+BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Baardvleermuis','Meervleermuis','Watervleermuis',
              'Kleine dwergvleermuis', 'Tweekleurige vleermuis', 'Gewone grootoorvleermuis','..ander']
 
 BAT_BEHAVIOURS = ['foeragerend', 'uitvliegend','invliegend', 'overvliegend', 'zwermend', 'sporen', 'ter plaatse', 'balts', 'verkeersslachtoffer','kolonie in gebouwing','kolonie in boom']
@@ -18,7 +18,7 @@ BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst','luchttoev
 GEBIED_OPTIONS = ['Foerageergebied','Baltsterritorium']
 
 #---
-BIRD_NAMES = ['Gierzwaluw','Huiszwaluw','Boerenzwaluw','Huismus','Spreeuw','Boomkruiper','Kauw']
+BIRD_NAMES = ['Gierzwaluw','Huiszwaluw','Boerenzwaluw','Huismus','Spreeuw','Boomkruiper','Kauw','..ander']
 
 BIRD_NAMES_ANDER = ['...Andere(n)']
 
