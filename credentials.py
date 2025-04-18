@@ -32,7 +32,7 @@ BIRD_BEHAVIOURS = ['overvliegend', 'nest-indicerend gedrag', 'foeragerend', 'inv
 BIRD_FUNCTIE = ['vogel waarneming', 'nestlocatie', 'mogelijke nestlocatie']
 
 BIRD_VERBLIJF = ['geen / onbekend', 'op het dak','dakgoot', 'kantpan', 'zonnepaneel', 'nokpan', 'nestkast',
-       'gevelbetimmering', 'openingen in dak', 'regenpijp','luchttoevoer',
+       'gevelbetimmering', 'openingen in dak', 'regenpijp','luchttoevoer', 'onder balkon',
         'dakpan', 'spouwmuur', 'onder dakrand',
        'raamkozijn', 'luik', 'schoorsteen', 'daklijst', 'dakkapel',
        'in struweel / struiken', 'holte', 'op / bij nest in boom',
