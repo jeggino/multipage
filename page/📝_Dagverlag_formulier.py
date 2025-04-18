@@ -155,10 +155,14 @@ if selected == "Formulier":
             gebied_id = "---"
         # key = random.randint(1,100000000000)    
         datum = st.date_input("Datum","today")       
-        two_hours_from_now = datetime.now() #+ timedelta(hours=1)
-        four_hours_from_now = datetime.now()# + timedelta(hours=2)
-        start_time = st.time_input("Start tijd", two_hours_from_now)
-        eind_time = st.time_input("Eind tijd", four_hours_from_now)               
+        # two_hours_from_now = datetime.now() #+ timedelta(hours=1)
+        # four_hours_from_now = datetime.now()# + timedelta(hours=2)
+        start_time = st.time_input("Start tijd", 
+                                   # two_hours_from_now
+                                  )
+        eind_time = st.time_input("Eind tijd", 
+                                  # four_hours_from_now
+                                 )               
         temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0)
         bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
         neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen"))
