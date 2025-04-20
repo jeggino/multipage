@@ -13,7 +13,7 @@ BAT_FUNCTIE = ['vleermuis waarneming','zomerverblijfplaats','kraamverblijfplaats
 BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst','luchttoevoer',
        'kantpan', 'regenpijp', 'holte', 'raamkozijn', 'luik', 'scheur',
        'schoorsteen', 'gevelbetimmering', 'nokpan', 'dakpan',
-       'vleermuiskast', 'openingen in dak', 'dakkapel', 'schors',"gaat in boom",'..ander']
+       'vleermuiskast', 'openingen in dak', 'dakkapel', 'schors',"gat in boom",'..ander']
 
 GEBIED_OPTIONS = ['Foerageergebied','Baltsterritorium']
 
