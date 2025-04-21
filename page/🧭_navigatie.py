@@ -476,7 +476,7 @@ def logIn():
             st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
             
 @st.dialog(" ")
-def delete_item(id):
+def delete_item(id,df):
     df_filter = df[df["key"]==id].reset_index(drop=True)
     id_waarnemer = df_filter['waarnemer'][0]
 
@@ -799,7 +799,7 @@ if st.session_state.login['type'] == 'user':
             if st.button("Waarneming bijwerken",use_container_width=True): 
                 update_item(id,df_point)
             if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
-                delete_item(id)
+                delete_item(id,df_point)
 
                                            
     except:
