@@ -303,7 +303,68 @@ def popup_polygons(row,df_2):
     </table>
     </html>
     """
+    return HTML
+
+def popup_lines(row,df_2):
+    
+    i = row
+
+    project=df_2['project'].iloc[i]
+    # gebied=df_2['gebied'].iloc[i]
+    datum=df_2['datum'].iloc[i] 
+    time=df_2['time'].iloc[i]
+    sp = df_2['sp'].iloc[i] 
+    functie=df_2['functie'].iloc[i]
+    opmerking=df_2['opmerking'].iloc[i]
+    aantal=df_2['aantal'].iloc[i]
+    waarnemer=df_2['waarnemer'].iloc[i] 
+       
+
+    left_col_color = "#19a7bd"
+    right_col_color = "#f2f0d3"
+    
+    html = """<!DOCTYPE html>
+    <html>
+    <table style="height: 126px; width: 300;">
+    <tbody>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Project</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(project) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Waarnemer</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(waarnemer) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(datum) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Tijd</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(time) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Soort</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(sp) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Functie</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(functie) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Aantal</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(int(aantal)) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Opmerking</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(opmerking) + """
+    </tr>
+    </tbody>
+    </table>
+    </html>
+    """
     return html
+
 
 
 def popup_html(row,df_2):
@@ -591,24 +652,6 @@ if len(df_2)>0:
 
     st.sidebar.divider()
 
-# try:
-#     df_2["icon_data"] = df_2.apply(lambda x: None if x["geometry_type"] in ["LineString","Polygon"] 
-#                                    else (icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen',"Vogels-Overig"] 
-#                                          else icon_dictionary[x["soortgroup"]][x["functie"]]), 
-#                                    axis=1)
-#     df_2 = df_2.reset_index(drop=True)
-# except:
-#     pass
-    
-# try:
-#     df_overig["icon_data"] = df_overig.apply(lambda x: None if x["geometry_type"] in ["LineString","Polygon"] 
-#                                    else (icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen',"Vogels-Overig"] 
-#                                          else icon_dictionary[x["soortgroup"]][x["functie"]]), 
-#                                    axis=1)
-#     df_overig = df_overig.reset_index(drop=True) 
-# except:
-#     pass
-
 
 try:
     geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
@@ -787,22 +830,14 @@ for i in range(len(df_2)):
                       ).add_to(fouctie_loop)
 
     elif df_2.iloc[i]['geometry_type'] == "LineString":
-        # html = popup_polygons(i,df_2)
-        # popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+        html = popup_lines(i,df_2)
+        popup = folium.Popup(folium.Html(html, script=True), max_width=300)
         fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
         location = df_2.iloc[i]['coordinates']
         location = ast.literal_eval(location)
         location = [i[::-1] for i in location]
                     
-        folium.PolyLine(locations=location, color=df_2.iloc[i]['color'], weight=3, opacity=0.7).add_to(fouctie_loop)
-
-        # folium.Polygon(location,
-        #                fill_color=df_2.iloc[i]['color'],
-        #                weight=weight,
-        #                color=df_2.iloc[i]['color'],
-        #                fill_opacity=fill_opacity,
-        #               popup=popup
-        #               ).add_to(fouctie_loop)
+        folium.PolyLine(locations=location, color=df_2.iloc[i]['color'], weight=3,line_cap="round",smooth_factor=30, opacity=1,popup=popup).add_to(fouctie_loop)
 
 folium.LayerControl().add_to(map)
 
