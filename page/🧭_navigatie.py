@@ -790,7 +790,6 @@ for i in range(len(df_2)):
         location = df_2.iloc[i]['coordinates']
         location = ast.literal_eval(location)
         location = [i[::-1] for i in location]
-        location
                     
         folium.PolyLine(locations=location, color=df_2.iloc[i]['color'], weight=3, opacity=0.7).add_to(fouctie_loop)
 
