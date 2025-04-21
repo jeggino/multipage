@@ -154,7 +154,8 @@ def input_data(output):
             
         elif geometry_type == 'LineString':
             gedrag = None
-            functie = st.selectbox("Functie", ['vliegroute'])
+            # functie = st.selectbox("Functie", ['vliegroute'])
+            functie = 'vliegroute'
             verblijf = None
 
         else:
