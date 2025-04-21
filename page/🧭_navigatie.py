@@ -380,12 +380,18 @@ def popup_html(row,df_2):
 
 
 @st.dialog(" ")
-def update_item(id,df):
-    
-  df_filter = df[df["key"]==id].reset_index(drop=True)
+def update_item(id,df,id_2):
+
+  try:
+    df_filter = df[df["key"]==id].reset_index(drop=True)
+    id_date = df_filter['datum'][0]
+  except:
+    id = id_2
+    df_filter = df[df["key"]==id].reset_index(drop=True)
+    id_date = df_filter['datum'][0]
 
 
-  id_date = df_filter['datum'][0]
+  
   id_time = df_filter['time'][0]
   id_lat = df_filter['lat'][0]
   id_lng = df_filter['lng'][0]
@@ -489,9 +495,16 @@ def logIn():
             st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
             
 @st.dialog(" ")
-def delete_item(id,df):
+def delete_item(id,df,id_2):
+  try:
     df_filter = df[df["key"]==id].reset_index(drop=True)
     id_waarnemer = df_filter['waarnemer'][0]
+  except:
+    id = id_2
+    df_filter = df[df["key"]==id].reset_index(drop=True)
+    id_waarnemer = df_filter['waarnemer'][0]
+    
+
 
     if st.session_state.login['name'] in [id_waarnemer,'Luigi']:
         if st.button("Let op! Klik hier als je de waarneming wilt verwijderen",icon="🚨",use_container_width=True):
@@ -821,7 +834,9 @@ if st.session_state.login['type'] == 'user':
     try:
         try:
             id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
+            id_2 = str(output["last_active_drawing"]['geometry']['coordinates'][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][1])
             name = f"{id}"
+            name_2 = f"{id_2}"
             st.write('here_2')
         except:
             try:
@@ -841,9 +856,9 @@ if st.session_state.login['type'] == 'user':
         with st.sidebar:
             id 
             if st.button("Waarneming bijwerken",use_container_width=True): 
-                update_item(id,df_point)
+                update_item(id,df_point,id_2)
             if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
-                delete_item(id,df_point)
+                delete_item(id,df_point,id_2)
 
                                            
     except:
