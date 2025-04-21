@@ -783,7 +783,7 @@ for i in range(len(df_2)):
         fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
         location = df_2.iloc[i]['coordinates']
         location = ast.literal_eval(location)
-        location = [i[::-1] for i in location[0]]
+        location = [i for i in location[0]]
                     
         folium.PolyLine(locations=location, color=df_2.iloc[i]['color'], weight=3, opacity=0.7).add_to(fouctie_loop)
 
