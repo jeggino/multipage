@@ -865,11 +865,11 @@ if st.session_state.login['type'] == 'user':
             name = f"{id}"
         
         with st.sidebar:
-            name 
+        
             if st.button("Waarneming bijwerken",use_container_width=True): 
-                update_item(name ,df_point)
+                update_item(id ,df_point)
             if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
-                delete_item(name ,df_point)
+                delete_item(id ,df_point)
 
                                            
     except:
