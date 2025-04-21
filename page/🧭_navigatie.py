@@ -477,14 +477,20 @@ def logIn():
             
 @st.dialog(" ")
 def delete_item(id):
-    if st.button("Let op! Klik hier als je de waarneming wilt verwijderen",icon="🚨",use_container_width=True):
-        response = (
-            supabase.table("df_observations")
-            .delete()
-            .eq("key", id)
-            .execute()
-            )
-        st.rerun()
+    df_filter = df[df["key"]==id].reset_index(drop=True)
+    id_waarnemer = df_filter['waarnemer'][0]
+    if id_waarnemer not in [st.session_state.login['name'],'Luigi']:
+        st.warning('no no')
+        st.stop()
+    else:
+        if st.button("Let op! Klik hier als je de waarneming wilt verwijderen",icon="🚨",use_container_width=True):
+            response = (
+                supabase.table("df_observations")
+                .delete()
+                .eq("key", id)
+                .execute()
+                )
+            st.rerun()
 
 def project():
     # st.subheader(f"Welkom {st.session_state.login['name'].split()[0]}!!",divider='grey')
