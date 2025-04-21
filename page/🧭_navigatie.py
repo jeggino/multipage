@@ -870,6 +870,7 @@ if st.session_state.login['type'] == 'user':
 
         
         with st.sidebar:
+            id
 
             if st.button("Waarneming bijwerken",use_container_width=True): 
                 update_item(id,df_point)
