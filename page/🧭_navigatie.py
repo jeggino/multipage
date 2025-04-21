@@ -110,7 +110,7 @@ def legend(species_colors_dict,dragable=True):
         <li><span class="fa fa-heart" style="color:grey" opacity: 0.75;'></span>Paarverblijf</li>
         <li><span class="fa-solid fa-clone" style="color:grey" opacity: 0.75;'></span>Foerageergebied</li>
         <li><span class="fa-regular fa-clone" style="color:grey" opacity: 0.75;'></span>Baltsterritorium</li>
-        <li><span class="fa-regular fa-reply" style="color:grey" opacity: 0.75;'></span>Vliegroute</li>
+        <li><span class="fa fa-reply" style="color:grey" opacity: 0.75;'></span>Vliegroute</li>
         
       </ul> 
     </body>
