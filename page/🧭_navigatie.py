@@ -110,7 +110,7 @@ def legend(species_colors_dict,dragable=True):
         <li><span class="fa fa-heart" style="color:grey" opacity: 0.75;'></span>Paarverblijf</li>
         <li><span class="fa-solid fa-clone" style="color:grey" opacity: 0.75;'></span>Foerageergebied</li>
         <li><span class="fa-regular fa-clone" style="color:grey" opacity: 0.75;'></span>Baltsterritorium</li>
-        <li><span class="fa fa-reply" style="color:grey" opacity: 0.75;'></span>Vliegroute</li>
+        <li><span class="fa fa-minus" style="color:grey" opacity: 0.75;'></span>Vliegroute</li>
         
       </ul> 
     </body>
@@ -347,10 +347,6 @@ def popup_lines(row,df_2):
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Soort</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(sp) + """
-    </tr>
-    <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Functie</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(functie) + """
     </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Aantal</span></td>
