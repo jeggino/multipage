@@ -405,50 +405,57 @@ def update_item(id,df):
   datum = st.date_input("Datum",id_date)
   # nine_hours_from_now = datetime.now() + timedelta(hours=2)
   time = st.time_input("Tijd",id_time)
+
+  if st.session_state.login['name'] in [id_waarnemer,'Luigi']:
   
-  if st.session_state.project['opdracht'] == 'Vleermuizen':
-
-    sp = st.selectbox("Soort", BAT_NAMES,index=BAT_NAMES.index(id_sp))
- 
-    if output["last_active_drawing"]["geometry"]["type"] == 'Polygon':
-        gedrag = None
-        functie = st.selectbox("Functie", GEBIED_OPTIONS,index=GEBIED_OPTIONS.index(id_functie))
-        verblijf = None
-    else:
-        gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS,index=BAT_BEHAVIOURS.index(id_gedrag)) 
-        functie = st.selectbox("Functie", BAT_FUNCTIE,index=BAT_FUNCTIE.index(id_functie))
-        verblijf = st.selectbox("Verblijf", BAT_VERBLIJF,index=BAT_VERBLIJF.index(id_verblijf)) 
-
-  elif st.session_state.project['opdracht'] == 'Vogels':
+    if st.session_state.project['opdracht'] == 'Vleermuizen':
   
-    sp = st.selectbox("Soort", BIRD_NAMES,index=BIRD_NAMES.index(id_sp))
-    if output["last_active_drawing"]["geometry"]["type"] == 'Polygon':
-        gedrag = None
-        functie = st.selectbox("Functie", ['Koloniegebied','Vermoedelijk kolonie gebied'],index=['Koloniegebied','Vermoedelijk kolonie gebied'].index(id_functie))
-        verblijf = None
-    else:
-        gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS,index=BIRD_BEHAVIOURS.index(id_gedrag)) 
-        functie = st.selectbox("Functie", BIRD_FUNCTIE,index=BIRD_FUNCTIE.index(id_functie)) 
-        verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF,index=BIRD_VERBLIJF.index(id_verblijf)) 
-
+      sp = st.selectbox("Soort", BAT_NAMES,index=BAT_NAMES.index(id_sp))
+   
+      if output["last_active_drawing"]["geometry"]["type"] == 'Polygon':
+          gedrag = None
+          functie = st.selectbox("Functie", GEBIED_OPTIONS,index=GEBIED_OPTIONS.index(id_functie))
+          verblijf = None
+      else:
+          gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS,index=BAT_BEHAVIOURS.index(id_gedrag)) 
+          functie = st.selectbox("Functie", BAT_FUNCTIE,index=BAT_FUNCTIE.index(id_functie))
+          verblijf = st.selectbox("Verblijf", BAT_VERBLIJF,index=BAT_VERBLIJF.index(id_verblijf)) 
+  
+    elif st.session_state.project['opdracht'] == 'Vogels':
     
-  aantal = st.number_input("Aantal", min_value=1,value=int(id_aantal))    
-  opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...",value=id_opmerking)
-
-  if st.button("**Update**",use_container_width=True):
+      sp = st.selectbox("Soort", BIRD_NAMES,index=BIRD_NAMES.index(id_sp))
+      if output["last_active_drawing"]["geometry"]["type"] == 'Polygon':
+          gedrag = None
+          functie = st.selectbox("Functie", ['Koloniegebied','Vermoedelijk kolonie gebied'],index=['Koloniegebied','Vermoedelijk kolonie gebied'].index(id_functie))
+          verblijf = None
+      else:
+          gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS,index=BIRD_BEHAVIOURS.index(id_gedrag)) 
+          functie = st.selectbox("Functie", BIRD_FUNCTIE,index=BIRD_FUNCTIE.index(id_functie)) 
+          verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF,index=BIRD_VERBLIJF.index(id_verblijf)) 
+  
       
-    data = {"key":id_key,"waarnemer":id_waarnemer,"datum":str(datum),"time":str(time),"soortgroup":id_soortgroup, "aantal":aantal,
-                   "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
-                   "geometry_type":id_geometry_type,"lat":id_lat,"lng":id_lng,"opmerking":opmerking,"coordinates":id_coordinates,"project":id_project}
-      
-    response = (
-        supabase.table("df_observations")
-        .update(data)
-        .eq("key", id)
-        .execute()
-    )
+    aantal = st.number_input("Aantal", min_value=1,value=int(id_aantal))    
+    opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...",value=id_opmerking)
+  
+    if st.button("**Update**",use_container_width=True):
+        
+      data = {"key":id_key,"waarnemer":id_waarnemer,"datum":str(datum),"time":str(time),"soortgroup":id_soortgroup, "aantal":aantal,
+                     "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
+                     "geometry_type":id_geometry_type,"lat":id_lat,"lng":id_lng,"opmerking":opmerking,"coordinates":id_coordinates,"project":id_project}
+        
+      response = (
+          supabase.table("df_observations")
+          .update(data)
+          .eq("key", id)
+          .execute()
+      )
+  
+      st.rerun()
 
-    st.rerun()
+  else:
+    st.error('De accountnaam en de waarnemer zijn verschillend. Het is niet mogelijk om deze waarneming te verwijderen of te wijzigen.', icon="🚨")
+    st.stop()
+    
 
 
 
