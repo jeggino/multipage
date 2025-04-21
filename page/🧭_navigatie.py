@@ -856,16 +856,16 @@ if st.session_state.login['type'] == 'user':
     try:
         if output["last_active_drawing"]['type'] == 'Point':
             id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
-            id
-            name = f"{id}"
+
         elif output["last_active_drawing"]['type'] == 'Polygon':
             id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
-            name = f"{id}"
+
         elif output["last_active_drawing"]['type'] == 'LineString':
             id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][1])
-            name = f"{id}"
+
         
         with st.sidebar:
+            id
         
             if st.button("Waarneming bijwerken",use_container_width=True): 
                 update_item(id ,df_point)
