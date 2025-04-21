@@ -202,8 +202,8 @@ def input_data(output):
 
         elif geometry_type in ['LineString']:
 
-            lng = coordinates[0][0]
-            lat = coordinates[0][1]
+            lng = coordinates[0]
+            lat = coordinates[1]
             key = str(lng)+str(lat)
         
         else: 
