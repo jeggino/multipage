@@ -830,7 +830,7 @@ if st.session_state.login['type'] == 'user':
             except:
 
                 id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0][1])
-                
+                st.write('here_2')
                 name = f"{id}"
 
 
