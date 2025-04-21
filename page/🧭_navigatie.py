@@ -856,6 +856,7 @@ if st.session_state.login['type'] == 'user':
         with st.sidebar:
             id 
             id_2
+            ["last_active_drawing"]['geometry']
             if st.button("Waarneming bijwerken",use_container_width=True): 
                 update_item(id,df_point,id_2)
             if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
