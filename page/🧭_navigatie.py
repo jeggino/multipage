@@ -386,8 +386,8 @@ def update_item(id,df,id_2):
     df_filter = df[df["key"]==id].reset_index(drop=True)
     id_date = df_filter['datum'][0]
   except:
-    id = id_2
-    df_filter = df[df["key"]==id].reset_index(drop=True)
+    # id = id_2
+    df_filter = df[df["key"]==id_2].reset_index(drop=True)
     id_date = df_filter['datum'][0]
 
 
@@ -500,8 +500,8 @@ def delete_item(id,df,id_2):
     df_filter = df[df["key"]==id].reset_index(drop=True)
     id_waarnemer = df_filter['waarnemer'][0]
   except:
-    id = id_2
-    df_filter = df[df["key"]==id].reset_index(drop=True)
+    # id = id_2
+    df_filter = df[df["key"]==id_2].reset_index(drop=True)
     id_waarnemer = df_filter['waarnemer'][0]
     
 
@@ -855,6 +855,7 @@ if st.session_state.login['type'] == 'user':
         
         with st.sidebar:
             id 
+            id_2
             if st.button("Waarneming bijwerken",use_container_width=True): 
                 update_item(id,df_point,id_2)
             if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
