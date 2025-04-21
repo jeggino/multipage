@@ -416,6 +416,12 @@ def update_item(id,df):
           gedrag = None
           functie = st.selectbox("Functie", GEBIED_OPTIONS,index=GEBIED_OPTIONS.index(id_functie))
           verblijf = None
+
+      elif output["last_active_drawing"]["geometry"]["type"] == 'LineString':
+          gedrag = None
+          functie = st.selectbox("Functie", id_functie)
+          verblijf = None
+          
       else:
           gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS,index=BAT_BEHAVIOURS.index(id_gedrag)) 
           functie = st.selectbox("Functie", BAT_FUNCTIE,index=BAT_FUNCTIE.index(id_functie))
