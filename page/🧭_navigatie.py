@@ -304,7 +304,7 @@ def popup_polygons(row,df_2):
     </table>
     </html>
     """
-    return HTML
+    return html
 
 def popup_lines(row,df_2):
     
