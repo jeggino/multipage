@@ -490,8 +490,8 @@ def logIn():
 @st.dialog(" ")
 def delete_item(id,df):
 
-  df_filter = df[df["key"]==id].reset_index(drop=True)
-  id_waarnemer = df_filter['waarnemer'][0]
+    df_filter = df[df["key"]==id].reset_index(drop=True)
+    id_waarnemer = df_filter['waarnemer'][0]
 
     
 
