@@ -852,6 +852,7 @@ map.get_root().add_child(macro)
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                    feature_group_to_add=list(functie_dictionary.values()))
 output["last_active_drawing"]['type']
+output
 
 if st.session_state.login['type'] == 'user':
     try:
