@@ -832,6 +832,7 @@ if st.session_state.login['type'] == 'user':
                 name = f"{id}"               
         
         with st.sidebar:
+            id 
             if st.button("Waarneming bijwerken",use_container_width=True): 
                 update_item(id,df_point)
             if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
