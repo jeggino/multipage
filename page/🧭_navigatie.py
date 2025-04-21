@@ -825,11 +825,13 @@ if st.session_state.login['type'] == 'user':
             name = f"{id}"
         except:
             try:
-                id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
+                id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][1])
                 name = f"{id}"
             except:
                 id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
-                name = f"{id}"               
+                name = f"{id}"       
+
+
         
         with st.sidebar:
             id 
