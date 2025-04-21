@@ -837,7 +837,7 @@ for i in range(len(df_2)):
         location = ast.literal_eval(location)
         location = [i[::-1] for i in location]
                     
-        folium.PolyLine(locations=location, color=df_2.iloc[i]['color'], weight=3,line_cap="round",smooth_factor=30, opacity=1,popup=popup).add_to(fouctie_loop)
+        folium.PolyLine(locations=location, color=df_2.iloc[i]['color'], weight=4,line_cap="round",smooth_factor=10, opacity=1,popup=popup).add_to(fouctie_loop)
 
 folium.LayerControl().add_to(map)
 
