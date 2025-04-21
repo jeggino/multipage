@@ -786,7 +786,7 @@ for i in range(len(df_2)):
         # location = [i for i in location[0]]
         location
                     
-        # folium.PolyLine(locations=location, color=df_2.iloc[i]['color'], weight=3, opacity=0.7).add_to(fouctie_loop)
+        folium.PolyLine(locations=location, color=df_2.iloc[i]['color'], weight=3, opacity=0.7).add_to(fouctie_loop)
 
         # folium.Polygon(location,
         #                fill_color=df_2.iloc[i]['color'],
