@@ -832,7 +832,7 @@ if st.session_state.login['type'] == 'user':
                 id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0][1])
                 
                 name = f"{id}"
-                st.write('here_2')
+                st.write(name)
 
 
         
