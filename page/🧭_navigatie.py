@@ -856,6 +856,7 @@ if st.session_state.login['type'] == 'user':
     try:
         if output["last_active_drawing"]['type'] == 'Point':
             id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
+            id
             name = f"{id}"
         elif output["last_active_drawing"]['type'] == 'Polygon':
             id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
