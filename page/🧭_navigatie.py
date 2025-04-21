@@ -491,7 +491,7 @@ def delete_item(id,df):
             st.rerun()
 
     else:
-        st.warning('no no')
+        st.error('De accountnaam en de waarnemer zijn verschillend. Het is niet mogelijk om deze waarneming te verwijderen of te wijzigen.', icon="🚨")
         st.stop()
 
 def project():
