@@ -850,25 +850,27 @@ map.get_root().add_child(macro)
 
 
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
-                     feature_group_to_add=list(functie_dictionary.values()))
-output 
+                   feature_group_to_add=list(functie_dictionary.values()))
+
 if st.session_state.login['type'] == 'user':
     try:
         if output["last_active_drawing"]['type'] == 'Point':
             id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
+            st.write('point')
 
         elif output["last_active_drawing"]['type'] == 'Polygon':
             id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
+            st.write('Polygon')
 
         elif output["last_active_drawing"]['type'] == 'LineString':
             id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][1])
-
-        
+            st.write('LineString')
+            
         with st.sidebar:
-            id
         
             if st.button("Waarneming bijwerken",use_container_width=True): 
                 update_item(id ,df_point)
+                
             if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
                 delete_item(id ,df_point)
 
