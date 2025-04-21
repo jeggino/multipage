@@ -854,27 +854,18 @@ output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_wid
 output 
 if st.session_state.login['type'] == 'user':
     try:
-        try:
+        if output["last_active_drawing"]['type'] == 'Point':
             id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
             name = f"{id}"
-        except:
-            # id_2 = str(output["last_active_drawing"]['geometry']['coordinates'][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][1])
+        elif output["last_active_drawing"]['type'] == 'Polygon':
             id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
-            
-            name = f"{id}"    
-
-
-                # id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0])
-                
-                # name = f"{id}"
-                # st.write(name)
-
-
+            name = f"{id}"
+        elif output["last_active_drawing"]['type'] == 'LineString':
+            id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][1])
+            name = f"{id}"
         
         with st.sidebar:
             id
-            # id_2
-
             if st.button("Waarneming bijwerken",use_container_width=True): 
                 update_item(id,df_point)
             if st.button(":red[**Verwijder waarneming**]",use_container_width=True):
