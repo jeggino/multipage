@@ -824,8 +824,12 @@ if st.session_state.login['type'] == 'user':
             id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
             name = f"{id}"
         except:
-            id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
-            name = f"{id}"
+            try:
+                id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
+                name = f"{id}"
+            except:
+                id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][1])
+                name = f"{id}"               
         
         with st.sidebar:
             if st.button("Waarneming bijwerken",use_container_width=True): 
