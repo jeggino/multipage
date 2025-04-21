@@ -85,7 +85,7 @@ def map():
     
     
     if st.session_state.project['opdracht'] == 'Vleermuizen':
-        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': True},
+        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': True, 'polygon': True},
             position='bottomleft',).add_to(m)
 
     else:
@@ -151,6 +151,11 @@ def input_data(output):
             gedrag = None
             functie = st.selectbox("Functie", GEBIED_OPTIONS)
             verblijf = None
+            
+        elif geometry_type == 'LineString':
+            gedrag = None
+            functie = st.selectbox("Functie", ['vliegroutes'])
+            verblijf = None
 
         else:
             gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS)
@@ -189,6 +194,13 @@ def input_data(output):
         coordinates = output["features"][0]["geometry"]["coordinates"] 
         
         if geometry_type in ['Polygon']:
+
+            lng = coordinates[0][0][0]
+            lat = coordinates[0][0][1]
+            key = str(lng)+str(lat)
+
+
+        elif geometry_type in ['LineString']:
 
             lng = coordinates[0][0][0]
             lat = coordinates[0][0][1]
