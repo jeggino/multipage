@@ -855,6 +855,8 @@ output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_wid
 if st.session_state.login['type'] == 'user':
     try:
         if output["last_active_drawing"]['type'] == 'Point':
+            st.write('point')
+
             id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
             st.write('point')
 
