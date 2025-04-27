@@ -55,6 +55,9 @@ if project == 'Overig':
 else:   
     df_download_points = df_point[(df_point['project']==project) & (df_point['soortgroup']==opdracht) & (df_point['geometry_type']=='Point')].drop('key',axis=1)
 
+st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
+                   file_name=f"{project}_{opdracht}_Waarnemingen.csv",mime="text/csv", use_container_width=False)
+
 option_species = st.selectbox("",options = list(set(['Alle sorten']) | set(df_download_points['sp'].unique())),label_visibility='collapsed')
 if option_species == 'Alle sorten':
     df = df_download_points.groupby(['datum','functie'],as_index=False).size()
@@ -62,7 +65,7 @@ if option_species == 'Alle sorten':
 else:
     df = df_download_points[(df_download_points['sp']==option_species)].groupby(['datum','functie'],as_index=False).size()
 
-tab1, tab2 = st.tabs(["📈 Chart", "🗃 Data"])
+tab1, tab2 = st.tabs(["📈 Chart", "Data"])
 
 with tab1:
     df = df.pivot(index='datum',columns='functie',values='size',).fillna(0).astype(int).reset_index()
@@ -98,46 +101,47 @@ with tab1:
     
     with col2:
         st.altair_chart(chart, use_container_width=False,theme=None)
+        
     col1.dataframe(df.groupby('functie')['value'].sum(),use_container_width=True,
                   column_config={'functie':'Functie',
                                  'value':'Aantal'})
         
-    st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
-                       file_name=f"{project}_{opdracht}_Waarnemingen.csv",mime="text/csv", use_container_width=False)
+
     
 
 with tab2:
-    col1, col2 = st.columns([0.2,0.8],gap="large", vertical_alignment="top", border=False)
+    "---"
+    # col1, col2 = st.columns([0.2,0.8],gap="large", vertical_alignment="top", border=False)
     
-    with col2:
+    # with col2:
         
-        m = folium.Map()
+    #     m = folium.Map()
         
-        df_temp = df_download_points[df_download_points['functie']=='nestlocatie'].h3.geo_to_h3_aggregate(10,lat_col='lat',lng_col='lng',operation='size').rename(columns={0:'size'})
+    #     df_temp = df_download_points[df_download_points['functie']=='nestlocatie'].h3.geo_to_h3_aggregate(10,lat_col='lat',lng_col='lng',operation='size').rename(columns={0:'size'})
 
-        # df_temp
-        df_temp.explore('size',m=m)
+    #     # df_temp
+    #     df_temp.explore('size',m=m)
                
-        folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vz6g7a00gj01pa7if7bbiv/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbHdscmRkZHAxMTl1MmlyeTJpb3Z2eHdzIn0.N9TRN7xxTikk235dVs1YeQ',
-                                           attr='XXX Mapbox Attribution',
-                                      name='Stratenkaart',show=True).add_to(m)
+    #     folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vz6g7a00gj01pa7if7bbiv/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbHdscmRkZHAxMTl1MmlyeTJpb3Z2eHdzIn0.N9TRN7xxTikk235dVs1YeQ',
+    #                                        attr='XXX Mapbox Attribution',
+    #                                   name='Stratenkaart',show=True).add_to(m)
                 
-        folium.plugins.Fullscreen(
-            position="topleft",
-            title="Expand me",
-            title_cancel="Exit me",
-            force_separate_button=True,
-        ).add_to(m)
+    #     folium.plugins.Fullscreen(
+    #         position="topleft",
+    #         title="Expand me",
+    #         title_cancel="Exit me",
+    #         force_separate_button=True,
+    #     ).add_to(m)
         
-        #layercontrol
-        folium.LayerControl(
-            position = 'topright',
-            collapsed = False,
-            draggable = True,
-        ).add_to(m)
-        output = st_folium(m)
+    #     #layercontrol
+    #     folium.LayerControl(
+    #         position = 'topright',
+    #         collapsed = False,
+    #         draggable = True,
+    #     ).add_to(m)
+    #     output = st_folium(m)
         
         
         
-    with col1:
-        st.write('g')
+    # with col1:
+    #     st.write('g')
