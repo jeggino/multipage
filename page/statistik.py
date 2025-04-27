@@ -97,6 +97,6 @@ st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.
                    file_name=f"{project}_{opdracht}_Waarnemingen.csv",mime="text/csv", use_container_width=False)
 
 
----
+"---"
 
 st.write('of')
