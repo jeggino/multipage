@@ -50,16 +50,16 @@ opdracht = st.session_state.project['opdracht']
 rows_points = supabase.table("df_observations").select("*").execute()
 df_point = pd.DataFrame(rows_points.data)
 if project == 'Overig':
-    df_download_points = df_point[(df_point['soortgroup']==opdracht)].drop('key',axis=1)
+    df_download_points = df_point[(df_point['soortgroup']==opdracht) & (df_point['geometry_type']=='Point')].drop('key',axis=1)
 else:   
-    df_download_points = df_point[(df_point['project']==project) & (df_point['soortgroup']==opdracht)].drop('key',axis=1)
+    df_download_points = df_point[(df_point['project']==project) & (df_point['soortgroup']==opdracht) & (df_point['geometry_type']=='Point')].drop('key',axis=1)
 
 option_species = st.selectbox("",options = list(set(['Alle sorten']) | set(df_download_points['sp'].unique())),label_visibility='collapsed')
 if option_species == 'Alle sorten':
-    df = df_download_points[df_download_points['geometry_type']=='Point'].groupby(['datum','functie'],as_index=False).size()
+    df = df_download_points.groupby(['datum','functie'],as_index=False).size()
 
 else:
-    df = df_download_points[(df_download_points['geometry_type']=='Point')&(df_download_points['sp']==option_species)].groupby(['datum','functie'],as_index=False).size()
+    df = df_download_points[(df_download_points['sp']==option_species)].groupby(['datum','functie'],as_index=False).size()
 
 tab1, tab2 = st.tabs(["📈 Chart", "🗃 Data"])
 
@@ -112,7 +112,7 @@ with tab2:
         
         m = folium.Map()
         
-        df_temp = df[df['functie']=='nestlocatie'].h3.geo_to_h3_aggregate(10,lat_col='lat',lng_col='lng',operation='size').rename(columns={0:'size'})
+        df_temp = df_download_points[df_download_points['functie']=='nestlocatie'].h3.geo_to_h3_aggregate(10,lat_col='lat',lng_col='lng',operation='size').rename(columns={0:'size'})
                
         df_temp.explore('size',m=m)
                
