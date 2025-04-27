@@ -6,6 +6,9 @@ import altair as alt
 import datetime
 from datetime import datetime, timedelta, date
 
+import folium
+from folium.plugins import Draw, Fullscreen, LocateControl, GroupedLayerControl
+
 from credentials import *
 
 from supabase import create_client, Client
