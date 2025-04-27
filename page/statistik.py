@@ -113,8 +113,9 @@ with tab2:
         m = folium.Map()
         
         df_temp = df_download_points[df_download_points['functie']=='nestlocatie'].h3.geo_to_h3_aggregate(10,lat_col='lat',lng_col='lng',operation='size').rename(columns={0:'size'})
-               
-        df_temp.explore('size',m=m)
+
+        df_temp
+        # df_temp.explore('size',m=m)
                
         folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vz6g7a00gj01pa7if7bbiv/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbHdscmRkZHAxMTl1MmlyeTJpb3Z2eHdzIn0.N9TRN7xxTikk235dVs1YeQ',
                                            attr='XXX Mapbox Attribution',
