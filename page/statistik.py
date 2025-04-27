@@ -98,3 +98,5 @@ st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.
 
 
 ---
+
+st.write('of')
