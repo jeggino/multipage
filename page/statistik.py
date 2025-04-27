@@ -112,7 +112,7 @@ with tab2:
         
         m = folium.Map()
         
-        df_temp = df[df['functie']=='nestlocatie'].h3.geo_to_h3_aggregate(resolution,lat_col='lat',lng_col='lng',operation='size').rename(columns={0:'size'})
+        df_temp = df[df['functie']=='nestlocatie'].h3.geo_to_h3_aggregate(10,lat_col='lat',lng_col='lng',operation='size').rename(columns={0:'size'})
                
         df_temp.explore('size',m=m)
                
