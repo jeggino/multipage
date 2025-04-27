@@ -2,6 +2,8 @@ import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 import geopandas as gpd
+import h3pandas
+
 import altair as alt
 import datetime
 from datetime import datetime, timedelta, date
