@@ -95,3 +95,6 @@ col1.dataframe(df.groupby('functie')['value'].sum(),use_container_width=True,
     
 st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
                    file_name=f"{project}_{opdracht}_Waarnemingen.csv",mime="text/csv", use_container_width=False)
+
+
+---
