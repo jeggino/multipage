@@ -101,4 +101,35 @@ with tab1:
     
 
 with tab2:
-    st.write('d')
+    col1, col2 = st.columns([0.2,0.8],gap="large", vertical_alignment="top", border=False)
+    
+    with col1:
+        
+        m = folium.Map()
+        
+        df_temp = gdf[gdf['functie']=='nestlocatie'].h3.geo_to_h3_aggregate(resolution,lat_col='lat',lng_col='lng',operation='size').rename(columns={0:'size'})
+               
+        df_temp.explore('size',m=m)
+               
+        folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vz6g7a00gj01pa7if7bbiv/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbHdscmRkZHAxMTl1MmlyeTJpb3Z2eHdzIn0.N9TRN7xxTikk235dVs1YeQ',
+                                           attr='XXX Mapbox Attribution',
+                                      name='Stratenkaart',show=True).add_to(m)
+                
+        folium.plugins.Fullscreen(
+            position="topleft",
+            title="Expand me",
+            title_cancel="Exit me",
+            force_separate_button=True,
+        ).add_to(m)
+        
+        #layercontrol
+        folium.LayerControl(
+            position = 'topright',
+            collapsed = False,
+            draggable = True,
+        ).add_to(m)
+        
+        m
+        
+    with col2:
+        st.write('g')
