@@ -108,7 +108,7 @@ with tab1:
 with tab2:
     col1, col2 = st.columns([0.2,0.8],gap="large", vertical_alignment="top", border=False)
     
-    with col1:
+    with col2:
         
         m = folium.Map()
         
@@ -134,8 +134,9 @@ with tab2:
             collapsed = False,
             draggable = True,
         ).add_to(m)
+        output = st_folium(m)
         
-        m
         
-    with col2:
+        
+    with col1:
         st.write('g')
