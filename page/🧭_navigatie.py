@@ -120,7 +120,7 @@ def legend(species_colors_dict,dragable=True):
     legend_style = """<style type='text/css'>
       .maplegend .legend-scale ul {margin: 0; padding: 0; color: #0f0f0f;}
       .maplegend .legend-scale ul li {list-style: none; line-height: 18px; margin-bottom: 1.5px;}
-      .maplegend ul.legend-labels li span {float: left; height: 16px; width: 16px; margin-right: 4.5px;}
+      .maplegend ul.legend-labels li span {float: left; height: 16px; width: 30px; margin-right: 4.5px;}
     </style>
     
     {% endmacro %}
