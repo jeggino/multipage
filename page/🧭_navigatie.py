@@ -660,7 +660,7 @@ try:
     map = folium.Map(location=[lat, lng], zoom_start=10,zoom_control=False,tiles=None)
     oude_waarnemingen = folium.FeatureGroup(name="Oude waarnemingen",show=False).add_to(map)
 except:
-    map = folium.Map(tiles=None, zoom_start=8,zoom_control=False,font_size=1)
+    map = folium.Map(tiles=None, zoom_start=8,zoom_control=False)
 
 kwargs = {'drawCircle':False}
 LocateControl(auto_start=st.session_state.project['auto_start'],position="topleft",**kwargs).add_to(map)
