@@ -3,7 +3,7 @@ st-gsheets-connection
 streamlit_option_menu
 folium
 altair
-streamlit-folium>=0.8.1
+streamlit-folium
 geopandas
 streamlit-option-menu
 
