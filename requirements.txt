@@ -6,5 +6,5 @@ altair
 streamlit-folium
 geopandas
 streamlit-option-menu
-natsorted
+
 supabase 
