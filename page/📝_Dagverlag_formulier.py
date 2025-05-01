@@ -192,7 +192,7 @@ elif selected == 'Data':
         with st.container(border=True):
             option_areas_filter = st.selectbox(
                 "Selecteer een gebied",
-                df_download_dagverslagen['gebied_id'].unique(),
+                natsorted(df_download_dagverslagen['gebied_id'].unique()),
                 index=None,
                 placeholder="Selecteer een gebied...",
                 label_visibility="collapsed",
