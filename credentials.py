@@ -10,7 +10,7 @@ BAT_BEHAVIOURS = ['foeragerend', 'uitvliegend','invliegend', 'overvliegend', 'zw
 
 BAT_FUNCTIE = ['vleermuis waarneming','zomerverblijfplaats','kraamverblijfplaats','paarverblijfplaats', 'winterverblijfplaats']
 
-BAT_VERBLIJF = ['geen / onbekend', 'Onder dakpan bij de dakrand','dakgoot', 'spouwmuur', 'daklijst','luchttoevoer',
+BAT_VERBLIJF = ['geen / onbekend', 'onder dakpan bij de dakrand','dakgoot', 'spouwmuur', 'daklijst','luchttoevoer',
        'kantpan', 'regenpijp', 'holte', 'raamkozijn', 'luik', 'scheur',
        'schoorsteen', 'gevelbetimmering', 'nokpan', 'dakpan',
        'vleermuiskast', 'openingen in dak', 'dakkapel', 'schors',"gat in boom",'..ander']
@@ -31,7 +31,7 @@ BIRD_BEHAVIOURS = ['overvliegend', 'nest-indicerend gedrag', 'foeragerend', 'inv
 
 BIRD_FUNCTIE = ['vogel waarneming', 'nestlocatie', 'mogelijke nestlocatie']
 
-BIRD_VERBLIJF = ['geen / onbekend','Onder dakpan bij de dakrand', 'op het dak','dakgoot', 'kantpan', 'zonnepaneel', 'nokpan', 'nestkast',
+BIRD_VERBLIJF = ['geen / onbekend','onder dakpan bij de dakrand', 'op het dak','dakgoot', 'kantpan', 'zonnepaneel', 'nokpan', 'nestkast',
        'gevelbetimmering', 'openingen in dak', 'regenpijp','luchttoevoer', 'onder balkon',
         'dakpan', 'spouwmuur', 'onder dakrand',
        'raamkozijn', 'luik', 'schoorsteen', 'daklijst', 'dakkapel',
