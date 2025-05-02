@@ -79,10 +79,10 @@ def update_dagverslag(key,waarnemer,project,opdracht,gebied_id,doel_id,temperatu
                       datum_id,start_time_id,eind_time_id,opmerking):
     
     if opdracht == 'Vleermuizen':
-        doel = st.selectbox('Doel',doel_bats_options,index=natsorted(doel_bats_options.index(doel_id)))
+        doel = st.selectbox('Doel',doel_bats_options,index=doel_bats_options.index(doel_id))
       
     elif opdracht == 'Vogels':
-        doel = st.selectbox('Doel',doel_birds_options,index=natsorted(doel_birds_options.index(doel_id)))
+        doel = st.selectbox('Doel',doel_birds_options,index=doel_birds_options.index(doel_id))
             
     datum = st.date_input("Datum",value=datum_id)       
     start_time = st.time_input("Start tijd", value=start_time_id)
