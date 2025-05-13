@@ -843,10 +843,11 @@ if st.session_state.project['opdracht'] == 'Vleermuizen':
 
 elif st.session_state.project['opdracht'] == 'Vogels':
     legend_template = legend_birds(species_colors_dict,dragable=True)
-    
-macro = MacroElement()
-macro._template = Template(legend_template)
-map.get_root().add_child(macro)
+
+if on != True:
+    macro = MacroElement()
+    macro._template = Template(legend_template)
+    map.get_root().add_child(macro)
 
 
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
