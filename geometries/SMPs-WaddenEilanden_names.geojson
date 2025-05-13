@@ -1,0 +1,20 @@
+{
+"type": "FeatureCollection",
+"name": "SMPs-WaddenEilanden_names",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Gebied": "Bu", "lat": 53.447625640738124, "lng": 5.7993303473191133 }, "geometry": { "type": "Point", "coordinates": [ 5.799330347319113, 53.447625640738124 ] } },
+{ "type": "Feature", "properties": { "Gebied": "Ne2", "lat": 53.447386300326258, "lng": 5.7733475719651892 }, "geometry": { "type": "Point", "coordinates": [ 5.773347571965189, 53.447386300326258 ] } },
+{ "type": "Feature", "properties": { "Gebied": "Ho1", "lat": 53.439213367501964, "lng": 5.6398240237372192 }, "geometry": { "type": "Point", "coordinates": [ 5.639824023737219, 53.439213367501964 ] } },
+{ "type": "Feature", "properties": { "Gebied": "Ho2", "lat": 53.442608472782467, "lng": 5.638029636474414 }, "geometry": { "type": "Point", "coordinates": [ 5.638029636474414, 53.442608472782467 ] } },
+{ "type": "Feature", "properties": { "Gebied": "Ba", "lat": 53.444101424317239, "lng": 5.6877240013441508 }, "geometry": { "type": "Point", "coordinates": [ 5.687724001344151, 53.444101424317239 ] } },
+{ "type": "Feature", "properties": { "Gebied": "Rs", "lat": 53.45081416736241, "lng": 5.6925679532537856 }, "geometry": { "type": "Point", "coordinates": [ 5.692567953253786, 53.45081416736241 ] } },
+{ "type": "Feature", "properties": { "Gebied": "Ne1", "lat": 53.444305914498841, "lng": 5.7752475114185415 }, "geometry": { "type": "Point", "coordinates": [ 5.775247511418542, 53.444305914498841 ] } },
+{ "type": "Feature", "properties": { "Gebied": "Ho4", "lat": 53.449083569522799, "lng": 5.6397184715446258 }, "geometry": { "type": "Point", "coordinates": [ 5.639718471544626, 53.449083569522799 ] } },
+{ "type": "Feature", "properties": { "Gebied": "Ho3", "lat": 53.449272149781422, "lng": 5.6335964444160993 }, "geometry": { "type": "Point", "coordinates": [ 5.633596444416099, 53.449272149781422 ] } },
+{ "type": "Feature", "properties": { "Gebied": "Sc1", "lat": 53.481264299718532, "lng": 6.1611706262037558 }, "geometry": { "type": "Point", "coordinates": [ 6.161170626203756, 53.481264299718532 ] } },
+{ "type": "Feature", "properties": { "Gebied": "Sc2", "lat": 53.478206935352148, "lng": 6.1622369004375059 }, "geometry": { "type": "Point", "coordinates": [ 6.162236900437506, 53.478206935352148 ] } },
+{ "type": "Feature", "properties": { "Gebied": "Ov1", "lat": 53.298514995182302, "lng": 5.0747691242914357 }, "geometry": { "type": "Point", "coordinates": [ 5.074769124291436, 53.298514995182302 ] } },
+{ "type": "Feature", "properties": { "Gebied": "Ov2", "lat": 53.295676292320479, "lng": 5.0672210179505157 }, "geometry": { "type": "Point", "coordinates": [ 5.067221017950516, 53.295676292320479 ] } }
+]
+}
