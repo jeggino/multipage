@@ -844,7 +844,7 @@ if st.session_state.project['opdracht'] == 'Vleermuizen':
 elif st.session_state.project['opdracht'] == 'Vogels':
     legend_template = legend_birds(species_colors_dict,dragable=True)
 
-if on != True:
+if ession_state.project['auto_start'] != True:
     macro = MacroElement()
     macro._template = Template(legend_template)
     map.get_root().add_child(macro)
