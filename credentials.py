@@ -4,7 +4,7 @@
 
 #---
 BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Baardvleermuis','Meervleermuis','Watervleermuis',
-             'Kleine dwergvleermuis', 'Tweekleurige vleermuis', 'Gewone grootoorvleermuis','..ander','onbekend','Eser 1','Pau 2','Eser 3','Eser 4','Eser 5','Eser 6']
+             'Kleine dwergvleermuis', 'Tweekleurige vleermuis', 'Gewone grootoorvleermuis','..ander','onbekend','Eser 1','Pau 2','Eser 3','Eser 4','Eser 5','Pau 6']
 
 BAT_BEHAVIOURS = ['foeragerend', 'uitvliegend','invliegend', 'overvliegend', 'zwermend', 'sporen', 'ter plaatse', 'balts', 'verkeersslachtoffer','kolonie in gebouw','kolonie in boom','geen / onbekend']
 
