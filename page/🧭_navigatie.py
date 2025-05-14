@@ -722,6 +722,7 @@ map_fuction = {'paarverblijfplaats':'heart',
                               'zomerverblijfplaats':'star',
                               'kraamverblijfplaats':'venus-double',
                               'winterverblijfplaats':'snowflake',
+               'zender':'tower-broadcast',
                                             'vogel waarneming':'binoculars',
                                              'mogelijke nestlocatie':'fa-regular fa-circle-question',
                                              'nestlocatie':'egg'
