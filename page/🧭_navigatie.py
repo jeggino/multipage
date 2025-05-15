@@ -154,14 +154,14 @@ def legend_dialog(species_colors_dict):
       <h1>Font Awesome Icons</h1>
       <i class="fa-brands fa-twitter" style="color: #1DA1F2;"></i>
       <i class="fa-solid fa-walkie-talkie" style="color: red;"></i>
+      <i class="fas fa-coffee"></i> Enjoy your coffee!
       <i class="fa-regular fa-heart" style="color: red;"></i>
     </body>
     </html>
     """
     
-    # return legend
-    return st.html(a)
-    # return st.markdown(a, unsafe_allow_html=True)
+
+    return st.markdown(a, unsafe_allow_html=True)
 
 def legend_birds(species_colors_dict,dragable=True):
 
