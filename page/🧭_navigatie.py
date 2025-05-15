@@ -40,7 +40,6 @@ def legend_dialog(species_colors_dict):
         
     
     legend_body = f"""  
-    <!DOCTYPE html>
     <html>
         <body>
             <ul>
