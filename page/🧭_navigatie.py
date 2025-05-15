@@ -647,7 +647,12 @@ else:
     df_overig = df_point[(df_point['project']!=st.session_state.project['project_name']) & (df_point['soortgroup']==st.session_state.project['opdracht'])]
     df_dict = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
 
-    
+
+colors  =[ 'red','blue', 'green', 'purple', 'orange', 'darkred',
+          'beige', 'darkblue', 'darkgreen', 'cadetblue',
+         'darkpurple', 'pink',  'lightblue', 'lightgreen',
+         'gray', 'lightgray']
+
 species_colors_dict=dict(zip(df_dict['sp'].unique(),colors[:len(df_dict['sp'].unique())]))
 with st.sidebar:
     if st.button('Legend',use_container_width=True):
@@ -736,10 +741,6 @@ try:
 except:
     pass
 
-colors  =[ 'red','blue', 'green', 'purple', 'orange', 'darkred',
-          'beige', 'darkblue', 'darkgreen', 'cadetblue',
-         'darkpurple', 'pink',  'lightblue', 'lightgreen',
-         'gray', 'lightgray']
 
 map_fuction = {'paarverblijfplaats':'heart',
                                'vleermuis waarneming':'walkie-talkie',
