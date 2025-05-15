@@ -160,17 +160,19 @@ def legend_dialog(species_colors_dict):
         
         <!-- Example of using a Font Awesome icon -->
         <i class="fas fa-coffee"></i> Enjoy your coffee!
-        
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+
         """
     b = """
         # Welcome to My Streamlit App
         
         This is a **Markdown** example with some embedded HTML for styling.
 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
             <h3 style="color: #4CAF50;">Custom HTML Section</h3>
-            <i class="fa-brands fa-twitter" style="color: #1DA1F2;"></i>
+            <i class="fa-brands fa-twitter" style="color: green;"></i>
+            <i class="fa-snowflake" style="color: #1DA1F2;"></i>
             <p>This section is styled using HTML for more control over appearance.</p>
         </div>
         
