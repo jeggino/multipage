@@ -157,8 +157,8 @@ def legend_dialog(species_colors_dict):
     
     b = """
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <li><span class="fa fa-walkie-talkie" style="color:grey" opacity: 0.75;'></span>Vleermuis waarneming</li>
-    <i><class="fa fa-walkie-talkie" style="color:grey" opacity: 0.75;'></i>Vleermuis waarneming
+    <li><span class="fas fa-walkie-talkie" style="color:grey" opacity: 0.75;'></span>Vleermuis waarneming</li>
+    <i><class="fas fa-walkie-talkie" style="color:grey" opacity: 0.75;'></i>Vleermuis waarneming
     <i class="fas fa-coffee"></i> Enjoy your coffee!
     """
     return st.markdown(b, unsafe_allow_html=True)
