@@ -26,6 +26,17 @@ from supabase import create_client, Client
 # conn = st.connection("gsheets", type=GSheetsConnection)
 # df_point = conn.read(ttl=ttl,worksheet="df_observations")
 # df_references = conn.read(ttl=ttl_references,worksheet="df_users")
+#-----------------------
+
+@st.dialog("Cast your vote")
+def vote(item):
+    st.write(f"Why is {item} your favorite?")
+    reason = st.text_input("Because...")
+
+
+#0000000000000000
+
+
 def init_connection():
     url = st.secrets["SUPABASE_URL"]
     key = st.secrets["SUPABASE_KEY"]
@@ -613,6 +624,9 @@ if 'project' not in st.session_state:
 with st.sidebar:
     logOut_project()
     logOut()
+    st.divider()
+    if st.button("A"):
+        vote("A")
     st.divider()
 
 
