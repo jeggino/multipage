@@ -153,7 +153,7 @@ def legend_dialog(species_colors_dict):
     <body>
       <h1>Font Awesome Icons</h1>
       <i class="fa-brands fa-twitter" style="color: #1DA1F2;"></i>
-      <i class="fa-solid fa-walkie-talkie" style="color: red;"></i>
+      <i class="fas fa-walkie-talkie"></i>
       <i class="fas fa-coffee"></i> Enjoy your coffee!
       <i class="fa-regular fa-heart" style="color: red;"></i>
     </body>
