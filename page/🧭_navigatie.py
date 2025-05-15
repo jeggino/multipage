@@ -151,8 +151,8 @@ def legend_dialog(species_colors_dict):
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     </head>
     <body>
-      # <h1>Font Awesome Icons</h1>
-      <i class="fa-solid fa-camera fa-2x" style="color: blue;">f</i>
+      <h1>Font Awesome Icons</h1>
+      <i class="fa fa-walkie-talkie" style="color:grey" opacity: 0.75;>Vleermuis waarneming</i>
       <i class="fa-brands fa-twitter fa-3x" style="color: #1DA1F2;"></i>
       <i class="fa-regular fa-heart fa-lg" style="color: red;"></i>
     </body>
@@ -161,7 +161,7 @@ def legend_dialog(species_colors_dict):
     
     # return legend
     # return st.html(a)
-    return st.markdown(legend, unsafe_allow_html=True)
+    return st.markdown(a, unsafe_allow_html=True)
 
 def legend_birds(species_colors_dict,dragable=True):
 
