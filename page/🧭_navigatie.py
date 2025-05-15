@@ -138,7 +138,7 @@ def legend_dialog(species_colors_dict):
 
     
 
-    legend = legend_normal + legend_body + legend_style + legend_normal_end
+    legend = legend_normal + legend_body  + legend_normal_end
     
     # return legend
     return st.html(legend)
