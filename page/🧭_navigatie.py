@@ -160,6 +160,21 @@ def legend_dialog(species_colors_dict):
         
         <!-- Example of using a Font Awesome icon -->
         <i class="fas fa-coffee"></i> Enjoy your coffee!
+        
+        """
+    b = """
+        # Welcome to My Streamlit App
+        
+        This is a **Markdown** example with some embedded HTML for styling.
+        
+        <div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
+            <h3 style="color: #4CAF50;">Custom HTML Section</h3>
+            <p>This section is styled using HTML for more control over appearance.</p>
+        </div>
+        
+        ---
+        
+        You can mix **Markdown** and <span style="color:blue;">HTML</span> as needed!
         """
     return st.markdown(b, unsafe_allow_html=True)
 
