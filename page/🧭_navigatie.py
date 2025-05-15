@@ -166,7 +166,8 @@ def legend_dialog(species_colors_dict):
         # Welcome to My Streamlit App
         
         This is a **Markdown** example with some embedded HTML for styling.
-        
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
         <div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
             <h3 style="color: #4CAF50;">Custom HTML Section</h3>
             <i class="fa-brands fa-twitter" style="color: #1DA1F2;"></i>
