@@ -31,6 +31,19 @@ from supabase import create_client, Client
 
 @st.dialog(" ")
 def legend_dialog(species_colors_dict):
+    html_code = """
+    #     <!DOCTYPE html>
+    #     <html>
+    #     <head>
+    #         <title>My HTML Page</title>
+    #     </head>
+    #     <body>
+    #         <h1>Hello, World!</h1>
+    #     </body>
+    #     </html>
+    #     """
+    
+    # return st.markdown(f"```html\n{html_code}\n```")
 
 
     legend_temp=''
@@ -41,6 +54,7 @@ def legend_dialog(species_colors_dict):
         
     
     legend_body = f"""  
+    <!DOCTYPE html>
     <html>
         <body>
             <ul>
