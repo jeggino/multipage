@@ -42,32 +42,49 @@ def legend_dialog(species_colors_dict):
     legend_body = f"""  
     <!doctype html>
     <html lang="en">
-        <body>
-            <ul>
-            
-                <li><strong>Sorten</strong></li>
-                
-                {legend_temp}
-                <li><strong>Functie</strong></li>
-                <li><span class="fa fa-walkie-talkie" style="color:grey" opacity: 0.75;'></span>Vleermuis waarneming</li>
-                <li><span class="fa fa-star" style="color:grey" opacity: 0.75;'></span>Zomerverblijf</li>
-                <li><span class="fa fa-venus-double" style="color:grey" opacity: 0.75;'></span>Kraamverblijf</li>
-                <li><span class="fa fa-snowflake" style="color:grey" opacity: 0.75;'></span>Winterverblijf</li>
-                <li><span class="fa fa-heart" style="color:grey" opacity: 0.75;'></span>Paarverblijf</li>
-                <li>-</li>
-                <li><span class="fa fa-box-archive" style="color:grey" opacity: 0.75;'></span>Vleermuiskast</li>
-                <li><span class="fa fa-tower-broadcast" style="color:grey" opacity: 0.75;'></span>Zender</li>
-                <li>-</li>
-                <li><span class="fa-solid fa-clone" style="color:grey" opacity: 0.75;'></span>Foerageergebied</li>
-                <li><span class="fa-regular fa-clone" style="color:grey" opacity: 0.75;'></span>Baltsterritorium</li>
-                <li><span class="fa fa-minus" style="color:grey" opacity: 0.75;'></span>Vliegroute</li>
-            
-            </ul> 
-        </body>
+    <body>
+    <div id='maplegend' class='maplegend' 
+        style='position: absolute; z-index: 9999; background-color: rgba(255, 255, 255, 0.7);
+         border-radius: 8px; padding: 10px; font-size: 11px; left: 10px; bottom: 35px; '>     
+    <div class='legend-scale'>
+      <ul class='legend-labels'>
+
+        <li><strong>Sorten</strong></li>
+    
+        {legend_temp}
+        <li><strong>Functie</strong></li>
+        <li><span class="fa fa-walkie-talkie" style="color:grey" opacity: 0.75;'></span>Vleermuis waarneming</li>
+        <li><span class="fa fa-star" style="color:grey" opacity: 0.75;'></span>Zomerverblijf</li>
+        <li><span class="fa fa-venus-double" style="color:grey" opacity: 0.75;'></span>Kraamverblijf</li>
+        <li><span class="fa fa-snowflake" style="color:grey" opacity: 0.75;'></span>Winterverblijf</li>
+        <li><span class="fa fa-heart" style="color:grey" opacity: 0.75;'></span>Paarverblijf</li>
+        <li>-</li>
+        <li><span class="fa fa-box-archive" style="color:grey" opacity: 0.75;'></span>Vleermuiskast</li>
+        <li><span class="fa fa-tower-broadcast" style="color:grey" opacity: 0.75;'></span>Zender</li>
+        <li>-</li>
+        <li><span class="fa-solid fa-clone" style="color:grey" opacity: 0.75;'></span>Foerageergebied</li>
+        <li><span class="fa-regular fa-clone" style="color:grey" opacity: 0.75;'></span>Baltsterritorium</li>
+        <li><span class="fa fa-minus" style="color:grey" opacity: 0.75;'></span>Vliegroute</li>
+        
+      </ul> 
+    </body>
     </html>
     """
+       
+    legend_style = """<style type='text/css'>
+      .maplegend .legend-scale ul {margin: 0; padding: 0; color: #0f0f0f;}
+      .maplegend .legend-scale ul li {list-style: none; line-height: 18px; margin-bottom: 1.5px;}
+      .maplegend ul.legend-labels li span {float: left; height: 16px; width: 30px; margin-right: 4.5px;}
+    </style>
     
-    return st.html(legend_body)
+    {% endmacro %}
+    """
+    legend_normal = "{% macro html(this, kwargs) %}"
+
+    legend = legend_normal + legend_body + legend_style
+    
+    
+    return st.html(legend)
     
 
 
