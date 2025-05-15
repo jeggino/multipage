@@ -43,7 +43,7 @@ def legend_dialog(species_colors_dict):
     #     </html>
     #     """
     
-    return st.markdown(f"```html\n{html_code}\n```",unsafe_allow_html=True)
+    return st.html(f"```html\n{html_code}\n```")
 
 
     # legend_temp=''
