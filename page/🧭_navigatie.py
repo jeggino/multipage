@@ -155,19 +155,12 @@ def legend_dialog(species_colors_dict):
     </html>
     """
     
-    b="""<!DOCTYPE html>
-    <html>
-    <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    <body>
-    
-    <i class="fa fa-car"></i>
-    <i class="fa fa-car" style="font-size:48px;"></i>
-    <i class="fa fa-car" style="font-size:60px;color:red;"></i>
-    
-    </body>
-    </html>"""
+    b="""<<!-- Include Font Awesome via CDN -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
+        
+        <!-- Example of using a Font Awesome icon -->
+        <i class="fas fa-coffee"></i> Enjoy your coffee!
+        """
     return st.markdown(b, unsafe_allow_html=True)
 
 def legend_birds(species_colors_dict,dragable=True):
