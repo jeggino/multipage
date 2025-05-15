@@ -95,15 +95,15 @@ def legend_dialog(species_colors_dict):
     legend_normal = "{% macro html(this, kwargs) %}"
     
     legend_body = f"""  
-    <!doctype html>
+    <!DOCTYPE html>
     <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Font Awesome Example</title>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    </head>
     <body>
-    <div id='maplegend' class='maplegend' 
-        style='position: absolute; z-index: 9999; background-color: rgba(255, 255, 255, 0.7);
-         border-radius: 8px; padding: 10px; font-size: 11px; left: 10px; bottom: 35px; '>     
-    <div class='legend-scale'>
-      <ul class='legend-labels'>
-
         <li><strong>Sorten</strong></li>
     
         {legend_temp}
