@@ -648,7 +648,12 @@ else:
     df_dict = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
 
     
-    
+species_colors_dict=dict(zip(df_dict['sp'].unique(),colors[:len(df_dict['sp'].unique())]))
+with st.sidebar:
+    if st.button('Legend',use_container_width=True):
+        legend_dialog(species_colors_dict)
+
+st.sidebar.divider()
      
 
 
@@ -748,7 +753,7 @@ map_fuction = {'paarverblijfplaats':'heart',
                                              'nestlocatie':'egg'
                                             }
 
-species_colors_dict=dict(zip(df_dict['sp'].unique(),colors[:len(df_dict['sp'].unique())]))
+
 
 df_2['functie_shape'] = df_2['functie'].map(map_fuction)
 df_2['color'] = df_2['sp'].map(species_colors_dict)
@@ -875,9 +880,6 @@ folium.LayerControl().add_to(map)
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                    feature_group_to_add=list(functie_dictionary.values()))
 
-with st.sidebar:
-    if st.button('Legend',use_container_width=True):
-        legend_dialog(species_colors_dict)
         
 if st.session_state.login['type'] == 'user':
     try:
