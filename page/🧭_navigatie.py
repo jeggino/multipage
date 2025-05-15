@@ -132,12 +132,13 @@ def legend_dialog(species_colors_dict):
       .maplegend ul.legend-labels li span {float: left; height: 16px; width: 30px; margin-right: 4.5px;}
     </style>
     
-    {% endmacro %}
     """
+
+    legend_normal_end = "{% endmacro %}"
 
     
 
-    legend = legend_normal + legend_body + legend_style
+    legend = legend_normal + legend_body + legend_style + legend_normal_end
     
     # return legend
     return st.html(legend)
