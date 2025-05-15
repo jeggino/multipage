@@ -66,7 +66,7 @@ def legend_dialog(species_colors_dict):
     """
     
     
-    return st.markdown(legend_body)
+    return st.markdown(legend_body,unsafe_allow_html=True)
 
 
 
