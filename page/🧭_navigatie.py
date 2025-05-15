@@ -28,10 +28,7 @@ from supabase import create_client, Client
 # df_references = conn.read(ttl=ttl_references,worksheet="df_users")
 #-----------------------
 
-@st.dialog(" ")
-# def vote(item):
-#     st.write(f"Why is {item} your favorite?")
-#     reason = st.text_input("Because...")
+
 @st.dialog(" ")
 def legend_dialog(species_colors_dict):
 
@@ -910,7 +907,7 @@ output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_wid
                    feature_group_to_add=list(functie_dictionary.values()))
 
 with st.sidebar:
-    if st.button('Leggend',use_container_width=True):
+    if st.button('Legend',use_container_width=True):
         legend_dialog(species_colors_dict)
         
 if st.session_state.login['type'] == 'user':
