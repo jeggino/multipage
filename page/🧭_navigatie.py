@@ -155,8 +155,11 @@ def legend_dialog(species_colors_dict):
     </html>
     """
     
-
-    return st.markdown(a, unsafe_allow_html=True)
+    b = """
+    <!-- Include Font Awesome in the HTML header if possible -->
+    <i class="fas fa-coffee"></i> Enjoy your coffee!
+    """
+    return st.markdown(b, unsafe_allow_html=True)
 
 def legend_birds(species_colors_dict,dragable=True):
 
