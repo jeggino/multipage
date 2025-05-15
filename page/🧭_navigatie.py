@@ -41,7 +41,9 @@ def legend_dialog(species_colors_dict):
         
     
     legend_body = f"""  
-
+    <html>
+    <body>
+      <ul>
 
         <li><strong>Sorten</strong></li>
     
@@ -65,8 +67,8 @@ def legend_dialog(species_colors_dict):
     </html>
     """
     
+    return st.markdown(f"```html\n{legend_body}\n```",unsafe_allow_html=True)
     
-    return st.markdown(legend_body,unsafe_allow_html=True)
 
 
 
