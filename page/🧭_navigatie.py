@@ -182,7 +182,8 @@ def legend_dialog(species_colors_dict):
         You can mix **Markdown** and <span style="color:blue;">HTML</span> as needed!
         """
     b = 'https://th.bing.com/th/id/R.53e57fcad629c63269b77825edc39f9b?rik=RJRInDBbXhfCwg&riu=http%3a%2f%2fwww.sixsigmatrainingfree.com%2fuploads%2f2%2f1%2f7%2f9%2f21795380%2fwork-in-progress-wip.jpg&ehk=s0zrs2X29CwFWGGz8EMhn8oBcSRVDz5kPJxP0PnK89M%3d&risl=&pid=ImgRaw&r=0'
-    return st.markdown(b, unsafe_allow_html=True)
+    # return st.markdown(b, unsafe_allow_html=True)
+    st.image(b)
 
 def legend_birds(species_colors_dict,dragable=True):
 
