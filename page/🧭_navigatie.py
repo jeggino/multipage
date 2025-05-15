@@ -150,8 +150,8 @@ def legend_dialog(species_colors_dict):
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     </head>
     <body>
-      <h1>Font Awesome Icons</h1>
-      <i class="fa-solid fa-camera fa-2x" style="color: blue;"></i>
+      # <h1>Font Awesome Icons</h1>
+      <i class="fa-solid fa-camera fa-2x" style="color: blue;">f</i>
       <i class="fa-brands fa-twitter fa-3x" style="color: #1DA1F2;"></i>
       <i class="fa-regular fa-heart fa-lg" style="color: red;"></i>
     </body>
