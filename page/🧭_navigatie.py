@@ -160,8 +160,8 @@ def legend_dialog(species_colors_dict):
     """
     
     # return legend
-    # return st.html(a)
-    return st.markdown(a, unsafe_allow_html=True)
+    return st.html(a)
+    # return st.markdown(a, unsafe_allow_html=True)
 
 def legend_birds(species_colors_dict,dragable=True):
 
