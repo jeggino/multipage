@@ -28,10 +28,49 @@ from supabase import create_client, Client
 # df_references = conn.read(ttl=ttl_references,worksheet="df_users")
 #-----------------------
 
-@st.dialog("Cast your vote")
-def vote(item):
-    st.write(f"Why is {item} your favorite?")
-    reason = st.text_input("Because...")
+@st.dialog(" ")
+# def vote(item):
+#     st.write(f"Why is {item} your favorite?")
+#     reason = st.text_input("Because...")
+@st.dialog(" ")
+def legend_dialog(species_colors_dict):
+
+
+    legend_temp=''
+    
+    
+    for species in species_colors_dict.keys():
+        legend_temp = legend_temp + f"<li><span style='background: {species_colors_dict[species]}; opacity: 0.75;'></span>{species}</li>"
+        
+    
+    legend_body = f"""  
+
+
+        <li><strong>Sorten</strong></li>
+    
+        {legend_temp}
+        <li><strong>Functie</strong></li>
+        <li><span class="fa fa-walkie-talkie" style="color:grey" opacity: 0.75;'></span>Vleermuis waarneming</li>
+        <li><span class="fa fa-star" style="color:grey" opacity: 0.75;'></span>Zomerverblijf</li>
+        <li><span class="fa fa-venus-double" style="color:grey" opacity: 0.75;'></span>Kraamverblijf</li>
+        <li><span class="fa fa-snowflake" style="color:grey" opacity: 0.75;'></span>Winterverblijf</li>
+        <li><span class="fa fa-heart" style="color:grey" opacity: 0.75;'></span>Paarverblijf</li>
+        <li>-</li>
+        <li><span class="fa fa-box-archive" style="color:grey" opacity: 0.75;'></span>Vleermuiskast</li>
+        <li><span class="fa fa-tower-broadcast" style="color:grey" opacity: 0.75;'></span>Zender</li>
+        <li>-</li>
+        <li><span class="fa-solid fa-clone" style="color:grey" opacity: 0.75;'></span>Foerageergebied</li>
+        <li><span class="fa-regular fa-clone" style="color:grey" opacity: 0.75;'></span>Baltsterritorium</li>
+        <li><span class="fa fa-minus" style="color:grey" opacity: 0.75;'></span>Vliegroute</li>
+        
+      </ul> 
+    </body>
+    </html>
+    """
+    
+    
+    return st.markdown(legend_body)
+
 
 
 #0000000000000000
@@ -625,9 +664,6 @@ with st.sidebar:
     logOut_project()
     logOut()
     st.divider()
-    if st.button("A"):
-        vote("A")
-    st.divider()
 
 
 
@@ -858,21 +894,25 @@ for i in range(len(df_2)):
 
 folium.LayerControl().add_to(map)
 
-if st.session_state.project['opdracht'] == 'Vleermuizen':
-    legend_template = legend(species_colors_dict,False)
+# if st.session_state.project['opdracht'] == 'Vleermuizen':
+#     legend_template = legend(species_colors_dict,False)
 
-elif st.session_state.project['opdracht'] == 'Vogels':
-    legend_template = legend_birds(species_colors_dict,dragable=True)
+# elif st.session_state.project['opdracht'] == 'Vogels':
+#     legend_template = legend_birds(species_colors_dict,dragable=True)
 
-if st.session_state.project['auto_start'] != True:
-    macro = MacroElement()
-    macro._template = Template(legend_template)
-    map.get_root().add_child(macro)
+# if st.session_state.project['auto_start'] != True:
+#     macro = MacroElement()
+#     macro._template = Template(legend_template)
+#     map.get_root().add_child(macro)
 
 
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                    feature_group_to_add=list(functie_dictionary.values()))
 
+with st.sidebar:
+    if st.button('Leggend',use_container_width=True):
+        legend_dialog(species_colors_dict)
+        
 if st.session_state.login['type'] == 'user':
     try:
         if output["last_active_drawing"]['geometry']['type'] == 'Point':
@@ -895,3 +935,5 @@ if st.session_state.login['type'] == 'user':
                                            
     except:
         st.stop()
+
+
