@@ -92,8 +92,10 @@ def project():
     # st.subheader(f"Welkom {st.session_state.login['name'].split()[0]}!!",divider='grey')
     index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
     project_list = df_references.loc[index_project,"project"].split(',')
-    project = st.selectbox("Kies een project, alstublieft",project_list,label_visibility="visible")
-    opdracht = st.selectbox("Kies een opdracht, alstublief?",DICTIONARY_PROJECTS[project],label_visibility="visible")
+    project = st.selectbox("Kies een project",project_list,label_visibility="visible")
+    opdracht = st.selectbox("Kies een opdracht",DICTIONARY_PROJECTS[project],label_visibility="visible")
+    if opdracht == 'SMPs-ZuidOost':
+        gebied = st.selectbox("Kies een gebied",list(range(1,len(df_concat)+1)),label_visibility="visible")
 
     if st.session_state.login['type'] == 'user':
         on = st.toggle("🚲")
