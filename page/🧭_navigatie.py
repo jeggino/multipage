@@ -661,7 +661,10 @@ elif st.session_state.project['project_name'] == 'Admin':
     df_dict = df_2.copy()
 
 else:
-    df_2 = df_point[(df_point['project']==st.session_state.project['project_name'])&(df_point['soortgroup']==st.session_state.project['opdracht'])]
+    if st.session_state.project["project_name"]=='SMPs-ZuidOost':
+        df_2 = df_point[(df_point['project']==st.session_state.project['project_name'])&(df_point['soortgroup']==st.session_state.project['opdracht'])&(df_point[df_point['sp']=='Gierzwaluw'])]
+    else:
+        df_2 = df_point[(df_point['project']==st.session_state.project['project_name'])&(df_point['soortgroup']==st.session_state.project['opdracht'])]
     df_overig = df_point[(df_point['project']!=st.session_state.project['project_name']) & (df_point['soortgroup']==st.session_state.project['opdracht'])]
     df_dict = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
 
@@ -689,6 +692,7 @@ if len(df_2)>0:
         df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
     except:
         pass
+
     
     species_filter_option = df_2["sp"].unique()
     species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
@@ -823,9 +827,6 @@ for i in range(len(df_2)):
     if df_2.iloc[i]['geometry_type'] == "Point":
 
         if df_2.iloc[i]['soortgroup'] == "Vogels":
-
-            # if st.session_state.project["project_name"]=='SMPs-ZuidOost':
-            #     df_2 = df_2[df_2['sp']=='Gierzwaluw']
                     
             html = popup_html(i,df_2)
             popup = folium.Popup(folium.Html(html, script=True), max_width=300)
