@@ -20,13 +20,6 @@ from credentials import *
 
 from supabase import create_client, Client
 
-#---DATASET---
-# ttl = 10
-# ttl_references = 30
-# conn = st.connection("gsheets", type=GSheetsConnection)
-# df_point = conn.read(ttl=ttl,worksheet="df_observations")
-# df_references = conn.read(ttl=ttl_references,worksheet="df_users")
-
 
 
 def init_connection():
@@ -661,10 +654,12 @@ elif st.session_state.project['project_name'] == 'Admin':
     df_dict = df_2.copy()
 
 else:
-    # if st.session_state.project["project_name"]=='SMPs-ZuidOost':
-    #     df_2 = df_point[(df_point['project']==st.session_state.project['project_name'])&(df_point['sp']=='Gierzwaluw'])]
-    # else:
-    df_2 = df_point[(df_point['project']==st.session_state.project['project_name'])&(df_point['soortgroup']==st.session_state.project['opdracht'])]
+    if st.session_state.project["project_name"]=='SMPs-ZuidOost':
+        df_2 = df_point[(df_point['project']==st.session_state.project['project_name'])&(df_point['soortgroup']==st.session_state.project['opdracht'])]
+
+        # df_2 = df_point[(df_point['project']==st.session_state.project['project_name'])&(df_point['sp']=='Gierzwaluw'])]
+    else:
+        df_2 = df_point[(df_point['project']==st.session_state.project['project_name'])&(df_point['soortgroup']==st.session_state.project['opdracht'])]
     df_overig = df_point[(df_point['project']!=st.session_state.project['project_name']) & (df_point['soortgroup']==st.session_state.project['opdracht'])]
     df_dict = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
 
