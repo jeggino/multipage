@@ -61,16 +61,26 @@ def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,ver
 
 
 def map():
-
+    
     try:
         geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson"  
         gdf_areas = gpd.read_file(geometry_file)
+        
         if st.session_state.project["project_name"]=='SMPs-ZuidOost':
             gdf_areas = gdf_areas[gdf_areas['Gebied']==st.session_state.project["gebied"]]
-        geometry_names_file = f"geometries/{st.session_state.project["project_name"]}_names.geojson" 
-        gdf_names = gpd.read_file(geometry_names_file)
+            lat = gdf_areas.centroid.y.mean()
+            lng = gdf_areas.centroid.x.mean()
+            gdf_names = gdf_areas
+            gdf_names['lat'] = lat
+            gdf_names['lng'] = lng
+            gdf_names['Gebied'] = gdf_names['Gebied'].astype(str)
+
+        else:
+            geometry_names_file = f"geometries/{st.session_state.project["project_name"]}_names.geojson" 
+            gdf_names = gpd.read_file(geometry_names_file)
+            
         lat = gdf_areas.centroid.y.mean()
-        lng = gdf_areas.centroid.x.mean()
+        lng = gdf_areas.centroid.x.mean()     
         m = folium.Map(location=[lat, lng], zoom_start=10,zoom_control=False,tiles=None)
     except:
         m = folium.Map(zoom_control=False,tiles=None)  
