@@ -824,11 +824,9 @@ for i in range(len(df_2)):
 
         if df_2.iloc[i]['soortgroup'] == "Vogels":
 
-            if st.session_state.project["project_name"]=='SMPs-ZuidOost':
-                df_2 = df_2[df_2['sp']=='Gierzwaluw']
-                
-                
-    
+            # if st.session_state.project["project_name"]=='SMPs-ZuidOost':
+            #     df_2 = df_2[df_2['sp']=='Gierzwaluw']
+                    
             html = popup_html(i,df_2)
             popup = folium.Popup(folium.Html(html, script=True), max_width=300)
             fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
