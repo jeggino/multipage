@@ -95,7 +95,7 @@ def project():
     project = st.selectbox("Kies een project",project_list,label_visibility="visible")
     opdracht = st.selectbox("Kies een opdracht",DICTIONARY_PROJECTS[project],label_visibility="visible")
     if project == 'SMPs-ZuidOost':
-        gebied = st.selectbox("Kies een gebied",list(range(1,23),label_visibility="visible")
+        gebied = st.selectbox("Kies een gebied",list(range(1,23)),label_visibility="visible")
 
     if st.session_state.login['type'] == 'user':
         on = st.toggle("🚲")
