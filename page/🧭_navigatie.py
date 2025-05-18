@@ -701,7 +701,10 @@ if len(df_2)>0:
 try:
     geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
     gdf_areas = gpd.read_file(geometry_file)
-    gdf_areas = gdf_areas[gdf_areas['Gebied']==st.session_state.project["gebied"]]
+    
+    if st.session_state.project["project_name"]=='SMPs-ZuidOost':
+        gdf_areas = gdf_areas[gdf_areas['Gebied']==st.session_state.project["gebied"]]
+        
     geometry_names_file = f"geometries/{st.session_state.project["project_name"]}_names.geojson" 
     gdf_names = gpd.read_file(geometry_names_file)
     lat = gdf_areas.centroid.y.mean()
@@ -820,11 +823,17 @@ for i in range(len(df_2)):
     if df_2.iloc[i]['geometry_type'] == "Point":
 
         if df_2.iloc[i]['soortgroup'] == "Vogels":
+
+            if st.session_state.project["project_name"]=='SMPs-ZuidOost':
+                df_2 = df_2[df_2['sp']=='Gierzwaluw']
+                
                 
     
             html = popup_html(i,df_2)
             popup = folium.Popup(folium.Html(html, script=True), max_width=300)
             fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
+
+            if 
     
             folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
                           popup=popup,
@@ -884,18 +893,6 @@ for i in range(len(df_2)):
         folium.PolyLine(locations=location, color=df_2.iloc[i]['color'], weight=4,line_cap="round",smooth_factor=3, opacity=1,popup=popup).add_to(fouctie_loop)
 
 folium.LayerControl().add_to(map)
-
-# if st.session_state.project['opdracht'] == 'Vleermuizen':
-#     legend_template = legend(species_colors_dict,False)
-
-# elif st.session_state.project['opdracht'] == 'Vogels':
-#     legend_template = legend_birds(species_colors_dict,dragable=True)
-
-# if st.session_state.project['auto_start'] != True:
-#     macro = MacroElement()
-#     macro._template = Template(legend_template)
-#     map.get_root().add_child(macro)
-
 
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                    feature_group_to_add=list(functie_dictionary.values()))
