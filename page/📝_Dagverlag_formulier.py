@@ -192,6 +192,12 @@ elif selected == 'Data':
         rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
         df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)                
         df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & (df_dagverslagen['opdracht']==opdracht)]
+        df_dagverslagen_dict = df_download_dagverslagen['gebied_id'].value_counts().to_dict()
+        list_ = []
+        for key,value in df_dagverslagen_dict.items():
+            option = f'{key} ({value})'
+            list_.append(option)
+            
         st.download_button(label="Downloaden alle dagverslagen",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name="dagverslagen.csv",mime="text/csv", use_container_width=False)
 
 
@@ -199,12 +205,14 @@ elif selected == 'Data':
         with st.container(border=True):
             option_areas_filter = st.selectbox(
                 "Selecteer een gebied",
-                natsorted(df_download_dagverslagen['gebied_id'].unique()),
+                natsorted(list_),
                 index=None,
                 placeholder="Selecteer een gebied...",
                 label_visibility="collapsed",
                 
             )
+            option_areas_filter = option_areas_filter.split()[0]
+            
             try:
                 df_filter = df_download_dagverslagen[df_download_dagverslagen['gebied_id']==option_areas_filter].sort_values('datum').reset_index(drop=True)
                 
