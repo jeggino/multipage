@@ -824,8 +824,8 @@ for i in range(len(df_2)):
 
         if df_2.iloc[i]['soortgroup'] == "Vogels":
 
-            if st.session_state.project["project_name"]=='SMPs-ZuidOost':
-                df_2 = df_2[df_2['sp']=='Gierzwaluw']
+            # if st.session_state.project["project_name"]=='SMPs-ZuidOost':
+            #     df_2 = df_2[df_2['sp']=='Gierzwaluw']
                 
                 
     
