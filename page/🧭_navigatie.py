@@ -653,29 +653,27 @@ elif st.session_state.project['project_name'] == 'Admin':
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
     df_dict = df_2.copy()
 
-else:
+else:    
     if st.session_state.project["project_name"]=='SMPs-ZuidOost':
         df_2 = df_point[(df_point['project']==st.session_state.project['project_name'])&(df_point['soortgroup']==st.session_state.project['opdracht'])&(df_point['sp']=='Gierzwaluw')]
     else:
         df_2 = df_point[(df_point['project']==st.session_state.project['project_name'])&(df_point['soortgroup']==st.session_state.project['opdracht'])]
+        
     df_overig = df_point[(df_point['project']!=st.session_state.project['project_name']) & (df_point['soortgroup']==st.session_state.project['opdracht'])]
     df_dict = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
 
 
-colors  =[ 'red','blue', 'green', 'purple', 'orange', 'darkred',
-          'beige', 'darkblue', 'darkgreen', 'cadetblue',
-         'darkpurple', 'pink',  'lightblue', 'lightgreen',
-         'gray', 'lightgray']
+colors = ['red','blue', 'green', 'purple', 'orange', 'darkred','beige', 'darkblue', 'darkgreen', 
+          'cadetblue','darkpurple', 'pink',  'lightblue', 'lightgreen','gray', 'lightgray']
 
 species_colors_dict=dict(zip(df_dict['sp'].unique(),colors[:len(df_dict['sp'].unique())]))
+
 with st.sidebar:
     if st.button('Legend',use_container_width=True):
         legend_dialog(species_colors_dict)
 
 st.sidebar.divider()
      
-
-
 if len(df_2)>0:
     try:
         df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
@@ -701,9 +699,17 @@ try:
     
     if st.session_state.project["project_name"]=='SMPs-ZuidOost':
         gdf_areas = gdf_areas[gdf_areas['Gebied']==st.session_state.project["gebied"]]
+        lat = gdf_areas.centroid.y.mean()
+        lng = gdf_areas.centroid.x.mean()
+        gdf_names = gdf_areas
+        gdf_names['lat'] = lat
+        gdf_names['lng'] = lng
+        gdf_names['Gebied'] = gdf_names['Gebied'].astype(str)
+
+    else:
+        geometry_names_file = f"geometries/{st.session_state.project["project_name"]}_names.geojson" 
+        gdf_names = gpd.read_file(geometry_names_file)
         
-    geometry_names_file = f"geometries/{st.session_state.project["project_name"]}_names.geojson" 
-    gdf_names = gpd.read_file(geometry_names_file)
     lat = gdf_areas.centroid.y.mean()
     lng = gdf_areas.centroid.x.mean()
     map = folium.Map(location=[lat, lng], zoom_start=10,zoom_control=False,tiles=None)
