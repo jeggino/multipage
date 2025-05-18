@@ -48,6 +48,8 @@ def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time
     data = {"waarnemer":waarnemer,"project":project,"opdracht":opdracht,"gebied_id":gebied_id,'doel':doel,"datum":datum,
              "start_time":start_time,"eind_time":eind_time,"temperatuur":temperatuur, "bewolking":bewolking,
              "neerslag":neerslag,"windkracht":windkracht,"windrichting":windrichting,"opmerking":opmerking}
+
+    data
                           
     response = (
             supabase.table("df_dagverslagen")
@@ -176,7 +178,6 @@ if selected == "Formulier":
                 st.error("Selecteer een gebied, alstublieft",icon="⚠️")
                 st.stop()
 
-            data
             insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,str(datum),str(start_time),str(eind_time),temperatuur,bewolking,neerslag,windkracht,windrichting,opmerking)
         
             # st.switch_page("page/🧭_navigatie.py")
