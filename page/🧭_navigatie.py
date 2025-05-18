@@ -596,9 +596,11 @@ def project():
     project_list = df_references.loc[index_project,"project"].split(',')
     project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
+    if opdracht == 'SMPs-ZuidOost':
+        gebied = st.selectbox("Kies een gebied",list(range(1,len(df_concat)+1)),label_visibility="visible")
     on = st.toggle("🚲")
     if st.button(":rainbow[**Begin**]"):
-         st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,
+         st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'gebied':gebied
                                     }
          st.rerun()
         
@@ -685,6 +687,7 @@ if len(df_2)>0:
 try:
     geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
     gdf_areas = gpd.read_file(geometry_file)
+    gdf_areas = gdf_areas[gdf_areas['Gebied']==st.session_state.project["gebied"]]
     geometry_names_file = f"geometries/{st.session_state.project["project_name"]}_names.geojson" 
     gdf_names = gpd.read_file(geometry_names_file)
     lat = gdf_areas.centroid.y.mean()
