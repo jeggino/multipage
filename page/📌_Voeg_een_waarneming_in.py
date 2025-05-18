@@ -63,8 +63,10 @@ def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,ver
 def map():
 
     try:
-        geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
+        geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson"  
         gdf_areas = gpd.read_file(geometry_file)
+        if st.session_state.project["project_name"]=='SMPs-ZuidOost':
+            gdf_areas = gdf_areas[gdf_areas['Gebied']==st.session_state.project["gebied"]]
         geometry_names_file = f"geometries/{st.session_state.project["project_name"]}_names.geojson" 
         gdf_names = gpd.read_file(geometry_names_file)
         lat = gdf_areas.centroid.y.mean()
