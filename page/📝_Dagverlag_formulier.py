@@ -152,6 +152,9 @@ if selected == "Formulier":
             
             if (project == "SMPs-Terschelling") & (opdracht == 'Vogels') :
                 gebied_id_list = [1,2,3,4]
+
+            elif (project == "SMPs-ZuidOost"):
+                gebied_id_list = list(range(1,23))
                 
             gebied_id = st.selectbox("Gebied",gebied_id_list,index=None)
         except:
