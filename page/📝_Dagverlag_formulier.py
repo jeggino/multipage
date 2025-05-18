@@ -175,6 +175,8 @@ if selected == "Formulier":
             if gebied_id == None:
                 st.error("Selecteer een gebied, alstublieft",icon="⚠️")
                 st.stop()
+
+            data
             insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,str(datum),str(start_time),str(eind_time),temperatuur,bewolking,neerslag,windkracht,windrichting,opmerking)
         
             # st.switch_page("page/🧭_navigatie.py")
