@@ -97,15 +97,25 @@ def project():
     if project == 'SMPs-ZuidOost':
         gebied = st.selectbox("Kies een gebied",list(range(1,23)),label_visibility="visible")
 
-    if st.session_state.login['type'] == 'user':
-        on = st.toggle("🚲")
+        if st.session_state.login['type'] == 'user':
+            on = st.toggle("🚲")
+        else:
+            on = False
+        if st.button(":rainbow[**Begin**]"):
+             st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'gebied':gebied
+                                         # 'area':area, 'gdf':gdf_areas
+                                        }
+             st.rerun()
     else:
-        on = False
-    if st.button(":rainbow[**Begin**]"):
-         st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'gebied':gebied
-                                     # 'area':area, 'gdf':gdf_areas
-                                    }
-         st.rerun()
+        if st.session_state.login['type'] == 'user':
+            on = st.toggle("🚲")
+        else:
+            on = False
+        if st.button(":rainbow[**Begin**]"):
+             st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on
+                                        }
+             st.rerun()
+        
         
 def logOut():
     if st.button("logOut",use_container_width=True):
