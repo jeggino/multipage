@@ -597,7 +597,7 @@ def project():
     project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
     if project == 'SMPs-ZuidOost':
-        gebied = st.selectbox("Kies een gebied",list(range(1,len(df_concat)+1)),label_visibility="visible")
+        gebied = st.selectbox("Kies een gebied",list(range(1,23)),label_visibility="visible")
     on = st.toggle("🚲")
     if st.button(":rainbow[**Begin**]"):
          st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'gebied':gebied
