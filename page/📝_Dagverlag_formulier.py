@@ -49,8 +49,6 @@ def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time
              "start_time":start_time,"eind_time":eind_time,"temperatuur":temperatuur, "bewolking":bewolking,
              "neerslag":neerslag,"windkracht":windkracht,"windrichting":windrichting,"opmerking":opmerking}
 
-    data
-                          
     response = (
             supabase.table("df_dagverslagen")
             .insert(data)
@@ -140,7 +138,10 @@ if selected == "Formulier":
                 
         elif opdracht == 'Vogels':
             if project != "Overig":
-                doel = st.selectbox('Doel',['Gierzwaluw','Huismus'])
+                if (project == "SMPs-ZuidOost"):
+                    doel = st.selectbox('Doel',['Gierzwaluw'])
+                else:
+                    doel = st.selectbox('Doel',['Gierzwaluw','Huismus'])
             else:
                 doel = st.selectbox('Doel',['Overig'] + BIRD_NAMES)
                 
