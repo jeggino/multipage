@@ -132,7 +132,7 @@ def legend_dialog(species_colors_dict):
 
     b = """
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <div style="background-color: #f0f0f0; padding: 2px; border-radius: 5px;">
+        <div style="background-color: #f0f0f0; padding: 30px; border-radius: 5px;">
             <p><strong>Functie</strong></p>
             <p><span class="fa-solid fa-walkie-talkie" style="color:grey" opacity: 0.75;'></span> Vleermuis waarneming</p>
             <p><span class="fa-solid fa-star" style="color:grey" opacity: 0.75;'></span> Zomerverblijf</p>
