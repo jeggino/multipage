@@ -131,7 +131,7 @@ def legend_dialog(species_colors_dict):
 
     legend_temp = ''
     for species in species_colors_dict.keys():
-        legend_temp = legend_temp + f"""<p><span style="background-color: {species_colors_dict[species]};" opacity: 0.75;'>-</span> {species}</p>"""
+        legend_temp = legend_temp + f"""<p><span 'class="fa-solid fa-square" style="color:{species_colors_dict[species]}" opacity: 0.75;>-</span> {species}</p>"""
         
     b = f"""
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -642,7 +642,7 @@ else:
     df_dict = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
 
 
-colors = ['red','blue', 'green', 'purple', 'orange', 'darkred','beige', 'darkblue', 'darkgreen', 
+colors = ['red','blue', 'green', 'purple', 'orange', 'darkred', 'darkblue', 'darkgreen', 
           'cadetblue', 'pink',  'lightblue', 'lightgreen','gray', 'lightgray']
 
 species_colors_dict=dict(zip(df_dict['sp'].unique(),colors[:len(df_dict['sp'].unique())]))
