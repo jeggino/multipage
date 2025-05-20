@@ -129,28 +129,7 @@ def legend_dialog(species_colors_dict):
 
     legend = legend_body
 
-    a = """    
-    <!DOCTYPE html>
-    <html lang="en">
 
-    <body>
-      <h1>Font Awesome Icons</h1>
-      <i class="fa-brands fa-twitter" style="color: #1DA1F2;"></i>
-      <i class="fas fa-venus-double"></i>
-      <i class="fas fa-coffee"></i> Enjoy your coffee!
-      <i class="fa-regular fa-heart" style="color: red;"></i>
-    </body>
-    </html>
-    """
-    
-    b="""<<!-- Include Font Awesome via CDN -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
-        
-        <!-- Example of using a Font Awesome icon -->
-        <i class="fas fa-coffee"></i> Enjoy your coffee!
-                <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
-
-        """
     b = """
         # Welcome to My Streamlit App
         
@@ -158,11 +137,22 @@ def legend_dialog(species_colors_dict):
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
-            <h3 style="color: #4CAF50;">Custom HTML Section</h3>
-            <i class="fa-brands fa-twitter" style="color: green;"></i>
-            <li><span class="fa-solid fa-snowflake" style="color:grey" opacity: 0.75;'></span>Winterverblijf</li>
+            <l><strong>Functie</strong></l>
+            <i><span class="fa-solid fa-walkie-talkie" style="color:grey" opacity: 0.75;'></span>Vleermuis waarneming</i>
+            <i><span class="fa-solid fa-star" style="color:grey" opacity: 0.75;'></span>Zomerverblijf</i>
+            <i><span class="fa-solid fa-venus-double" style="color:grey" opacity: 0.75;'></span>Kraamverblijf</i>
+            <i><span class="fa-solid fa-snowflake" style="color:grey" opacity: 0.75;'></span>Winterverblijf</i>
+            <i><span class="fa-solid fa-heart" style="color:grey" opacity: 0.75;'></span>Paarverblijf</i>
+            <i>-</i>
+            <i><span class="fa-solid fa-box-archive" style="color:grey" opacity: 0.75;'></span>Vleermuiskast</i>
+            <i><span class="fa-solid fa-tower-broadcast" style="color:grey" opacity: 0.75;'></span>Zender</i>
+            <i>-</i>
+            <i><span class="fa-solid fa-clone" style="color:grey" opacity: 0.75;'></span>Foerageergebied</i>
+            <i><span class="fa-regular fa-clone" style="color:grey" opacity: 0.75;'></span>Baltsterritorium</i>
+            <i><span class="fa-solid fa-minus" style="color:grey" opacity: 0.75;'></span>Vliegroute</i>
+            <i></i>
+            <i><span class="fa-solid fa-snowflake" style="color:grey" opacity: 0.75;'></span>Winterverblijf</i>
             <i class="fa-solid fa-snowflake"></i>
-            <p>This section is styled using HTML for more control over appearance.</p>
         </div>
         
         ---
