@@ -240,7 +240,6 @@ def popup_lines(row,df_2):
     return html
 
 
-
 def popup_html(row,df_2):
     
     i = row
@@ -396,9 +395,6 @@ def update_item(id,df):
     st.error('De accountnaam en de waarnemer zijn verschillend. Het is niet mogelijk om deze waarneming te verwijderen of te wijzigen.', icon="🚨")
     st.stop()
     
-
-
-
 
 def logIn():
     name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
