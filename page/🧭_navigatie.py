@@ -131,33 +131,23 @@ def legend_dialog(species_colors_dict):
 
 
     b = """
-        # Welcome to My Streamlit App
-        
-        This is a **Markdown** example with some embedded HTML for styling.
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
+        <div style="background-color: #f0f0f0; padding: 2px; border-radius: 5px;">
             <p><strong>Functie</strong></p>
-            <p><span class="fa-solid fa-walkie-talkie" style="color:grey" opacity: 0.75;'></span>Vleermuis waarneming</p>
-            <p><span class="fa-solid fa-star" style="color:grey" opacity: 0.75;'></span>Zomerverblijf</p>
-            <p><span class="fa-solid fa-venus-double" style="color:grey" opacity: 0.75;'></span>Kraamverblijf</p>
-            <i><span class="fa-solid fa-snowflake" style="color:grey" opacity: 0.75;'></span>Winterverblijf</i>
-            <i><span class="fa-solid fa-heart" style="color:grey" opacity: 0.75;'></span>Paarverblijf</i>
-            <i>-</i>
-            <i><span class="fa-solid fa-box-archive" style="color:grey" opacity: 0.75;'></span>Vleermuiskast</i>
-            <i><span class="fa-solid fa-tower-broadcast" style="color:grey" opacity: 0.75;'></span>Zender</i>
-            <i>-</i>
-            <i><span class="fa-solid fa-clone" style="color:grey" opacity: 0.75;'></span>Foerageergebied</i>
-            <i><span class="fa-regular fa-clone" style="color:grey" opacity: 0.75;'></span>Baltsterritorium</i>
-            <i><span class="fa-solid fa-minus" style="color:grey" opacity: 0.75;'></span>Vliegroute</i>
-            <i></i>
-            <i><span class="fa-solid fa-snowflake" style="color:grey" opacity: 0.75;'></span>Winterverblijf</i>
-            <i class="fa-solid fa-snowflake"></i>
+            <p><span class="fa-solid fa-walkie-talkie" style="color:grey" opacity: 0.75;'></span> Vleermuis waarneming</p>
+            <p><span class="fa-solid fa-star" style="color:grey" opacity: 0.75;'></span> Zomerverblijf</p>
+            <p><span class="fa-solid fa-venus-double" style="color:grey" opacity: 0.75;'></span> Kraamverblijf</p>
+            <p><span class="fa-solid fa-snowflake" style="color:grey" opacity: 0.75;'></span> Winterverblijf</p>
+            <p><span class="fa-solid fa-heart" style="color:grey" opacity: 0.75;'></span> Paarverblijf</p>
+            <p>-</p>
+            <p><span class="fa-solid fa-box-archive" style="color:grey" opacity: 0.75;'></span> Vleermuiskast</p>
+            <p><span class="fa-solid fa-tower-broadcast" style="color:grey" opacity: 0.75;'></span> Zender</p>
+            <p>-</p>
+            <p><span class="fa-solid fa-clone" style="color:grey" opacity: 0.75;'></span> Foerageergebied</p>
+            <p><span class="fa-regular fa-clone" style="color:grey" opacity: 0.75;'></span> Baltsterritorium</p>
+            <p><span class="fa-solid fa-minus" style="color:grey" opacity: 0.75;'></span> Vliegroute</p>
         </div>
         
-        ---
-        
-        You can mix **Markdown** and <span style="color:blue;">HTML</span> as needed!
         """
     # b = 'https://th.bing.com/th/id/R.53e57fcad629c63269b77825edc39f9b?rik=RJRInDBbXhfCwg&riu=http%3a%2f%2fwww.sixsigmatrainingfree.com%2fuploads%2f2%2f1%2f7%2f9%2f21795380%2fwork-in-progress-wip.jpg&ehk=s0zrs2X29CwFWGGz8EMhn8oBcSRVDz5kPJxP0PnK89M%3d&risl=&pid=ImgRaw&r=0'
     return st.markdown(b, unsafe_allow_html=True)
