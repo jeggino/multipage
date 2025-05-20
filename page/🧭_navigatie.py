@@ -79,6 +79,7 @@ def legend_dialog_bats(species_colors_dict):
     b = f"""
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <div style="background-color: white; padding: 20px; border-radius: 5px; font-size:85%;">
+            <h2><strong>Sorten/Gemarkeerd</strong></h2>
             {legend_temp}
             <hr>
             <h2><strong>Functie</strong></h2>
@@ -95,9 +96,7 @@ def legend_dialog_bats(species_colors_dict):
         </div>
         
         """
-    # b = 'https://th.bing.com/th/id/R.53e57fcad629c63269b77825edc39f9b?rik=RJRInDBbXhfCwg&riu=http%3a%2f%2fwww.sixsigmatrainingfree.com%2fuploads%2f2%2f1%2f7%2f9%2f21795380%2fwork-in-progress-wip.jpg&ehk=s0zrs2X29CwFWGGz8EMhn8oBcSRVDz5kPJxP0PnK89M%3d&risl=&pid=ImgRaw&r=0'
     return st.markdown(b, unsafe_allow_html=True)
-    # return st.image(b)
 
 @st.dialog(" ")
 def legend_dialog_birds(species_colors_dict):
@@ -121,9 +120,7 @@ def legend_dialog_birds(species_colors_dict):
         </div>
         
         """
-    # b = 'https://th.bing.com/th/id/R.53e57fcad629c63269b77825edc39f9b?rik=RJRInDBbXhfCwg&riu=http%3a%2f%2fwww.sixsigmatrainingfree.com%2fuploads%2f2%2f1%2f7%2f9%2f21795380%2fwork-in-progress-wip.jpg&ehk=s0zrs2X29CwFWGGz8EMhn8oBcSRVDz5kPJxP0PnK89M%3d&risl=&pid=ImgRaw&r=0'
     return st.markdown(b, unsafe_allow_html=True)
-    # return st.image(b)
 
     
 def popup_polygons(row,df_2):
