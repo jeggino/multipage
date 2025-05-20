@@ -131,23 +131,22 @@ def legend_dialog(species_colors_dict):
 
     legend_temp = ''
     for species in species_colors_dict.keys():
-        legend_temp = legend_temp + f"<p><span style='background: {species_colors_dict[species]}; opacity: 0.75;'> </span> {species}</p>"
+        legend_temp = legend_temp + f"<p><span style='background-color: {species_colors_dict[species]}; opacity: 0.75;'> </span> {species}</p>"
         
     b = f"""
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <div style="background-color: #f0f0f0; padding: 20px; border-radius: 5px; font-size:85%;">
-            <p><strong>Sorten</strong></p>
+            <h2><strong>Sorten</strong></h2>
             {legend_temp}
-            <p><strong>Functie</strong></p>
+            <hr>
+            <h2><strong>Functie</strong></h2>
             <p><span class="fa-solid fa-walkie-talkie" style="color:grey" opacity: 0.75;'></span>  Vleermuis waarneming</p>
             <p><span class="fa-solid fa-star" style="color:grey" opacity: 0.75;'></span>  Zomerverblijf</p>
             <p><span class="fa-solid fa-venus-double" style="color:grey" opacity: 0.75;'></span>  Kraamverblijf</p>
             <p><span class="fa-solid fa-snowflake" style="color:grey" opacity: 0.75;'></span>  Winterverblijf</p>
             <p><span class="fa-solid fa-heart" style="color:grey" opacity: 0.75;'></span>  Paarverblijf</p>
-            <p>-</p>
             <p><span class="fa-solid fa-box-archive" style="color:grey" opacity: 0.75;'></span>  Vleermuiskast</p>
             <p><span class="fa-solid fa-tower-broadcast" style="color:grey" opacity: 0.75;'></span>  Zender</p>
-            <p>-</p>
             <p><span class="fa-solid fa-clone" style="color:grey" opacity: 0.75;'></span>  Foerageergebied</p>
             <p><span class="fa-regular fa-clone" style="color:grey" opacity: 0.75;'></span>  Baltsterritorium</p>
             <p><span class="fa-solid fa-minus" style="color:grey" opacity: 0.75;'></span>  Vliegroute</p>
