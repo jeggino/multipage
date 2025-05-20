@@ -129,6 +129,7 @@ def legend_dialog(species_colors_dict):
 
     legend = legend_body
 
+    legend_temp = ''
     for species in species_colors_dict.keys():
         legend_temp = legend_temp + f"<i><span style='background: {species_colors_dict[species]}; opacity: 0.75;'></span> {species}</i>"
         
