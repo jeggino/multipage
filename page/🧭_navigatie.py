@@ -70,7 +70,7 @@ OUTPUT_height = 550
 # --- FUNCTIONS ---
 
 @st.dialog(" ")
-def legend_dialog(species_colors_dict):
+def legend_dialog_bats(species_colors_dict):
 
     legend_temp = ''
     for species in species_colors_dict.keys():
@@ -100,88 +100,32 @@ def legend_dialog(species_colors_dict):
     return st.markdown(b, unsafe_allow_html=True)
     # return st.image(b)
 
-def legend_birds(species_colors_dict,dragable=True):
+@st.dialog(" ")
+def legend_dialog_birds(species_colors_dict):
 
-
-    legend_temp=''
-    
-    
+    legend_temp = ''
     for species in species_colors_dict.keys():
-        legend_temp = legend_temp + f"<li><span style='background: {species_colors_dict[species]}; opacity: 0.75;'></span>{species}</li>"
+        legend_temp = legend_temp + f"""<p><span class="fa-solid fa-square" style="color:{species_colors_dict[species]}" opacity: 0.75;></span> {species}</p>"""
         
-    
-    legend_body = f"""  
-    <!doctype html>
-    <html lang="en">
-    <body>
-    <div id='maplegend' class='maplegend' 
-        style='position: absolute; z-index: 9999; background-color: rgba(255, 255, 255, 0.7);
-         border-radius: 8px; padding: 10px; font-size: 11px; left: 10px; bottom: 35px; '>     
-    <div class='legend-scale'>
-      <ul class='legend-labels'>
-
-        <li><strong>Sorten</strong></li>
-    
-        {legend_temp}
-
-        <li><strong>Functie</strong></li>
-        <li><span class="fa fa-binoculars" style="color:grey" opacity: 0.75;'></span>Vogel waarneming</li>
-        <li><span class="fa-regular fa-circle-question" style="color:grey" opacity: 0.75;'></span>Mogelijke nestlocatie</li>
-        <li><span class="fa fa-egg" style="color:grey" opacity: 0.75;'></span>Nestlocatie</li>
-        <li><strong>Functiegebied</strong></li>
-        <li><span class="fa-solid fa-clone" style="color:grey" opacity: 0.75;'></span>Koloniegebied</li>
-        <li><span class="fa-regular fa-clone" style="color:grey" opacity: 0.75;'></span>Vermoedelijk koloniegebied</li>
-
-      </ul> 
-    </body>
-    </html>
-    """
-       
-    legend_style = """<style type='text/css'>
-      .maplegend .legend-scale ul {margin: 0; padding: 0; color: #0f0f0f;}
-      .maplegend .legend-scale ul li {list-style: none; line-height: 18px; margin-bottom: 1.5px;}
-      .maplegend ul.legend-labels li span {float: left; height: 16px; width: 16px; margin-right: 4.5px;}
-    </style>
-    
-    {% endmacro %}
-    """
-    legend_dragable = """{% macro html(this, kwargs) %}
-        <!doctype html>
-        <html lang="en">
-        <head>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1">
-          <title>jQuery UI Draggable - Default functionality</title>
-          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    b = f"""
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <div style="background-color: white; padding: 20px; border-radius: 5px; font-size:85%;">
+            <h2><strong>Sorten</strong></h2>
+            {legend_temp}
+            <hr>
+            <h2><strong>Functie</strong></h2>
+            <p><span class="fa-solid fa-binoculars" style="color:grey" opacity: 0.75;'></span>  Vogel waarneming</p>
+            <p><span class="fa-solid fa-circle-question" style="color:grey" opacity: 0.75;'></span>  Mogelijke nestlocatie</p>
+            <p><span class="fa-solid fa-egg" style="color:grey" opacity: 0.75;'></span>  Nestlocatie</p>
+            <p><span class="fa-solid fa-clone" style="color:grey" opacity: 0.75;'></span>  Koloniegebied</p>
+            <p><span class="fa-regular fa-clone" style="color:grey" opacity: 0.75;'></span>  Vermoedelijk koloniegebied</p>
+        </div>
         
-          <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-          
-          <script>
-          $( function() {
-            $( "#maplegend" ).draggable({
-                            start: function (event, ui) {
-                                $(this).css({
-                                    right: "auto",
-                                    top: "auto",
-                                    bottom: "auto"
-                                });
-                            }
-                        });
-        });
-        
-          </script>
-        </head>
         """
-    
-    legend_normal = "{% macro html(this, kwargs) %}"
-    
-    if dragable == True:
-        legend = legend_dragable + legend_body + legend_style
-    else:
-        legend = legend_normal + legend_body + legend_style
-    
-    return legend
+    # b = 'https://th.bing.com/th/id/R.53e57fcad629c63269b77825edc39f9b?rik=RJRInDBbXhfCwg&riu=http%3a%2f%2fwww.sixsigmatrainingfree.com%2fuploads%2f2%2f1%2f7%2f9%2f21795380%2fwork-in-progress-wip.jpg&ehk=s0zrs2X29CwFWGGz8EMhn8oBcSRVDz5kPJxP0PnK89M%3d&risl=&pid=ImgRaw&r=0'
+    return st.markdown(b, unsafe_allow_html=True)
+    # return st.image(b)
+
     
 def popup_polygons(row,df_2):
     
@@ -592,7 +536,10 @@ species_colors_dict=dict(zip(df_dict['sp'].unique(),colors[:len(df_dict['sp'].un
 
 with st.sidebar:
     if st.button('Legenda',use_container_width=True):
-        legend_dialog(species_colors_dict)
+        if st.session_state.project['opdracht']=='Vleermuizen':
+            legend_dialog_bats(species_colors_dict)
+        elif st.session_state.project['opdracht']=='Vogels':
+            legend_dialog_birds(species_colors_dict)
 
 st.sidebar.divider()
      
