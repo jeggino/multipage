@@ -643,7 +643,7 @@ else:
 
 
 colors = ['red','blue', 'green', 'purple', 'orange', 'darkred','beige', 'darkblue', 'darkgreen', 
-          'cadetblue','darkpurple', 'pink',  'lightblue', 'lightgreen','gray', 'lightgray']
+          'cadetblue', 'pink',  'lightblue', 'lightgreen','gray', 'lightgray']
 
 species_colors_dict=dict(zip(df_dict['sp'].unique(),colors[:len(df_dict['sp'].unique())]))
 
