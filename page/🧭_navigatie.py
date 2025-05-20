@@ -140,7 +140,7 @@ def legend_dialog(species_colors_dict):
             <p><strong>Sorten</strong></p>
                 
             <p><strong>Functie</strong></p>
-            <p><span class="fa-solid fa-walkie-talkie" style="color:grey" opacity: 0.75;'></span>  Vleermuis waarneming</p><p><span class="fa-solid fa-star" style="color:grey" opacity: 0.75;'></span>  Zomerverblijf</p>
+            <p><span class="fa-solid fa-walkie-talkie" style="color:grey" opacity: 0.75;'></span>  Vleermuis waarneming</p>
             <p><span class="fa-solid fa-star" style="color:grey" opacity: 0.75;'></span>  Zomerverblijf</p>
             <p><span class="fa-solid fa-venus-double" style="color:grey" opacity: 0.75;'></span>  Kraamverblijf</p>
             <p><span class="fa-solid fa-snowflake" style="color:grey" opacity: 0.75;'></span>  Winterverblijf</p>
