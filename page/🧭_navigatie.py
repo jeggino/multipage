@@ -64,13 +64,8 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 # --- DIMENSIONS ---
 OUTPUT_width = '90%'
 OUTPUT_height = 550
-# ICON_SIZE = (20,20)
 
-# ICON_SIZE_huismus = (28,28)
-# ICON_SIZE_BAT_EXTRA = (60,25)
-# ICON_SIZE_RUIGE = (70,35)
-# ICON_SIZE_BIRD = (70,50)
-# ICON_SIZE_Huiszwaluw = (80,45)
+
 
 # --- FUNCTIONS ---
 
@@ -176,7 +171,7 @@ def legend_dialog(species_colors_dict):
         """
     b = 'https://th.bing.com/th/id/R.53e57fcad629c63269b77825edc39f9b?rik=RJRInDBbXhfCwg&riu=http%3a%2f%2fwww.sixsigmatrainingfree.com%2fuploads%2f2%2f1%2f7%2f9%2f21795380%2fwork-in-progress-wip.jpg&ehk=s0zrs2X29CwFWGGz8EMhn8oBcSRVDz5kPJxP0PnK89M%3d&risl=&pid=ImgRaw&r=0'
     # return st.markdown(b, unsafe_allow_html=True)
-    st.image(b)
+    return st.image(b)
 
 def legend_birds(species_colors_dict,dragable=True):
 
