@@ -53,6 +53,9 @@ def upload_photo():
         "Upload a pictures", accept_multiple_files=False,label_visibility='collapsed',type="jpg"
     )
 
+    bytes_data = uploaded_file.getvalue()
+    st.write(bytes_data)
+
     if st.button("upload"):
         response = (
             supabase.storage
