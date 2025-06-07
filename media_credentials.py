@@ -4,7 +4,7 @@ media_dict = {'SMPs-Terschelling':{'Vleermuizen':{"Videos":{"https://www.youtube
                                                    "Photos":{'<img src="https://www.ecoloogterschelling.nl/wp-content/uploads/2023/09/gewone-dwergvleermuis-invliegend-kolonie.jpeg" width="400" />':'',                                                            
                                                             }
                                                  },
-                                   'Vogels':{"Videos":{},
+                                   'Vogels':{"Videos":{'https://anydhrpvfenefacuoarv.supabase.co/storage/v1/object/public/smp//WhatsApp%20Video%202025-06-07%20at%2012.18.50_f618cd26.mp4':'Daalwijk 907: invliegende gierzwaluw in spleet onder de dakrand bij de bovenste etage van het flatgebouw. Dit gebeurde tussen 21.45 en 22.30 op een groot aantal verschillende plekken (tussen de 10 en 15 locaties) over de gehele lengte van deze zijde van de flat.'},
                                              "Photos":{}
                                             }
                                   },
