@@ -1,6 +1,8 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 
+from supabase import create_client, Client
+
 from media_credentials import *
 
 
@@ -23,7 +25,29 @@ reduce_header_height_style = """
 
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
+def init_connection():
+    url = st.secrets["SUPABASE_URL"]
+    key = st.secrets["SUPABASE_KEY"]
+    return create_client(url, key)
 
+supabase = init_connection()
+
+def upload_photo():
+
+    uploaded_files = st.file_uploader(
+        "Upload a pictures", accept_multiple_files=False
+    )
+
+    if st.button("upload"):
+        response = (
+            supabase.storage
+            .from_("smp")
+            .upload(
+                file=uploaded_files,
+                path="photos-zo/avatar1.png",
+                file_options={"cache-control": "3600", "upsert": "false"}
+            )
+        )
 
 
 # --- APP ---
@@ -33,6 +57,9 @@ st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
 selected = option_menu(None,["Foto's", "Video's"], icons=['bi-camera', 'bi-camera-reels'],orientation="horizontal",)
 
 if selected == "Foto's":
+
+    upload_photo()
+
     try:
         for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]['Photos']:
             with st.container(border=True):
