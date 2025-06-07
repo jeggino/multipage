@@ -47,7 +47,7 @@ def upload_photo():
         )
     )
 
-    return st.write(response)
+    return response
 
     # uploaded_files = st.file_uploader(
     #     "Upload a pictures", accept_multiple_files=False
