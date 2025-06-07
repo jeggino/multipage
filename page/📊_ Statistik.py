@@ -43,7 +43,7 @@ def upload_photo():
             supabase.storage
             .from_("smp")
             .upload(
-                file=uploaded_files,
+                file=uploaded_files.read(),
                 path="photos-zo/avatar1.jpg",
                 file_options={"cache-control": "3600", "upsert": "false"}
             )
