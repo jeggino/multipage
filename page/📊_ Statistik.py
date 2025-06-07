@@ -50,7 +50,7 @@ def upload_photo():
     # return response
 
     uploaded_files = st.file_uploader(
-        "Upload a pictures", accept_multiple_files=False
+        "Upload a pictures", accept_multiple_files=False,label_visibility='collapsed'
     )
 
     if st.button("upload"):
@@ -58,7 +58,7 @@ def upload_photo():
             supabase.storage
             .from_("smp")
             .upload(
-                file=uploaded_files.read(),
+                file=uploaded_files,
                 path="photos-zo/avatar1.jpeg",
                 file_options={"cache-control": "3600", "upsert": "false"}
             )
