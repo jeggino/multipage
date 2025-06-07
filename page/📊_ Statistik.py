@@ -54,15 +54,16 @@ def upload_photo():
     )
 
     if st.button("upload"):
-        response = (
-            supabase.storage
-            .from_("smp")
-            .upload(
-                file=uploaded_files,
-                path="photos-zo/avatar1.jpeg",
-                file_options={"cache-control": "3600", "upsert": "false"}
+        with open(uploaded_files, "rb") as f:
+            response = (
+                supabase.storage
+                .from_("smp")
+                .upload(
+                    file=f,
+                    path="photos-zo/avatar1.jpg",
+                    file_options={"cache-control": "3600", "upsert": "false"}
+                )
             )
-        )
 
 
 # --- APP ---
