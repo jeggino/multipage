@@ -38,12 +38,12 @@ def upload_photo():
     supabase.storage
         .from_("smp")
         .list(
-            "video-ts",
-            {
-                "limit": 100,
-                "offset": 0,
-                "sortBy": {"column": "name", "order": "desc"},
-            }
+            # "video-ts",
+            # {
+            #     "limit": 100,
+            #     "offset": 0,
+            #     "sortBy": {"column": "name", "order": "desc"},
+            # }
         )
     )
 
