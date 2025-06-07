@@ -38,7 +38,7 @@ def upload_photo():
     supabase.storage
         .from_("smp")
         .list(
-            "photos-zo",
+            "video-ts",
             {
                 "limit": 100,
                 "offset": 0,
