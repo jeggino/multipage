@@ -32,33 +32,33 @@ def init_connection():
 
 supabase = init_connection()
 
-def upload_photo():
+# def upload_photo():
 
-    # response = (
-    # supabase.storage
-    #     .from_("smp")
-    #     .list(
-    #         # "video-ts",
-    #         # {
-    #         #     "limit": 100,
-    #         #     "offset": 0,
-    #         #     "sortBy": {"column": "name", "order": "desc"},
-    #         # }
-    #     )
-    # )
+#     # response = (
+#     # supabase.storage
+#     #     .from_("smp")
+#     #     .list(
+#     #         # "video-ts",
+#     #         # {
+#     #         #     "limit": 100,
+#     #         #     "offset": 0,
+#     #         #     "sortBy": {"column": "name", "order": "desc"},
+#     #         # }
+#     #     )
+#     # )
 
-    # return response
+#     # return response
 
-    uploaded_files = st.file_uploader(
-        "Upload a pictures", accept_multiple_files=False,label_visibility='collapsed',type="jpg"
-    )
+#     uploaded_files = st.file_uploader(
+#         "Upload a pictures", accept_multiple_files=False,label_visibility='collapsed',type="jpg"
+#     )
 
 
 
-    if st.button("upload"):
-        st.image(uploaded_files)
-        with open(uploaded_files, "rb") as fs:
-            response = supabase.storage.from_('smp').upload('photos-zo/avatar1.jpg', fs, {'content-type': 'image/jpeg'})
+#     if st.button("upload"):
+#         st.image(uploaded_files)
+#         with open(uploaded_files, "rb") as fs:
+#             response = supabase.storage.from_('smp').upload('photos-zo/avatar1.jpg', fs, {'content-type': 'image/jpeg'})
 
 
 
@@ -69,8 +69,8 @@ st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
 selected = option_menu(None,["Foto's", "Video's"], icons=['bi-camera', 'bi-camera-reels'],orientation="horizontal",)
 
 if selected == "Foto's":
-    with st.expander("Upload a picture"):
-        upload_photo()
+    # with st.expander("Upload a picture"):
+    #     upload_photo()
 
     try:
         for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]['Photos']:
