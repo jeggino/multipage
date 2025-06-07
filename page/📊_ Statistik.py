@@ -57,16 +57,8 @@ def upload_photo():
 
     if st.button("upload"):
         st.image(uploaded_files)
+        response = supabase.storage.from_('smp').upload('photos-zo/avatar1.jpg', file, {'content-type': 'image/jpeg'})
 
-        response = (
-            supabase.storage
-            .from_("smp")
-            .upload(
-                file=uploaded_file,
-                path="photos-zo/avatar1.jpg",
-                file_options={"cache-control": "3600", "upsert": "false"}
-            )
-        )
 
 
 # --- APP ---
@@ -76,8 +68,8 @@ st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
 selected = option_menu(None,["Foto's", "Video's"], icons=['bi-camera', 'bi-camera-reels'],orientation="horizontal",)
 
 if selected == "Foto's":
-    # with st.expander("Upload a picture"):
-    #     # upload_photo()
+    with st.expander("Upload a picture"):
+        upload_photo()
 
     try:
         for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]['Photos']:
