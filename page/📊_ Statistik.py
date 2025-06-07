@@ -50,7 +50,7 @@ def upload_photo():
     # return response
 
     uploaded_files = st.file_uploader(
-        "Upload a pictures", accept_multiple_files=False,label_visibility='collapsed',type="jpg
+        "Upload a pictures", accept_multiple_files=False,label_visibility='collapsed',type="jpg"
     )
 
     if st.button("upload"):
