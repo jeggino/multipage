@@ -18,8 +18,10 @@ media_dict = {'SMPs-Terschelling':{'Vleermuizen':{"Videos":{"https://www.youtube
               'SMPs-ZuidOost':{'Vleermuizen':{"Videos":{},
                                               "Photos":{}
                                                          },
-                               'Vogels':{"Videos":{'https://anydhrpvfenefacuoarv.supabase.co/storage/v1/object/public/smp//WhatsApp%20Video%202025-06-07%20at%2012.18.50_f618cd26.mp4':'Daalwijk 907: invliegende gierzwaluw in spleet onder de dakrand bij de bovenste etage van het flatgebouw. Dit gebeurde tussen 21.45 en 22.30 op een groot aantal verschillende plekken (tussen de 10 en 15 locaties) over de gehele lengte van deze zijde van de flat.'},
-                                         "Photos":{'':''}
+                               'Vogels':{"Videos":{'https://anydhrpvfenefacuoarv.supabase.co/storage/v1/object/public/smp//WhatsApp%20Video%202025-06-07%20at%2012.18.50_f618cd26.mp4':'Daalwijk 907: invliegende gierzwaluw in spleet onder de dakrand bij de bovenste etage van het flatgebouw. Dit gebeurde tussen 21.45 en 22.30 op een groot aantal verschillende plekken (tussen de 10 en 15 locaties) over de gehele lengte van deze zijde van de flat.',
+                                                  },
+                                         "Photos":{'https://anydhrpvfenefacuoarv.supabase.co/storage/v1/object/public/smp/photos-zo/IMG_6441_edited.jpg':'',
+                                                  }
                                         }
                               },
 
