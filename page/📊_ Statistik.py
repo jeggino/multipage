@@ -44,7 +44,7 @@ def upload_photo():
             .from_("smp")
             .upload(
                 file=uploaded_files,
-                path="photos-zo/avatar1.png",
+                path="photos-zo/avatar1.jpg",
                 file_options={"cache-control": "3600", "upsert": "false"}
             )
         )
