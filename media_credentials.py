@@ -14,5 +14,7 @@ media_dict = {'SMPs-Terschelling':{'Vleermuizen':{"Videos":{"https://www.youtube
                                            'Vogels':{"Video":{},
                                                      "Photos":{'<a data-flickr-embed="true" href="https://www.flickr.com/photos/67492897@N07/54423034002/in/dateposted/" title="IMG_5819_edited"><img src="https://live.staticflickr.com/65535/54423034002_a45a3e9e3f_w.jpg" width="400" height="400" alt="IMG_5819_edited"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>':'House number 27 located at the corner of the street near the gutter.'}
                                                     }
-                                          }
+                                          },
+              'SMPs-ZuidOost':{'Vogels':{'Video':{'https://anydhrpvfenefacuoarv.supabase.co/storage/v1/object/public/smp//WhatsApp%20Video%202025-06-07%20at%2012.18.50_f618cd26.mp4':''}
+                                        }}
              }
