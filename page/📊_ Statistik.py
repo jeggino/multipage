@@ -72,8 +72,8 @@ st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
 selected = option_menu(None,["Foto's", "Video's"], icons=['bi-camera', 'bi-camera-reels'],orientation="horizontal",)
 
 if selected == "Foto's":
-
-    upload_photo()
+    with st.expander("Upload a picture"):
+        upload_photo()
 
     try:
         for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]['Photos']:
