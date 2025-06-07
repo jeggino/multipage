@@ -34,35 +34,35 @@ supabase = init_connection()
 
 def upload_photo():
 
-    response = (
-    supabase.storage
-        .from_("smp")
-        .list(
-            # "video-ts",
-            # {
-            #     "limit": 100,
-            #     "offset": 0,
-            #     "sortBy": {"column": "name", "order": "desc"},
-            # }
-        )
-    )
-
-    return response
-
-    # uploaded_files = st.file_uploader(
-    #     "Upload a pictures", accept_multiple_files=False
+    # response = (
+    # supabase.storage
+    #     .from_("smp")
+    #     .list(
+    #         # "video-ts",
+    #         # {
+    #         #     "limit": 100,
+    #         #     "offset": 0,
+    #         #     "sortBy": {"column": "name", "order": "desc"},
+    #         # }
+    #     )
     # )
 
-    # if st.button("upload"):
-    #     response = (
-    #         supabase.storage
-    #         .from_("smp")
-    #         .upload(
-    #             file=uploaded_files.read(),
-    #             path="photos-zo/avatar1.jpg",
-    #             file_options={"cache-control": "3600", "upsert": "false"}
-    #         )
-    #     )
+    # return response
+
+    uploaded_files = st.file_uploader(
+        "Upload a pictures", accept_multiple_files=False
+    )
+
+    if st.button("upload"):
+        response = (
+            supabase.storage
+            .from_("smp")
+            .upload(
+                file=uploaded_files.read(),
+                path="photos-zo/avatar1.jpeg",
+                file_options={"cache-control": "3600", "upsert": "false"}
+            )
+        )
 
 
 # --- APP ---
