@@ -56,8 +56,8 @@ def upload_photo():
 
 
     if st.button("upload"):
-        bytes_data = uploaded_file.getvalue()
-        st.write(bytes_data)
+        st.image(uploaded_files)
+
         response = (
             supabase.storage
             .from_("smp")
