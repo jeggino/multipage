@@ -77,7 +77,7 @@ selected = option_menu(None,["Foto's", "Video's"], icons=['bi-camera', 'bi-camer
 
 if selected == "Foto's":
     with st.expander("Upload a picture"):
-        upload_photo()
+        # upload_photo()
 
     try:
         for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]['Photos']:
