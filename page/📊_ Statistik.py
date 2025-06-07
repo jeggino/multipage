@@ -57,7 +57,7 @@ def upload_photo():
 
     if st.button("upload"):
         st.image(uploaded_files)
-        response = supabase.storage.from_('smp').upload('photos-zo/avatar1.jpg', file, {'content-type': 'image/jpeg'})
+        response = supabase.storage.from_('smp').upload('photos-zo/avatar1.jpg', uploaded_files, {'content-type': 'image/jpeg'})
 
 
 
