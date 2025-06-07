@@ -4,7 +4,7 @@ media_dict = {'SMPs-Terschelling':{'Vleermuizen':{"Videos":{"https://www.youtube
                                                    "Photos":{'<img src="https://www.ecoloogterschelling.nl/wp-content/uploads/2023/09/gewone-dwergvleermuis-invliegend-kolonie.jpeg" width="400" />':'',                                                            
                                                             }
                                                  },
-                                   'Vogels':{},
+                                   'Vogels':{"Video":{},
                                              "Photos":{}
                                             }
                                   },
