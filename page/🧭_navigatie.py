@@ -499,7 +499,8 @@ with st.sidebar:
     logOut()
     st.divider()
 
-
+with st.sidebar:
+    st.write('hello')
 
 if st.session_state.project['project_name'] == 'Overig':
     df_2 = df_point[df_point['project']!='Admin']
