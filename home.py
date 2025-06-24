@@ -160,9 +160,9 @@ if st.session_state.login['type'] == 'user':
                 pg = st.navigation([page_1,page_2])
         else:
             if st.session_state.project['auto_start'] == False:
-                pg = st.navigation([page_2,page_3,page_5,page_4,page_1],position="sidebar",)
+                pg = st.navigation([page_1,page_2,page_3,page_5,page_4],position="sidebar",)
             if st.session_state.project['auto_start'] == True:
-                pg = st.navigation([page_2,page_3,page_1,],position="sidebar",)
+                pg = st.navigation([page_1,page_2,page_3],position="sidebar",)
             
     else:
         pg = st.navigation([page_1,page_2])
