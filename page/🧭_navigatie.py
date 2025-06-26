@@ -63,7 +63,8 @@ df_point = pd.DataFrame(rows_points.data)
 
 # --- DIMENSIONS ---
 OUTPUT_width = '90%'
-OUTPUT_height = 550
+# OUTPUT_height = 550
+OUTPUT_height = '90%'
 
 
 
@@ -750,7 +751,7 @@ for i in range(len(df_2)):
 folium.LayerControl().add_to(map)
 
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, 
-                   # height=OUTPUT_height,
+                   height=OUTPUT_height,
                    feature_group_to_add=list(functie_dictionary.values()))
 
         
