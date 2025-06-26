@@ -63,8 +63,8 @@ df_point = pd.DataFrame(rows_points.data)
 
 # --- DIMENSIONS ---
 OUTPUT_width = '90%'
-# OUTPUT_height = 550
-OUTPUT_height = '90%'
+OUTPUT_height = 550
+# OUTPUT_height = '90%'
 
 
 
