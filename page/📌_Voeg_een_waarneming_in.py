@@ -27,13 +27,13 @@ from supabase import create_client, Client
 
 
 
-# reduce_header_height_style = """
-# <style>
-#     div.block-container {padding-top: 1rem; padding-bottom: 0rem; padding-left: 1rem; padding-right: 1rem; margin-top: 1rem; margin-bottom: 0rem;}
-# </style>
-# """ 
+reduce_header_height_style = """
+<style>
+    div.block-container {padding-top: 1rem; padding-bottom: 0rem; padding-left: 1rem; padding-right: 1rem; margin-top: 1rem; margin-bottom: 0rem;}
+</style>
+""" 
 
-# st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 # --- DIMENSIONS ---
 OUTPUT_width = '95%'
