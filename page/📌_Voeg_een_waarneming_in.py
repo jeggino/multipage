@@ -17,6 +17,17 @@ from credentials import *
 from supabase import create_client, Client
 
 
+st.markdown(
+    """
+    <style>
+    [data-testid="collapsedControl"] svg {
+        height: 0rem;
+        width: 0rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 # st.markdown("""
 #     <style>
