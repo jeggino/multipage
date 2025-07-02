@@ -21,6 +21,7 @@ media_dict = {'SMPs-Terschelling':{'Vleermuizen':{"Videos":{"https://www.youtube
                                'Vogels':{"Videos":{'https://anydhrpvfenefacuoarv.supabase.co/storage/v1/object/public/smp/video-zo/WhatsApp%20Video%202025-06-07%20at%2012.18.50_f618cd26.mp4':'Daalwijk 907: invliegende gierzwaluw in spleet onder de dakrand bij de bovenste etage van het flatgebouw. Dit gebeurde tussen 21.45 en 22.30 op een groot aantal verschillende plekken (tussen de 10 en 15 locaties) over de gehele lengte van deze zijde van de flat.',
                                                   },
                                          "Photos":{'https://anydhrpvfenefacuoarv.supabase.co/storage/v1/object/public/smp/photos-zo/IMG_6441_edited.jpg':'',
+                                                   'https://anydhrpvfenefacuoarv.supabase.co/storage/v1/object/public/smp/photos-zo/WhatsApp%20Image%202025-06-30%20at%2023.33.39_2af9f720.jpg':'Bijlmerdreef 859 - 869. Op zeven verschillende locaties invliegende gierzwaluwen waargenomen. Op alle plekken vliegen de vogels in de opening boven het kozijn naar binnen. Ook aan de achterkant van het pand lijkt  op één locatie een nest te zitten, maar dit is niet met zekerheid vastgesteld.'
                                                   }
                                         }
                               },
