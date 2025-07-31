@@ -1,4 +1,5 @@
-media_dict = {'SMPs-Terschelling':{'Vleermuizen':{"Videos":{"https://www.youtube.com/watch?v=OKEaI1mFAhc":" ",
+media_dict = {'SMPs-Terschelling':{'Vleermuizen':{"Videos":{"https://youtu.be/86kGBS9twRM?si=lF692UT_euj8MQTr":"Kolonie grootoren in klein tikje van 20cm stamdiameter op 1.4m hoogte",
+                                                            "https://www.youtube.com/watch?v=OKEaI1mFAhc":" ",
                                                             'https://www.youtube.com/watch?v=6qO1mpw8Xow':'Laatvliegers foerageren boven fietspad te Lies, Terschelling. Lantaarnpaal trekt waarschijnlijk prooien aan en de laatvliegers maken daar gretig gebruik van.',
                                                             'https://anydhrpvfenefacuoarv.supabase.co/storage/v1/object/public/smp/video-ts/signal-2025-04-27-105501.mp4':'Franschenland 24, 26-04-2025'},
                                                    "Photos":{'<img src="https://www.ecoloogterschelling.nl/wp-content/uploads/2023/09/gewone-dwergvleermuis-invliegend-kolonie.jpeg" width="400" />':'',                                                            
