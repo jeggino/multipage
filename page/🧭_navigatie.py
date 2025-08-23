@@ -361,7 +361,10 @@ def update_item(id,df):
         gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS,index=BAT_BEHAVIOURS.index(id_gedrag)) 
         functie = st.selectbox("Functie", BAT_FUNCTIE,index=BAT_FUNCTIE.index(id_functie))
         if functie == 'zender':
-          id_zender = st.selectbox("ID zender", ID_ZENDER,index=ID_ZENDER.index(id_id_zender))
+          try:
+            id_zender = st.selectbox("ID zender", ID_ZENDER,index=ID_ZENDER.index(id_id_zender))
+          except:
+            id_zender = st.selectbox("ID zender", ID_ZENDER)
         else:
           id_zender = None
           
