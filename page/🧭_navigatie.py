@@ -330,6 +330,7 @@ def update_item(id,df):
   id_coordinates = df_filter['coordinates'][0]
   id_project = df_filter['project'][0]
   id_functie = df_filter['functie'][0]
+  id_id_zender = df_filter['id_zender'][0]
   id_gedrag = df_filter['gedrag'][0]
   id_verblijf = df_filter['verblijf'][0]
   id_sp = df_filter['sp'][0]
@@ -344,6 +345,7 @@ def update_item(id,df):
   if st.session_state.project['opdracht'] == 'Vleermuizen':
   
     sp = st.selectbox("Soort", BAT_NAMES,index=BAT_NAMES.index(id_sp))
+    id_id_zender = df_filter['id_zender'][0]
   
     if output["last_active_drawing"]["geometry"]["type"] == 'Polygon':
         gedrag = None
@@ -358,6 +360,9 @@ def update_item(id,df):
     else:
         gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS,index=BAT_BEHAVIOURS.index(id_gedrag)) 
         functie = st.selectbox("Functie", BAT_FUNCTIE,index=BAT_FUNCTIE.index(id_functie))
+        if functie == 'zender':
+          id_zender = st.selectbox("ID zender", ID_ZENDER,index=ID_ZENDER.index(id_id_zender))
+          
         verblijf = st.selectbox("Verblijf", BAT_VERBLIJF,index=BAT_VERBLIJF.index(id_verblijf)) 
   
   elif st.session_state.project['opdracht'] == 'Vogels':
