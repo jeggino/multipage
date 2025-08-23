@@ -58,10 +58,10 @@ def init_connection():
 supabase = init_connection()
     
 # --- FUNCTIONS ---
-def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project):
+def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,id_sender,verblijf,geometry_type,lat,lng,opmerking,coordinates,project):
     
     data = {"key":key, "waarnemer":waarnemer,"datum":datum,"time":time,"soortgroup":soortgroup, "aantal":aantal,
-                   "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
+                   "sp":sp, "gedrag":gedrag, "functie":functie,"id_sender":id_sender, "verblijf":verblijf,
                    "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"coordinates":coordinates,"project":project}
 
     response = (
@@ -163,6 +163,8 @@ def input_data(output):
     time = st.time_input("Tijd", nine_hours_from_now)
 
     geometry_type = output["features"][0]["geometry"]["type"]
+
+    id_sender = None
     
     st.divider()
     
@@ -184,6 +186,9 @@ def input_data(output):
         else:
             gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS)
             functie = st.selectbox("Functie", BAT_FUNCTIE) 
+            if functie == 'zender':
+                id_sender = st.selectbox("ID zender", ID_ZENDER)
+                
             verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
                 
     elif soortgroup == 'Vogels':
