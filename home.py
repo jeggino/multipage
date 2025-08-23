@@ -17,6 +17,8 @@ from supabase import create_client, Client
 
 from credentials import *
 
+from streamlit_cookies_controller import CookieController
+
 st.set_page_config(
     initial_sidebar_state="collapsed",
     layout="wide",
@@ -34,34 +36,7 @@ rows_users = supabase.table("df_users").select("*").execute()
 df_references = pd.DataFrame(rows_users.data)
 
 
-# st.markdown(
-#     """
-#     <style>
-#     [data-testid="collapsedControl"] svg {
-#         height: 0rem;
-#         width: 0rem;
-#     }
-#     </style>
-#     """,
-#     unsafe_allow_html=True,
-# )
-
-# st.markdown("""
-#     <style>
-#     .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
-#     </style>
-#     """,
-#     unsafe_allow_html=True)
-
-
-
-# reduce_header_height_style = """
-# <style>
-#     div.block-container {padding-top: 1rem; padding-bottom: 0rem; padding-left: 1rem; padding-right: 1rem; margin-top: 0rem; margin-bottom: 0rem;}
-# </style>
-# """ 
-
-# st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+controller = CookieController()
 
 
 #--FUNCTIONS---
@@ -82,51 +57,107 @@ def logIn():
                              
     if st.button("logIn"):
         if password == true_password:
-            st.session_state.login = {"name": name, "password": password, 'type':type}
+            controller.set("name", name)
+            controller.set("password", password)
+            controller.set("type", type)
             st.rerun()
 
         else:
             st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
 
+
+# def logIn():
+#     name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
+#     password = st.text_input("Vul uw wachtwoord in, alstublieft",type="password")
+#     try:
+#         if name == None:
+#             st.stop()
+        
+#         index = df_references[df_references['username']==name].index[0]
+#         true_password = df_references.loc[index,"password"]
+#         type = df_references.loc[index,"type"]
+
+#     except:
+#         st.warning("De gebruikersnaam is niet correct.")
+#         st.stop()
+                             
+#     if st.button("logIn"):
+#         if password == true_password:
+#             st.session_state.login = {"name": name, "password": password, 'type':type}
+#             st.rerun()
+
+#         else:
+#             st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
+
+
 def project():
-    # st.subheader(f"Welkom {st.session_state.login['name'].split()[0]}!!",divider='grey')
-    index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
+    index_project = df_references[df_references['username']==controller.get('name')].index[0]
     project_list = df_references.loc[index_project,"project"].split(',')
     project = st.selectbox("Kies een project",project_list,label_visibility="visible")
     opdracht = st.selectbox("Kies een opdracht",DICTIONARY_PROJECTS[project],label_visibility="visible")
     if project == 'SMPs-ZuidOost':
         gebied = st.selectbox("Kies een gebied",list(range(1,23)),label_visibility="visible")
 
-        if st.session_state.login['type'] == 'user':
+        if controller.get('type')== 'user':
             on = st.toggle("🚲")
         else:
             on = False
         if st.button(":rainbow[**Begin**]"):
-             st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'gebied':gebied
-                                         # 'area':area, 'gdf':gdf_areas
-                                        }
-             st.rerun()
-    else:
-        if st.session_state.login['type'] == 'user':
-            on = st.toggle("🚲")
-        else:
-            on = False
-        if st.button(":rainbow[**Begin**]"):
-             st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on
-                                        }
-             st.rerun()
-        
-        
-def logOut():
-    if st.button("logOut",use_container_width=True):
-        del st.session_state.login
-        del st.session_state.project     
-        st.rerun()
+            controller.set("project_name", project)
+            controller.set("opdracht", opdracht)
+            controller.set("auto_start", on)
+            controller.set("gebied", gebied)
 
-def logOut_project():
-    if st.button("Opdracht wijzigen",use_container_width=True):
-        del st.session_state.project
-        st.rerun()
+            st.rerun()
+    else:
+        if controller.get('type')== 'user':
+            on = st.toggle("🚲")
+        else:
+            on = False
+        if st.button(":rainbow[**Begin**]"):
+            controller.set("project_name", project)
+            controller.set("opdracht", opdracht)
+            controller.set("auto_start", on)
+            
+            st.rerun()
+            
+# def project():
+#     index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
+#     project_list = df_references.loc[index_project,"project"].split(',')
+#     project = st.selectbox("Kies een project",project_list,label_visibility="visible")
+#     opdracht = st.selectbox("Kies een opdracht",DICTIONARY_PROJECTS[project],label_visibility="visible")
+#     if project == 'SMPs-ZuidOost':
+#         gebied = st.selectbox("Kies een gebied",list(range(1,23)),label_visibility="visible")
+
+#         if st.session_state.login['type'] == 'user':
+#             on = st.toggle("🚲")
+#         else:
+#             on = False
+#         if st.button(":rainbow[**Begin**]"):
+#              st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'gebied':gebied
+#                                         }
+#              st.rerun()
+#     else:
+#         if st.session_state.login['type'] == 'user':
+#             on = st.toggle("🚲")
+#         else:
+#             on = False
+#         if st.button(":rainbow[**Begin**]"):
+#              st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on
+#                                         }
+#              st.rerun()
+        
+        
+# def logOut():
+#     if st.button("logOut",use_container_width=True):
+#         del st.session_state.login
+#         del st.session_state.project     
+#         st.rerun()
+
+# def logOut_project():
+#     if st.button("Opdracht wijzigen",use_container_width=True):
+#         del st.session_state.project
+#         st.rerun()
 
 
 #---APP---
@@ -142,26 +173,59 @@ IMAGE = "image/logo.png"
 IMAGE_2 ="image/menu.jpg"
 st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
 
-if "login" not in st.session_state:
+# if "login" not in st.session_state:
+#     logIn()
+#     st.stop()
+
+
+# if 'project' not in st.session_state:  
+#     project()
+#     st.stop()
+
+user_id = controller.get("name")
+project_id = controller.get("project_name")
+
+time.sleep(1)
+if not user_id:
     logIn()
     st.stop()
 
-
-if 'project' not in st.session_state:  
+if not project_id:
     project()
     st.stop()
 
-if st.session_state.login['type'] == 'user':
-    if st.session_state.project['project_name'] != 'Admin':
-        if st.session_state.project['project_name'] == 'Overig':
-            if st.session_state.project['auto_start'] == False:
+
+
+# if st.session_state.login['type'] == 'user':
+#     if st.session_state.project['project_name'] != 'Admin':
+#         if st.session_state.project['project_name'] == 'Overig':
+#             if st.session_state.project['auto_start'] == False:
+#                 pg = st.navigation([page_1,page_2,page_5])
+#             if st.session_state.project['auto_start'] == True:
+#                 pg = st.navigation([page_1,page_2])
+#         else:
+#             if st.session_state.project['auto_start'] == False:
+#                 pg = st.navigation([page_1,page_2,page_3,page_5,page_4],position="top",)
+#             if st.session_state.project['auto_start'] == True:
+#                 pg = st.navigation([page_1,page_2,page_3],position="top",)
+            
+#     else:
+#         pg = st.navigation([page_1,page_2])
+    
+# else:
+#     pg = st.navigation([page_1,page_5,page_4])
+
+if controller.get("type") == 'user':
+    if controller.get("project_name") != 'Admin':
+        if controller.get("project_name") == 'Overig':
+            if controller.get("auto_start") == False:
                 pg = st.navigation([page_1,page_2,page_5])
-            if st.session_state.project['auto_start'] == True:
+            if controller.get("auto_start") == True:
                 pg = st.navigation([page_1,page_2])
         else:
-            if st.session_state.project['auto_start'] == False:
+            if controller.get("auto_start") == False:
                 pg = st.navigation([page_1,page_2,page_3,page_5,page_4],position="top",)
-            if st.session_state.project['auto_start'] == True:
+            if controller.get("auto_start") == True:
                 pg = st.navigation([page_1,page_2,page_3],position="top",)
             
     else:
