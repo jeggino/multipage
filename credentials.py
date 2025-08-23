@@ -10,6 +10,8 @@ BAT_BEHAVIOURS = ['foeragerend', 'uitvliegend','invliegend', 'overvliegend', 'zw
 
 BAT_FUNCTIE = ['vleermuis waarneming','zomerverblijfplaats','kraamverblijfplaats','paarverblijfplaats', 'winterverblijfplaats','vleermuiskast','zender']
 
+ID_ZENDER = ['01','02','03','04','05','06','07','08','09','10','11','12']
+
 BAT_VERBLIJF = ['geen / onbekend', 'onder dakpan bij de dakrand','dakgoot', 'spouwmuur', 'daklijst','luchttoevoer',
        'kantpan', 'regenpijp', 'holte', 'raamkozijn', 'luik', 'scheur',
        'schoorsteen', 'gevelbetimmering', 'nokpan', 'dakpan',
