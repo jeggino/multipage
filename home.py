@@ -17,8 +17,8 @@ from supabase import create_client, Client
 
 from credentials import *
 
-# from streamlit_cookies_controller import CookieController
-# import time
+from streamlit_cookies_controller import CookieController
+import time
 
 st.set_page_config(
     initial_sidebar_state="collapsed",
