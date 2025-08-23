@@ -18,7 +18,7 @@ from supabase import create_client, Client
 from credentials import *
 
 from streamlit_cookies_controller import CookieController
-import time
+# import time
 
 st.set_page_config(
     initial_sidebar_state="collapsed",
@@ -186,7 +186,7 @@ st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
 user_id = controller.get("name")
 project_id = controller.get("project_name")
 
-time.sleep(1)
+# time.sleep(1)
 if not user_id:
     logIn()
     st.stop()
