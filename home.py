@@ -17,7 +17,7 @@ from supabase import create_client, Client
 
 from credentials import *
 
-from streamlit_cookies_controller import CookieController
+# from streamlit_cookies_controller import CookieController
 # import time
 
 st.set_page_config(
@@ -37,7 +37,7 @@ rows_users = supabase.table("df_users").select("*").execute()
 df_references = pd.DataFrame(rows_users.data)
 
 
-controller = CookieController()
+# controller = CookieController()
 
 
 #--FUNCTIONS---
