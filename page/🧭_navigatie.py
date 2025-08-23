@@ -90,7 +90,7 @@ def legend_dialog_bats(species_colors_dict):
             <p><span class="fa-solid fa-snowflake" style="color:grey" opacity: 0.75;'></span>  Winterverblijf</p>
             <p><span class="fa-solid fa-heart" style="color:grey" opacity: 0.75;'></span>  Paarverblijf</p>
             <p><span class="fa-solid fa-box-archive" style="color:grey" opacity: 0.75;'></span>  Vleermuiskast</p>
-            <p><span class="fa-solid fa-tower-broadcast" style="color:grey" opacity: 0.75;'></span>  Zender</p>
+            <p><span class="fa-solid fa-arrow-down-1-9" style="color:grey" opacity: 0.75;'></span>  Zender</p>
             <p><span class="fa-solid fa-clone" style="color:grey" opacity: 0.75;'></span>  Foerageergebied</p>
             <p><span class="fa-regular fa-clone" style="color:grey" opacity: 0.75;'></span>  Baltsterritorium</p>
             <p><span class="fa-solid fa-minus" style="color:grey" opacity: 0.75;'></span>  Vliegroute</p>
