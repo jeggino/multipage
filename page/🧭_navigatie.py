@@ -571,10 +571,10 @@ try:
         
     lat = gdf_areas.centroid.y.mean()
     lng = gdf_areas.centroid.x.mean()
-    map = folium.Map(location=[lat, lng], zoom_start=10,zoom_control=False,tiles=None,font_size= '1rem')
+    map = folium.Map(location=[lat, lng], zoom_start=10,zoom_control=False,tiles=None,font_size= '0.5rem')
     oude_waarnemingen = folium.FeatureGroup(name="Oude waarnemingen",show=False).add_to(map)
 except:
-    map = folium.Map(tiles=None, zoom_start=8,zoom_control=False,font_size= '1rem')
+    map = folium.Map(tiles=None, zoom_start=8,zoom_control=False,font_size= '0.5rem')
 
 kwargs = {'drawCircle':False}
 LocateControl(auto_start=st.session_state.project['auto_start'],position="topleft",**kwargs).add_to(map)
