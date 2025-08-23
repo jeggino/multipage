@@ -529,7 +529,7 @@ else:
     df_dict = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
 
 
-colors = ['red','blue', 'green', 'purple', 'orange', 'lightblue', 'lightgreen','gray', 'lightgray']
+colors = ['red','blue', 'green', 'purple', 'orange', 'darkgreen', 'lightblue', 'lightgreen','gray', 'lightgray']
 
 species_colors_dict=dict(zip(df_dict['sp'].unique(),colors[:len(df_dict['sp'].unique())]))
 
