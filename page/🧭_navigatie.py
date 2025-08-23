@@ -707,7 +707,7 @@ for i in range(len(df_2)):
             popup = folium.Popup(folium.Html(html, script=True), max_width=300)
             fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
 
-            if df_overig.iloc[i]['functie'] == "zender":
+            if df_2.iloc[i]['functie'] == "zender":
                 folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
                   popup=popup,
                   icon=folium.plugins.BeautifyIcon(icon="arrow-down",
