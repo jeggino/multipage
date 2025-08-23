@@ -384,7 +384,7 @@ def update_item(id,df):
   if st.button("**Update**",use_container_width=True):
       
     data = {"key":id_key,"waarnemer":id_waarnemer,"datum":str(datum),"time":str(time),"soortgroup":id_soortgroup, "aantal":aantal,
-                   "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
+                   "sp":sp, "gedrag":gedrag, "functie":functie,"id_zender":id_zender, "verblijf":verblijf,
                    "geometry_type":id_geometry_type,"lat":id_lat,"lng":id_lng,"opmerking":opmerking,"coordinates":id_coordinates,"project":id_project}
       
     response = (
@@ -576,10 +576,10 @@ try:
         
     lat = gdf_areas.centroid.y.mean()
     lng = gdf_areas.centroid.x.mean()
-    map = folium.Map(location=[lat, lng], zoom_start=10,zoom_control=False,tiles=None,font_size= '0.5rem')
+    map = folium.Map(location=[lat, lng], zoom_start=10,zoom_control=False,tiles=None,font_size= '1rem')
     oude_waarnemingen = folium.FeatureGroup(name="Oude waarnemingen",show=False).add_to(map)
 except:
-    map = folium.Map(tiles=None, zoom_start=8,zoom_control=False,font_size= '0.5rem')
+    map = folium.Map(tiles=None, zoom_start=8,zoom_control=False,font_size= '1rem')
 
 kwargs = {'drawCircle':False}
 LocateControl(auto_start=st.session_state.project['auto_start'],position="topleft",**kwargs).add_to(map)
