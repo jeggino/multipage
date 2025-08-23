@@ -656,7 +656,7 @@ try:
                             
                 html = popup_html(i,df_overig)
                 popup = folium.Popup(folium.Html(html, script=True), max_width=300)
-    
+
                 folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
                               popup=popup,
                               icon=folium.Icon(icon=df_overig.iloc[i]['functie_shape'],
@@ -670,6 +670,7 @@ try:
                 html = popup_html(i,df_overig)
                 popup = folium.Popup(folium.Html(html, script=True), max_width=300)
                 
+                    
                 folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
                   popup=popup,
                   icon=folium.Icon(icon=df_overig.iloc[i]['functie_shape'],
@@ -705,14 +706,26 @@ for i in range(len(df_2)):
             html = popup_html(i,df_2)
             popup = folium.Popup(folium.Html(html, script=True), max_width=300)
             fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
-            
-            folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-              popup=popup,
-              icon=folium.Icon(icon=df_2.iloc[i]['functie_shape'],
-                              prefix='fa',
-                              icon_color='black',
-                              color=df_2.iloc[i]['color'],)
-              ).add_to(fouctie_loop)
+
+            if df_overig.iloc[i]['functie'] == "zender":
+                folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+                  popup=popup,
+                  icon=folium.plugins.BeautifyIcon(icon="arrow-down",
+                                                   icon_shape="marker",
+                                                   number=df_2.iloc[i]['id_zender'],
+                                                   text_color='white',
+                                                   border_color=df_2.iloc[i]['color'],
+                                                   background_color=df_2.iloc[i]['color'])
+                  ).add_to(fouctie_loop)
+           
+            else:
+                folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+                  popup=popup,
+                  icon=folium.Icon(icon=df_2.iloc[i]['functie_shape'],
+                                  prefix='fa',
+                                  icon_color='black',
+                                  color=df_2.iloc[i]['color'],)
+                  ).add_to(fouctie_loop)
 
     elif df_2.iloc[i]['geometry_type'] == "Polygon":
         html = popup_polygons(i,df_2)
