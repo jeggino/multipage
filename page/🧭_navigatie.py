@@ -495,6 +495,8 @@ def delete_item(id,df):
 #         del st.session_state.project
 #         st.rerun()
 
+
+
 def logOut():
     if st.button("logOut",use_container_width=True"):
         controller.remove("name")
