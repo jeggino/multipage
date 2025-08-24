@@ -262,25 +262,25 @@ def input_data(output):
 
 
 # --- APP ---  
-try:
-    IMAGE = "image/logo.png"
-    IMAGE_2 ="image/menu.jpg"
-    st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
-    
-    waarnemer = controller.get('name')
-    
-    
-    output_map = map()    
-    
-    try:
-        if len(output_map["features"]) >= 1:
-            input_data(output_map)
-            
-        else:
-            st.stop()      
-            
-    except:
-        st.stop()
+# try:
+IMAGE = "image/logo.png"
+IMAGE_2 ="image/menu.jpg"
+st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
+waarnemer = controller.get('name')
+
+
+output_map = map()    
+
+try:
+    if len(output_map["features"]) >= 1:
+        input_data(output_map)
+        
+    else:
+        st.stop()      
+        
 except:
-    st.switch_page("page/🧭_navigatie.py")
+    st.stop()
+
+# except:
+#     st.switch_page("page/🧭_navigatie.py")
