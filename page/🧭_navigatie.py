@@ -20,6 +20,9 @@ from credentials import *
 
 from supabase import create_client, Client
 
+from streamlit_cookies_controller import CookieController
+import time
+
 
 
 def init_connection():
@@ -30,6 +33,8 @@ def init_connection():
 supabase = init_connection()
 rows_points = supabase.table("df_observations").select("*").execute()
 df_point = pd.DataFrame(rows_points.data)
+
+controller = CookieController()
 
 st.markdown(
     """
