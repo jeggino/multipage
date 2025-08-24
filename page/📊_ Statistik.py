@@ -5,6 +5,11 @@ from supabase import create_client, Client
 
 from media_credentials import *
 
+from streamlit_cookies_controller import CookieController
+import time
+
+
+controller = CookieController()
 
 
 
@@ -73,19 +78,19 @@ if selected == "Foto's":
     #     upload_photo()
 
     try:
-        for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]['Photos']:
+        for key in media_dict[controller.get('project_name')][controller.get('opdracht')]['Photos']:
             with st.container(border=True):
                 st.image(key)
-                st.caption(media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]['Photos'][key])
+                st.caption(media_dict[controller.get('project_name')][controller.get('opdracht')]['Photos'][key])
     except:
         st.image('https://cf.ltkcdn.net/travel/images/std/198833-425x283-Not-There-Yet.jpg')
 
 elif selected == "Video's":
     try:
-        for key in media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]['Videos']:
+        for key in media_dict[controller.get('project_name')][controller.get('opdracht')]['Videos']:
             with st.container(border=True):
                 st.video(key,loop=True, autoplay=False, muted=True)
-                st.caption(media_dict[st.session_state.project['project_name']][st.session_state.project['opdracht']]['Videos'][key])
+                st.caption(media_dict[controller.get('project_name')][controller.get('opdracht')]['Videos'][key])
     except:
         st.image('https://cf.ltkcdn.net/travel/images/std/198833-425x283-Not-There-Yet.jpg')
    
