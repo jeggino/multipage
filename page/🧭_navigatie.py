@@ -506,8 +506,8 @@ st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 #     st.stop()
 
 with st.sidebar:
-    logOut_project()
-    logOut()
+    # logOut_project()
+    # logOut()
     st.divider()
 
 if st.session_state.project['project_name'] == 'Overig':
