@@ -497,16 +497,16 @@ def delete_item(id,df):
 
 
 
-def logOut():
-    if st.button("logOut",use_container_width=True"):
-        controller.remove("name")
-        controller.remove("project_name")
-        st.rerun()
+# def logOut():
+#     if st.button("logOut",use_container_width=True"):
+#         controller.remove("name")
+#         controller.remove("project_name")
+#         st.rerun()
 
-def logOut_project():
-    if st.button("Opdracht wijzigen",use_container_width=True"):
-        controller.remove("project_name")
-        st.rerun()
+# def logOut_project():
+#     if st.button("Opdracht wijzigen",use_container_width=True"):
+#         controller.remove("project_name")
+#         st.rerun()
         
         
 
