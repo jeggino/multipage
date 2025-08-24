@@ -20,6 +20,12 @@ from streamlit_option_menu import option_menu
 
 import random
 
+from streamlit_cookies_controller import CookieController
+import time
+
+
+controller = CookieController()
+
 
 # st.markdown("""
 #     <style>
@@ -45,8 +51,8 @@ def init_connection():
 
 supabase = init_connection()
 
-project = st.session_state.project['project_name']
-opdracht = st.session_state.project['opdracht']
+project = controller.get('project_name')
+opdracht = controller.get('opdracht')
 
 rows_points = supabase.table("df_observations").select("*").execute()
 df_point = pd.DataFrame(rows_points.data)
