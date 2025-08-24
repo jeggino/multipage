@@ -347,7 +347,7 @@ def update_item(id,df):
   datum = st.date_input("Datum",id_date)
   time = st.time_input("Tijd",id_time)
   
-  if st.session_state.project['opdracht'] == 'Vleermuizen':
+  if controller.get('opdracht') == 'Vleermuizen':
   
     sp = st.selectbox("Soort", BAT_NAMES,index=BAT_NAMES.index(id_sp))
     id_id_zender = df_filter['id_zender'][0]
@@ -375,7 +375,7 @@ def update_item(id,df):
           
         verblijf = st.selectbox("Verblijf", BAT_VERBLIJF,index=BAT_VERBLIJF.index(id_verblijf)) 
   
-  elif st.session_state.project['opdracht'] == 'Vogels':
+  elif controller.get('opdracht') == 'Vogels':
   
     sp = st.selectbox("Soort", BIRD_NAMES,index=BIRD_NAMES.index(id_sp))
     if output["last_active_drawing"]["geometry"]["type"] == 'Polygon':
@@ -581,7 +581,7 @@ if len(df_2)>0:
 
 
 try:
-    geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
+    geometry_file = f"geometries/{controller.get('project_name')}.geojson" 
     gdf_areas = gpd.read_file(geometry_file)
     
     if controller.get("project_name")=='SMPs-ZuidOost':
