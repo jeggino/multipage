@@ -109,7 +109,7 @@ def map():
                      attr='XXX Mapbox Attribution',overlay=False,show=False,name="Satellietkaart").add_to(m)
     
     kwargs = {'drawCircle':False}
-    LocateControl(auto_start=st.session_state.project['auto_start'],position="topleft",**kwargs).add_to(m)
+    LocateControl(auto_start= controller.get('auto_start'),position="topleft",**kwargs).add_to(m)
     # Fullscreen(position="topleft").add_to(m)
     
     
