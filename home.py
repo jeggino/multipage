@@ -40,7 +40,7 @@ df_references = pd.DataFrame(rows_users.data)
 controller = CookieController()
 
 
---FUNCTIONS---
+# --FUNCTIONS---
 def logIn():
     name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
     password = st.text_input("Vul uw wachtwoord in, alstublieft",type="password")
