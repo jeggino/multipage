@@ -510,23 +510,23 @@ with st.sidebar:
     # logOut()
     st.divider()
 
-if st.session_state.project['project_name'] == 'Overig':
+if controller.get("project_name") == 'Overig':
     df_2 = df_point[df_point['project']!='Admin']
-    df_2 = df_2[df_2['soortgroup']==st.session_state.project['opdracht']]
+    df_2 = df_2[df_2['soortgroup']==controller.get("opdracht")]
     df_dict = df_2.copy()
 
-elif st.session_state.project['project_name'] == 'Admin':
-    df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
+elif controller.get("project_name") == 'Admin':
+    df_2 = df_point[df_point['soortgroup']==controller.get("opdracht")]
     df_dict = df_2.copy()
 
 else:    
-    if st.session_state.project["project_name"]=='SMPs-ZuidOost':
-        df_2 = df_point[(df_point['project']==st.session_state.project['project_name'])&(df_point['soortgroup']==st.session_state.project['opdracht'])&(df_point['sp']=='Gierzwaluw')]
+    if controller.get("project_name")=='SMPs-ZuidOost':
+        df_2 = df_point[(df_point['project']==controller.get("project_name"))&(df_point['soortgroup']==controller.get("opdracht"))&(df_point['sp']=='Gierzwaluw')]
     else:
-        df_2 = df_point[(df_point['project']==st.session_state.project['project_name'])&(df_point['soortgroup']==st.session_state.project['opdracht'])]
+        df_2 = df_point[(df_point['project']==controller.get("project_name"))&(df_point['soortgroup']==controller.get("opdracht"))]
         
-    df_overig = df_point[(df_point['project']!=st.session_state.project['project_name']) & (df_point['soortgroup']==st.session_state.project['opdracht'])]
-    df_dict = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
+    df_overig = df_point[(df_point['project']!=controller.get("project_name")) & (df_point['soortgroup']==controller.get("opdracht"))]
+    df_dict = df_point[df_point['soortgroup']==controller.get("opdracht")]
 
 
 colors = ['red','blue', 'green', 'purple', 'orange', 'darkgreen', 'lightblue', 'lightgreen','gray', 'lightgray']
@@ -535,9 +535,9 @@ species_colors_dict=dict(zip(df_dict['sp'].unique(),colors[:len(df_dict['sp'].un
 
 with st.sidebar:
     if st.button('Legenda',use_container_width=True):
-        if st.session_state.project['opdracht']=='Vleermuizen':
+        if controller.get("opdracht")=='Vleermuizen':
             legend_dialog_bats(species_colors_dict)
-        elif st.session_state.project['opdracht']=='Vogels':
+        elif controller.get("opdracht")=='Vogels':
             legend_dialog_birds(species_colors_dict)
 
 st.sidebar.divider()
@@ -565,8 +565,8 @@ try:
     geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
     gdf_areas = gpd.read_file(geometry_file)
     
-    if st.session_state.project["project_name"]=='SMPs-ZuidOost':
-        gdf_areas = gdf_areas[gdf_areas['Gebied']==st.session_state.project["gebied"]]
+    if controller.get("project_name")=='SMPs-ZuidOost':
+        gdf_areas = gdf_areas[gdf_areas['Gebied']==controller.get("gebied")]
         lat = gdf_areas.centroid.y.mean()
         lng = gdf_areas.centroid.x.mean()
         gdf_names = gdf_areas
@@ -575,7 +575,7 @@ try:
         gdf_names['Gebied'] = gdf_names['Gebied'].astype(str)
 
     else:
-        geometry_names_file = f"geometries/{st.session_state.project["project_name"]}_names.geojson" 
+        geometry_names_file = f"geometries/{controller.get("project_name")}_names.geojson" 
         gdf_names = gpd.read_file(geometry_names_file)
         
     lat = gdf_areas.centroid.y.mean()
@@ -586,7 +586,7 @@ except:
     map = folium.Map(tiles=None, zoom_start=8,zoom_control=False,font_size= '0.8rem')
 
 kwargs = {'drawCircle':False}
-LocateControl(auto_start=st.session_state.project['auto_start'],position="topleft",**kwargs).add_to(map)
+LocateControl(auto_start=controller.get("auto_start"),position="topleft",**kwargs).add_to(map)
 Fullscreen(position="topleft").add_to(map)
 
 functie_dictionary = {}
