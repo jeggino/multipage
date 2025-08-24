@@ -16,6 +16,12 @@ from credentials import *
 
 from supabase import create_client, Client
 
+from streamlit_cookies_controller import CookieController
+import time
+
+
+controller = CookieController()
+
 
 st.markdown(
     """
@@ -74,11 +80,11 @@ def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,id_
 def map():
     
     try:
-        geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson"  
+        geometry_file = f"geometries/{controller.get("project_name")}.geojson"  
         gdf_areas = gpd.read_file(geometry_file)
         
-        if st.session_state.project["project_name"]=='SMPs-ZuidOost':
-            gdf_areas = gdf_areas[gdf_areas['Gebied']==st.session_state.project["gebied"]]
+        if controller.get("project_name")=='SMPs-ZuidOost':
+            gdf_areas = gdf_areas[gdf_areas['Gebied']==controller.get("gebied")]
             lat = gdf_areas.centroid.y.mean()
             lng = gdf_areas.centroid.x.mean()
             gdf_names = gdf_areas
@@ -87,7 +93,7 @@ def map():
             gdf_names['Gebied'] = gdf_names['Gebied'].astype(str)
 
         else:
-            geometry_names_file = f"geometries/{st.session_state.project["project_name"]}_names.geojson" 
+            geometry_names_file = f"geometries/{controller.get("project_name")}_names.geojson" 
             gdf_names = gpd.read_file(geometry_names_file)
             
         lat = gdf_areas.centroid.y.mean()
@@ -107,7 +113,7 @@ def map():
     # Fullscreen(position="topleft").add_to(m)
     
     
-    if st.session_state.project['opdracht'] == 'Vleermuizen':
+    if controller.get("opdracht") == 'Vleermuizen':
         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': True, 'polygon': True},
             position='bottomleft',).add_to(m)
 
@@ -154,9 +160,9 @@ def map():
 @st.dialog(" ")
 def input_data(output):
 
-    waarnemer = st.session_state.login['name']
-    project = st.session_state.project['project_name']
-    soortgroup = st.session_state.project['opdracht']
+    waarnemer = controller.get("name") 
+    project = controller.get("project_name") 
+    soortgroup = controller.get("opdracht")
     
     datum = st.date_input("Datum","today")       
     nine_hours_from_now = datetime.now() + timedelta(hours=2)
@@ -261,7 +267,7 @@ try:
     IMAGE_2 ="image/menu.jpg"
     st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
     
-    waarnemer = st.session_state.login['name']
+    waarnemer = controller.get('name')
     
     
     output_map = map()    
