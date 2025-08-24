@@ -479,16 +479,16 @@ def project():
                                         }
              st.rerun()
         
-def logOut():
-    if st.button("logOut",use_container_width=True):
-        del st.session_state.login
-        del st.session_state.project     
-        st.rerun()
+# def logOut():
+#     if st.button("logOut",use_container_width=True):
+#         del st.session_state.login
+#         del st.session_state.project     
+#         st.rerun()
 
-def logOut_project():
-    if st.button("Opdracht wijzigen",use_container_width=True):
-        del st.session_state.project
-        st.rerun()
+# def logOut_project():
+#     if st.button("Opdracht wijzigen",use_container_width=True):
+#         del st.session_state.project
+#         st.rerun()
         
 
 #---APP---
@@ -496,14 +496,14 @@ IMAGE = "image/logo.png"
 # IMAGE_2 ="image/menu.jpg"
 st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
-if "login" not in st.session_state:
-    logIn()
-    st.stop()
+# if "login" not in st.session_state:
+#     logIn()
+#     st.stop()
 
 
-if 'project' not in st.session_state:  
-    project()
-    st.stop()
+# if 'project' not in st.session_state:  
+#     project()
+#     st.stop()
 
 with st.sidebar:
     logOut_project()
