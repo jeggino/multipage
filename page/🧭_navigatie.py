@@ -522,10 +522,10 @@ st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 #     project()
 #     st.stop()
 
-with st.sidebar:
-    logOut_project()
-    logOut()
-    st.divider()
+# with st.sidebar:
+#     logOut_project()
+#     logOut()
+#     st.divider()
 
 if controller.get("project_name") == 'Overig':
     df_2 = df_point[df_point['project']!='Admin']
