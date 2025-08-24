@@ -782,7 +782,7 @@ output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_wid
                    feature_group_to_add=list(functie_dictionary.values()))
 
         
-if st.session_state.login['type'] == 'user':
+if controller.get("type") == 'user':
     try:
         if output["last_active_drawing"]['geometry']['type'] == 'Point':
             id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
