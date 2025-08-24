@@ -497,16 +497,16 @@ def delete_item(id,df):
 
 
 
-# def logOut():
-#     if st.button("logOut",use_container_width=True"):
-#         controller.remove("name")
-#         controller.remove("project_name")
-#         st.rerun()
+def logOut():
+    if st.button("logOut",use_container_width=True):
+        controller.remove("name")
+        controller.remove("project_name")
+        st.rerun()
 
-# def logOut_project():
-#     if st.button("Opdracht wijzigen",use_container_width=True"):
-#         controller.remove("project_name")
-#         st.rerun()
+def logOut_project():
+    if st.button("Opdracht wijzigen",use_container_width=True):
+        controller.remove("project_name")
+        st.rerun()
         
         
 
@@ -524,10 +524,10 @@ st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 #     project()
 #     st.stop()
 
-# with st.sidebar:
-#     logOut_project()
-#     logOut()
-#     st.divider()
+with st.sidebar:
+    logOut_project()
+    logOut()
+    st.divider()
 
 if controller.get("project_name") == 'Overig':
     df_2 = df_point[df_point['project']!='Admin']
