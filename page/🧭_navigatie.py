@@ -411,27 +411,27 @@ def update_item(id,df):
   #   st.stop()
     
 
-def logIn():
-    name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
-    password = st.text_input("Vul uw wachtwoord in, alstublieft",type="password")
-    try:
-        if name == None:
-            st.stop()
+# def logIn():
+#     name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
+#     password = st.text_input("Vul uw wachtwoord in, alstublieft",type="password")
+#     try:
+#         if name == None:
+#             st.stop()
         
-        index = df_references[df_references['username']==name].index[0]
-        true_password = df_references.loc[index,"password"]
+#         index = df_references[df_references['username']==name].index[0]
+#         true_password = df_references.loc[index,"password"]
 
-    except:
-        st.warning("De gebruikersnaam is niet correct.")
-        st.stop()
+#     except:
+#         st.warning("De gebruikersnaam is niet correct.")
+#         st.stop()
                              
-    if st.button("logIn"):
-        if password == true_password:
-            st.session_state.login = {"name": name, "password": password}
-            st.rerun()
+#     if st.button("logIn"):
+#         if password == true_password:
+#             st.session_state.login = {"name": name, "password": password}
+#             st.rerun()
 
-        else:
-            st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
+#         else:
+#             st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
             
 @st.dialog(" ")
 def delete_item(id,df):
@@ -456,33 +456,33 @@ def delete_item(id,df):
         st.error('De accountnaam en de waarnemer zijn verschillend. Het is niet mogelijk om deze waarneming te verwijderen.', icon="🚨")
         st.stop()
 
-def project():
-    # st.subheader(f"Welkom {st.session_state.login['name'].split()[0]}!!",divider='grey')
-    index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
-    project_list = df_references.loc[index_project,"project"].split(',')
-    project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
-    opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
-    if project == 'SMPs-ZuidOost':
-        gebied = st.selectbox("Kies een gebied",list(range(1,23)),label_visibility="visible")
+# def project():
+#     # st.subheader(f"Welkom {st.session_state.login['name'].split()[0]}!!",divider='grey')
+#     index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
+#     project_list = df_references.loc[index_project,"project"].split(',')
+#     project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
+#     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
+#     if project == 'SMPs-ZuidOost':
+#         gebied = st.selectbox("Kies een gebied",list(range(1,23)),label_visibility="visible")
 
-        if st.session_state.login['type'] == 'user':
-            on = st.toggle("🚲")
-        else:
-            on = False
-        if st.button(":rainbow[**Begin**]"):
-             st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'gebied':gebied
-                                         # 'area':area, 'gdf':gdf_areas
-                                        }
-             st.rerun()
-    else:
-        if st.session_state.login['type'] == 'user':
-            on = st.toggle("🚲")
-        else:
-            on = False
-        if st.button(":rainbow[**Begin**]"):
-             st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on
-                                        }
-             st.rerun()
+#         if st.session_state.login['type'] == 'user':
+#             on = st.toggle("🚲")
+#         else:
+#             on = False
+#         if st.button(":rainbow[**Begin**]"):
+#              st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'gebied':gebied
+#                                          # 'area':area, 'gdf':gdf_areas
+#                                         }
+#              st.rerun()
+#     else:
+#         if st.session_state.login['type'] == 'user':
+#             on = st.toggle("🚲")
+#         else:
+#             on = False
+#         if st.button(":rainbow[**Begin**]"):
+#              st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on
+#                                         }
+#              st.rerun()
         
 # def logOut():
 #     if st.button("logOut",use_container_width=True):
@@ -494,6 +494,18 @@ def project():
 #     if st.button("Opdracht wijzigen",use_container_width=True):
 #         del st.session_state.project
 #         st.rerun()
+
+def logOut():
+    if st.button("logOut",use_container_width=True"):
+        controller.remove("name")
+        controller.remove("project_name")
+        st.rerun()
+
+def logOut_project():
+    if st.button("Opdracht wijzigen",use_container_width=True"):
+        controller.remove("project_name")
+        st.rerun()
+        
         
 
 #---APP---
@@ -511,8 +523,8 @@ st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 #     st.stop()
 
 with st.sidebar:
-    # logOut_project()
-    # logOut()
+    logOut_project()
+    logOut()
     st.divider()
 
 if controller.get("project_name") == 'Overig':
