@@ -15,6 +15,12 @@ from streamlit_option_menu import option_menu
 
 import random
 
+from streamlit_cookies_controller import CookieController
+import time
+
+
+controller = CookieController()
+
 
 st.markdown(
     """
@@ -128,9 +134,9 @@ IMAGE_2 ="image/menu.jpg"
 st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
 # try:
-waarnemer = st.session_state.login['name']
-project = st.session_state.project['project_name']
-opdracht = st.session_state.project['opdracht']
+waarnemer = controller.get('name')
+project = controller.get('project_name')
+opdracht = controller.get('opdracht')
 
 
 
@@ -158,7 +164,7 @@ if selected == "Formulier":
                 doel = st.selectbox('Doel',['Overig'] + BIRD_NAMES)
                 
         try: 
-            geometry_file = f"geometries/{st.session_state.project["project_name"]}.geojson" 
+            geometry_file = f"geometries/{controller.get('project_name')}.geojson" 
             gdf_areas = gpd.read_file(geometry_file)
             # gebied_id_list = np.sort(gdf_areas['Gebied'].unique())
             gebied_id_list = natsorted(gdf_areas['Gebied'].unique())
