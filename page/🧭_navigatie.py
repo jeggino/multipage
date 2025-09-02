@@ -309,7 +309,7 @@ def popup_html(row,df_2):
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(int(aantal)) + """
     </tr>
     <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Opmerking</span></td>
+    <td style="background-color: """+ left_col_color +"""; vertical-align: top"><span style="color: #ffffff;">Opmerking</span></td>
     <td style="width: 150px; background-color: """+ right_col_color +""";">{}</td>""".format(opmerking) + """
     </tr>
     </tbody>
@@ -732,7 +732,7 @@ for i in range(len(df_2)):
             
 
             html = popup_html(i,df_2)
-            popup = folium.Popup(folium.Html(html, script=False))
+            popup = folium.Popup(folium.Html(html, script=True))
             fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
 
             if df_2.iloc[i]['functie'] == "zender":
