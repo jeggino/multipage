@@ -732,7 +732,7 @@ for i in range(len(df_2)):
             
 
             html = popup_html(i,df_2)
-            popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+            popup = folium.Popup(folium.Html(html, script=True))
             fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
 
             if df_2.iloc[i]['functie'] == "zender":
