@@ -702,6 +702,7 @@ try:
                 folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
                   popup=popup,
                   icon=folium.plugins.BeautifyIcon(icon=df_overig.iloc[i]['functie_shape'],
+                                                   icon_style=" opacity: 1; height: 35px;width: 35px;",
                                                    icon_shape="marker",
                                                    border_color=df_overig.iloc[i]['color'],
                                                    background_color=df_overig.iloc[i]['color'])
