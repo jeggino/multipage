@@ -269,7 +269,7 @@ def popup_html(row,df_2):
     
     html = """<!DOCTYPE html>
     <html>
-    <table style="height: 126px; width: 400; vertical-align: top; ">
+    <table style="height: 126px; width: 400;">
     <tbody>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Project</span></td>
@@ -309,7 +309,7 @@ def popup_html(row,df_2):
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(int(aantal)) + """
     </tr>
     <tr>
-    <td style="background-color: """+ left_col_color +"""; vertical-align: top"><span style="color: #ffffff;">Opmerking</span></td>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Opmerking</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(opmerking) + """
     </tr>
     </tbody>
