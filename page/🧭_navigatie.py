@@ -659,10 +659,10 @@ map_fuction = {'paarverblijfplaats':'heart',
                               'zomerverblijfplaats':'star',
                               'kraamverblijfplaats':'venus-double',
                               'winterverblijfplaats':'snowflake',
-               'vleermuiskast':'fa-box-archive',
+               'vleermuiskast':'box-archive',
                'zender':'tower-broadcast',
                                             'vogel waarneming':'binoculars',
-                                             'mogelijke nestlocatie':'fa-regular fa-circle-question',
+                                             'mogelijke nestlocatie':'circle-question',
                                              'nestlocatie':'egg'
                                             }
 
