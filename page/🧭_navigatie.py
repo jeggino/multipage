@@ -269,7 +269,7 @@ def popup_html(row,df_2):
     
     html = """<!DOCTYPE html>
     <html>
-    <table style="height: 126px; width: 300; vertical-align: top; ">
+    <table style="height: 126px; width: 400; vertical-align: top; ">
     <tbody>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Project</span></td>
@@ -309,7 +309,7 @@ def popup_html(row,df_2):
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(int(aantal)) + """
     </tr>
     <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Opmerking</span></td>
+    <td style="background-color: ; vertical-align: top"""+ left_col_color +""";"><span style="color: #ffffff;">Opmerking</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(opmerking) + """
     </tr>
     </tbody>
@@ -716,7 +716,7 @@ for i in range(len(df_2)):
         if df_2.iloc[i]['soortgroup'] == "Vogels":
                     
             html = popup_html(i,df_2)
-            popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+            popup = folium.Popup(folium.Html(html, script=True), max_width=400)
             fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
 
     
@@ -732,7 +732,7 @@ for i in range(len(df_2)):
             
 
             html = popup_html(i,df_2)
-            popup = folium.Popup(folium.Html(html, script=True))
+            popup = folium.Popup(folium.Html(html, script=False))
             fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
 
             if df_2.iloc[i]['functie'] == "zender":
