@@ -269,7 +269,7 @@ def popup_html(row,df_2):
     
     html = """<!DOCTYPE html>
     <html>
-    <table style="height: 126px; width: 800;">
+    <table style="height: 126px; width: 300;">
     <tbody>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Project</span></td>
@@ -696,7 +696,7 @@ try:
             elif df_overig.iloc[i]['soortgroup'] == "Vleermuizen":
                 
                 html = popup_html(i,df_overig)
-                popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+                popup = folium.Popup(folium.Html(html, script=True,width=300), max_width=300)
                 
                     
                 folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
