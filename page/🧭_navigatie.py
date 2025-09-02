@@ -149,7 +149,7 @@ def popup_polygons(row,df_2):
     
     html = """<!DOCTYPE html>
     <html>
-    <table style="height: 126px; width: 300;">
+    <table style="height: 126px; width: 250px;">
     <tbody>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Project</span></td>
@@ -209,7 +209,7 @@ def popup_lines(row,df_2):
     
     html = """<!DOCTYPE html>
     <html>
-    <table style="height: 126px; width: 300;">
+    <table style="height: 126px; width: 250px;">
     <tbody>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Project</span></td>
