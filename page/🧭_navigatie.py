@@ -752,7 +752,7 @@ for i in range(len(df_2)):
                   popup=popup,
                   icon=folium.plugins.BeautifyIcon(icon=df_2.iloc[i]['functie_shape'],
                                                    icon_shape="marker",
-                                                   icon_style=" opacity: 1; height: 35px;width: 35px;"
+                                                   icon_style=" opacity: 1; height: 35px;width: 35px;",
                                                    border_color=df_2.iloc[i]['color'],
                                                    background_color=df_2.iloc[i]['color'])
                   # icon=folium.Icon(icon=df_2.iloc[i]['functie_shape'],
