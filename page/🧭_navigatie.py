@@ -696,7 +696,7 @@ try:
             elif df_overig.iloc[i]['soortgroup'] == "Vleermuizen":
                 
                 html = popup_html(i,df_overig)
-                popup = folium.Popup(folium.Html(html, script=True,width=300), max_width=300)
+                popup = folium.Popup(folium.Html(html, script=False,width=300), max_width=300)
                 
                     
                 folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
