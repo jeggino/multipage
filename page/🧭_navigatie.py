@@ -701,10 +701,10 @@ try:
                     
                 folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
                   popup=popup,
-                  icon=folium.Icon(icon=df_overig.iloc[i]['functie_shape'],
-                                  prefix='fa',
-                                  icon_color='black',
-                                  color=df_overig.iloc[i]['color'],)
+                  icon=folium.plugins.BeautifyIcon(icon=df_2.iloc[i]['functie_shape'],
+                                                   icon_shape="marker",
+                                                   border_color=df_2.iloc[i]['color'],
+                                                   background_color=df_2.iloc[i]['color'])
                   ).add_to(oude_waarnemingen)
 except:
     pass
