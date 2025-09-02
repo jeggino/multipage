@@ -716,7 +716,7 @@ for i in range(len(df_2)):
         if df_2.iloc[i]['soortgroup'] == "Vogels":
                     
             html = popup_html(i,df_2)
-            popup = folium.Popup(folium.Html(html, script=True), max_width=400)
+            popup = folium.Popup(folium.Html(html, script=True), max_width=300)
             fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
 
     
@@ -732,7 +732,7 @@ for i in range(len(df_2)):
             
 
             html = popup_html(i,df_2)
-            popup = folium.Popup(folium.Html(html, script=True), max_width=400)
+            popup = folium.Popup(folium.Html(html, script=True), max_width=300)
             fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
 
             if df_2.iloc[i]['functie'] == "zender":
@@ -757,7 +757,7 @@ for i in range(len(df_2)):
 
     elif df_2.iloc[i]['geometry_type'] == "Polygon":
         html = popup_polygons(i,df_2)
-        popup = folium.Popup(folium.Html(html, script=True), max_width=400)
+        popup = folium.Popup(folium.Html(html, script=True), max_width=300)
         fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
         location = df_2.iloc[i]['coordinates']
         location = ast.literal_eval(location)
@@ -781,7 +781,7 @@ for i in range(len(df_2)):
 
     elif df_2.iloc[i]['geometry_type'] == "LineString":
         html = popup_lines(i,df_2)
-        popup = folium.Popup(folium.Html(html, script=True), max_width=400)
+        popup = folium.Popup(folium.Html(html, script=True), max_width=300)
         fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
         location = df_2.iloc[i]['coordinates']
         location = ast.literal_eval(location)
