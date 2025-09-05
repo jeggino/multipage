@@ -167,6 +167,7 @@ page_2 = st.Page("page/📌_Voeg_een_waarneming_in.py", title="Voeg een waarnemi
 page_3 = st.Page("page/📝_Dagverlag_formulier.py", title="Dagverslag",icon=":material/edit_note:" )
 page_4 = st.Page("page/📊_ Statistik.py", title="Foto's & Video's",icon=":material/photo_camera:" )
 page_5 = st.Page("page/statistik.py", title="Statistieken",icon=":material/bar_chart:" )
+page_6 = st.Page("page/documenten.py", title="Documenten",icon=":material/folder:" )
 
 
 #---APP---
@@ -227,7 +228,7 @@ if controller.get("type") == 'user':
                 pg = st.navigation([page_1,page_2])
         else:
             if controller.get("auto_start") == False:
-                pg = st.navigation([page_1,page_2,page_3,page_5,page_4],position="top",)
+                pg = st.navigation([page_1,page_2,page_3,page_5,page_6,page_4],position="top",)
             if controller.get("auto_start") == True:
                 pg = st.navigation([page_1,page_2,page_3],position="top",)
             
@@ -235,7 +236,7 @@ if controller.get("type") == 'user':
         pg = st.navigation([page_1,page_2])
     
 else:
-    pg = st.navigation([page_1,page_5,page_4])
+    pg = st.navigation([page_1,page_5,page_6,page_4])
 
 
 pg.run()
