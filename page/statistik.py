@@ -117,7 +117,8 @@ with tab1:
 
 with tab2:
     "---"
-    st.pdf("page/HK_potentiescan_EN.pdf")
+    # Display PDF from URL
+    st.pdf("https://example.com/document.pdf")
     # col1, col2 = st.columns([0.2,0.8],gap="large", vertical_alignment="top", border=False)
     
     # with col2:
