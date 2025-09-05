@@ -61,19 +61,21 @@ if project == 'Overig':
 else:   
     df_download_points = df_point[(df_point['project']==project) & (df_point['soortgroup']==opdracht) & (df_point['geometry_type']=='Point')].drop('key',axis=1)
 
-st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
-                   file_name=f"{project}_{opdracht}_Waarnemingen.csv",mime="text/csv", use_container_width=False)
-
-option_species = st.selectbox("",options = list(set(['Alle sorten']) | set(df_download_points['sp'].unique())),label_visibility='collapsed')
-if option_species == 'Alle sorten':
-    df = df_download_points.groupby(['datum','functie'],as_index=False).size()
-
-else:
-    df = df_download_points[(df_download_points['sp']==option_species)].groupby(['datum','functie'],as_index=False).size()
 
 tab1, tab2 = st.tabs(["📈 Chart", "📁 Documenten"])
 
 with tab1:
+
+    st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.to_csv().encode("utf-8"),
+                       file_name=f"{project}_{opdracht}_Waarnemingen.csv",mime="text/csv", use_container_width=False)
+    
+    option_species = st.selectbox("",options = list(set(['Alle sorten']) | set(df_download_points['sp'].unique())),label_visibility='collapsed')
+    if option_species == 'Alle sorten':
+        df = df_download_points.groupby(['datum','functie'],as_index=False).size()
+    
+    else:
+        df = df_download_points[(df_download_points['sp']==option_species)].groupby(['datum','functie'],as_index=False).size()
+    
     df = df.pivot(index='datum',columns='functie',values='size',).fillna(0).astype(int).reset_index()
     df['datum'] = pd.to_datetime(df['datum'])
     # applying the groupby function on df 
