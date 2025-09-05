@@ -117,6 +117,7 @@ with tab1:
 
 with tab2:
     "---"
+    st.pdf("https://example.com/sample.pdf")
     # col1, col2 = st.columns([0.2,0.8],gap="large", vertical_alignment="top", border=False)
     
     # with col2:
