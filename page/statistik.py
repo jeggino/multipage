@@ -71,7 +71,7 @@ if option_species == 'Alle sorten':
 else:
     df = df_download_points[(df_download_points['sp']==option_species)].groupby(['datum','functie'],as_index=False).size()
 
-tab1, tab2 = st.tabs(["📈 Chart", "Data"])
+tab1, tab2 = st.tabs(["📈 Chart", "📁 Documenten"])
 
 with tab1:
     df = df.pivot(index='datum',columns='functie',values='size',).fillna(0).astype(int).reset_index()
