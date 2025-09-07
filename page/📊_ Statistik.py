@@ -88,9 +88,10 @@ if selected == "Foto's":
 elif selected == "Video's":
     try:
         for key in media_dict[controller.get('project_name')][controller.get('opdracht')]['Videos']:
-            with st.container(border=True,horizontal_alignment="center"):
+            with st.container(border=False,horizontal_alignment="center"):
                 st.video(key,loop=True, autoplay=False, muted=True,width=650)
                 st.caption(media_dict[controller.get('project_name')][controller.get('opdracht')]['Videos'][key])
+                "---"
     except:
         st.image('https://cf.ltkcdn.net/travel/images/std/198833-425x283-Not-There-Yet.jpg')
    
