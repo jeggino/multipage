@@ -33,7 +33,7 @@ def pdf(file):
     label="Download pdf",
     data=file,
     file_name="file.pdf",
-    mime='application/octet-stream',
+    # mime='application/octet-stream',
     icon=":material/download:"
   )
 
