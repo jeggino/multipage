@@ -193,7 +193,7 @@ def input_data(output):
         else:
             gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS)
             functie = st.selectbox("Functie", BAT_FUNCTIE) 
-            if fuctie in ['zomerverblijfplaats','kraamverblijfplaats']:
+            if functie in ['zomerverblijfplaats','kraamverblijfplaats']:
                 found_with_zender = st.radio("Gevonden met een zender", ["Nee","Ja"], key=None, horizontal=True, label_visibility="visible", width="content")
             if functie == 'zender':
                 id_zender = st.selectbox("ID zender", ID_ZENDER)
