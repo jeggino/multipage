@@ -21,5 +21,5 @@ from streamlit_cookies_controller import CookieController
 import time
 
 
-st.pdf("page/HK_potentiescan_EN.pdf", height="stretch", key=None)
+st.pdf("page/TEST_SMP_APP.pdf", height="stretch", key=None)
 
