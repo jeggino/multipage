@@ -22,9 +22,16 @@ import time
 
 
 
-@st.dialog(" ")
+@st.dialog(" ",width='large')
 def pdf(file):
   st.pdf(file, height="stretch", key=None)
+  st.download_button(
+    label="Download pdf",
+    data=file,
+    file_name="file.csv",
+    # mime="text/csv",
+    icon=":material/download:"
+  )
 
 
 if st.button("Rapport"):
