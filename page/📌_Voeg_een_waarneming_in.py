@@ -64,10 +64,10 @@ def init_connection():
 supabase = init_connection()
     
 # --- FUNCTIONS ---
-def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,id_zender,verblijf,geometry_type,lat,lng,opmerking,coordinates,project):
+def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,id_zender,found_with_zender,verblijf,geometry_type,lat,lng,opmerking,coordinates,project):
     
     data = {"key":key, "waarnemer":waarnemer,"datum":datum,"time":time,"soortgroup":soortgroup, "aantal":aantal,
-                   "sp":sp, "gedrag":gedrag, "functie":functie,"id_zender":id_zender, "verblijf":verblijf,
+                   "sp":sp, "gedrag":gedrag, "functie":functie,"id_zender":id_zender, "found_with_zender":found_with_zender,"verblijf":verblijf,
                    "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"coordinates":coordinates,"project":project}
 
     response = (
@@ -171,6 +171,7 @@ def input_data(output):
     geometry_type = output["features"][0]["geometry"]["type"]
 
     id_zender = None
+    found_with_zender = "Nee"
     
     st.divider()
     
@@ -192,6 +193,8 @@ def input_data(output):
         else:
             gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS)
             functie = st.selectbox("Functie", BAT_FUNCTIE) 
+            if fuctie in ['zomerverblijfplaats','kraamverblijfplaats']:
+                found_with_zender = st.radio("Gevonden met een zender", ["Nee","Ja"], key=None, horizontal=True, label_visibility="visible", width="content")
             if functie == 'zender':
                 id_zender = st.selectbox("ID zender", ID_ZENDER)
                 
@@ -255,7 +258,7 @@ def input_data(output):
 
         else:
             placeholder.success('Gegevens opgeslagen!', icon="✅",)
-            insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,id_zender,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
+            insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,id_zender,found_with_zender,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
         
         st.switch_page("page/🧭_navigatie.py")
                      
