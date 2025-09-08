@@ -21,5 +21,11 @@ from streamlit_cookies_controller import CookieController
 import time
 
 
-st.pdf("page/TEST_SMP_APP.pdf", height="stretch", key=None)
 
+@st.dialog(" ")
+def pdf(file):
+  st.pdf(file, height="stretch", key=None)
+
+
+if st.button("Rapport"):
+  pdf("page/TEST_SMP_APP.pdf")
