@@ -28,7 +28,7 @@ def pdf(file):
   st.download_button(
     label="Download pdf",
     data=file,
-    file_name="file.csv",
+    file_name="file.pdf",
     # mime="text/csv",
     icon=":material/download:"
   )
