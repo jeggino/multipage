@@ -31,7 +31,7 @@ def pdf(file):
 
   st.download_button(
     label="Download pdf",
-    data=file,
+    data=PDFbyte,
     file_name="file.pdf",
     # mime='application/octet-stream',
     icon=":material/download:"
