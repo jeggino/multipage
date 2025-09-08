@@ -404,7 +404,7 @@ def update_item(id,df):
   if st.button("**Update**",use_container_width=True):
       
     data = {"key":id_key,"waarnemer":id_waarnemer,"datum":str(datum),"time":str(time),"soortgroup":id_soortgroup, "aantal":aantal,
-                   "sp":sp, "gedrag":gedrag, "functie":functie,"id_found_with_zender":id_found_with_zender,"id_zender":id_zender, "verblijf":verblijf,
+                   "sp":sp, "gedrag":gedrag, "functie":functie,"found_with_zender":found_with_zender,"id_zender":id_zender, "verblijf":verblijf,
                    "geometry_type":id_geometry_type,"lat":id_lat,"lng":id_lng,"opmerking":opmerking,"coordinates":id_coordinates,"project":id_project}
       
     response = (
