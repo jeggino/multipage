@@ -298,7 +298,7 @@ def popup_html(row,df_2):
     </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Gevonden met een zender</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(found_with_zender) + """
+    <td style="width: 150px;background-color: """+ right_col_color +""";vertical-align: top">{}</td>""".format(found_with_zender) + """
     </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Gedrag</span></td>
