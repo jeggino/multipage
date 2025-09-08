@@ -373,6 +373,8 @@ def update_item(id,df):
         functie = st.selectbox("Functie", BAT_FUNCTIE,index=BAT_FUNCTIE.index(id_functie))
         if functie in ['zomerverblijfplaats','kraamverblijfplaats']:
             found_with_zender = st.radio("Gevonden met een zender", ["Nee","Ja"], horizontal=True, label_visibility="visible", width="content",index=["Nee","Ja"].index(id_found_with_zender))
+        else:
+            found_with_zender = "Nee"
         if functie == 'zender':
           try:
             id_zender = st.selectbox("ID zender", ID_ZENDER,index=ID_ZENDER.index(id_id_zender))
