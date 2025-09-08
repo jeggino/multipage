@@ -25,11 +25,15 @@ import time
 @st.dialog(" ",width='large')
 def pdf(file):
   st.pdf(file, height="stretch", key=None)
+  
+  with open("dummy.pdf", "rb") as pdf_file:
+    PDFbyte = pdf_file.read()
+
   st.download_button(
     label="Download pdf",
     data=file,
     file_name="file.pdf",
-    # mime="text/csv",
+    mime='application/octet-stream',
     icon=":material/download:"
   )
 
