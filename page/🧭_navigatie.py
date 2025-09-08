@@ -257,6 +257,7 @@ def popup_html(row,df_2):
     verblijf=df_2['verblijf'].iloc[i]
     sp = df_2['sp'].iloc[i] 
     functie=df_2['functie'].iloc[i]
+    found_with_zender=df_2['found_with_zender'].iloc[i]
     gedrag=df_2['gedrag'].iloc[i]
     verblijf=df_2['verblijf'].iloc[i]
     opmerking=df_2['opmerking'].iloc[i]
@@ -294,6 +295,10 @@ def popup_html(row,df_2):
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Functie</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(functie) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Gevonden met een zender</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(found_with_zender) + """
     </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Gedrag</span></td>
@@ -335,6 +340,7 @@ def update_item(id,df):
   id_coordinates = df_filter['coordinates'][0]
   id_project = df_filter['project'][0]
   id_functie = df_filter['functie'][0]
+  id_found_with_zender=df_filter['found_with_zender'][0]
   id_id_zender = df_filter['id_zender'][0]
   id_gedrag = df_filter['gedrag'][0]
   id_verblijf = df_filter['verblijf'][0]
@@ -365,6 +371,8 @@ def update_item(id,df):
     else:
         gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS,index=BAT_BEHAVIOURS.index(id_gedrag)) 
         functie = st.selectbox("Functie", BAT_FUNCTIE,index=BAT_FUNCTIE.index(id_functie))
+        if functie in ['zomerverblijfplaats','kraamverblijfplaats']:
+            found_with_zender = st.radio("Gevonden met een zender", id_found_with_zender, horizontal=True, label_visibility="visible", width="content",index=["Nee","Ja"].index(id_found_with_zender))
         if functie == 'zender':
           try:
             id_zender = st.selectbox("ID zender", ID_ZENDER,index=ID_ZENDER.index(id_id_zender))
@@ -394,7 +402,7 @@ def update_item(id,df):
   if st.button("**Update**",use_container_width=True):
       
     data = {"key":id_key,"waarnemer":id_waarnemer,"datum":str(datum),"time":str(time),"soortgroup":id_soortgroup, "aantal":aantal,
-                   "sp":sp, "gedrag":gedrag, "functie":functie,"id_zender":id_zender, "verblijf":verblijf,
+                   "sp":sp, "gedrag":gedrag, "functie":functie,"id_found_with_zender":id_found_with_zender,"id_zender":id_zender, "verblijf":verblijf,
                    "geometry_type":id_geometry_type,"lat":id_lat,"lng":id_lng,"opmerking":opmerking,"coordinates":id_coordinates,"project":id_project}
       
     response = (
