@@ -110,5 +110,6 @@ DICTIONARY_PROJECTS = {"Overig":["Vogels","Vleermuizen"],
                        'SMPs-Enkhuizen':["Vogels","Vleermuizen"],
                        'SMPs-Medemblik':["Vogels","Vleermuizen"],
                        'SMPs-WaddenEilanden':["Vogels","Vleermuizen"],
+                       'SMPs-Alkmaar':["Vogels","Vleermuizen"],
                        
                       }
