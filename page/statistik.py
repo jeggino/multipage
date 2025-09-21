@@ -68,7 +68,7 @@ st.download_button(label="Downloaden alle waarnemingen",data=df_download_points.
                    file_name=f"{project}_{opdracht}_Waarnemingen.csv",mime="text/csv", use_container_width=False)
 
 option_specie_list = list(set(['Alle sorten']) | set(df_download_points['sp'].unique()))
-option_species = st.selectbox("",options = option_specie_list.index('Alle sorten'),label_visibility='collapsed',index = 0)
+option_species = st.selectbox("",options = option_specie_list,label_visibility='collapsed',index = option_specie_list.index('Alle sorten'))
 
 
 if option_species == 'Alle sorten':
