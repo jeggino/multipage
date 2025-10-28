@@ -22,21 +22,21 @@ import time
 
 
 
-@st.dialog(" ",width='large')
-def pdf(file):
-  st.pdf(file, height="stretch", key=None)
+# @st.dialog(" ",width='large')
+# def pdf(file):
+#   st.pdf(file, height="stretch", key=None)
   
-  with open(file, "rb") as pdf_file:
-    PDFbyte = pdf_file.read()
+#   with open(file, "rb") as pdf_file:
+#     PDFbyte = pdf_file.read()
 
-  st.download_button(
-    label="Download pdf",
-    data=PDFbyte,
-    file_name="file.pdf",
-    # mime='application/octet-stream',
-    icon=":material/download:"
-  )
+#   st.download_button(
+#     label="Download pdf",
+#     data=PDFbyte,
+#     file_name="file.pdf",
+#     # mime='application/octet-stream',
+#     icon=":material/download:"
+#   )
 
 
-if st.button("Rapport"):
-  pdf("page/TEST_SMP_APP.pdf")
+# if st.button("Rapport"):
+#   pdf("page/TEST_SMP_APP.pdf")
