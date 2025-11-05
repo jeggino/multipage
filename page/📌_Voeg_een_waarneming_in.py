@@ -261,7 +261,7 @@ def input_data(output):
             insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,id_zender,found_with_zender,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
 
         st.toast("Observatie ingediend!", icon="🎉")
-        time.sleep(1)
+        # time.sleep(1)
         st.switch_page("page/🧭_navigatie.py")
                      
 
