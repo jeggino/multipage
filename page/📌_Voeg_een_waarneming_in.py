@@ -259,7 +259,8 @@ def input_data(output):
         else:
             placeholder.success('Gegevens opgeslagen!', icon="✅",)
             insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,id_zender,found_with_zender,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
-        
+
+        st.toast("Observatie ingediend!", icon="🎉")
         st.switch_page("page/🧭_navigatie.py")
                      
 
