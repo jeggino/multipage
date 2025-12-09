@@ -387,6 +387,7 @@ def update_item(id,df):
   
   elif controller.get('opdracht') == 'Vogels':
     found_with_zender = id_found_with_zender
+    id_zender = id_id_zender 
     sp = st.selectbox("Soort", BIRD_NAMES,index=BIRD_NAMES.index(id_sp))
     if output["last_active_drawing"]["geometry"]["type"] == 'Polygon':
         gedrag = None
