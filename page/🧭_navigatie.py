@@ -453,7 +453,7 @@ def delete_item(id,df):
     
 
 
-    if controller.get('name') in [id_waarnemer,'Luigi']:
+    if controller.get('name') in [id_waarnemer,'Luigi','Daan']:
         if st.button("Let op! Klik hier als je de waarneming wilt verwijderen",icon="🚨",use_container_width=True):
             response = (
                 supabase.table("df_observations")
