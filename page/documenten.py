@@ -22,8 +22,8 @@ import time
 
 left, middle, right = st.columns(3)
 
-middle.space('medium')
-middle.image('https://static.vecteezy.com/system/resources/previews/010/726/610/original/no-documents-filled-line-style-icon-empty-states-vector.jpg',width=300)
+middle.space('medium').image('https://static.vecteezy.com/system/resources/previews/010/726/610/original/no-documents-filled-line-style-icon-empty-states-vector.jpg',width=300)
+
 
 # def init_connection():
 #     url = st.secrets["SUPABASE_URL"]
