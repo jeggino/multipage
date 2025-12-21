@@ -40,7 +40,7 @@ import geopandas as gpd
 geometry = gpd.points_from_xy(df_point["lng"], df_point["lat"])
 
 # Convert to GeoDataFrame
-gdf = gpd.GeoDataFrame(df, geometry=geometry, crs="EPSG:4326").explore('sp')
+gdf = gpd.GeoDataFrame(df_point, geometry=geometry, crs="EPSG:4326").explore('sp')
 
 st.download_button(
     label="Download HTML",
