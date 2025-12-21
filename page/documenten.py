@@ -20,7 +20,7 @@ from credentials import *
 from streamlit_cookies_controller import CookieController
 import time
 
-st.image('https://img.freepik.com/premium-vector/no-documents-sign-prohibited-paperwork-symbol-disallowed-files-crossed-out-vector_797523-3621.jpg')
+st.image('https://static.vecteezy.com/system/resources/previews/010/726/610/original/no-documents-filled-line-style-icon-empty-states-vector.jpg')
 
 # def init_connection():
 #     url = st.secrets["SUPABASE_URL"]
