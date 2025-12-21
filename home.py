@@ -23,7 +23,7 @@ import time
 st.set_page_config(
     initial_sidebar_state="collapsed",
     layout="wide",
-    page_title="🦇🪶 SMP-App 🪶🦇",
+    page_title="🦇🪶 SMP-App",
     
 )
 
@@ -67,29 +67,6 @@ def logIn():
             st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
 
 
-# def logIn():
-#     name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
-#     password = st.text_input("Vul uw wachtwoord in, alstublieft",type="password")
-#     try:
-#         if name == None:
-#             st.stop()
-        
-#         index = df_references[df_references['username']==name].index[0]
-#         true_password = df_references.loc[index,"password"]
-#         type = df_references.loc[index,"type"]
-
-#     except:
-#         st.warning("De gebruikersnaam is niet correct.")
-#         st.stop()
-                             
-#     if st.button("logIn"):
-#         if password == true_password:
-#             st.session_state.login = {"name": name, "password": password, 'type':type}
-#             st.rerun()
-
-#         else:
-#             st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
-
 
 def project():
     index_project = df_references[df_references['username']==controller.get('name')].index[0]
@@ -122,44 +99,6 @@ def project():
             
             st.rerun()
             
-# def project():
-#     index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
-#     project_list = df_references.loc[index_project,"project"].split(',')
-#     project = st.selectbox("Kies een project",project_list,label_visibility="visible")
-#     opdracht = st.selectbox("Kies een opdracht",DICTIONARY_PROJECTS[project],label_visibility="visible")
-#     if project == 'SMPs-ZuidOost':
-#         gebied = st.selectbox("Kies een gebied",list(range(1,23)),label_visibility="visible")
-
-#         if st.session_state.login['type'] == 'user':
-#             on = st.toggle("🚲")
-#         else:
-#             on = False
-#         if st.button(":rainbow[**Begin**]"):
-#              st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'gebied':gebied
-#                                         }
-#              st.rerun()
-#     else:
-#         if st.session_state.login['type'] == 'user':
-#             on = st.toggle("🚲")
-#         else:
-#             on = False
-#         if st.button(":rainbow[**Begin**]"):
-#              st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on
-#                                         }
-#              st.rerun()
-        
-        
-# def logOut():
-#     if st.button("logOut",use_container_width=True):
-#         del st.session_state.login
-#         del st.session_state.project     
-#         st.rerun()
-
-# def logOut_project():
-#     if st.button("Opdracht wijzigen",use_container_width=True):
-#         del st.session_state.project
-#         st.rerun()
-
 
 #---APP---
 page_1 = st.Page("page/🧭_navigatie.py", title="Navigatie",icon=":material/explore:" )
@@ -175,14 +114,6 @@ IMAGE = "image/logo.png"
 IMAGE_2 ="image/menu.jpg"
 st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
 
-# if "login" not in st.session_state:
-#     logIn()
-#     st.stop()
-
-
-# if 'project' not in st.session_state:  
-#     project()
-#     st.stop()
 
 user_id = controller.get("name")
 project_id = controller.get("project_name")
