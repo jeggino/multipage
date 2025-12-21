@@ -36,24 +36,58 @@ df_point = df_point[df_point['geometry_type']=='Point']
 import geopandas as gpd
 
 
-# Create geometry column
-geometry = gpd.points_from_xy(df_point["lng"], df_point["lat"])
+# # Create geometry column
+# geometry = gpd.points_from_xy(df_point["lng"], df_point["lat"])
 
-# Convert to GeoDataFrame
-gdf = gpd.GeoDataFrame(df_point, geometry=geometry, crs="EPSG:4326")
+# # Convert to GeoDataFrame
+# gdf = gpd.GeoDataFrame(df_point, geometry=geometry, crs="EPSG:4326")
+# gdf
 
-map = folium.Map(zoom_start=10,zoom_control=False,font_size= '0.8rem')
-output = st_folium(map)
-# 
-gdf
-st.download_button(
-    label="Download HTML",
-    data=output,
-    file_name="SMP_terschelling_html_test.html",
-    mime="html",
-    icon=":material/download:",
+# map = folium.Map(zoom_start=10,zoom_control=False,font_size= '0.8rem')
+# output = st_folium(map)
+
+
+# st.download_button(
+#     label="Download HTML",
+#     data=output,
+#     file_name="SMP_terschelling_html_test.html",
+#     mime="html",
+#     icon=":material/download:",
+# )
+
+from streamlit.components.v1 import html
+
+# Example: Load a sample GeoDataFrame
+world = gpd.read_file(gpd.datasets.get_path("naturalearth_lowres"))
+
+# Ensure CRS is set (important for .explore)
+if world.crs is None:
+    world = world.set_crs(epsg=4326)
+
+# Create interactive map using GeoPandas' explore()
+m = world.explore(
+    column="pop_est",  # Color by population
+    cmap="viridis",
+    tooltip=["name", "pop_est"],
+    popup=True
 )
 
+# Save map to HTML file
+html_file = "map.html"
+m.save(html_file)
+
+# Option 1: Display inside Streamlit
+with open(html_file, "r", encoding="utf-8") as f:
+    html(f.read(), height=600)
+
+# Option 2: Provide download button
+with open(html_file, "rb") as f:
+    st.download_button(
+        label="Download map as HTML",
+        data=f,
+        file_name="map.html",
+        mime="text/html"
+    )
 
 # @st.dialog(" ",width='large')
 # def pdf(file):
