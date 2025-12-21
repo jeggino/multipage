@@ -42,11 +42,13 @@ geometry = gpd.points_from_xy(df_point["lng"], df_point["lat"])
 # Convert to GeoDataFrame
 gdf = gpd.GeoDataFrame(df_point, geometry=geometry, crs="EPSG:4326")
 
+map = folium.Map(zoom_start=10,zoom_control=False,font_size= '0.8rem')
+output = st_folium(map)
 # 
 gdf
 st.download_button(
     label="Download HTML",
-    data=gdf.explore('sp'),
+    data=output,
     file_name="SMP_terschelling_html_test.html",
     mime="html",
     icon=":material/download:",
