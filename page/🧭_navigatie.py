@@ -824,8 +824,19 @@ for i in range(len(df_2)):
 folium.LayerControl().add_to(map)
 
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, 
-                   height=OUTPUT_height,
+                   height=OUTPUT_height,debug=True,
                    feature_group_to_add=list(functie_dictionary.values()))
+
+
+# st_folium(
+#     map,
+#     width=800,
+#     height=450,
+#     returned_objects=[],
+#     feature_group_to_add=fg_dict[fg],
+#     debug=True,
+#     layer_control=layer_dict[layer],
+# )
 
         
 if controller.get("type") in ['user','Daan']:
