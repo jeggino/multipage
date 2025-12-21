@@ -102,7 +102,7 @@ def project():
 
 #---APP---
 page_1 = st.Page("page/🧭_navigatie.py", title="Navigatie",icon=":material/explore:" )
-page_2 = st.Page("page/📌_Voeg_een_waarneming_in.py", title="Voeg een waarneming in",icon=":material/add_location:" )
+page_2 = st.Page("page/📌_Voeg_een_waarneming_in.py", title="Voeg een waarneming in",icon=":material/add_location_alt:" )
 page_3 = st.Page("page/📝_Dagverlag_formulier.py", title="Dagverslag",icon=":material/edit_note:" )
 page_4 = st.Page("page/📊_ Statistik.py", title="Foto's & Video's",icon=":material/photo_camera:" )
 page_5 = st.Page("page/statistik.py", title="Statistieken",icon=":material/bar_chart:" )
