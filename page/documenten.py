@@ -31,7 +31,26 @@ supabase = init_connection()
 rows_points = supabase.table("df_observations").select("*").execute()
 df_point = pd.DataFrame(rows_points.data)
 
-df_point
+df_point = df_point[df_point['geometry_type']=='Point']
+
+import geopandas as gpd
+
+
+# Create geometry column
+geometry = gpd.points_from_xy(df_point["lng"], df_point["lat"])
+
+# Convert to GeoDataFrame
+gdf = gpd.GeoDataFrame(df, geometry=geometry, crs="EPSG:4326").explore('sp')
+
+st.download_button(
+    label="Download HTML",
+    data=gdf,
+    file_name="SMP_terschelling_html_test.html",
+    mime="html",
+    icon=":material/download:",
+)
+
+
 # @st.dialog(" ",width='large')
 # def pdf(file):
 #   st.pdf(file, height="stretch", key=None)
