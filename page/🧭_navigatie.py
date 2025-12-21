@@ -611,7 +611,8 @@ try:
     lat = gdf_areas.centroid.y.mean()
     lng = gdf_areas.centroid.x.mean()
     map = folium.Map(location=[lat, lng], zoom_start=10,zoom_control=False,tiles=None,font_size= '0.8rem')
-    oude_waarnemingen = folium.FeatureGroup(name="Oude waarnemingen",show=False).add_to(map)
+    # old observations
+    # oude_waarnemingen = folium.FeatureGroup(name="Oude waarnemingen",show=False).add_to(map)
 except:
     map = folium.Map(tiles=None, zoom_start=8,zoom_control=False,font_size= '0.8rem')
 
@@ -682,44 +683,45 @@ map_fuction = {'paarverblijfplaats':'heart',
 df_2['functie_shape'] = df_2['functie'].map(map_fuction)
 df_2['color'] = df_2['sp'].map(species_colors_dict)
 
-try:
-    df_overig['functie_shape'] = df_overig['functie'].map(map_fuction)
-    df_overig['color'] = df_overig['sp'].map(species_colors_dict)
+# OLD OBSERVATIONS
+# try:
+#     df_overig['functie_shape'] = df_overig['functie'].map(map_fuction)
+#     df_overig['color'] = df_overig['sp'].map(species_colors_dict)
     
     
-    for i in range(len(df_overig)):
+#     for i in range(len(df_overig)):
     
-        if df_overig.iloc[i]['geometry_type'] == "Point":
+#         if df_overig.iloc[i]['geometry_type'] == "Point":
     
-            if df_overig.iloc[i]['soortgroup'] == "Vogels":
+#             if df_overig.iloc[i]['soortgroup'] == "Vogels":
                             
-                html = popup_html(i,df_overig)
-                popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+#                 html = popup_html(i,df_overig)
+#                 popup = folium.Popup(folium.Html(html, script=True), max_width=300)
 
-                folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
-                              popup=popup,
-                              icon=folium.Icon(icon=df_overig.iloc[i]['functie_shape'],
-                                  prefix='fa',
-                                  icon_color='black',
-                                  color=df_overig.iloc[i]['color'],)
-                             ).add_to(oude_waarnemingen)
+#                 folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
+#                               popup=popup,
+#                               icon=folium.Icon(icon=df_overig.iloc[i]['functie_shape'],
+#                                   prefix='fa',
+#                                   icon_color='black',
+#                                   color=df_overig.iloc[i]['color'],)
+#                              ).add_to(oude_waarnemingen)
     
-            elif df_overig.iloc[i]['soortgroup'] == "Vleermuizen":
+#             elif df_overig.iloc[i]['soortgroup'] == "Vleermuizen":
                 
-                html = popup_html(i,df_overig)
-                popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+#                 html = popup_html(i,df_overig)
+#                 popup = folium.Popup(folium.Html(html, script=True), max_width=300)
                 
                     
-                folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
-                  popup=popup,
-                  icon=folium.plugins.BeautifyIcon(icon=df_overig.iloc[i]['functie_shape'],
-                                                   icon_style=" opacity: 1; height: 35px;width: 35px;",
-                                                   icon_shape="marker",
-                                                   border_color=df_overig.iloc[i]['color'],
-                                                   background_color=df_overig.iloc[i]['color'])
-                  ).add_to(oude_waarnemingen)
-except:
-    pass
+#                 folium.Marker([df_overig.iloc[i]['lat'], df_overig.iloc[i]['lng']],
+#                   popup=popup,
+#                   icon=folium.plugins.BeautifyIcon(icon=df_overig.iloc[i]['functie_shape'],
+#                                                    icon_style=" opacity: 1; height: 35px;width: 35px;",
+#                                                    icon_shape="marker",
+#                                                    border_color=df_overig.iloc[i]['color'],
+#                                                    background_color=df_overig.iloc[i]['color'])
+#                   ).add_to(oude_waarnemingen)
+# except:
+#     pass
     
 for i in range(len(df_2)):
 
