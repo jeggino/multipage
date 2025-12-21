@@ -22,6 +22,16 @@ import time
 
 
 
+def init_connection():
+    url = st.secrets["SUPABASE_URL"]
+    key = st.secrets["SUPABASE_KEY"]
+    return create_client(url, key)
+
+supabase = init_connection()
+rows_points = supabase.table("df_observations").select("*").execute()
+df_point = pd.DataFrame(rows_points.data)
+
+df_point
 # @st.dialog(" ",width='large')
 # def pdf(file):
 #   st.pdf(file, height="stretch", key=None)
