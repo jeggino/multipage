@@ -1,8 +1,0 @@
-{
-"type": "FeatureCollection",
-"name": "Sneeuwbalstraat_Amsterdam",
-"features": [
-{ "type": "Feature", "properties": { "index": "0", "geometry": "LINESTRING (4.914088548807229 52.396710123979005, 4.914004668403436 52.39670500567502, 4.91424792157477 52.39594237172088, 4.9146589355536605 52.39595260850561, 4.917863166982556 52.39527697562639, 4.918274180961504 52.39602426593166, 4.917653465973046 52.39771841832061, 4.916957258620926 52.39844519487767, 4.914088548807229 52.396710123979005)" }, "geometry": null },
-{ "type": "Feature", "properties": { "index": "Gebied", "geometry": "Sneeuwbalstraat_Amsterdam" }, "geometry": null }
-]
-}
