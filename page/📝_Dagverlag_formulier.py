@@ -86,7 +86,7 @@ def delete_item(key):
 
 ###
 doel_bats_options = ('Laatvlieger','Kraamverblijf','Winterverblijf','Paarverblijf','Tweekleurige')
-doel_birds_options = ('Gierzwaluw','Huismus')
+doel_birds_options = ('Huismus (1/2)','Huismus (2/2)','Gierzwaluw (1/3)','Gierzwaluw (2/3)','Gierzwaluw (3/3)')
 bewolking_options = ("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)")
 neerslag_options = ("Droog", "Nevel/mist", "Motregen", "Regen")
 windrichting_options = ("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest")
@@ -159,7 +159,7 @@ if selected == "Formulier":
                 if (project == "SMPs-ZuidOost"):
                     doel = st.selectbox('Doel',['Gierzwaluw'])
                 else:
-                    doel = st.selectbox('Doel',['Gierzwaluw','Huismus'])
+                    doel = st.selectbox('Doel',doel_birds_options)
             else:
                 doel = st.selectbox('Doel',['Overig'] + BIRD_NAMES)
                 
