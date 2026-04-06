@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "Breedstraat_47_Enkhuizen",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Gebied": "Breedstraat_47_Enkhuizen" }, "geometry": { "type": "LineString", "coordinates": [ [ 5.294750644644523, 52.704443576101085 ], [ 5.295238963511224, 52.704455147038772 ], [ 5.295228051357327, 52.704559285338746 ], [ 5.294745188567958, 52.704531184552053 ], [ 5.294750644644523, 52.704443576101085 ] ] } }
+]
+}
