@@ -10,6 +10,8 @@ natsort==8.4.0
 supabase 
 streamlit-cookies-controller
 
+streamlit-cookies-manager
+
 
 
 streamlit[pdf]
