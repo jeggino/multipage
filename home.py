@@ -1,5 +1,8 @@
 import streamlit as st
 from streamlit_cookies_manager import EncryptedCookieManager
+import pandas as pd
+from supabase import create_client, Client
+
 
 # Create a cookie manager instance
 cookies = EncryptedCookieManager(
@@ -13,15 +16,37 @@ if not cookies.ready():
 
 st.title("Streamlit Cookies Manager Example")
 
+st.set_page_config(
+    initial_sidebar_state="collapsed",
+    layout="wide",
+    page_title="🦇🪶 SMP-App",
+    
+)
+
+def init_connection():
+    url = st.secrets["SUPABASE_URL"]
+    key = st.secrets["SUPABASE_KEY"]
+    return create_client(url, key)
+
+supabase = init_connection()
+rows_users = supabase.table("df_users").select("*").execute()
+df_references = pd.DataFrame(rows_users.data)
+
+name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
+password = st.text_input("Vul uw wachtwoord in, alstublieft",type="password")
+
+
 # Set a cookie
 if st.button("Set Cookie"):
-    cookies["username"] = "JohnDoe"
+    cookies["username"] = name
+    cookies["password"] = password
     cookies.save()  # Save changes to browser
     st.success("Cookie set!")
 
 # Get a cookie
 if "username" in cookies:
     st.write(f"Hello, {cookies['username']}!")
+    st.write(f"Password, {cookies['password']}!")
 
 # Delete a cookie
 if st.button("Delete Cookie"):
