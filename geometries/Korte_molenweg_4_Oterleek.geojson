@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "Korte_molenweg_4_Oterleek",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Gebied": "Korte_molenweg_4_Oterleek" }, "geometry": { "type": "LineString", "coordinates": [ [ 4.809577500723577, 52.632133092481325 ], [ 4.809468738618079, 52.631930453568287 ], [ 4.809691321532227, 52.631881328842155 ], [ 4.809795024935255, 52.632090108547857 ], [ 4.809577500723577, 52.632133092481325 ] ] } }
+]
+}
