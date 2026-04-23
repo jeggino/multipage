@@ -173,7 +173,7 @@ if selected == "Formulier":
             gdf_areas = gpd.read_file(geometry_file)
             # gebied_id_list = np.sort(gdf_areas['Gebied'].unique())
             gebied_id_list = natsorted(gdf_areas['Gebied'].unique())
-            if gebied_id == None:
+            if gebied_id_list == None:
                 st.error("Selecteer een gebied, alstublieft",icon="⚠️")
                 st.stop()
             
