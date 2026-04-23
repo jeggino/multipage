@@ -115,6 +115,6 @@ DICTIONARY_PROJECTS = {"Overig":["Vogels","Vleermuizen"],
                        'Breedstraat_47_Enkhuizen':["Vogels","Vleermuizen"],
                        'Middenweg_45a-53a_Heerhugowaard':["Vogels","Vleermuizen"],
                        'Korte_molenweg_4_Oterleek':["Vogels","Vleermuizen"],
-                       'Wijk_aan_Duinerweg_27_121_Beverwijk,':["Vogels","Vleermuizen"]
+                       'Wijk_aan_Duinerweg_27_121_Beverwijk':["Vogels","Vleermuizen"]
                        
                       }
