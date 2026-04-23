@@ -75,7 +75,8 @@ def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time
 
 @st.dialog(" ")
 def dagverslag_ok():
-    st.success("Je hebt je dagverslag ingevuld.!")
+    st.image("https://static.vecteezy.com/system/resources/previews/046/917/909/non_2x/hand-with-ok-gesture-sign-line-icon-isolated-on-blue-background-hand-drawn-illustration-free-vector.jpg",caption="Je hebt je dagverslag ingevuld!")
+    # st.success("Je hebt je dagverslag ingevuld.!")
 
 
 @st.dialog(" ")
