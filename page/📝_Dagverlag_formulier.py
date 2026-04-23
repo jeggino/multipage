@@ -86,7 +86,7 @@ def already_one():
 
 @st.dialog(" ")
 def delete_item(key):
-    st.image('https://cdn.vectorstock.com/i/1000v/42/41/stop-sign-vector-4754241.jpg')
+    st.image('https://static.vecteezy.com/system/resources/previews/000/529/366/original/stop-hand-sign-vector.jpg')
     if st.button("Let op! Klik hier als je de dagverslag wilt verwijderen",icon="🚨",type="primary",use_container_width=True):
         response = (
             supabase.table("df_dagverslagen")
