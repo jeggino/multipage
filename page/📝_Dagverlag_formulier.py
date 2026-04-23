@@ -180,11 +180,12 @@ if selected == "Formulier":
 
             elif (project == "SMPs-ZuidOost"):
                 gebied_id_list = list(range(1,23))
-                
-            gebied_id = st.selectbox("Gebied",gebied_id_list,index=None)
-            if gebied_id == None:
-                st.error("Selecteer een gebied, alstublieft",icon="⚠️")
-                st.stop()
+
+            if len(gebied_id_list) == 1: 
+                gebied_id = gebied_id_list[0]
+            else:
+                gebied_id = st.selectbox("Gebied",gebied_id_list,index=None)
+
         except:
             gebied_id = "---"
         # key = random.randint(1,100000000000)    
@@ -206,6 +207,9 @@ if selected == "Formulier":
         
         if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
             insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,str(datum),str(start_time),str(eind_time),temperatuur,bewolking,neerslag,windkracht,windrichting,opmerking)
+            if gebied_id == None:
+                st.error("Selecteer een gebied, alstublieft",icon="⚠️")
+                st.stop()
             dagverslag_ok()
         
             # st.switch_page("page/🧭_navigatie.py")
