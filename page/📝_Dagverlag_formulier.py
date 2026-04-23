@@ -58,6 +58,10 @@ def init_connection():
 
 supabase = init_connection()
 
+rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
+df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)                
+df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & (df_dagverslagen['opdracht']==opdracht)]
+
 
 # --- FUNCTIONS ---
 def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time,eind_time,
@@ -78,6 +82,10 @@ def dagverslag_ok():
     st.image("https://static.vecteezy.com/system/resources/previews/046/917/909/non_2x/hand-with-ok-gesture-sign-line-icon-isolated-on-blue-background-hand-drawn-illustration-free-vector.jpg",caption="Je hebt je dagverslag ingevuld!")
     # st.success("Je hebt je dagverslag ingevuld.!")
 
+@st.dialog(" ")
+def already_one():
+    st.image("https://img2.clipart-library.com/26/pointing-finger-clipart-free/pointing-finger-clipart-free-18.jpg",caption="Er is al een dagverslag met dit doel!")
+    # st.success("Je hebt je dagverslag ingevuld.!")
 
 @st.dialog(" ")
 def delete_item(key):
@@ -207,10 +215,17 @@ if selected == "Formulier":
         opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...")
         
         if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
-            insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,str(datum),str(start_time),str(eind_time),temperatuur,bewolking,neerslag,windkracht,windrichting,opmerking)
             if gebied_id == None:
                 st.error("Selecteer een gebied, alstublieft",icon="⚠️")
                 st.stop()
+
+            if len(df_dagverslagen[(df_dagverslagen['project']==project) & (df_dagverslagen['opdracht']==opdracht) & (df_dagverslagen['doel']==doel)]) > 0:
+                already_one()
+                st.stop()
+                
+            
+            insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,str(datum),str(start_time),str(eind_time),temperatuur,bewolking,neerslag,windkracht,windrichting,opmerking)
+
             dagverslag_ok()
         
             # st.switch_page("page/🧭_navigatie.py")
