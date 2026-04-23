@@ -113,6 +113,7 @@ DICTIONARY_PROJECTS = {"Overig":["Vogels","Vleermuizen"],
                        'SMPs-Alkmaar':["Vogels","Vleermuizen"],
                        'Sneeuwbalstraat_Amsterdam':["Vogels","Vleermuizen"],
                        'Breedstraat_47_Enkhuizen':["Vogels","Vleermuizen"],
-                       'Middenweg_45a-53a_Heerhugowaard':["Vogels","Vleermuizen"]
+                       'Middenweg_45a-53a_Heerhugowaard':["Vogels","Vleermuizen"],
+                       'Korte_molenweg_4_Oterleek':["Vogels","Vleermuizen"]
                        
                       }
