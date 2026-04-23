@@ -74,6 +74,11 @@ def insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,datum,start_time
         )
 
 @st.dialog(" ")
+def dagverslag_ok():
+    st.success("Je hebt je dagverslag ingevuld.!")
+
+
+@st.dialog(" ")
 def delete_item(key):
     if st.button("Let op! Klik hier als je de dagverslag wilt verwijderen",icon="🚨",type="primary",use_container_width=True):
         response = (
@@ -201,6 +206,7 @@ if selected == "Formulier":
                 st.stop()
 
             insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,str(datum),str(start_time),str(eind_time),temperatuur,bewolking,neerslag,windkracht,windrichting,opmerking)
+            dagverslag_ok()
         
             # st.switch_page("page/🧭_navigatie.py")
         "---"
