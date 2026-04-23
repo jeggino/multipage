@@ -24,7 +24,7 @@ BIRD_NAMES = ['Gierzwaluw','Huiszwaluw','Boerenzwaluw','Huismus','Spreeuw','Boom
 
 BIRD_NAMES_ANDER = ['...Andere(n)']
 
-BIRD_BEHAVIOURS = ['overvliegend', 'nest-indicerend gedrag', 'foeragerend', 'invliegend', 'uitvliegend',
+BIRD_BEHAVIOURS = ['overvliegend', 'nest-indicerend gedrag', 'foeragerend', 'invliegend', 'uitvliegend','ter plaatse',
        'roepend vanuit gebouw', 'baltsend / zingend op gebouw',
        'baltsend / zingend in vegetatie, struik of boom', 'sporen',
         'copula']
