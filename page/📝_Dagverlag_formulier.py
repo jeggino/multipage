@@ -58,9 +58,6 @@ def init_connection():
 
 supabase = init_connection()
 
-rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
-df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)                
-df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & (df_dagverslagen['opdracht']==opdracht)]
 
 
 # --- FUNCTIONS ---
@@ -151,6 +148,10 @@ st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 waarnemer = controller.get('name')
 project = controller.get('project_name')
 opdracht = controller.get('opdracht')
+
+rows_dagverslagen = supabase.table("df_dagverslagen").select("*").execute()
+df_dagverslagen = pd.DataFrame(rows_dagverslagen.data)                
+df_download_dagverslagen = df_dagverslagen[(df_dagverslagen['project']==project) & (df_dagverslagen['opdracht']==opdracht)]
 
 
 
