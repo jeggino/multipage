@@ -173,9 +173,7 @@ if selected == "Formulier":
             gdf_areas = gpd.read_file(geometry_file)
             # gebied_id_list = np.sort(gdf_areas['Gebied'].unique())
             gebied_id_list = natsorted(gdf_areas['Gebied'].unique())
-            if gebied_id_list == None:
-                st.error("Selecteer een gebied, alstublieft",icon="⚠️")
-                st.stop()
+
             
             if (project == "SMPs-Terschelling") & (opdracht == 'Vogels') :
                 gebied_id_list = [1,2,3,4]
@@ -184,6 +182,9 @@ if selected == "Formulier":
                 gebied_id_list = list(range(1,23))
                 
             gebied_id = st.selectbox("Gebied",gebied_id_list,index=None)
+            if gebied_id == None:
+                st.error("Selecteer een gebied, alstublieft",icon="⚠️")
+                st.stop()
         except:
             gebied_id = "---"
         # key = random.randint(1,100000000000)    
