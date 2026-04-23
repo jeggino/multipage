@@ -247,14 +247,17 @@ elif selected == 'Data':
         st.download_button(label="Downloaden alle dagverslagen",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name=f"{project}_{opdracht}_dagverslagen.csv",mime="text/csv", use_container_width=False)
         
         with st.container(border=True):
-            option_areas_filter = st.selectbox(
-                "Selecteer een gebied",
-                natsorted(list_),
-                index=None,
-                placeholder="Selecteer een gebied...",
-                label_visibility="collapsed",
+            if len(list_) == 1: 
+                option_areas_filter = list_[0]
+            else:
+                option_areas_filter = st.selectbox(
+                    "Selecteer een gebied",
+                    natsorted(list_),
+                    index=None,
+                    placeholder="Selecteer een gebied...",
+                    label_visibility="collapsed",
+                )
                 
-            )
             option_areas_filter = option_areas_filter.split()[0]
             
             try:
