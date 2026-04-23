@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "Middenweg_45a-53a_Heerhugowaard",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Gebied": "Middenweg_45a-53a_Heerhugowaard" }, "geometry": { "type": "LineString", "coordinates": [ [ 4.828862846070535, 52.661474580335636 ], [ 4.829285484542027, 52.66118637007574 ], [ 4.829950283435949, 52.661560488795743 ], [ 4.829559628415268, 52.661850082198498 ], [ 4.828862846070535, 52.661474580335636 ] ] } }
+]
+}
