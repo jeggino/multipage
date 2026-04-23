@@ -216,9 +216,7 @@ elif selected == 'Data':
             option = f'{key} ({value})'
             list_.append(option)
             
-        st.download_button(label="Downloaden alle dagverslagen",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name="dagverslagen.csv",mime="text/csv", use_container_width=False)
-
-
+        st.download_button(label="Downloaden alle dagverslagen",data=df_download_dagverslagen.to_csv().encode("utf-8"),file_name=f"{project}_{opdracht}_dagverslagen.csv",mime="text/csv", use_container_width=False)
         
         with st.container(border=True):
             option_areas_filter = st.selectbox(
