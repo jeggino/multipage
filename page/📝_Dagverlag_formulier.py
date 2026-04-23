@@ -173,6 +173,9 @@ if selected == "Formulier":
             gdf_areas = gpd.read_file(geometry_file)
             # gebied_id_list = np.sort(gdf_areas['Gebied'].unique())
             gebied_id_list = natsorted(gdf_areas['Gebied'].unique())
+            if gebied_id == None:
+                st.error("Selecteer een gebied, alstublieft",icon="⚠️")
+                st.stop()
             
             if (project == "SMPs-Terschelling") & (opdracht == 'Vogels') :
                 gebied_id_list = [1,2,3,4]
@@ -201,10 +204,6 @@ if selected == "Formulier":
         opmerking = st.text_area("", placeholder="Vul hier een opmerking in ...")
         
         if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
-            if gebied_id == None:
-                st.error("Selecteer een gebied, alstublieft",icon="⚠️")
-                st.stop()
-
             insert_dagverslag(waarnemer,project,opdracht,gebied_id,doel,str(datum),str(start_time),str(eind_time),temperatuur,bewolking,neerslag,windkracht,windrichting,opmerking)
             dagverslag_ok()
         
