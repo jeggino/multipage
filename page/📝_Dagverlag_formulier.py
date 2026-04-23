@@ -81,7 +81,7 @@ def dagverslag_ok():
 
 @st.dialog(" ")
 def already_one():
-    st.image("https://img2.clipart-library.com/26/pointing-finger-clipart-free/pointing-finger-clipart-free-18.jpg",caption="Er is al een dagverslag met dit doel!")
+    st.image("https://media.istockphoto.com/id/597252528/vector/hand-pointing-finger-vector-illustration.jpg?s=170667a&w=0&k=20&c=vg8X2o_7jiW8BZAvJ-MfOUlfxQbnS73YNWotWVzKYf0=",caption="Er bestaat al een dagverslag met dit doel! Ga naar "Data" en bewerk of verwijder het dagverslag.")
     # st.success("Je hebt je dagverslag ingevuld.!")
 
 @st.dialog(" ")
