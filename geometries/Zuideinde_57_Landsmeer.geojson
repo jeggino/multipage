@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "Zuideinde_57_Landsmeer",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Gebied": "Zuideinde_57_Landsmeer" }, "geometry": { "type": "LineString", "coordinates": [ [ 4.910163435027755, 52.424041987489318 ], [ 4.910113185717421, 52.423931407298568 ], [ 4.910261748894982, 52.423906093721854 ], [ 4.910315275333716, 52.42401334324947 ], [ 4.910163435027755, 52.424041987489318 ] ] } }
+]
+}
